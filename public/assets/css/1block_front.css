@@ -1,0 +1,23 @@
+section .content {
+    max-width: 1024px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar {
+    top: 100px !important;
+    left: 15px !important;
+}
+
+.btn-round,
+.form-control {
+    border-radius: 0 !important;
+}
+
+.form-group .form-control {
+    border: 1px solid #9d9d9d !important;
+}
+
+.side-label {
+    margin-bottom: 0 !important;
+}

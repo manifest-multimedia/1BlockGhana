@@ -1,0 +1,38 @@
+
+
+
+
+.form-control,
+.input-group-addon {
+	border-radius: 5px;
+}
+
+.btn-logout {
+    background: no-repeat;
+    border: none;
+    margin-right: 2rem;
+}
+
+
+.card .body {
+    font-size: 17px;
+    color: #424242;
+    padding: 20px;
+    font-weight: 400;
+}
+
+::placeholder {
+    color: rgb(155, 155, 155) !important;
+    opacity: 1; /* Firefox */
+  }
+
+
+  .input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child>.dropdown-toggle, .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {
+    border: 1px solid rgb(206 201 201);
+    border-radius: 5px;
+}
+
+  span.input-group-addon {
+    display: none;
+}
+

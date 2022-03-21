@@ -1,0 +1,145 @@
+.page-header .container>.login-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 15px;
+    color: #b9b9b9;
+    width: 100%;
+    max-width: 580px;
+}
+
+.authentication .card-login {
+    margin: 0 auto;
+}
+
+.authentication .card-login {
+    border-radius: 0.25rem;
+    padding-bottom: 0.7rem;
+    max-width: 350px;
+}
+
+
+/* ================================================== */
+
+.page-header .container>.content-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 0 15px;
+    color: #858585;
+    width: 100%;
+    max-width: 800px;
+}
+
+.card .header {
+    margin-bottom: 30px;
+}
+
+.authentication .card-plain1 {
+    margin: 0 auto;
+}
+
+.authentication .card-plain1 {
+    border-radius: 0.25rem;
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
+    max-width: 600px;
+}
+
+.card-plain1 {
+    background: #cd000000;
+    box-shadow: none;
+}
+
+.form-logo {
+    width: 80px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-control,
+.input-group-addon {
+    border-radius: 0px;
+}
+
+.checkbox label::before,
+.checkbox label::after {
+    left: -45px;
+}
+
+.checkbox label,
+.radio label {
+    padding-left: 0px;
+}
+
+.input-group,
+.form-group {
+    margin-bottom: 20px;
+}
+
+.authentication .link {
+    color: #666;
+}
+
+.content {
+    text-align: left;
+}
+
+@media screen and (max-width: 1500px) {
+    .page-header .container>.content-center {
+        position: absolute;
+    }
+}
+
+.form-control:focus,
+.form-control:focus+.input-group-addon,
+.form-control:focus~.input-group-addon {
+    border-color: #b78746 !important;
+    color: #2c2c2c;
+}
+
+.card-plain1 a {
+    color: #b78746;
+    font-weight: 500;
+}
+
+.card-plain1 a:hover,
+a:focus {
+    color: #ce841e;
+}
+
+input:-internal-autofill-selected {
+    background-color: #fff !important;
+}
+
+.l-cyan, .btn-primary  {
+    background: linear-gradient(45deg, #dda04a, #b78746) !important;
+    color: #fff !important;
+}
+
+.error-text {
+    color: #f96332;
+}
+
+section.content.frontend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+aside.sidebar.frontend {
+    position: relative;
+}

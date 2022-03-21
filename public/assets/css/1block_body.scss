@@ -1,0 +1,21 @@
+body {
+    font-size: 16px;
+}
+
+.navbar-header .navbar-brand {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sidebar .menu:last-child {
+    margin-bottom: 20px;
+}
+.sidebar .menu .list > li:last-child {
+    margin-bottom: 0;
+}
+
+aside#leftsidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
