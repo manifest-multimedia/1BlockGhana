@@ -17,7 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->string('property_id')->nullable();
             $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('set null');
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->double('price', 8, 2);
