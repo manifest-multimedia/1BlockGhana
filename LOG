@@ -1,0 +1,26 @@
+[localhost] > git rev-parse --abbrev-ref HEAD
+[localhost] < master
+[52.194.214.107] > echo $0
+[52.194.214.107] < bash
+[52.194.214.107] > if [ ! -d /var/www/1blockghana.com ]; then mkdir -p /var/www/1blockghana.com; fi
+[52.194.214.107] > if [ ! -L /var/www/1blockghana.com/current ] && [ -d /var/www/1blockghana.com/current ]; then echo 'true'; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d .dep ]; then mkdir .dep; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d releases ]; then mkdir releases; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d shared ]; then mkdir shared; fi
+[52.194.214.107] > if [ -f /var/www/1blockghana.com/.dep/deploy.lock ]; then echo 'true'; fi
+[52.194.214.107] < true
+[Deployer\Exception\GracefulShutdownException] Deploy locked.
+Execute "/usr/bin/winpty vendor/bin/dep deploy:unlock " to unlock.
+#0 [internal function]: Deployer\Deployer::Deployer\{closure}()
+#1 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\src\Task\Task.php(105): call_user_func(Object(Closure))
+#2 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\src\Executor\SeriesExecutor.php(60): Deployer\Task\Task->run(Object(Deployer\Task\Context))
+#3 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\src\Console\TaskCommand.php(144): Deployer\Executor\SeriesExecutor->run(Array, Array)
+#4 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\symfony\console\Command\Command.php(299): Deployer\Console\TaskCommand->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Deployer\Console\Output\OutputWatcher))
+#5 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\symfony\console\Application.php(978): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Deployer\Console\Output\OutputWatcher))
+#6 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\src\Console\Application.php(133): Symfony\Component\Console\Application->doRunCommand(Object(Deployer\Console\TaskCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Deployer\Console\Output\OutputWatcher))
+#7 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\symfony\console\Application.php(295): Deployer\Console\Application->doRunCommand(Object(Deployer\Console\TaskCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Deployer\Console\Output\OutputWatcher))
+#8 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\symfony\console\Application.php(167): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#9 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\src\Deployer.php(326): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#10 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\deployer\deployer\bin\dep(137): Deployer\Deployer::run('v6.8.0', 'C:\\Users\\Manife...')
+#11 C:\Users\Manifest Multimedia\Documents\From Manifest\1-Block Ghana\1-Block-Ghana\vendor\bin\dep(19): include('C:\\Users\\Manife...')
+#12 {main}

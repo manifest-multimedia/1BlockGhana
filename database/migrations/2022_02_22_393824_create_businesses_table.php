@@ -18,7 +18,7 @@ class CreateBusinessesTable extends Migration
             /* $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade'); */
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->nullable();
             $table->foreignId('package_id')->constrained()->onUpdate('cascade')->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
