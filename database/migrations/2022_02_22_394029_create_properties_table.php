@@ -21,7 +21,7 @@ class CreatePropertiesTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->double('price', 8, 2);
-            $table->foreignId('currency_id')->constrained('currencies')->onDelete('set null');
+            $table->foreignId('currency_id')->nullable()->constrained('currencies')->onDelete('set null');
             $table->string('size')->nullable();
             $table->string('bedroom')->nullable();
             $table->string('kitchen')->nullable();
