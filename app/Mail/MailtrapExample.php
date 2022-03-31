@@ -46,7 +46,7 @@ class MailtrapExample extends Mailable
    // dd($this->data['url']);
     return $this->from($sender_email, $sender_name)
                 ->markdown('mail.emailtemplate', [
-                    'url' => $this->data['url'],
+                   // 'url' => $this->data['url'],
                 ]);
 }
 }

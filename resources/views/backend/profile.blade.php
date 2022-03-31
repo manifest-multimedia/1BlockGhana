@@ -3,7 +3,7 @@
     <!-- Main Content -->
     <section class="content agent">
         <x-backend.breadcrumb page="Agents" class="mb-5"  menu="Agent Profile" />
-
+        
 				<div class="container-fluid mt-5">
 
 					@if (Laravel\Fortify\Features::canUpdateProfileInformation())

@@ -22,7 +22,7 @@
                                         <th>Listing Limit</th>
                                         <th>Image Upload</th>
                                         <th>Video Upload</th>
-                                        <th>Video limit</th>
+                                     {{--    <th>Video limit</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                             <td>{{ $package->listing_limit }} listing</td>
                                             <td>{{ $package->image_upload_limit }} pictures</td>
                                             <td>{{ $package->video_upload_limit }} video</td>
-                                            <td>{{ $package->video_length_limit }} seconds</td>
+                                            {{-- <td>{{ $package->video_length_limit }} seconds</td> --}}
 
                                             <td>
                                                 <a href="{{ route('package.edit', ['id' => $package->id]) }}"><button

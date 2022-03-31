@@ -24,7 +24,7 @@ class AdminController extends Controller
         );
         //dd($data);
         Mail::to('admin@1blockghana.com')->send(new MailtrapAdmin($data));
-        Mail::to($request->email)->send(new MailtrapExample($data));
+       // Mail::to($request->email)->send(new MailtrapExample($data));
        // return back()->with('success','Your request has been sent.');
         return redirect()->route('request.status');
     }

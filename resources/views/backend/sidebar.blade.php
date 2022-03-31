@@ -4,7 +4,7 @@
         <ul class="list">
             <li>
                 <div class="user-info">
-                    <div class="image"><a href="profile.html"><img src="assets/images/gabe.jpg" alt="User"></a></div>
+                    <div class="image"><a href=""><img src="assets/images/avatar.jpg" alt="User"></a></div>
                     <div class="detail">
                         <h4>Gabriel</h4>
                         <small>admin</small>
