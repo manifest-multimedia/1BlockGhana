@@ -6,7 +6,7 @@
 
 		<div class="container-fluid">
 			<div class="row clearfix">
-				@if (!$properties->isEmpty())
+				{{-- @if (!$properties->isEmpty())
 				@foreach ($properties as $property)
 				<div class="col-lg-4 col-md-12">
 						<div class="card property_list">
@@ -48,7 +48,7 @@
 				@else
 				<p><strong>No Property listed</strong></p>
 				<span><a href="{{ route('property.add') }}">Click here</a> to add a new Property</span>
-				@endif
+				@endif --}}
 
 				<div class="col-lg-4 col-md-12">
 						<div class="card property_list">

@@ -40,7 +40,7 @@
 					<li><a href="/properties">List Properties</a></li>
 					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
 					<li><a href="{{ route('property.add')}}">Add Property</a></li>
-					<li><a href="property/details">Property Detail</a></li>
+					{{-- <li><a href="property/details">Property Detail</a></li> --}}
 				</ul>
 			</li>
 			<li class=""><a href="{{route('category.list')}}"><i class="zmdi zmdi-city"></i><span>Categories</span></a></li>

@@ -15,8 +15,8 @@ class CategoryController extends Controller
 
     public function view(){
         $categories = Category::all();
-        return view('sbadmin.category.view', compact('categories'));
-      //  return view('backend.category.list', compact('categories'));
+      //  return view('sbadmin.category.view', compact('categories'));
+        return view('backend.category.list', compact('categories'));
     }
 
     public function create(){

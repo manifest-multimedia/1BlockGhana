@@ -20,15 +20,15 @@ class AgentController extends Controller
     public function view(){
       //  $agents = User::where('role', 'agent')->get();
         $agents= User::all();
-        return view('sbadmin.agents.lists',compact('agents'));
-      //  return view('backend.agent.view',compact('agents'));
+      //  return view('sbadmin.agents.lists',compact('agents'));
+        return view('backend.agent.view',compact('agents'));
     }
 
     public function addAgent(){
         $packages = Package::all();
         $categories = Category::all();
-        return view('sbadmin.agents.add',compact('packages','categories'));
-       // return view('backend.agent.add',compact('packages','categories'));
+       // return view('sbadmin.agents.add',compact('packages','categories'));
+        return view('backend.agent.add',compact('packages','categories'));
     }
 
     public function postAgent(Request $request){
