@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="clearfix row">
+       {{--  <div class="clearfix row">
             <div class="text-center col-lg-3 col-md-6 col-sm-12">
                 <div class="card tasks_report">
                     <div class="body">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    
+        </div> --}}
+
     </div>
 </section>

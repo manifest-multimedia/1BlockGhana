@@ -1,4 +1,4 @@
-<div class="sticky-top">
+<div class="sticky-top" id="hide_filter_on_mobile_only">
     <!-- FORM FILTER -->
     <div class="products__filter mb-30">
         <div class="products__filter__group">

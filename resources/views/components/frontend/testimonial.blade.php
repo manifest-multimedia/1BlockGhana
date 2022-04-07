@@ -11,6 +11,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
+        
         <div class="testimonial owl-carousel owl-theme">
             <!-- TESTIMONIAL -->
             <div class="item testimonial__block">
