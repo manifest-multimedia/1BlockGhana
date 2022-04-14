@@ -52,7 +52,7 @@
         <x-backend.sidebar />
 
        {{ $slot }}
-       
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/bundles/libscripts.bundle.js')}}"></script>
 <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
@@ -92,7 +92,7 @@
   </script>
   <script>
     //  toastr.options.timeOut = 0;
-      toastr.success('hello world');
+   //   toastr.success('hello world');
   </script>
 </body>
 </html>

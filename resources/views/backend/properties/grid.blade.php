@@ -51,7 +51,7 @@
 				<span><a href="{{ route('property.add') }}">Click here</a> to add a new Property</span>
 				@endif
 
-				<div class="col-lg-4 col-md-12">
+				{{-- <div class="col-lg-4 col-md-12">
 						<div class="card property_list">
 								<div class="property_image">
 										<img class="img-thumbnail img-fluid" src="assets/images/image-gallery/2.jpg" alt="img">
@@ -170,7 +170,7 @@
 										</div>
 								</div>
 						</div>
-				</div>
+				</div> --}}
 		</div>
 		</div>
 
