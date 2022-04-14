@@ -18,16 +18,7 @@
 			</li>
 			<li class="header">MAIN</li>
 			<li class="active open"><a href="/dashboard"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
-			<li><a href="javascript:void(0);" class="menu-toggle"><i
-						class="zmdi zmdi-balance-wallet"></i><span>Packages</span> </a>
-				<ul class="ml-menu">
-					<li><a href="{{route('package.list')}}">List Packages</a></li>
-					<li><a href="{{ route('package.add')}}">Create Package</a></li>
-				</ul>
-			</li>
-			<li class="{{ request()->routeIs('amenity.list')? 'active': ''}} open"><a href="{{route('amenity.list')}}"><i
-						class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
-			</li>
+
 			<!-- <li><a href="javascript:void(0);" class="menu-toggle"><i
 						class="zmdi zmdi-balance-wallet"></i><span>Amenities</span> </a>
 				<ul class="ml-menu">
@@ -43,15 +34,32 @@
 					{{-- <li><a href="property/details">Property Detail</a></li> --}}
 				</ul>
 			</li>
-			<li class=""><a href="{{route('category.list')}}"><i class="zmdi zmdi-city"></i><span>Categories</span></a></li>
-			<li><a href="javascript:void(0);" class="menu-toggle"><i
-						class="zmdi zmdi-accounts-outline"></i><span>Agents</span> </a>
-				<ul class="ml-menu">
-					<li><a href="{{ route('agent.view') }}">All Agents</a></li>
-					<li><a href="{{ route('agent.add') }}">Add Agent</a></li>
-					<li><a href="{{ route('agent.profile')}}">Agent Profile</a></li>
-				</ul>
-			</li>
+
+
+
+            @if(Auth::check() && Auth::user()->role == "admin")
+            <li><a href="javascript:void(0);" class="menu-toggle"><i
+                class="zmdi zmdi-balance-wallet"></i><span>Packages</span> </a>
+                <ul class="ml-menu">
+                    <li><a href="{{route('package.list')}}">List Packages</a></li>
+                    <li><a href="{{ route('package.add')}}">Create Package</a></li>
+                </ul>
+            </li>
+            <li class="{{ request()->routeIs('amenity.list')? 'active': ''}} open"><a href="{{route('amenity.list')}}"><i
+                        class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
+            </li>
+            <li class=""><a href="{{route('category.list')}}"><i class="zmdi zmdi-city"></i><span>Categories</span></a></li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i
+                    class="zmdi zmdi-accounts-outline"></i><span>Agents</span> </a>
+                    <ul class="ml-menu">
+                        <li><a href="{{ route('agent.view') }}">All Agents</a></li>
+                        <li><a href="{{ route('agent.add') }}">Add Agent</a></li>
+                        <li><a href="{{ route('agent.profile')}}">Agent Profile</a></li>
+                    </ul>
+                </li>
+            @else
+            <li class=""><a href="{{route('agent.profile')}}"><i class="zmdi zmdi-account"></i><span>Agent Profile</span></a></li>
+            @endif
 	</div>
 	</div>
 

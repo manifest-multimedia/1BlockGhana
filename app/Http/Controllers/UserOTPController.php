@@ -70,6 +70,7 @@ class UserOTPController extends Controller
                 'lastname' => $request->lastname,
                 'physical_address' => $request->physical_address,
                 'email' => $request->email,
+                'role' => 'agent',
                 'password' => Hash::make('1blockghana')
             ]);
 

@@ -21,9 +21,9 @@ class PropertyController extends Controller
         $this->middleware('auth');
     }
 
-    public function view(){     
+    public function view(){
        $properties = Auth::user()->properties;
-        
+
       //  return view('backend.properties.list',compact('properties'));
         return view('backend.properties.grid',compact('properties'));
     }
@@ -61,12 +61,12 @@ class PropertyController extends Controller
         foreach ($request->amenities as $amenity) {
             DB::insert('insert into amenities_properties (properties_id, amenities_id) values (?,?)', [$property->id,$amenity]);
         }
-        
+
 
         if($request->hasFile('image')){
             $files =$request->file('image');
             foreach($files as $file){
-               
+
                 $name_gen = hexdec(uniqid());
                 $file_ext = strtolower($file->getClientOriginalExtension());
                 $file_name = $name_gen. '.'.$file_ext;
@@ -76,7 +76,7 @@ class PropertyController extends Controller
 
                 Gallery::create([
                     'path'=> $file_path,
-                    'property_id' => $property->id                
+                    'property_id' => $property->id
                 ]);
             }
         }
@@ -91,10 +91,10 @@ class PropertyController extends Controller
         return response()->json(['success'=>$imageName]);
     }
 
-    public function details($id){     
+    public function details($id){
         $property = Properties::find($id);
-         
+
         return view('backend.properties.details',compact('property'));
     }
 
-}   
+}

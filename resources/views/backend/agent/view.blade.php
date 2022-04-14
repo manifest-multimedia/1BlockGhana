@@ -20,7 +20,6 @@
                                 <th>Name</th>
                                 <th>Business Name</th>
                                 <th>Package</th>
-
                                 <th>Action</th>
                             </tr>
                         </thead>

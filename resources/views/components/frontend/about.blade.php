@@ -7,13 +7,13 @@
                         <!-- <h6 class="text-uppercase">trusted By thousands</h6> -->
                         <h2 class="text-capitalize">Our Mission</h2>
                         <p>
-                            1Block Ghana is a listing site for real estate in Ghana. The first step in selling your property is to get a valuation from local experts.
+                            1BLOCK GHANA is a poster board  that looks to help its listing companies to reach out to their target audience.
                         </p>
-                        <p>
+                        {{-- <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
                             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
+                        </p> --}}
                         <a href="#" class="mt-3 btn btn-primary text-capitalize"> read more
                             <i class="ml-3 fa fa-angle-right "></i></a>
                     </div>

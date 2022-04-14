@@ -104,6 +104,8 @@
                         </div>
                     </div>
                 </div>
+
+                @livewire('posts')
             </div>
         </div>
     </section>
