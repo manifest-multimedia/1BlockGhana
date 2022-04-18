@@ -6,6 +6,7 @@ use App\Models\Business;
 use App\Models\Category;
 use App\Models\Package;
 use App\Models\User;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
@@ -103,18 +104,21 @@ class AgentController extends Controller
     }
 
     public function uploadLogo(Request $request,$id){
-        //dd('hello');
-        $validatedData = $request->validate([
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-
-           ]);
 
            $user = User::find($id);
 
-         //  dd($user->business);
-         $old_image = $request->old_image;
+           $temporaryFile = TemporaryFile::where('folder', $request->logo)->first();
+       // dd($temporaryFile);
+           if($temporaryFile){
+               $user->addMedia(storage_path('app/public/logos/tmp/'. $request->logo . '/' . $temporaryFile->filename))->toMediaCollection('logos');
+
+               rmdir(storage_path('app/public/logos/tmp/' . $request->logo));
+               $temporaryFile->delete();
+           }
+
+      /*    $old_image = $request->old_image;
          $logo = $request->file('image');
-        //  dd($logo);
+
         if($logo){
             $name_gen = hexdec(uniqid());
             $logo_ext = strtolower($logo->getClientOriginalExtension());
@@ -125,18 +129,17 @@ class AgentController extends Controller
 
             $old_paths = Business::where('user_id',$user->id)->get();
             foreach ($old_paths as $old_path) {
-               // dd($old_path->path);
+
                 if($old_path->path){
                     unlink($old_path->path);
                 }
             }
-           // dd($old_path->path);
-            /* */
+
 
             Business::where('user_id',$user->id)->update([
                 'path' => $logo_path,
              ]);
-        }
+        } */
 
            return redirect()->route('agent.profile')->with('success', 'Logo has been uploaded successfully');
     }

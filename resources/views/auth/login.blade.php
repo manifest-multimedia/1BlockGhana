@@ -9,7 +9,7 @@
                             @csrf
                             <div class="header">
                                 <div class="logo-container">
-                                    <img class="form-logo" src="assets/images/logo1.svg" alt="">
+                                    <img class="form-logo" src="assets/images/logo.PNG" alt="">
                                    {{--  <h5>Sign Up</h5> --}}
                                 </div>
 

@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.5",
         "mckenziearts/laravel-notify": "^2.2",
-        "realrashid/sweet-alert": "^5.0"
+        "realrashid/sweet-alert": "^5.0",
+        "spatie/laravel-medialibrary": "^9.0.0"
     },
     "require-dev": {
         "deployer/deployer": "^6.8",

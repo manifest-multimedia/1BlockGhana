@@ -24,6 +24,9 @@
         <link rel="stylesheet" href="{{ asset('assets/css/1block_dashboard.css')}}">
         <link rel="stylesheet" href="{{ asset('assets/css/autohide.css')}}">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
+
 
         @livewireStyles
        {{--  @notifyJs --}}
@@ -94,5 +97,12 @@
     //  toastr.options.timeOut = 0;
    //   toastr.success('hello world');
   </script>
+  <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+  <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+  <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+  <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+  <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+  <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+  @yield('scripts')
 </body>
 </html>

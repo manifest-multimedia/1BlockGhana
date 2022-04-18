@@ -10,14 +10,17 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
     use HasTeams;
-    use Notifiable;
+    use Notifiable, InteractsWithMedia;
     use TwoFactorAuthenticatable;
 
     /**
@@ -64,5 +67,23 @@ class User extends Authenticatable
     public function properties(){
         return $this->hasManyThrough(Properties::class, Business::class)->orderBy('created_at', 'desc');
     }
-    
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb-50')
+              ->width(50)
+              ->height(50);
+
+        $this->addMediaConversion('thumb-100')
+              ->width(100)
+              ->height(100);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('logos')
+            ->singleFile();
+    }
+
 }

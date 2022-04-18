@@ -136,7 +136,7 @@
 
 							</div>
 						</div>
- 
+
 						<div class="card">
 							<div class="header">
 								<h2><strong>General</strong> Amenities </h2>
@@ -170,15 +170,29 @@
 								<div class="clearfix row">
 									<div class="col-sm-12">
 										<h4>Upload the property images here</h4>
+
+											<label for="">Image</label>
+											<div>
+												<input id="property" name="image[]" type="file" multiple  data-max-files="4" />
+											</div>
+
+									</div>
+                                    <div class="col-md-12 mb-2" id="previewImg">
+                                        <img src=""  style="max-width: 100px;">
+                                    </div>
+									{{-- <div class="col-sm-12">
+										<h4>Upload the property images here</h4>
 										@for ($i=0; $i < 4; $i++) <div class="mt-4 fallback">
 											<label for="">Image {{$i + 1}}</label>
 											<div>
-												<input name="image[]" type="file" />
+												<input id="property" name="image[]" type="file" />
 											</div>
+                                        @endfor
 									</div>
-									@endfor
-									
+ --}}
+
 								</div>
+
 								<div class="mt-5 col-md-6">
 									<div class="form-group">
 										<label for="">Youtube Video link</label>
@@ -189,61 +203,9 @@
 							</div>
 
 						</div>
-						
-						{{-- <div class="card">
-							<div class="header">
-								<h2><strong>Upload</strong> Images/Video </h2>
-
-							</div>
-							<div class="body">
-								<form method="POST" enctype="multipart/form-data" class="dropzone dz-clickable" id="image-upload">
-								@csrf
-									<div><h3 class="text-center">Upload Image</h3></div>
-
-									<div class="dz-default dz-message">
-										<span>Drop files here to upload</span>
-									</div>
-								</form>
-							</div>
-
-						</div> --}}
-
-					{{-- 	<div class="clearfix row">                            
-							<div class="col-sm-12">
-									<form action="{{route('save.property.images')}}" id="image-upload" class="dropzone m-b-15 m-t-15" method="post" enctype="multipart/form-data">
-											<div class="dz-message">
-													<div class="drag-icon-cph"> <i class="material-icons">touch_app</i> </div>
-													<h3>Drop files here or click to upload.</h3>
-													<em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em> </div>
-											<div class="fallback">
-													<input name="file" type="file" multiple />
-											</div>
-									</form>
-							</div>
-							<div class="col-sm-12">
-									<button type="submit" class="btn btn-primary btn-round">Submit</button>
-									<button type="submit" class="btn btn-default btn-round btn-simple">Cancel</button>
-							</div>
-					</div> --}}
 
 				</div>
-				<!-- <div class="card">
-					<div class="header">
-						<h2><strong>Location</strong></h2>
-					</div>
-					<div class="body">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<x-form.label value="{{ __('Google Map Code') }}" />
-									<x-form.textarea name="google_location" placeholder="" />
-								</div>
-							</div>
-						</div>
-					</div>
 
-
-				</div> -->
 				<div class="card">
 					<div class="body">
 						<div class="footer">
@@ -259,4 +221,40 @@
 		</div>
 
 	</section>
+    @section('scripts')
+    <script>
+        const regPond = FilePond.registerPlugin(
+             FilePondPluginImagePreview,
+             FilePondPluginImageResize,
+             FilePondPluginImageCrop,
+             FilePondPluginImageTransform,
+
+             );
+
+
+        // Get a reference to the file input element
+        const inputElement = document.querySelector('input[id="property"]');
+
+        // Create a FilePond instance
+        const pond = FilePond.create(inputElement, {
+            labelIdle: `Drag & Drop your property images or <span class="filepond--label-action">Browse</span>`,
+            imagePreviewTransparencyIndicator: 'grid',
+            imagePreviewMarkupShow: false,
+
+            onpreparefile: (fileItem,output)=>{
+                const img = new Image();
+                img.src = URL.createObjectURL(output);
+                document.getElementById('previewImg').appendChild(img);
+            }
+        });
+        FilePond.setOptions({
+            server: {
+                url: '/agent/upload',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            }
+        });
+    </script>
+@endsection
 </x-backend.app>

@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="{{ route('dashboard')}}"><img src="{{asset('assets/images/logo.png')}}" width="50" alt="1 Block Ghana"><span class="m-l-10">1 Block Ghana</span></a>
+            <a class="navbar-brand" href="{{ route('dashboard')}}"><img src="{{asset('assets/images/logo.png')}}" alt="1 Block Ghana"></a>
         </div>
         <ul class="nav navbar-nav navbar-left">
             <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>

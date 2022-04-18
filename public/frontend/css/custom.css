@@ -43,13 +43,13 @@
     -o-object-fit: cover;
     object-fit: cover;
     height: auto;
-    width: 90px;
+    width: 170px;
     padding: 10 0px;
 }
 
 .fixed-top .navbar-brand img:last-child, .navbar-custom .navbar-brand img:last-child {
     display: block;
-    width: 90px;
+    width: 170px;
 }
 
 .topbar {

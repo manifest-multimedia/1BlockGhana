@@ -104,9 +104,8 @@
                         </div>
                     </div>
                 </div>
-
-                @livewire('posts')
             </div>
         </div>
     </section>
+
 </x-backend.app>

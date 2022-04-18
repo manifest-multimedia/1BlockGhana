@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserOTPController;
+use App\Http\Controllers\UploadController;
 use App\Models\Properties;
 
 /*
@@ -78,6 +79,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('agent')->group( functio
     Route::get('/logo/fetch', [AgentController::class,'fetchLogo'])->name('agent.logo.fetch');
 
     Route::get('/logo/delete', [AgentController::class,'deleteLogo'])->name('agent.logo.delete');
+
+    Route::post('upload', [UploadController::class, 'storeLogo']);
 });
 
 
