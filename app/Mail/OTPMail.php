@@ -33,7 +33,7 @@ class OTPMail extends Mailable
         $sender_name= getenv('MAIL_FROM_NAME');
         $sender_email= getenv('MAIL_FROM_ADDRESS');
 
-        return $this->from($sender_email, $sender_name)
+        return $this->from('admin@1blockghana.com', '1BlockGhana')
                 ->subject('Account Setup')
                 ->markdown('mail.emailtemplate', [
                     'data' => $this->data,

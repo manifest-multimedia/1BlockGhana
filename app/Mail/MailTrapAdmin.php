@@ -40,7 +40,7 @@ class MailtrapAdmin extends Mailable
      ->subject($subject)->view('mail.client_info')->with('data', $this->data);
     */
 
-     return $this->from($sender_email, $sender_name)
+     return $this->from('admin@1blockghana.com', '1BlockGhana')
      ->subject($subject)->view('mail.client_info')->with('data', $this->data);
     }
 }

@@ -44,7 +44,7 @@ class MailtrapExample extends Mailable
      ->subject($subject)->view('mail.dynamic_email')->with('data', $this->data);
     } */
    // dd($this->data['url']);
-    return $this->from($sender_email, $sender_name)
+    return $this->from('admin@1blockghana.com', '1BlockGhana')
                 ->markdown('mail.emailtemplate', [
                    // 'url' => $this->data['url'],
                 ]);
