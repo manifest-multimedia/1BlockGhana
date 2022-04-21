@@ -71,8 +71,8 @@ class PackagesController extends Controller
         //dd($package);
      $package =  Package::find($id);
      //dd($package);
-        return view('sbadmin.packages.edit', compact('package'));
-      //  return view('backend.packages.edit', compact('package'));
+      //  return view('sbadmin.packages.edit', compact('package'));
+        return view('backend.packages.edit', compact('package'));
     }
 
     public function update(Request $request, $id){
@@ -97,7 +97,7 @@ class PackagesController extends Controller
     }
 
     public function delete($id){
-
+        dd($id);
      $package =  Package::find($id);
 
      $package->delete();

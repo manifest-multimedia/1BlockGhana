@@ -47,6 +47,12 @@
 											<x-form.input type="date" name="year_built" placeholder="" />
 										</div>
 									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<x-form.label value="{{ __('Property Location') }}" />
+											<x-form.input type="text" name="location" placeholder="" />
+										</div>
+									</div>
 
 
 									<div class="col-sm-12">
@@ -171,14 +177,14 @@
 									<div class="col-sm-12">
 										<h4>Upload the property images here</h4>
 
-											<label for="">Image</label>
+											<label for="">You can upload up to {{$package->image_upload_limit}} images</label>
 											<div>
-												<input id="property" name="image[]" type="file" multiple  data-max-files="4" />
+												<input id="property" name="properties[]" type="file" multiple  data-max-files="4" />
 											</div>
 
 									</div>
-                                    <div class="col-md-12 mb-2" id="previewImg">
-                                        <img src=""  style="max-width: 100px;">
+                                    <div class="col-md-12 mb-2" id="previewImgBox">
+                                        <img src="" id="previewImg"  style="max-width: 100px;">
                                     </div>
 									{{-- <div class="col-sm-12">
 										<h4>Upload the property images here</h4>
@@ -224,7 +230,7 @@
     @section('scripts')
     <script>
         const regPond = FilePond.registerPlugin(
-             FilePondPluginImagePreview,
+             //FilePondPluginImagePreview,
              FilePondPluginImageResize,
              FilePondPluginImageCrop,
              FilePondPluginImageTransform,
@@ -238,18 +244,18 @@
         // Create a FilePond instance
         const pond = FilePond.create(inputElement, {
             labelIdle: `Drag & Drop your property images or <span class="filepond--label-action">Browse</span>`,
-            imagePreviewTransparencyIndicator: 'grid',
-            imagePreviewMarkupShow: false,
 
             onpreparefile: (fileItem,output)=>{
-                const img = new Image();
+                const img = new Image(100);
+               // var previewImg = document.getElementById('previewImg')
+              //  previewImg.src = URL.createObjectURL(output);
                 img.src = URL.createObjectURL(output);
-                document.getElementById('previewImg').appendChild(img);
+                document.getElementById('previewImgBox').appendChild(img);
             }
         });
         FilePond.setOptions({
             server: {
-                url: '/agent/upload',
+                url: '/properties/upload',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

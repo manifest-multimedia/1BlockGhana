@@ -4,13 +4,13 @@
 		<ul class="list">
 			<li>
 				<div class="user-info">
-					<div class="image"><a href="/profile"><img src="/assets/images/avatar.jpg" alt="User"></a></div>
+
+					<div class="image"><a href="/profile"><img src="{{auth()->user()->getFirstMediaUrl('logos', 'thumb-100') ? auth()->user()->getFirstMediaUrl('logos', 'thumb-100') : url('assets/images/avatar.jpg')}}" alt="User"></a></div>
 					<div class="detail">
 						@auth
 						<h4>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h4>
 						<small>{{Str::ucfirst(Auth::user()->role)}}</small>
 						@endauth
-
 					</div>
 
 					<br />

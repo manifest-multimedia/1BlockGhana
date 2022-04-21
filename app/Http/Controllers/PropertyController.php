@@ -10,6 +10,8 @@ use App\Models\Properties;
 use App\Models\Gallery;
 use App\Models\PropertyAmenities;
 use App\Models\User;
+use App\Models\Package;
+use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,8 +26,8 @@ class PropertyController extends Controller
     public function view(){
        $properties = Auth::user()->properties;
 
-      //  return view('backend.properties.list',compact('properties'));
-        return view('backend.properties.grid',compact('properties'));
+        return view('backend.properties.list',compact('properties'));
+       // return view('backend.properties.grid',compact('properties'));
     }
 
     public function add(){
@@ -33,8 +35,15 @@ class PropertyController extends Controller
         $amenities = Amenities::all();
         $currencies = Currency::all();
         $id = Auth::user()->id;
+        $business = Business::where('user_id', $id)->get('package_id');
+        //dd($business);
+        foreach ($business as $bus) {
+            $package = Package::find($bus->package_id);
+            $bus_id = $bus->id;
+        }
+       // dd($package);
      //   return view('sbadmin.properties.add',compact('categories','amenities','currencies','id'));
-        return view('backend.properties.add',compact('categories','amenities','currencies','id'));
+        return view('backend.properties.add',compact('categories','amenities','currencies','id','package'));
     }
 
     public function store(Request $request, $id){
@@ -50,10 +59,11 @@ class PropertyController extends Controller
             'price'=> $request->price,
             'size'=> $request->size,
             'bedroom'=> $request->bedroom,
+            'bathroom'=> $request->bathroom,
             'kitchen'=> $request->size,
             'size'=> $request->size,
             'purpose'=> $request->purpose,
-            'location'=> $request->google_location,
+            'location'=> $request->location,
             'date_built'=> $request->year_built,
             //'status'=> 1
         ]);
@@ -63,11 +73,24 @@ class PropertyController extends Controller
         }
 
 
-        if($request->hasFile('image')){
-            $files =$request->file('image');
-            foreach($files as $file){
+        if($request->properties){
+         //   dd('file is in');
+           // $user = User::find($id);
+            foreach($request->properties as $file){
 
-                $name_gen = hexdec(uniqid());
+                $temporaryFile = TemporaryFile::where('folder', $file)->first();
+                // dd($file);
+                    $tempPath = 'app/public/properties/tmp/';
+                    if($temporaryFile){
+                        $property->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('properties');
+
+                        rmdir(storage_path($tempPath . $file));
+                        $temporaryFile->delete();
+                    }
+
+
+
+               /*  $name_gen = hexdec(uniqid());
                 $file_ext = strtolower($file->getClientOriginalExtension());
                 $file_name = $name_gen. '.'.$file_ext;
                 $up_location = 'assets/properties/';
@@ -77,9 +100,10 @@ class PropertyController extends Controller
                 Gallery::create([
                     'path'=> $file_path,
                     'property_id' => $property->id
-                ]);
+                ]); */
             }
         }
+        else{ dd($request);}
 
         return redirect()->route('property.view');
     }
@@ -93,7 +117,6 @@ class PropertyController extends Controller
 
     public function details($id){
         $property = Properties::find($id);
-
         return view('backend.properties.details',compact('property'));
     }
 

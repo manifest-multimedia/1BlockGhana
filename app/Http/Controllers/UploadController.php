@@ -28,4 +28,29 @@ class UploadController extends Controller
     }
 
 
+    public function storeProperties(Request $request){
+
+            if($request->hasFile('properties')){
+
+                $files = $request->file('properties');
+
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    $folder = uniqid();
+                    $folder = uniqid() . '-' . now()->timestamp;
+                    $file->storeAs('public/properties/tmp/' . $folder, $filename);
+
+                    TemporaryFile::create([
+                        'folder' => $folder,
+                        'filename' => $filename
+                    ]);
+
+                    return $folder;
+                }
+            }
+
+        return '';
+    }
+
+
 }

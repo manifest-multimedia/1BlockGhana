@@ -15,19 +15,19 @@
 								<div class="property_image d-flex align-items-center">
 									<div id="demo2" class="carousel slide" data-interval="false" 				  data-ride="carousel">
 										<div class="carousel-inner">
-												@foreach ($property->gallery as $key => $image)
+												@foreach ($property->getMedia('properties') as $key => $image)
 												<div class="carousel-item {{$key==0? 'active':''}}">
-													<img src="{{$image->path}}" class="img-fluid" alt="">
+													<img src="{{asset($image->getUrl())}}" class="img-fluid" alt="">
 												</div>
 												@endforeach
-												
+
 										</div>
 										<!-- Left and right controls -->
 										<a class="carousel-control-prev" href="#demo2" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
 										<a class="carousel-control-next"  href="#demo2" data-slide="next"><span style="color:red;" class="carousel-control-next-icon"></span></a>
 									</div>
-								
-									
+
+
 									<span class="badge badge-danger"></span>
 									<span class="badge badge-danger">{{ $property->purpose}}</span>
 								</div>
@@ -44,18 +44,18 @@
 									</div>
 									<div class="property-action m-t-15">
 										@foreach ($property->amenities as $amenity)
-										<a href="javascript(0)"><span>{{$amenity->name}}</span></a>
+										<a href="javascript:void(0)"><span>{{$amenity->name}}</span></a>
 										@endforeach
 
 									</div>
-									<div class="property-action m-t-15">
+									{{-- <div class="property-action m-t-15">
 										<a href="#" title="Square Feet"><i
 												class="zmdi zmdi-view-dashboard"></i><span>{{$property->size}}</span></a>
 										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>{{$property->bedroom}}</span></a>
 										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
 										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
 												24H</span></a>
-									</div>
+									</div> --}}
 								</div>
 							</div>
 						</div>

@@ -123,14 +123,13 @@
 
                         </div>
                         <div class="body">
-
+                            <form method="POST" enctype="multipart/form-data" id="upload-image"
+                            action="{{ route('agent.logo.upload', $user->id) }}">
+                            @csrf
                             <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <form method="POST" enctype="multipart/form-data" id="upload-image"
-                                        action="{{ route('agent.logo.upload', $user->id) }}">
-                                        @csrf
-                                        <div class="row">
 
+                                    <div class="col-sm-6">
+                                        <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <input type="file" name="logo" placeholder="Choose image" id="logo"
@@ -140,22 +139,21 @@
                                                     @enderror
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-12">
-                                                <button type="submit" class="btn btn-primary" id="submit">Save
-                                                    Logo</button>
-                                            </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="col-md-12 mb-2">
-                                        <img src="{{ auth()->user()->getFirstMediaUrl('logos', 'thumb-100') }}"
-                                            alt="preview image" style="max-width: 100px;">
                                     </div>
-                                </div>
+                                    <div class="col-sm-6">
+                                        <div class="col-md-12 mb-2">
+                                            <img src="{{ auth()->user()->getFirstMediaUrl('logos', 'thumb-100')? auth()->user()->getFirstMediaUrl('logos', 'thumb-100'): url('assets/images/avatar.jpg') }}"
+                                                alt="preview image" style="max-width: 100px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary" id="submit">Save
+                                            Logo</button>
+                                    </div>
 
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -166,12 +164,12 @@
     @section('scripts')
         <script>
             const regPond = FilePond.registerPlugin(
-                 FilePondPluginImagePreview,
-                 FilePondPluginImageResize,
-                 FilePondPluginImageCrop,
-                 FilePondPluginImageTransform,
+                FilePondPluginImagePreview,
+                FilePondPluginImageResize,
+                FilePondPluginImageCrop,
+                FilePondPluginImageTransform,
 
-                 );
+            );
 
 
             // Get a reference to the file input element
@@ -179,7 +177,7 @@
 
             // Create a FilePond instance
             const pond = FilePond.create(inputElement, {
-                labelIdle: `Drag & Drop your logo or <span class="filepond--label-action">Browse</span>`,
+                labelIdle: `Click here to upload your logo`,
                 imagePreviewMaxHeight: 50,
                 imageCropAspectRatio: '1:1',
                 imageResizeTargetWidth: 50,

@@ -1,4 +1,9 @@
+@props(['agents','businesses','properties'])
+
+
 <!-- Main Content -->
+
+
 <section class="content home">
     <div class="block-header">
         <div class="row">
@@ -20,54 +25,43 @@
     </div>
     <div class="container-fluid">
         <div class="clearfix row">
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-4">
                 <div class="card">
                     <div class="body">
-                        <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >128</h3>
-                        <p class="text-muted">Unverifed Agents</p>
-                        <div class="progress">
-                            <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                        </div>
-                        <small>Change 27%</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body">
-                        <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >128</h3>
+                        <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >{{$agents}}</h3>
                         <p class="text-muted">Verifed Agents</p>
                         <div class="progress">
                             <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                         </div>
-                        <small>Change 27%</small>
+                        {{-- <small>Change 27%</small> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-4">
                 <div class="card">
                     <div class="body">
-                        <h3 class="number count-to" data-from="0" data-to="758" data-speed="2000" data-fresh-interval="700" >758</h3>
-                        <p class="text-muted">Total Listing</p>
+                        <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >{{$businesses}}</h3>
+                        <p class="text-muted">Verifed Businesses</p>
+                        <div class="progress">
+                            <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                        </div>
+                        {{-- <small>Change 27%</small> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="card">
+                    <div class="body">
+                        <h3 class="number count-to" data-from="0" data-to="758" data-speed="2000" data-fresh-interval="700" >{{$properties}}</h3>
+                        <p class="text-muted">Total Properties</p>
                         <div class="progress">
                             <div class="progress-bar l-green" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                         </div>
-                        <small>Change 9%</small>
+                        {{-- <small>Change 9%</small> --}}
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body">
-                        <h3 class="number count-to" data-from="0" data-to="2521" data-speed="2000" data-fresh-interval="700" >2521</h3>
-                        <p class="text-muted">Total Visitors</p>
-                        <div class="progress">
-                            <div class="progress-bar l-amber" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                        </div>
-                        <small>Change 17%</small>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
         <div class="clearfix row">

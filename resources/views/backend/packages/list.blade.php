@@ -49,7 +49,7 @@
                                                         class="badge badge-success">Edit</button></a>
 
 
-                                                <form method="POST"
+                                                {{-- <form method="POST"
                                                     action="{{ route('package.delete', $package->id) }}">
                                                     @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
@@ -86,7 +86,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach

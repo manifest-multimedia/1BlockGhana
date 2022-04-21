@@ -99,8 +99,8 @@ class AgentController extends Controller
     }
     public function agentProfileId($id){
         $user = User::find($id);
-        return view('sbadmin.agents.profile',compact('user'));
-      //  return view('backend.agent.profile',compact('user'));
+      //  return view('sbadmin.agents.profile',compact('user'));
+        return view('backend.agent.profile',compact('user'));
     }
 
     public function uploadLogo(Request $request,$id){

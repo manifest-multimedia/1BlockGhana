@@ -5,12 +5,23 @@ namespace App\Http\Controllers;
 use App\Mail\MailtrapAdmin;
 use App\Mail\MailtrapExample;
 use App\Models\Amenities;
+use App\Models\User;
+use App\Models\Business;
+use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+
+    public function dashboard() {
+        $agentsCount = User::where('role','agent')->count();
+        $totBusiness = Business::count();
+        $totProperties = Properties::count();
+        //dd($agents);
+        return view('backend.index',compact('agentsCount','totBusiness','totProperties'));
+    }
     public function signUpRequest(Request $request){
       //  dd($request);
 

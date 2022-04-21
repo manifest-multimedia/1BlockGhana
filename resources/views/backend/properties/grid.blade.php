@@ -14,9 +14,18 @@
 								<div class="property_image text-center">
 									<div id="demo2" class="carousel slide" data-interval="false" 				  data-ride="carousel">
 										<div class="carousel-inner">
-												@foreach ($property->gallery as $key => $image)
+
+                                           {{-- @dd(asset($property->last()->getMedia())) --}}
+                                             {{-- @php
+                                                //$user = User::find(1);
+                                                $mediaItems = $property->getMedia('properties');
+                                                dd($mediaItems);
+                                                $mediaItems[0]->getUrl('thumb');
+                                            @endphp --}}
+{{-- <img src="{{ asset($property->getFirstMediaUrl('properties')) }}" class="img-fluid h-200" alt=""> --}}
+												@foreach ($property->getMedia('properties') as $key => $image)
 												<div class="carousel-item text-center {{$key==0? 'active':''}}">
-													<img src="{{$image->path}}" class="img-fluid h-200" alt="">
+													<img src="{{ asset($image->getUrl()) }}" class="img-fluid h-200" alt="">
 													<span class="badge badge-warning">{{ $property->purpose}}</span>
 												</div>
 												@endforeach

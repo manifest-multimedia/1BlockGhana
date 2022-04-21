@@ -57,9 +57,7 @@ Route::get('/contact-us', function () {
     return view('frontend.contact');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('backend.index');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('agent')->group( function (){
     Route::get('/list', [AgentController::class,'view'])->name('agent.view');
@@ -123,6 +121,8 @@ Route::get('/', [PropertyController::class, 'view'])->name('property.view');
 Route::get('details/{id}', [PropertyController::class, 'details'])->name('property.details');
 Route::get('/add', [PropertyController::class, 'add'])->name('property.add');
 Route::post('/store/{id}', [PropertyController::class, 'store'])->name('property.store');
+
+Route::post('upload', [UploadController::class, 'storeProperties']);
 });
 
 Route::get('users', Crud::class);

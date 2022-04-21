@@ -19,7 +19,7 @@
             <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
                 <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right slideDown">
+                {{-- <ul class="dropdown-menu dropdown-menu-right slideDown">
                     <li class="header">NOTIFICATIONS</li>
                     <li class="body">
                         <ul class="menu list-unstyled">
@@ -76,14 +76,14 @@
                         </ul>
                     </li>
                     <li class="footer"> <a href="javascript:void(0);">View All Notifications</a> </li>
-                </ul>
+                </ul> --}}
             </li>
 
             <li>
                 <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
             </li>
             <li>
-                <form method="post" action="logout">
+                <form method="post" action="{{route('logout')}}">
                     @csrf
                     <button type="submit" class="btn-logout"><a class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a> </button>
                     </li>
