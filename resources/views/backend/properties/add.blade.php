@@ -18,8 +18,8 @@
 								<div class="clearfix row">
 									<div class="col-sm-6">
 										<div class="form-group">
-											<x-form.label value="{{ __('Property Name') }}" />
-											<x-form.input name="name" placeholder="Property Name" />
+											<x-form.label value="{{ __('Title') }}" />
+											<x-form.input name="name" placeholder="Property Title" />
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -72,21 +72,10 @@
 							</div>
 							<div class="body">
 								<div class="clearfix row">
-									{{--  <div class="col-sm-6">
-                                        <div class="radio inlineblock m-r-25">
-                                            <input type="radio" name="radio1" id="radio1" value="option1"
-                                                checked="">
-                                            <label for="radio1">For Rent</label>
-                                        </div>
-                                        <div class="radio inlineblock">
-                                            <input type="radio" name="radio1" id="radio2" value="option2">
-                                            <label for="radio2">For Sale</label>
-                                        </div>
-                                    </div> --}}
 
 									<div class="col-sm-4">
 										<div class="form-group">
-											<x-form.label value="{{ __('Purpose') }}" />
+											<x-form.label value="{{ __('Status') }}" />
 											<select class="form-control" name="purpose" id="">
 												<option value="For Rent">For Rent</option>
 												<option selected value="For Sale">For Sale</option>
@@ -114,7 +103,7 @@
 									</div>
 									<div class="col-sm-3">
 										<div class="form-group">
-											<x-form.label value="{{ __('Size') }}" />
+											<x-form.label value="{{ __('Size (SqFt)') }}" />
 											<x-form.input name="size" placeholder="458 SqFt" />
 										</div>
 									</div>
@@ -179,7 +168,7 @@
 
 											<label for="">You can upload up to {{$package->image_upload_limit}} images</label>
 											<div>
-												<input id="property" name="properties[]" type="file" multiple  data-max-files="4" />
+												<input id="property" name="properties[]" type="file" multiple  data-max-files="{{$package->image_upload_limit}}" />
 											</div>
 
 									</div>

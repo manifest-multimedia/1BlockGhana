@@ -1,8 +1,18 @@
+@section('reg-style')
+    <style>
+        @media screen and (max-width: 767){
+            .content-center {
+                align-content: center;
+                margin-top: 10px !important;
+            }
+        }
+    </style>
+@endsection
+
 <x-layout.head>
-    <div class="page-header">
-        <x-auth.bg-image />
+    <div class="page-header1">
         <div class="container">
-            <div class="content-center col-md-12">
+            <div class="content-center col-md-12 mt-4">
                 <div class="card">
                     <div class="card-plain1">
 
@@ -15,17 +25,17 @@
                         <form class="form" method="POST" action="{{ route('signup.request') }}">
                             @csrf
                             <div class="pb-2 mb-0 header">
-                                <div class="logo-container">
+                                {{-- <div class="logo-container">
                                     <img class="form-logo" src="assets/images/logo.png" alt="">
 
-                                </div>
-                                <div class="mt-4 register-title">
+                                </div> --}}
+                                <div class="mt-4 register-title text-center">
                                     <h5>Sign Up</h5>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-5 col">
-                                    <h4 class="my-0">To list on this platform, kindly fill out the form below and our agents will get back to you.</h4>
+                                    <h4 class="my-0 text-sm text-center">To list on this platform, kindly fill out the form below and our agents will get back to you.</h4>
                                 </div>
                             </div>
                             <div class="content">

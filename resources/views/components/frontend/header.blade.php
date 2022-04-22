@@ -46,16 +46,14 @@
                 <li class="nav-item"><a class="nav-link" href="/"> Home </a></li>
                 <li class="nav-item"><a class="nav-link" href="/about-us"> About Us </a></li>
                 <li class="nav-item dropdown">
+                    @php
+                        $categories = App\Models\Category::get();
+                    @endphp
                     <a class="nav-link dropdown-toggle" href="/listing" data-toggle="dropdown"> Categories </a>
                     <ul class="dropdown-menu animate fade-up">
-                        <li><a class="dropdown-item" href="/listing">Houses for sale</a>
-                        <li><a class="dropdown-item" href="/listing">Houses for rent </a>
-                        <li><a class="dropdown-item" href="/listing"> Apartments for sale</a>
-                        <li><a class="dropdown-item" href="/listing"> Gated communities</a>
-                        <li><a class="dropdown-item" href="/listing">Hotels</a>
-                        <li><a class="dropdown-item" href="/listing">  Luxury apartments  </a>
-                        <li><a class="dropdown-item" href="/listing">New and ongoing developments   </a>
-                        <li><a class="dropdown-item" href="/listing">  Commercial properties </a>
+                        @foreach ($categories as $category)
+                            <li><a class="dropdown-item" href="/houses">{{$category->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
 

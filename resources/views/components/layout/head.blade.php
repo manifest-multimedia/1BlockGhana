@@ -7,11 +7,11 @@
         <!-- Styles -->
         <x-layout.links />
         @livewireStyles
-
+        @yield('reg-style')
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="theme-purple authentication sidebar-collapse">
+    <body class="theme-purple authentication sidebar-collapse" style="background-image:url(assets/images/login-background.jpg)">
 
         {{ $slot }}
 

@@ -12,10 +12,9 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="recent__property-carousel owl-carousel owl-theme">
-            <div class="item">
-                <!-- CARD IMAGE -->
-
+        <div class="row">
+            <div class="col-md-4">
+                <!-- BLOG  -->
                 <div class="card__image">
                     <div class="card__image-header h-250">
                         <img src="frontend/images/gallery17.jpg" alt="" class="img-fluid w100 img-transition">
@@ -32,6 +31,8 @@
                             wasnad I will give complete
 
                         </p>
+
+
                     </div>
                     <div class="card__image-footer">
                         <figure>
@@ -56,9 +57,10 @@
                         </ul>
                     </div>
                 </div>
+                <!-- END BLOG -->
             </div>
-            <div class="item">
-                <!-- CARD IMAGE -->
+            <div class="col-md-4">
+                <!-- BLOG  -->
                 <div class="card__image">
                     <div class="card__image-header h-250">
                         <img src="frontend/images/gallery23.png" alt="" class="img-fluid w100 img-transition">
@@ -100,8 +102,10 @@
                         </ul>
                     </div>
                 </div>
+                <!-- END BLOG -->
             </div>
-            <div class="item">
+            <div class="col-md-4">
+                <!-- BLOG  -->
                 <div class="card__image">
                     <div class="card__image-header h-250">
                         <img src="frontend/images/gallery4.jpg" alt="" class="img-fluid w100 img-transition">
@@ -143,9 +147,9 @@
                         </ul>
                     </div>
                 </div>
+                <!-- END BLOG -->
             </div>
         </div>
     </div>
 </section>
-
 

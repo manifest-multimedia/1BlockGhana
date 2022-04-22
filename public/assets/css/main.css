@@ -2589,7 +2589,8 @@ textarea.form-control:active {
 
 .checkbox,
 .radio {
-    margin-bottom: 12px;
+   /*  margin-bottom: 12px; */
+    text-align: center;
 }
 
 .checkbox label,
@@ -23588,4 +23589,9 @@ img.width30 {
     .s-profile {
         text-align: center;
     }
+}
+
+a.waves-effect.waves-block {
+    color: #002247;
+    font-weight: 800;
 }

@@ -9,9 +9,264 @@
 
  <x-frontend.search />
 
- <x-frontend.about />
+ <section class="home__about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="title__leading">
+                    <!-- <h6 class="text-uppercase">trusted By thousands</h6> -->
+                    <h2 class="text-capitalize">Our Mission</h2>
+                    <p>
+                        1BLOCK GHANA is a poster board  that looks to help its listing companies to reach out to their target audience.
+                    </p>
+                    {{-- <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.
+                    </p> --}}
+                    {{-- <a href="#" class="mt-3 btn btn-primary text-capitalize"> read more
+                        <i class="ml-3 fa fa-angle-right "></i></a> --}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about__image">
+                    <div class="about__image-top">
+                        <div class="about__image-top-hover">
+                            <img src="frontend/images/gallery.jpg" alt="" class="img-fluid">
+                        </div>
 
-<x-frontend.explore-section />
+                    </div>
+                    <div class="about__image-bottom">
+                        <div class="about__image-bottom-hover">
+                            <img src="frontend/images/gallery3.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <section class="recent__property pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="title__head-v2">
+                    <h2 class="text-capitalize">Explore the luxury apartments</h2>
+                    <p class="text-capitalize">Handpicked Exclusive Properties By Our Team.</p>
+                </div>
+            </div>
+        </div>
+        <div class="recent__property-carousel owl-carousel owl-theme">
+         {{--    <div class="item">
+                <!-- CARD IMAGE -->
+
+                <a href="#">
+                    <div class="card__image-hover h-250">
+                        <div class="card__image-hover-overlay">
+                            <div class="listing-badges">
+                                <span class="featured">
+                                    Featured
+                                </span>
+                                <span>
+                                    For Rent
+                                </span>
+                            </div>
+                            <div class="card__image-content">
+                                <div class="card__image-content-desc">
+                                    <h6> Citra Garden Estate</h6>
+                                    <p class="mb-0"> $1300 / monthly</p>
+                                </div>
+                                <ul class="list-inline card__hidden-content">
+                                    <li class="list-inline-item">
+                                        Baths
+                                        <span>
+                                            <i class="fa fa-bath"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Beds
+                                        <span>
+                                            <i class="fa fa-bed"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Rooms
+                                        <span>
+                                            <i class="fa fa-inbox"></i> 3
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Area
+                                        <span>
+                                            <i class="fa fa-map"></i> 1450 sq ft
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <img alt="" src="/frontend/images/gallery1.jpg" class="img-fluid h-40 ">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <!-- CARD IMAGE -->
+                <a href="#">
+                    <div class="card__image-hover h-250">
+                        <div class="card__image-hover-overlay">
+                            <div class="listing-badges">
+                                <span class="featured">
+                                    Featured
+                                </span>
+                                <span>
+                                    For Rent
+                                </span>
+                            </div>
+                            <div class="card__image-content">
+                                <div class="card__image-content-desc">
+                                    <h6> Ample Apartment At Last Floor</h6>
+                                    <p class="mb-0"> $1300 / monthly</p>
+                                </div>
+                                <ul class="list-inline card__hidden-content">
+                                    <li class="list-inline-item">
+                                        Baths
+                                        <span>
+                                            <i class="fa fa-bath"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Beds
+                                        <span>
+                                            <i class="fa fa-bed"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Rooms
+                                        <span>
+                                            <i class="fa fa-inbox"></i> 3
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Area
+                                        <span>
+                                            <i class="fa fa-map"></i> 1450 sq ft
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <img alt="" src="/frontend/images/gallery2.jpg" class="img-fluid h-40 ">
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <div class="card__image-hover h-250">
+                        <div class="card__image-hover-overlay">
+                            <div class="listing-badges">
+                                <span class="featured">
+                                    Featured
+                                </span>
+                                <span>
+                                    For Rent
+                                </span>
+                            </div>
+                            <div class="card__image-content">
+                                <div class="card__image-content-desc">
+                                    <h6> Contemporary Apartment</h6>
+                                    <p class="mb-0"> $1300 / monthly</p>
+                                </div>
+                                <ul class="list-inline card__hidden-content">
+                                    <li class="list-inline-item">
+                                        Baths
+                                        <span>
+                                            <i class="fa fa-bath"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Beds
+                                        <span>
+                                            <i class="fa fa-bed"></i> 2
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Rooms
+                                        <span>
+                                            <i class="fa fa-inbox"></i> 3
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Area
+                                        <span>
+                                            <i class="fa fa-map"></i> 1450 sq ft
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <img alt="" src="/frontend/images/gallery3.jpg" class="img-fluid h-40 ">
+                        </div>
+                    </div>
+                </a>
+            </div> --}}
+
+            @foreach ($properties as $property)
+            <div class="item">
+                <!-- CARD IMAGE -->
+               
+                <a href="#">
+                    <div class="card__image-hover h-250">
+                        <div class="card__image-hover-overlay">
+                            <div class="listing-badges">
+                                <span class="featured">
+                                    Featured
+                                </span>
+                                <span>
+                                    {{$property->purpose}}
+                                </span>
+                            </div>
+                            <div class="card__image-content">
+                                <div class="card__image-content-desc">
+                                    <h6> {{$property->name}}</h6>
+                                    <p class="mb-0">{{ $property->currency->code }}{{$property->price}}</p>
+                                </div>
+                                <ul class="list-inline card__hidden-content">
+                                    <li class="list-inline-item">
+                                        Baths
+                                        <span>
+                                            <i class="fa fa-bath"></i> {{$property->bathroom}}
+                                        </span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        Beds
+                                        <span>
+                                            <i class="fa fa-bed"></i> {{$property->bedroom}}
+                                        </span>
+                                    </li>
+
+                                    <li class="list-inline-item">
+                                        Area
+                                        <span>
+                                            <i class="fa fa-map"></i> {{$property->size}} sq ft
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-40 ">
+                           
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+
 
 
  <x-frontend.popular-cities />

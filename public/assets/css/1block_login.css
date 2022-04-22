@@ -51,7 +51,12 @@
     border-radius: 0.25rem;
     padding-bottom: 0.7rem;
     padding-top: 0.7rem;
+    margin: 0 30px;
+}
+
+.page-header1 {
     max-width: 600px;
+    margin: auto;
 }
 
 .card-plain1 {
@@ -62,6 +67,11 @@
 /* .form-logo {
     width: 170px;
 } */
+
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
 
 .logo-container {
     display: flex;

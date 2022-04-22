@@ -36,7 +36,7 @@
             </div>
         </div>
     </section>
-    <section class="home__about">
+    <section class="home__about mission">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-lg-4">

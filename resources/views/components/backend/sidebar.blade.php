@@ -28,7 +28,7 @@
 			</li> -->
 			<li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Properties</span> </a>
 				<ul class="ml-menu">
-					<li><a href="/properties">List Properties</a></li>
+					<li><a href="/properties">Listed Properties</a></li>
 					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
 					<li><a href="{{ route('property.add')}}">Add Property</a></li>
 					{{-- <li><a href="property/details">Property Detail</a></li> --}}
