@@ -16,7 +16,7 @@
     @endsection
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="Properties" menu="Properties" link="Properties/add" />
+        <x-backend.breadcrumb page="Properties" menu="Properties" name="Edit Property" link="{{route('property.edit',$property->id)}}" />
 
         <div class="container-fluid">
             <div class="row clearfix">

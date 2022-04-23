@@ -1,4 +1,4 @@
-@props(['page','menu', 'link', 'class'=>null])
+@props(['page','menu', 'link', 'class'=>null, 'name'=>null, 'icon'=>null])
 
 <div class="block-header {{$class}}">
         <div class="row">
@@ -15,7 +15,7 @@
                 </ul>
 
                 @if (isset($link))
-                <x-backend.add-button link="{{$link}}" />
+                <x-backend.add-button icon={{$icon}} name="{{$name}}" link="{{$link}}" />
                 @endif
             </div>
         </div>

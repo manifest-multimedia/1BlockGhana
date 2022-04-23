@@ -120,8 +120,10 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('properties')->group( fu
 
 Route::get('/', [PropertyController::class, 'view'])->name('property.view');
 Route::get('details/{id}', [PropertyController::class, 'details'])->name('property.details');
+Route::get('edit/{id}', [PropertyController::class, 'edit'])->name('property.edit');
 Route::get('/add', [PropertyController::class, 'add'])->name('property.add');
 Route::post('/store/{id}', [PropertyController::class, 'store'])->name('property.store');
+Route::post('/update/{id}', [PropertyController::class, 'update'])->name('property.update');
 
 Route::post('upload', [UploadController::class, 'storeProperties']);
 });

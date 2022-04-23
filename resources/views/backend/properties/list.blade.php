@@ -2,7 +2,7 @@
 
 	<!-- Main Content -->
 	<section class="content agent">
-		<x-backend.breadcrumb page="Properties" menu="Properties" link="Properties/add" />
+		<x-backend.breadcrumb page="Properties" icon="plus" menu="Properties" link="Properties/add" />
 
 		<div class="clearfix row">
 			<div class="col-lg-12">

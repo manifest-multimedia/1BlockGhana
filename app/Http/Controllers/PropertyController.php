@@ -68,6 +68,8 @@ class PropertyController extends Controller
             //'status'=> 1
         ]);
 
+
+
         foreach ($request->amenities as $amenity) {
             DB::insert('insert into amenities_properties (properties_id, amenities_id) values (?,?)', [$property->id,$amenity]);
         }
@@ -108,6 +110,68 @@ class PropertyController extends Controller
         return redirect()->route('property.view');
     }
 
+    public function update(Request $request, $id){
+      //  $business = User::find($id)->business;
+
+        $property =  Properties::find($id);
+           // 'property_id'=> $request->id,
+          //  'business_id'=> $business->id,
+          $property->category_id= $request->category_id;
+          $property->name= $request->name;
+          $property->description= $request->description;
+          $property->currency_id= $request->currency;
+          $property->price= $request->price;
+          $property->size= $request->size;
+          $property->bedroom= $request->bedroom;
+          $property->bathroom= $request->bathroom;
+          $property->kitchen= $request->size;
+          $property->size= $request->size;
+          $property->purpose= $request->purpose;
+          $property->location= $request->location;
+          $property->date_built= $request->year_built;
+            //'status'=> 1
+          $property->save();
+
+        /* foreach ($request->amenities as $amenity) {
+            DB::insert('insert into amenities_properties (properties_id, amenities_id) values (?,?)', [$property->id,$amenity]);
+        } */
+
+      //  dd($property);
+        if($request->properties){
+
+            foreach($request->properties as $file){
+
+                $temporaryFile = TemporaryFile::where('folder', $file)->first();
+
+                    $tempPath = 'app/public/properties/tmp/';
+                    if($temporaryFile){
+                        $property->clearMediaCollection('properties');
+                        $property->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('properties');
+
+                        rmdir(storage_path($tempPath . $file));
+                        $temporaryFile->delete();
+                    }
+
+
+
+               /*  $name_gen = hexdec(uniqid());
+                $file_ext = strtolower($file->getClientOriginalExtension());
+                $file_name = $name_gen. '.'.$file_ext;
+                $up_location = 'assets/properties/';
+                $file_path = $up_location.$file_name;
+                $file->move($up_location,$file_name);
+
+                Gallery::create([
+                    'path'=> $file_path,
+                    'property_id' => $property->id
+                ]); */
+            }
+        }
+
+
+        return redirect()->route('property.view');
+    }
+
     public function saveImage(Request $request){
         $image = $reques->file('file');
         $imageName = time. '.' .$image->extenssion();
@@ -118,6 +182,20 @@ class PropertyController extends Controller
     public function details($id){
         $property = Properties::find($id);
         return view('backend.properties.details',compact('property'));
+    }
+    public function edit($id){
+        $categories = Category::all();
+        $amenities = Amenities::all();
+        $currencies = Currency::all();
+        $property = Properties::find($id);
+        $business = Business::where('user_id', $property->business->user_id)->get('package_id');
+       // dd($business);
+        foreach ($business as $bus) {
+            $package = Package::find($bus->package_id);
+           // dd($package);
+            $bus_id = $bus->id;
+        }
+        return view('backend.properties.edit',compact('property','categories','amenities','currencies','package'));
     }
 
 }
