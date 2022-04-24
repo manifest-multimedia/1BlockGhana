@@ -79,6 +79,8 @@
 											<select class="form-control" name="purpose" id="">
 												<option value="For Rent">For Rent</option>
 												<option selected value="For Sale">For Sale</option>
+												<option selected value="For Sale">Let's Agree</option>
+												<option selected value="For Sale">Sold</option>
 
 											</select>
 										</div>
