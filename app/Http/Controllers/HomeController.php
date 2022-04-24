@@ -19,10 +19,10 @@ class HomeController extends Controller
     }
 
     public function listingByHouses() {
-        
-        $category = Category::where('id',1)->first();    
+
+        $category = Category::where('id',1)->first();
         //dd($category->id);
-        $properties = Properties::where('category_id', $category->id)->get();
+        $properties = Properties::get();
        // dd($properties);
        // $properties = Properties::get();
         return view('frontend.listing', compact('properties'));

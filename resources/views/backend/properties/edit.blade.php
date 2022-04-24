@@ -114,12 +114,12 @@
 											<x-form.input name="bedroom" value="{{$property->bedroom}}" placeholder="0" />
 										</div>
 									</div>
-									<div class="col-sm-3">
+									{{-- <div class="col-sm-3">
 										<div class="form-group">
 											<x-form.label type="number" value="{{ __('Number of Kitchen') }}" />
 											<x-form.input name="kitchen" value="{{$property->kitchen}}" placeholder="0" />
 										</div>
-									</div>
+									</div> --}}
 
 									<div class="col-sm-3">
 										<div class="form-group">

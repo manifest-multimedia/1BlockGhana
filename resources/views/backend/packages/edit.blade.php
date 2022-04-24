@@ -57,8 +57,8 @@
                             <div class="clearfix mb-3 row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <x-form.label value="{{ __('Video Lenght Limit (seconds)') }}" />
-                                        <x-form.input name="videolengthlimit" type="number" placeholder="5000" value="{{$package->video_length_limit ?? ''}}"/>
+                                        <x-form.label value="{{ __('Listing Limit') }}" />
+                                        <x-form.input name="listingLimit" type="number" placeholder="10" value="{{$package->listing_limit ?? ''}}"/>
                                     </div>
                                 </div>
                             </div>

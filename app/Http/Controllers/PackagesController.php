@@ -80,7 +80,7 @@ class PackagesController extends Controller
         'name' => 'required|max:255',
         'type' => 'required',
         'imageLimit' => 'required',
-        'videouploadlimit' => 'required',
+        'listingLimit' => 'required',
     ]);
 
 
@@ -91,7 +91,7 @@ class PackagesController extends Controller
         'type' => $request->type,
         'listing_limit' => $totalLimit,
         'image_upload_limit' => $request->imageLimit,
-        'video_upload_limit' => $request->videouploadlimit,
+        'listing_limit' => $request->listingLimit,
      ]);
         return redirect()->route('package.list')->with('success','Package updated successfully');
     }

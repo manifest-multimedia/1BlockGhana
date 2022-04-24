@@ -25,7 +25,7 @@
                         <option>Luxury</option>
                     </select>
                 </div>
-                <div class="form-group">
+               {{--  <div class="form-group">
                     <select class="wide select_option">
                         <option data-display="Area From">Area From </option>
                         <option>1500</option>
@@ -35,7 +35,7 @@
                         <option>300</option>
                         <option>100</option>
                     </select>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <select class="wide select_option">
                         <option data-display="Locations">Locations</option>

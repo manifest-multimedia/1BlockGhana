@@ -60,7 +60,7 @@ class PropertyController extends Controller
             'size'=> $request->size,
             'bedroom'=> $request->bedroom,
             'bathroom'=> $request->bathroom,
-            'kitchen'=> $request->size,
+          //  'kitchen'=> $request->size,
             'size'=> $request->size,
             'purpose'=> $request->purpose,
             'location'=> $request->location,
@@ -76,12 +76,9 @@ class PropertyController extends Controller
 
 
         if($request->properties){
-         //   dd('file is in');
-           // $user = User::find($id);
             foreach($request->properties as $file){
 
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
-                // dd($file);
                     $tempPath = 'app/public/properties/tmp/';
                     if($temporaryFile){
                         $property->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('properties');
@@ -89,20 +86,6 @@ class PropertyController extends Controller
                         rmdir(storage_path($tempPath . $file));
                         $temporaryFile->delete();
                     }
-
-
-
-               /*  $name_gen = hexdec(uniqid());
-                $file_ext = strtolower($file->getClientOriginalExtension());
-                $file_name = $name_gen. '.'.$file_ext;
-                $up_location = 'assets/properties/';
-                $file_path = $up_location.$file_name;
-                $file->move($up_location,$file_name);
-
-                Gallery::create([
-                    'path'=> $file_path,
-                    'property_id' => $property->id
-                ]); */
             }
         }
         else{ dd($request);}
@@ -111,11 +94,7 @@ class PropertyController extends Controller
     }
 
     public function update(Request $request, $id){
-      //  $business = User::find($id)->business;
-
         $property =  Properties::find($id);
-           // 'property_id'=> $request->id,
-          //  'business_id'=> $business->id,
           $property->category_id= $request->category_id;
           $property->name= $request->name;
           $property->description= $request->description;
@@ -124,7 +103,7 @@ class PropertyController extends Controller
           $property->size= $request->size;
           $property->bedroom= $request->bedroom;
           $property->bathroom= $request->bathroom;
-          $property->kitchen= $request->size;
+       //   $property->kitchen= $request->size;
           $property->size= $request->size;
           $property->purpose= $request->purpose;
           $property->location= $request->location;
@@ -152,19 +131,6 @@ class PropertyController extends Controller
                         $temporaryFile->delete();
                     }
 
-
-
-               /*  $name_gen = hexdec(uniqid());
-                $file_ext = strtolower($file->getClientOriginalExtension());
-                $file_name = $name_gen. '.'.$file_ext;
-                $up_location = 'assets/properties/';
-                $file_path = $up_location.$file_name;
-                $file->move($up_location,$file_name);
-
-                Gallery::create([
-                    'path'=> $file_path,
-                    'property_id' => $property->id
-                ]); */
             }
         }
 

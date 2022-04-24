@@ -35,14 +35,14 @@
         display: inline !important;
     }
 
-    @media screen and (min-width: 575px) {
+    @media screen and (min-width: 768px) {
 
         section#show_on_mobile_only {
             display: none;
         }
     }
 
-    @media screen and (max-width: 575px){
+    @media screen and (max-width: 767px){
 
         section#hide_on_mobile_only {
             display: none;
@@ -52,10 +52,6 @@
     @media screen and (max-width: 991px){
 
         div#hide_filter_on_mobile_only {
-            display: none;
-        }
-
-                section.home__about {
             display: none;
         }
 

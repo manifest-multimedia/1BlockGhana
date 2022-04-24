@@ -1,4 +1,4 @@
-<section class="blog__home bg-light">
+<section class="blog__home bg-light" id="hide_on_mobile_only">
     <div class="container">
         <div class="row">
             <div class="mx-auto col-md-8 col-lg-6">

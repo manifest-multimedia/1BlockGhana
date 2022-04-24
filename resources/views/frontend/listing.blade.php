@@ -59,7 +59,7 @@
                                     {{-- LIST SECTION --}}
                                     {{-- <div class="tab-pane fade " id="pills-tab-one" role="tabpanel"
                                         aria-labelledby="pills-tab-one">
-                                        @foreach ($properties as $property)                                    
+                                        @foreach ($properties as $property)
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="card__image card__box-v1">
@@ -188,7 +188,7 @@
                                                                     <i class="fa fa-bed"></i> {{$property->bedroom}}
                                                                 </span>
                                                             </li>
-                                                            
+
                                                             <li class="list-inline-item">
                                                                 <span>
                                                                     area <br>
@@ -222,9 +222,9 @@
                                                 </div>
                                             </div>
                                             @endforeach
-                                            
+
                                         </div>
-                                        
+
 
                                         <div class="cleafix"></div>
                                     </div>

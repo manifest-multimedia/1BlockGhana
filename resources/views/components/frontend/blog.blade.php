@@ -1,4 +1,4 @@
-<section class="blog__home bg-light">
+<section class="blog__home bg-light" id="show_on_mobile_only">
     <div class="container">
         <div class="row">
             <div class="mx-auto col-md-8 col-lg-6">
@@ -7,7 +7,7 @@
                         lastest property news
                     </h2>
                     <p class="text-center text-capitalize">Find Of The Most Popular Real Estate Company All Around
-                        Indonesia.</p>
+                        Ghana.</p>
                 </div>
             </div>
             <div class="clearfix"></div>

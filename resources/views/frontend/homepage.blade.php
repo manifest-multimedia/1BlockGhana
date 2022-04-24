@@ -9,7 +9,7 @@
 
  <x-frontend.search />
 
- <section class="home__about">
+ <section class="home__about" id="hide_on_mobile_only">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -215,7 +215,7 @@
             @foreach ($properties as $property)
             <div class="item">
                 <!-- CARD IMAGE -->
-               
+
                 <a href="#">
                     <div class="card__image-hover h-250">
                         <div class="card__image-hover-overlay">
@@ -256,7 +256,7 @@
                                 </ul>
                             </div>
                             <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-40 ">
-                           
+
                         </div>
                     </div>
                 </a>
@@ -290,8 +290,12 @@
  </section>
  <!-- END VIDEO -->
 
- <!-- BLOG -->
+ <!-- BLOG ON MOBILE-->
  <x-frontend.blog />
+ <!-- END BLOG -->
+
+ <!-- BLOG ON DESKTOP-->
+ <x-frontend.blog_old />
  <!-- END BLOG -->
 
  <!-- TESTIMONIAL -->

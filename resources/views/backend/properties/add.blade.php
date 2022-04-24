@@ -114,12 +114,12 @@
 											<x-form.input name="bedroom" placeholder="0" />
 										</div>
 									</div>
-									<div class="col-sm-3">
+									{{-- <div class="col-sm-3">
 										<div class="form-group">
 											<x-form.label type="number" value="{{ __('Number of Kitchen') }}" />
 											<x-form.input name="kitchen" placeholder="0" />
 										</div>
-									</div>
+									</div> --}}
 
 									<div class="col-sm-3">
 										<div class="form-group">
