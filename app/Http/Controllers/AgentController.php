@@ -71,7 +71,7 @@ class AgentController extends Controller
             'lastname' => $request->lastname,
             'mobile' => $request->phone,
             'email' => $request->email,
-         ]);
+        ]);
         return redirect()->route('agent.profile')->with('success','Personal Information has been updated');
     }
 

@@ -21,12 +21,12 @@
     <meta name="twitter:image" content="" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
-    <link rel="icon" href="favicon.png" type="image/x-icon"> <!-- Favicon-->
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" href="/favicon.png" type="image/x-icon"> <!-- Favicon-->
+    <link rel="manifest" href="/site.webmanifest">
     <!-- favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="/icon.png">
     <meta name="theme-color" content="#3454d1">
-    <link href="frontend/css/styles.css" rel="stylesheet">
+    <link href="/frontend/css/styles.css" rel="stylesheet">
     <link href="/frontend/css/custom.css" rel="stylesheet">
 </head>
 
@@ -35,14 +35,14 @@
         display: inline !important;
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 575px) {
 
         section#show_on_mobile_only {
             display: none;
         }
     }
 
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 575px){
 
         section#hide_on_mobile_only {
             display: none;
@@ -52,6 +52,10 @@
     @media screen and (max-width: 991px){
 
         div#hide_filter_on_mobile_only {
+            display: none;
+        }
+
+                section.home__about {
             display: none;
         }
 
@@ -78,7 +82,7 @@
 	<!-- SCROLL TO TOP -->
     <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TO TOP -->
-    <script src="frontend/js/index.bundle.js"></script>
+    <script src="/frontend/js/index.bundle.js"></script>
 </body>
 
 </html>

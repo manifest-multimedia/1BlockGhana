@@ -167,7 +167,7 @@
                                                         <span
                                                             class="badge badge-primary text-capitalize mb-2">{{$property->category->name}}</span>
                                                         <h6 class="text-capitalize">
-                                                            <a href="#">{{$property->name}}</a>
+                                                            <a href="{{ route('listing.details', $property->id)}}">{{$property->name}}</a>
                                                         </h6>
 
                                                         <p class="text-capitalize">

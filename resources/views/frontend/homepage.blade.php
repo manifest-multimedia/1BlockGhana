@@ -322,7 +322,7 @@
 
              </div>
              <div class="col-lg-3">
-                 <a href="#" class="btn btn-light text-uppercase ">Contact Us
+                 <a href="{{route('contact')}}" class="btn btn-light text-uppercase ">Contact Us
                      <i class="ml-3 fa fa-angle-right arrow-btn "></i></a>
              </div>
          </div>

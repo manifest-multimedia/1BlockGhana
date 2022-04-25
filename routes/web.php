@@ -39,24 +39,26 @@ Route::post('save-images', function(Request $request){
 Route::get('/registerme', function () {
     return view('auth.register_old');
 });
-Route::get('/', [HomeController::class, 'home']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/request-status', function () {
     return view('frontend.message');
 })->name('request.status');
 
-Route::get('/listing', [HomeController::class, 'listing']);
+/* Route::get('/listing', [HomeController::class, 'listing']); */
 
-Route::get('/houses', [HomeController::class, 'listingByHouses']);
+Route::get('/listing', [HomeController::class, 'listingByHouses'])->name('listing');
 
-Route::get('/listing-details', function () {
+Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->name('listing.details');
+
+/* Route::get('/listing-details', function () {
     return view('frontend.detail-listing');
-});
+}); */
 Route::get('/about-us', function () {
     return view('frontend.about');
-});
+})->name('about');
 Route::get('/contact-us', function () {
     return view('frontend.contact');
-});
+})->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 

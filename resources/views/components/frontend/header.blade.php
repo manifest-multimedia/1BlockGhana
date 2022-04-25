@@ -35,24 +35,24 @@
 <!-- END NAVBAR TOP -->
 <nav class="navbar navbar-hover navbar-expand-lg navbar-soft">
     <div class="container">
-        <a class="navbar-brand" href="/">
-            <img src="frontend/images/logo.png" alt="" class="img-fluid">
+        <a class="navbar-brand" href="{{ route('home')}}">
+            <img src="/frontend/images/logo.png" alt="" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav99">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main_nav99">
             <ul class="mx-auto navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/"> Home </a></li>
-                <li class="nav-item"><a class="nav-link" href="/about-us"> About Us </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('home')}}"> Home </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('about')}}"> About Us </a></li>
                 <li class="nav-item dropdown">
                     @php
                         $categories = App\Models\Category::get();
                     @endphp
-                    <a class="nav-link dropdown-toggle" href="/listing" data-toggle="dropdown"> Categories </a>
+                    <a class="nav-link dropdown-toggle" href="{{route('listing')}}" data-toggle="dropdown"> Categories </a>
                     <ul class="dropdown-menu animate fade-up">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="/houses">{{$category->name}}</a></li>
+                            <li><a class="dropdown-item" href="{{route('listing')}}">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -60,7 +60,7 @@
 
                 {{-- <li class="nav-item"><a class="nav-link" href="/listing"> Listing</a></li> --}}
 
-                <li class="nav-item"><a class="nav-link" href="/contact-us"> Contact Us </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('contact')}}"> Contact Us </a></li>
 
             </ul>
 
@@ -68,7 +68,7 @@
             <!-- Search bar.// -->
             <ul class="navbar-nav">
                 <li>
-                    <a href="/login" class="btn btn-primary text-capitalize">
+                    <a href="{{route('login')}}" class="btn btn-primary text-capitalize">
                         <i class="mr-1 fa fa-plus-circle"></i> add listing</a>
                 </li>
             </ul>

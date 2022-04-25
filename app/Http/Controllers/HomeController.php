@@ -27,4 +27,14 @@ class HomeController extends Controller
        // $properties = Properties::get();
         return view('frontend.listing', compact('properties'));
     }
+
+    public function listingById($id) {
+
+        $property = Properties::find($id);
+
+        //SIMILAR PROPERTIES
+        $similar = Properties::whereNotIn('id', [$id])->get();
+       // dd($similar);
+        return view('frontend.property-details', compact('property','similar'));
+    }
 }
