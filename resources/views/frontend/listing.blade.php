@@ -159,8 +159,11 @@
                                                 <div class="card__image card__box-v1">
                                                     <div class="card__image-header h-250 img-space">
                                                        {{--  <div class="ribbon text-capitalize">sold out</div> --}}
-                                                        <img src="{{$property->getFirstMediaUrl('properties')}}" alt=""
-                                                            class="img-fluid w100 img-transition">
+                                                        
+                                                            <a href="{{ route('listing.details', $property->id)}}">
+                                                                <img src="{{$property->getFirstMediaUrl('properties')}}" alt=""
+                                                                class="img-fluid w100 img-transition">
+                                                            </a>
                                                         <div class="info"> {{$property->purpose}}</div>
                                                     </div>
                                                     <div class="card__image-body">

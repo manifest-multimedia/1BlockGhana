@@ -96,8 +96,8 @@
                                         <li><a href="javascript:void(0)"><i class=" fa fa-globe mr-1"></i>
                                             {{$property->business->website}}</a>
                                         </li>
-                                        <li> <a href="javascript:void(0)" class="">View My Listing</a>
-                                        </li>
+                                       {{--  <li> <a href="javascript:void(0)" class="">View My Listing</a>
+                                        </li> --}}
                                     </ul>
 
 
@@ -261,13 +261,15 @@
                             <div class="card__image">
                                 <div class="card__image-header h-250">
                                     {{-- <div class="ribbon text-capitalize">featured</div> --}}
-                                    <img src="{{$prop->getFirstMediaUrl('properties')}}" alt="" class="img-fluid w100 img-transition">
+                                    <a href="{{route('listing.details', $prop->id)}}">
+                                        <img src="{{$prop->getFirstMediaUrl('properties')}}" alt="" class="img-fluid w100 img-transition">
+                                    </a>
                                     <div class="info"> {{$prop->purpose}}</div>
                                 </div>
                                 <div class="card__image-body">
                                     <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name}}</span>
                                     <h6 class="text-capitalize">
-                                        <a href="#">{{$prop->name}}</a>
+                                        <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
                                     </h6>
 
                                     <p class="text-capitalize">
