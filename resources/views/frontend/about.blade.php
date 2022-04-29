@@ -21,7 +21,4 @@
  <x-frontend.cta />
  <!-- END CALL TO ACTION -->
 
- <!-- Footer  -->
-<x-frontend.footer />
-
 </x-frontend.layout>

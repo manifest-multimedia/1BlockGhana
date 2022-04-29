@@ -1,77 +1,222 @@
-<div id="footer-section" class="footer-section">
-    <!-- container -->
-    <div class="container">
-        <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <!-- About Widget -->
-            <aside class="widget widget_about">
-                <h3 class="widget-title">About Us</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-            </aside>
-            <!-- About Widget /- -->
-        </div><!-- col-md-3 -->
-
-        <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <!-- Quick Link Widget -->
-            <aside class="widget widget_quick_links">
-                <h3 class="widget-title">Quick Links</h3>
-                <ul class="p_l_z">
-                    <li><a title="Quick Links" href="#">Listing</a></li>
-                    <li><a title="Quick Links" href="#">Property</a></li>
-                    <li><a title="Quick Links" href="#">News</a></li>
-                    <li><a title="Quick Links" href="#">Gallery</a></li>
-                    <li><a title="Quick Links" href="#">Pages</a></li>
-                    <li><a title="Quick Links" href="#">Types</a></li>
-                    <li><a title="Quick Links" href="#">Contact Us</a></li>
-                </ul>
-            </aside>
-            <!-- Quick Link Widget /- -->
-        </div><!-- col-md-3 -->
-
-        <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <!-- Address Widget -->
-            <aside class="widget widget_address">
-                <h3 class="widget-title">Address</h3>
-                <p>108 Villa Precy Subdivision Kumintang Ilaya Batangas, Philippines</p>
-                <span>1200 666 12345</span>
-                <a title="mailto" href="mailto:info@1blockghana.com ">info@1blockghana.com </a>
-            </aside>
-            <!-- Address Widget /- -->
-        </div><!-- col-md-3 -->
-
-        <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <!-- Address Widget -->
-            <aside class="widget widget_newsletter">
-                <h3 class="widget-title">NewsLetter</h3>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter Your ID">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go</button>
-                    </span>
-                </div><!-- /input-group -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-            </aside>
-            <!-- Address Widget /- -->
-        </div><!-- col-md-3 -->
-    </div><!-- container /- -->
-    <!-- Footer Bottom -->
-    <div id="footer-bottom" class="footer-bottom footer-bottom2">
-        <!-- container -->
+<footer>
+    <div class="wrapper__footer bg-theme-footer">
         <div class="container">
-            <p class="col-md-4 col-sm-6 col-xs-12">&copy; 2015 property expert ‐ All Rights Reserved</p>
-            <div class="col-md-4 col-sm-6 col-xs-12 pull-right social">
-                <ul class="footer_social m_b_z">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                </ul>
-                <a href="#" title="back-to-top" id="back-to-top" class="back-to-top"><i class="fa fa-long-arrow-up"></i> Top</a>
+            <div class="row">
+                <!-- ADDRESS -->
+                <div class="col-md-4">
+                    <div class="widget__footer">
+                        {{-- <figure>
+                            <img src="frontend/images/logo-blue.png" alt="" class="logo-footer">
+                        </figure> --}}
+                        <p>
+                            1Block Ghana helped thousands of clients to find the right property for their needs.
+
+                        </p>
+
+                        <ul class="mt-3 mb-0 list-unstyled">
+                            <li> <b> <i class="fa fa-map-marker"></i></b><span>Accra, Ghana</span> </li>
+
+                            <li> <b><i class="fa fa-phone-square"></i></b><span>+44 7393 354293</span> </li>
+                            <li> <b><i class="fa fa-headphones"></i></b><span>support@1blockghana.com</span> </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- END ADDRESS -->
+
+                <!-- QUICK LINKS -->
+                <div class="col-md-2">
+                    <div class="widget__footer">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <div class="link__category-two-column">
+                            <ul class="list-unstyled ">
+                                <li class="list-inline-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                {{-- <li class="list-inline-item">
+                                    <a href="#">Residential</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Residential Tower</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Beverly Hills</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Los angeles</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">The beach</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Property Listing</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Clasic</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Modern Home</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Luxury</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Beach Pasadena</a>
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END QUICK LINKS -->
+                <!-- Categories LINKS -->
+                <div class="col-md-2">
+                    <div class="widget__footer">
+                        <h4 class="footer-title">Quick Links</h4>
+                        <div class="link__category-two-column">
+                            <ul class="list-unstyled ">
+                                <li class="list-inline-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                {{-- <li class="list-inline-item">
+                                    <a href="#">Residential</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Residential Tower</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Beverly Hills</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Los angeles</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">The beach</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Property Listing</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Clasic</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Modern Home</a>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="#">Luxury</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Beach Pasadena</a>
+                                </li> --}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END QUICK LINKS -->
+
+
+                <!-- NEWSLETTERS -->
+                <div class="col-md-4">
+                    <div class="widget__footer">
+                        <h4 class="footer-title">follow us </h4>
+                        <p class="mb-2">
+                            Follow us and stay in touch to get the latest news
+                        </p>
+                        <p>
+                            <button class="mr-1 btn btn-social btn-social-o facebook">
+                                <i class="fa fa-facebook-f"></i>
+                            </button>
+                            <button class="mr-1 btn btn-social btn-social-o twitter">
+                                <i class="fa fa-twitter"></i>
+                            </button>
+
+                            <button class="mr-1 btn btn-social btn-social-o linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </button>
+                            <button class="mr-1 btn btn-social btn-social-o instagram">
+                                <i class="fa fa-instagram"></i>
+                            </button>
+
+
+                        </p>
+                        <br>
+                        <h4 class="footer-title">newsletter</h4>
+                        <!-- Form Newsletter -->
+                        <div class="widget__form-newsletter ">
+                            <p>
+
+                                Don’t miss to subscribe to our news feeds, kindly fill the form below
+                            </p>
+                            <div class="mt-3">
+                                <input type="text" class="mb-2 form-control" placeholder="Your email address">
+
+                                <button class="btn btn-primary btn-block text-capitalize" type="button">subscribe
+
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- END NEWSLETTER -->
             </div>
-        </div><!-- container /- -->
-    </div><!-- Footer Bottom /- -->
-</diV>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="bg__footer-bottom-v1">
+        <div class="container">
+            <div class="row flex-column-reverse flex-md-row">
+                <div class="col-md-6">
+                    <span>
+                        © 2021 1Block Ghana - Developed by
+                        <a href="manifestghana.com">Manifest Multimedia</a>
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline ">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                privacy
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                contact
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                about
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                faq
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer  -->
+</footer>

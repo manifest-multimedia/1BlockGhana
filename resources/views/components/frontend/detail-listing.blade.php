@@ -45,7 +45,7 @@
                             <img src="{{ asset($image->getUrl()) }}" alt="" class="img-fluid w-100 img-transition">
                             <div class="description">
                                 <figure>
-                                    <img src="/frontend/images/80x80.jpg" alt="" class="img-fluid">
+                                    <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt="" class="img-fluid">
                                 </figure>
                                 <span class="badge badge-primary text-capitalize mb-2">{{$property->purpose}}</span>
                                 <div class="price">
@@ -71,7 +71,7 @@
                 </div>
                 <!-- END SLIDER IMAGE DETAIL -->
             </div>
-            <div class="col-lg-4 pt-5">
+            <div class="col-lg-4 pt-5 order-md-last">
 
                 <div class="sticky-top">
                     <!-- PROFILE AGENT -->
@@ -90,11 +90,13 @@
                                         </li>
                                         <li><a href="tel:123456"><i
                                                     class="fa fa-phone-square mr-1"></i>{{$property->business->user->mobile}}</a></li>
+                                        <li><a href="tel:123456"><i
+                                                    class="fa fa-envelope mr-1"></i>{{$property->business->user->email}}</a></li>
                                         <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
                                             {{$property->business->name}}</a>
                                         </li>
                                         <li><a href="javascript:void(0)"><i class=" fa fa-globe mr-1"></i>
-                                            {{$property->business->website}}</a>
+                                            {{$property->business->website?? '--'}}</a>
                                         </li>
                                        {{--  <li> <a href="javascript:void(0)" class="">View My Listing</a>
                                         </li> --}}
@@ -164,10 +166,7 @@
                                     <div class="col-md-6 col-lg-6">
                                         <ul class="property__detail-info-list list-unstyled">
 
-                                            <li><b>Property Size:</b> {{$property->size}}</li>
-                                            <li><b>Year Built:</b> {{$property->date_built}}</li>
-                                            <li><b>Property Type:</b> {{$property->category->name}}</li>
-                                            <li><b>Property Status:</b>{{$property->purpose}}</li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -290,7 +289,7 @@
                                                 <i class="fa fa-bed"></i>{{$prop->bedroom}}
                                             </span>
                                         </li>
-                                        
+
                                         <li class="list-inline-item">
                                             <span>
                                                 area <br>

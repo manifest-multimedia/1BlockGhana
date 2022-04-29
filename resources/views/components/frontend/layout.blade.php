@@ -76,7 +76,7 @@
     <!-- Page Content -->
 
 <!-- Footer Section -->
-{{-- <n-footer /> --}}
+ <x-frontend.n-footer />
 <!-- Footer Section -->
 
 	<!-- SCROLL TO TOP -->

@@ -14,7 +14,7 @@
                     <ul class="topbar-link">
                         <li><a href="#" title="">About Us</a></li>
                         <li><a href="#" title="">Contact Us</a></li>
-                        <li><a href="login" title="">Login / Register</a></li>
+                        <li><a href="{{route('login')}}" title="">Login / Register</a></li>
                     </ul>
                     <ul class="topbar-sosmed">
                         <li>

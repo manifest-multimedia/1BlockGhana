@@ -13,9 +13,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <x-frontend.filter-v />
+                  {{--   <x-frontend.filter-v /> --}}
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="tabs__custom-v2">
@@ -24,20 +24,43 @@
                                     <li class="list-inline-item mr-auto">
                                         <span class="title-text">Sort by</span>
                                         <div class="btn-group">
-                                            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                Based Properties
-                                            </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0)">Low to High
-                                                    Price</a>
-                                                <a class="dropdown-item" href="javascript:void(0)">High to Low Price
-                                                </a>
-                                                <a class="dropdown-item" href="javascript:void(0)">Sell Properties</a>
 
-                                                <a class="dropdown-item" href="javascript:void(0)">Rent Properties</a>
+                                            <div class="inline-filter mx-2">
+                                                <select class="wide select_option">
+                                                    <option data-display="Locations">Locations</option>
+                                                    <option>Accra</option>
+                                                    <option>Tema</option>
+                                                    <option>Ho</option>
+                                                    <option>Cape Coast</option>
+                                                    <option>Kumasi</option>
+                                                </select>
+                                            </div>
+                                            <div class="inline-filter mx-2">
+                                                <select class="wide select_option">
+                                                    <option data-display="Bedrooms">Bedrooms</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                    <option>9</option>
+                                                </select>
+                                            </div>
+                                            <div class="inline-filter mx-2">
+                                                <select class="wide select_option">
+                                                    <option data-display="Bathrooms">Bathrooms</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
                                             </div>
                                         </div>
+
                                     </li>
                                     {{-- <li class="nav-item">
                                         <a class="nav-link pills-tab-one" data-toggle="pill" href="#pills-tab-one"
@@ -155,11 +178,11 @@
                                         aria-labelledby="pills-tab-two">
                                         <div class="row">
                                             @foreach ($properties as $property)
-                                            <div class="col-md-6 col-lg-6">
+                                            <div class="col-md-4 col-lg-4">
                                                 <div class="card__image card__box-v1">
                                                     <div class="card__image-header h-250 img-space">
                                                        {{--  <div class="ribbon text-capitalize">sold out</div> --}}
-                                                        
+
                                                             <a href="{{ route('listing.details', $property->id)}}">
                                                                 <img src="{{$property->getFirstMediaUrl('properties')}}" alt=""
                                                                 class="img-fluid w100 img-transition">
@@ -272,177 +295,5 @@
         </div>
     </section>
     <!-- END CALL TO ACTION -->
-
-    <!-- Footer  -->
-    <footer>
-        <div class="wrapper__footer bg-theme-footer">
-            <div class="container">
-                <div class="row">
-                    <!-- ADDRESS -->
-                    <div class="col-md-4">
-                        <div class="widget__footer">
-                            {{-- <figure>
-                             <img src="frontend/images/logo-blue.png" alt="" class="logo-footer">
-                         </figure> --}}
-                            <p>
-                                1Block Ghana helped thousands of clients to find the right property for their needs.
-
-                            </p>
-
-                            <ul class="mt-3 mb-0 list-unstyled">
-                                <li> <b> <i class="fa fa-map-marker"></i></b><span>Accra, Ghana</span> </li>
-
-                                <li> <b><i class="fa fa-phone-square"></i></b><span>+44 7393 354293</span> </li>
-                                <li> <b><i class="fa fa-headphones"></i></b><span>support@1blockghana.com</span> </li>
-                                <li> <b><i class="fa fa-clock-o"></i></b><span>Mon - Sun / 9:00AM - 8:00PM</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <!-- END ADDRESS -->
-
-                    <!-- QUICK LINKS -->
-                    <div class="col-md-4">
-                        <div class="widget__footer">
-                            <h4 class="footer-title">Quick Links</h4>
-                            <div class="link__category-two-column">
-                                <ul class="list-unstyled ">
-                                    <li class="list-inline-item">
-                                        <a href="#">Commercial</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">business</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">House</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Residential</a>
-                                    </li>
-
-                                    <li class="list-inline-item">
-                                        <a href="#">Residential Tower</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Beverly Hills</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Los angeles</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">The beach</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Property Listing</a>
-                                    </li>
-
-                                    <li class="list-inline-item">
-                                        <a href="#">Clasic</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Modern Home</a>
-                                    </li>
-
-                                    <li class="list-inline-item">
-                                        <a href="#">Luxury</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="#">Beach Pasadena</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END QUICK LINKS -->
-
-
-                    <!-- NEWSLETTERS -->
-                    <div class="col-md-4">
-                        <div class="widget__footer">
-                            <h4 class="footer-title">follow us </h4>
-                            <p class="mb-2">
-                                Follow us and stay in touch to get the latest news
-                            </p>
-                            <p>
-                                <button class="mr-1 btn btn-social btn-social-o facebook">
-                                    <i class="fa fa-facebook-f"></i>
-                                </button>
-                                <button class="mr-1 btn btn-social btn-social-o twitter">
-                                    <i class="fa fa-twitter"></i>
-                                </button>
-
-                                <button class="mr-1 btn btn-social btn-social-o linkedin">
-                                    <i class="fa fa-linkedin"></i>
-                                </button>
-                                <button class="mr-1 btn btn-social btn-social-o instagram">
-                                    <i class="fa fa-instagram"></i>
-                                </button>
-
-
-                            </p>
-                            <br>
-                            <h4 class="footer-title">newsletter</h4>
-                            <!-- Form Newsletter -->
-                            <div class="widget__form-newsletter ">
-                                <p>
-
-                                    Don’t miss to subscribe to our news feeds, kindly fill the form below
-                                </p>
-                                <div class="mt-3">
-                                    <input type="text" class="mb-2 form-control" placeholder="Your email address">
-
-                                    <button class="btn btn-primary btn-block text-capitalize" type="button">subscribe
-
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- END NEWSLETTER -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="bg__footer-bottom-v1">
-            <div class="container">
-                <div class="row flex-column-reverse flex-md-row">
-                    <div class="col-md-6">
-                        <span>
-                            © 2021 1Block Ghana - Developed by
-                            <a href="manifestghana.com">Manifest Multimedia</a>
-                        </span>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-inline ">
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    privacy
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    contact
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    about
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#">
-                                    faq
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Footer  -->
-    </footer>
 
 </x-frontend.layout>

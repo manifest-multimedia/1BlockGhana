@@ -94,6 +94,10 @@ class PropertyController extends Controller
     }
 
     public function update(Request $request, $id){
+        /* if (! Gate::allows('update-property', $property)) {
+            abort(403);
+        } */
+
         $property =  Properties::find($id);
           $property->category_id= $request->category_id;
           $property->name= $request->name;

@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use App\Models\Team;
 use App\Policies\TeamPolicy;
+use App\Models\User;
+use App\Models\Properties;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -26,6 +29,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+       /*  Gate::define('update-property', function (User $user, Properties $property) {
+            return $user->id === $property->business->user_id;
+        }); */
     }
 }
