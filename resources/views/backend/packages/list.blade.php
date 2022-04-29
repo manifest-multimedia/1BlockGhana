@@ -45,48 +45,16 @@
                                             {{-- <td>{{ $package->video_length_limit }} seconds</td> --}}
 
                                             <td>
-                                                <a href="{{ route('package.edit', ['id' => $package->id]) }}"><button
-                                                        class="badge badge-success">Edit</button></a>
+                                                <a href="{{ route('package.edit', ['id' => $package->id]) }}"><button class="badge badge-success">Edit</button></a>
 
 
-                                                {{-- <form method="POST"
-                                                    action="{{ route('package.delete', $package->id) }}">
-                                                    @csrf
-                                                    <input name="_method" type="hidden" value="DELETE">
-                                                    <button type="button" data-toggle="modal" data-target="#deleteModal"
-                                                        class="badge badge-danger">Delete</button>
-                                                    <!-- Button trigger modal -->
+                                                
+                                                <button type="button" data-toggle="modal" data-target="#deleteModal{{$package->id}}"
+                                                    class="badge badge-danger">Delete</button>
+                                                <!-- Button trigger modal -->
 
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="deleteModal" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-md"
-                                                            role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Warning</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p><strong>Are you sure you want to delete this
-                                                                            Package?</strong></p>
-                                                                    You won't be able to revert this!
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit"
-                                                                        class="btn btn-danger">Delete</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form> --}}
+                                                @include('backend.packages.modal.delete')
+                                                
                                             </td>
                                         </tr>
                                     @endforeach

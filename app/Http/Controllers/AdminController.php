@@ -94,7 +94,7 @@ class AdminController extends Controller
     }
 
     public function delete($id){
-
+    
      $amenities =  Amenities::find($id);
 
      $amenities->delete();

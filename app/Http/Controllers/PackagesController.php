@@ -97,7 +97,6 @@ class PackagesController extends Controller
     }
 
     public function delete($id){
-        dd($id);
      $package =  Package::find($id);
 
      $package->delete();

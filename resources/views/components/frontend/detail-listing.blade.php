@@ -71,69 +71,6 @@
                 </div>
                 <!-- END SLIDER IMAGE DETAIL -->
             </div>
-            <div class="col-lg-4 pt-5 order-md-last">
-
-                <div class="sticky-top">
-                    <!-- PROFILE AGENT -->
-                    <div class="profile__agent mb-30">
-                        <div class="profile__agent__group">
-
-                            <div class="profile__agent__header">
-                                <div class="profile__agent__header-avatar">
-                                    <figure>
-                                        <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt="" class="img-fluid">
-                                    </figure>
-
-                                    <ul class="list-unstyled mb-0">
-                                        <li>
-                                            <h5 class="text-capitalize">{{$property->business->user->firstname}} {{$property->business->user->lastname}}</h5>
-                                        </li>
-                                        <li><a href="tel:123456"><i
-                                                    class="fa fa-phone-square mr-1"></i>{{$property->business->user->mobile}}</a></li>
-                                        <li><a href="tel:123456"><i
-                                                    class="fa fa-envelope mr-1"></i>{{$property->business->user->email}}</a></li>
-                                        <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
-                                            {{$property->business->name}}</a>
-                                        </li>
-                                        <li><a href="javascript:void(0)"><i class=" fa fa-globe mr-1"></i>
-                                            {{$property->business->website?? '--'}}</a>
-                                        </li>
-                                       {{--  <li> <a href="javascript:void(0)" class="">View My Listing</a>
-                                        </li> --}}
-                                    </ul>
-
-
-                                </div>
-
-                            </div>
-                            <div class="profile__agent__body">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email">
-                                </div>
-                                <div class="form-group mb-0">
-                                    <textarea class="form-control required" rows="5" required="required"
-                                        placeholder="I'm interest in ..."></textarea>
-                                </div>
-                            </div>
-                            <div class="profile__agent__footer">
-                                <div class="form-group mb-0">
-                                    <button class="btn btn-primary text-capitalize btn-block"> send message <i
-                                            class="fa fa-paper-plane ml-1"></i></button>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- END PROFILE AGENT -->
-                </div>
-            </div>
             <div class="col-lg-8">
                 <!-- DESCRIPTION -->
                 <div class="row">
@@ -244,6 +181,70 @@
                 </div>
                 <!-- END DESCRIPTION -->
             </div>
+            <div class="col-lg-4 pt-5">
+
+                <div class="sticky-top">
+                    <!-- PROFILE AGENT -->
+                    <div class="profile__agent mb-30">
+                        <div class="profile__agent__group">
+
+                            <div class="profile__agent__header">
+                                <div class="profile__agent__header-avatar">
+                                    <figure>
+                                        <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt="" class="img-fluid">
+                                    </figure>
+
+                                    <ul class="list-unstyled mb-0">
+                                        <li>
+                                            <h5 class="text-capitalize">{{$property->business->user->firstname}} {{$property->business->user->lastname}}</h5>
+                                        </li>
+                                        <li><a href="tel:123456"><i
+                                                    class="fa fa-phone-square mr-1"></i>{{$property->business->user->mobile}}</a></li>
+                                        <li><a href="tel:123456"><i
+                                                    class="fa fa-envelope mr-1"></i>{{$property->business->user->email}}</a></li>
+                                        <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
+                                            {{$property->business->name}}</a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class=" fa fa-globe mr-1"></i>
+                                            {{$property->business->website?? '--'}}</a>
+                                        </li>
+                                       {{--  <li> <a href="javascript:void(0)" class="">View My Listing</a>
+                                        </li> --}}
+                                    </ul>
+
+
+                                </div>
+
+                            </div>
+                            <div class="profile__agent__body">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="form-group mb-0">
+                                    <textarea class="form-control required" rows="5" required="required"
+                                        placeholder="I'm interest in ..."></textarea>
+                                </div>
+                            </div>
+                            <div class="profile__agent__footer">
+                                <div class="form-group mb-0">
+                                    <button class="btn btn-primary text-capitalize btn-block"> send message <i
+                                            class="fa fa-paper-plane ml-1"></i></button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END PROFILE AGENT -->
+                </div>
+            </div>
+            
         </div>
 
         <!-- SIMILIAR PROPERTY -->

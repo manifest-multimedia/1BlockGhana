@@ -26,9 +26,7 @@ use App\Models\Properties;
 |
 */
 
-Route::get('/dropzone', function () {
-    return view('dropzone');
-});
+
 Route::post('save-images', function(Request $request){
     $image= $request->file('file');
     $imageName= time(). '.'. $image->extension();
@@ -108,7 +106,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('amenities')->group( fun
     Route::get('/add', [AdminController::class,'create'])->name('amenity.add');
     Route::post('/store', [AdminController::class,'store'])->name('amenity.store');
     Route::get('/edit/{id}', [AdminController::class,'edit'])->name('amenity.edit');
-    Route::post('/update/{id}', [AdminController::class,'update'])->name('amenity.update');
+    Route::patch('/update/{id}', [AdminController::class,'update'])->name('amenity.update');
     Route::delete('/delete/{id}', [AdminController::class,'delete'])->name('amenity.delete');
 });
 
