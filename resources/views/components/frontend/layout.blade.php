@@ -83,6 +83,8 @@
     <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TO TOP -->
     <script src="/frontend/js/index.bundle.js"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

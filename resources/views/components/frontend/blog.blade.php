@@ -12,7 +12,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="recent__property-carousel owl-carousel owl-theme">
+        <div class="recent__property-carousel owl-carousel owl-theme owl-height">
             <div class="item">
                 <!-- CARD IMAGE -->
 

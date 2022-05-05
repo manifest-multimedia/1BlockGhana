@@ -9,7 +9,6 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <div id='hideMe'>Wait for it...</div>
                             <h2><strong>Categories</strong> </h2>
 
                         </div>
@@ -45,10 +44,10 @@
 
                                                         <span><a href="#"><button class="badge badge-success"
                                                                     data-toggle="modal"
-                                                                    data-target="#categoryModal">Edit</button></a></span>
+                                                                    data-target="#editModal{{$category->id}}">Edit</button></a></span>
 
 
-                                                        <div class="modal fade" id="categoryModal" tabindex="-1"
+                                                        <div class="modal fade" id="editModal{{$category->id}}" tabindex="-1"
                                                             role="dialog" aria-labelledby="exampleModalLabel"
                                                             aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered  modal-md"
@@ -96,7 +95,7 @@
 
                                                         {{-- Delete Button --}}
                                                         <span><button type="button" data-toggle="modal"
-                                                                data-target="#deleteModal"
+                                                                data-target="#deleteModal{{$category->id}}"
                                                                 class="badge badge-danger">Delete</button></span>
 
                                                         {{-- Delete Modal --}}
@@ -108,7 +107,7 @@
                                                             <!-- Button trigger modal -->
 
                                                             <!-- Modal -->
-                                                            <div class="modal fade" id="deleteModal" tabindex="-1"
+                                                            <div class="modal fade" id="deleteModal{{$category->id}}" tabindex="-1"
                                                                 role="dialog" aria-labelledby="exampleModalLabel"
                                                                 aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered modal-sm"

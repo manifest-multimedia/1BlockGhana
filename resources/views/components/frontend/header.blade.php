@@ -44,7 +44,13 @@
         <div class="collapse navbar-collapse" id="main_nav99">
             <ul class="mx-auto navbar-nav">
                 <li class="nav-item"><a class="nav-link" href="{{route('home')}}"> Home </a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('about')}}"> About Us </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{route('listing')}}" data-toggle="dropdown"> Our Partners </a>
+                    <ul class="dropdown-menu animate fade-up">
+                            <li><a class="dropdown-item" href="#">Agents</a></li>
+                            <li><a class="dropdown-item" href="#">Developers</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item dropdown">
                     @php
                         $categories = App\Models\Category::get();

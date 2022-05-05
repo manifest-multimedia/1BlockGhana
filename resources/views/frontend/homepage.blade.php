@@ -1,7 +1,7 @@
 <x-frontend.layout>
 
     <x-frontend.header />
- <!-- CAROUSEL -->
+     <!-- CAROUSEL -->
  <x-frontend.slider />
  <!-- END CAROUSEL -->
 
@@ -41,12 +41,12 @@
  <!-- END BLOG -->
 
  <!-- TESTIMONIAL -->
- <x-frontend.testimonial />
+{{--  <x-frontend.testimonial /> --}}
  <!-- END TESTIMONIAL -->
 
 
  <!-- BRAND PARTNER -->
- <x-frontend.partners />
+{{--  <x-frontend.partners /> --}}
  <!-- END BRAND PARTNER -->
 
 

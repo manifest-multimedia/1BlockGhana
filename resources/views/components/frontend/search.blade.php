@@ -26,19 +26,6 @@
                 <div class="col-6 col-lg-3 col-md-3">
                     <div class="form-group">
                         <select class="wide select_option">
-                            <option data-display="Area From">Area From </option>
-                            <option>1500</option>
-                            <option>1200</option>
-                            <option>900</option>
-                            <option>600</option>
-                            <option>300</option>
-                            <option>100</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-3">
-                    <div class="form-group">
-                        <select class="wide select_option">
                             <option data-display="Locations">Locations</option>
                             <option>Accra</option>
                             <option>Tema</option>

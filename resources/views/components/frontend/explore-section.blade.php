@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="title__head-v2">
-                    <h2 class="text-capitalize">Explore the luxury apartments</h2>
+                    <h2 class="text-capitalize">Featured Properties</h2>
                     <p class="text-capitalize">Handpicked Exclusive Properties By Our Team.</p>
                 </div>
             </div>

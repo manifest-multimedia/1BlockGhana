@@ -187,51 +187,51 @@
                                                                 <img src="{{$property->getFirstMediaUrl('properties')}}" alt=""
                                                                 class="img-fluid w100 img-transition">
                                                             </a>
-                                                        <div class="info"> {{$property->purpose}}</div>
+                                                        <div class="info"> {{$property->purpose ?? 'Not Stated'}}</div>
                                                     </div>
                                                     <div class="card__image-body">
                                                         <span
-                                                            class="badge badge-primary text-capitalize mb-2">{{$property->category->name}}</span>
+                                                            class="badge badge-primary text-capitalize mb-2">{{$property->category->name ?? 'Uncategorised'}}</span>
                                                         <h6 class="text-capitalize">
-                                                            <a href="{{ route('listing.details', $property->id)}}">{{$property->name}}</a>
+                                                            <a href="{{ route('listing.details', $property->id)}}">{{$property->name ?? 'Not Stated'}}</a>
                                                         </h6>
 
                                                         <p class="text-capitalize">
                                                             <i class="fa fa-map-marker"></i>
-                                                            {{$property->location}}
+                                                            {{$property->location ?? '--'}}
                                                         </p>
                                                         <ul class="list-inline card__content">
                                                             <li class="list-inline-item">
 
                                                                 <span>
                                                                     baths <br>
-                                                                    <i class="fa fa-bath"></i> {{$property->bathroom}}
+                                                                    <i class="fa fa-bath"></i> {{$property->bathroom ?? ''}}
                                                                 </span>
                                                             </li>
                                                             <li class="list-inline-item">
                                                                 <span>
                                                                     bedroom <br>
-                                                                    <i class="fa fa-bed"></i> {{$property->bedroom}}
+                                                                    <i class="fa fa-bed"></i> {{$property->bedroom ?? ''}}
                                                                 </span>
                                                             </li>
 
                                                             <li class="list-inline-item">
                                                                 <span>
                                                                     area <br>
-                                                                    <i class="fa fa-map"></i> {{$property->size}} sq ft
+                                                                    <i class="fa fa-map"></i> {{$property->size ?? ''}} sq ft
                                                                 </span>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="card__image-footer">
                                                         <figure>
-                                                            <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt=""
+                                                            <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg'}}" alt=""
                                                                 class="img-fluid rounded-circle">
                                                         </figure>
                                                         <ul class="list-inline my-auto">
                                                             <li class="list-inline-item">
                                                                 <a href="#">
-                                                                    {{$property->business->user->firstname}} {{$property->business->user->lastname}}
+                                                                    {{$property->business->user->firstname ?? ''}} {{$property->business->user->lastname ?? ''}}
                                                                 </a>
 
                                                             </li>
@@ -240,7 +240,7 @@
                                                         <ul class="list-inline my-auto ml-auto">
                                                             <li class="list-inline-item">
 
-                                                                <h6>{{ $property->currency->code }}{{$property->price}}</h6>
+                                                                <h6>{{ $property->currency->code }}{{$property->price ?? ''}}</h6>
                                                             </li>
 
                                                         </ul>

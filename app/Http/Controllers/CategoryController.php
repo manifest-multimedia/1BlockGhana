@@ -49,8 +49,8 @@ class CategoryController extends Controller
         //dd($category);
      $category =  Category::find($id);
      //dd($category);
-        return view('sbadmin.category.edit', compact('category'));
-      //  return view('backend.category.edit', compact('category'));
+      //  return view('sbadmin.category.edit', compact('category'));
+        return view('backend.category.edit', compact('category'));
     }
 
     public function update(Request $request, $id){
