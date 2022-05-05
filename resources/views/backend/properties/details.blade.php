@@ -29,7 +29,7 @@
 
                                     @foreach ($property->getMedia('properties') as $key => $image)
                                         <div class="carousel-item text-center {{ $key == 0 ? 'active' : '' }}">
-                                            <img src="{{ asset($image->getUrl()) }}" class="img-fluid" alt="">
+                                            <img src="{{ asset($image->getUrl()) ?? ''}}" class="img-fluid" alt="">
                                         </div>
                                     @endforeach
                                 </div>
@@ -48,10 +48,10 @@
                                     <h5 class="text-success m-t-0 m-b-0">
                                         {{ $property->currency->code }}{{ $property->price }}</h5>
                                     <h4 class="m-t-0"><a href="#"
-                                            class="col-blue-grey">{{ $property->name }}</a></h4>
+                                            class="col-blue-grey">{{ $property->name ?? 'No Name'}}</a></h4>
                                     <p class="text-muted"><i
-                                            class="zmdi zmdi-pin m-r-5"></i>{{ $property->location }}</p>
-                                    <p class="text-muted m-b-0">{{ $property->description }}</p>
+                                            class="zmdi zmdi-pin m-r-5"></i>{{ $property->location ?? '--'}}</p>
+                                    <p class="text-muted m-b-0">{{ $property->description ?? ''}}</p>
                                 </div>
                                 {{-- <div class="property-action m-t-15">
 															<a href="#" title="Square Feet">Square Feet<span>{{$property->size}}sqt</span></a>
@@ -74,7 +74,7 @@
                                     <ul class="list-unstyled proprerty-features">
                                         @foreach ($property->amenities as $amenity)
                                             <li class="list-group-item"><i
-                                                    class="zmdi zmdi-check-circle text-success m-r-5"></i>{{ $amenity->name }}
+                                                    class="zmdi zmdi-check-circle text-success m-r-5"></i>{{ $amenity->name ?? ''}}
                                             </li>
                                         @endforeach
 
@@ -106,24 +106,24 @@
                                     <tbody>
                                         <tr>
                                             <th scope="row">Price:</th>
-                                            <td>{{ $property->currency->code }}
-                                                {{ $property->price }}</td>
+                                            <td>{{ $property->currency->code ?? ''}}
+                                                {{ $property->price ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Purpose: </th>
-                                            <td><span class="badge badge-primary">{{ $property->purpose}}</span></td>
+                                            <td><span class="badge badge-primary">{{ $property->purpose ?? ''}}</span></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Bathrooms:</th>
-                                            <td>{{$property->bathroom}}</td>
+                                            <td>{{$property->bathroom ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Bedroom:</th>
-                                            <td>{{$property->bedroom}}</td>
+                                            <td>{{$property->bedroom ?? ''}}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Square ft:</th>
-                                            <td>{{$property->size}}</td>
+                                            <td>{{$property->size ?? ''}}</td>
                                         </tr>
 
                                     </tbody>

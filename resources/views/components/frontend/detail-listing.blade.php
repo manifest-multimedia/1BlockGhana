@@ -10,13 +10,13 @@
                         <div class="col-md-8 col-lg-8">
                             <div class="single__detail-area-title">
 
-                                <h3 class="text-capitalize">{{$property->name}}</h3>
-                                <p>{{$property->location}}</p>
+                                <h3 class="text-capitalize">{{$property->name ?? 'No Name'}}</h3>
+                                <p>{{$property->location ?? '--'}}</p>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-4">
                             <div class="single__detail-area-price">
-                                <h3 class="text-capitalize text-gray">{{ $property->currency->code }}{{$property->price}}</h3>
+                                <h3 class="text-capitalize text-gray">{{ $property->currency->code ?? '--' }}{{$property->price ?? ''}}</h3>
                                 {{-- <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <a href="#" class="badge badge-primary p-2 rounded"><i
@@ -42,16 +42,16 @@
                    @foreach ($property->getMedia('properties') as $key => $image)
                     <div class="item">
                         <div class="slider__image__detail-large-one">
-                            <img src="{{ asset($image->getUrl()) }}" alt="" class="img-fluid w-100 img-transition">
+                            <img src="{{ asset($image->getUrl()) ?? ''}}" alt="" class="img-fluid w-100 img-transition">
                             <div class="description">
                                 <figure>
                                     <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt="" class="img-fluid">
                                 </figure>
-                                <span class="badge badge-primary text-capitalize mb-2">{{$property->purpose}}</span>
+                                <span class="badge badge-primary text-capitalize mb-2">{{$property->purpose ?? ''}}</span>
                                 <div class="price">
-                                    <h5 class="text-capitalize">{{ $property->currency->code }}{{$property->price}}</h5>
+                                    <h5 class="text-capitalize">{{ $property->currency->code ?? '--' }}{{$property->price ?? ''}}</h5>
                                 </div>
-                                <h4 class="text-capitalize">{{$property->name}}</h4>
+                                <h4 class="text-capitalize">{{$property->name ?? ''}}</h4>
 
                             </div>
 
@@ -64,7 +64,7 @@
                     @foreach ($property->getMedia('properties') as $key => $image)
                     <div class="item">
                         <div class="slider__image__detail-thumb-one">
-                            <img src="{{ asset($image->getUrl()) }}" alt="" class="img-fluid w-100 img-transition">
+                            <img src="{{ asset($image->getUrl()) ?? ''}}" alt="" class="img-fluid w-100 img-transition">
                         </div>
                     </div>
                    @endforeach
@@ -78,7 +78,7 @@
                         <div class="single__detail-desc">
                             <h6 class="text-capitalize detail-heading">description</h6>
                             <div class="show__more1">
-                                <p>{{$property->description}}</p>
+                                <p>{{$property->description ?? ''}}</p>
 
                                 {{-- <a href="javascript:void(0)" class="show__more-button ">read more</a> --}}
                             </div>
@@ -244,7 +244,7 @@
                     <!-- END PROFILE AGENT -->
                 </div>
             </div>
-            
+
         </div>
 
         <!-- SIMILIAR PROPERTY -->
@@ -267,7 +267,7 @@
                                     <div class="info"> {{$prop->purpose}}</div>
                                 </div>
                                 <div class="card__image-body">
-                                    <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name}}</span>
+                                    <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name ?? ''}}</span>
                                     <h6 class="text-capitalize">
                                         <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
                                     </h6>
