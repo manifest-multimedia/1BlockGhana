@@ -11,9 +11,9 @@ class HomeController extends Controller
 {
     public function home() {
 
-        if(auth()->user()){
+        /* if(auth()->user()){
             auth()->user()->assignRole('admin');
-        }
+        } */
         $properties = Properties::get();
       //  dd($properties);
         return view('frontend.homepage', compact('properties'));
