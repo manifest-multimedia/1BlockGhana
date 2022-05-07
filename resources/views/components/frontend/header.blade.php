@@ -14,7 +14,7 @@
                     <ul class="topbar-link">
                         <li><a href="#" title="">About Us</a></li>
                         <li><a href="#" title="">Contact Us</a></li>
-                        <li><a href="{{route('login')}}" title="">Login / Register</a></li>
+                        <li><a href="{{ route('login') }}" title="">Login / Register</a></li>
                     </ul>
                     <ul class="topbar-sosmed">
                         <li>
@@ -35,7 +35,7 @@
 <!-- END NAVBAR TOP -->
 <nav class="navbar navbar-hover navbar-expand-lg navbar-soft">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home')}}">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <img src="/frontend/images/logo.png" alt="" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav99">
@@ -43,22 +43,33 @@
         </button>
         <div class="collapse navbar-collapse" id="main_nav99">
             <ul class="mx-auto navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{route('home')}}"> Home </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"> Home </a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{route('listing')}}" data-toggle="dropdown"> Our Partners </a>
+                    <a class="nav-link dropdown-toggle" href="{{ route('listing') }}" data-toggle="dropdown"> Our
+                        Partners </a>
                     <ul class="dropdown-menu animate fade-up">
+                        @php
+                            $partners = App\Models\BusinessType::orderBy('position')->get();
+                        @endphp
+
+                        @if ($partners)
+                            @foreach ($partners as $partner)
+                                <li><a class="dropdown-item" href="{{ route('partner.listing', $partner->id) }}">{{ $partner->name }}</a></li>
+                            @endforeach
+                        @else
                             <li><a class="dropdown-item" href="#">Agents</a></li>
                             <li><a class="dropdown-item" href="#">Developers</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     @php
-                        $categories = App\Models\Category::get();
+                        $categories = App\Models\Category::orderBy('position')->get();
                     @endphp
-                    <a class="nav-link dropdown-toggle" href="{{route('listing')}}" data-toggle="dropdown"> Categories </a>
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Categories </a>
                     <ul class="dropdown-menu animate fade-up">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="{{route('listing')}}">{{$category->name}}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('category.listing', $category->id) }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -66,7 +77,7 @@
 
                 {{-- <li class="nav-item"><a class="nav-link" href="/listing"> Listing</a></li> --}}
 
-                <li class="nav-item"><a class="nav-link" href="{{route('contact')}}"> Contact Us </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('news') }}"> Property News </a></li>
 
             </ul>
 
@@ -74,7 +85,7 @@
             <!-- Search bar.// -->
             <ul class="navbar-nav">
                 <li>
-                    <a href="{{route('login')}}" class="btn btn-primary text-capitalize">
+                    <a href="{{ route('login') }}" class="btn btn-primary text-capitalize">
                         <i class="mr-1 fa fa-plus-circle"></i> add listing</a>
                 </li>
             </ul>
@@ -86,8 +97,8 @@
 
                             <div class="mt-3 row no-gutters">
                                 <div class="col">
-                                    <input class="form-control border-secondary border-right-0 rounded-0"
-                                        type="search" value="" placeholder="Search " id="example-search-input4">
+                                    <input class="form-control border-secondary border-right-0 rounded-0" type="search"
+                                        value="" placeholder="Search " id="example-search-input4">
                                 </div>
                                 <div class="col-auto">
                                     <a class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right"

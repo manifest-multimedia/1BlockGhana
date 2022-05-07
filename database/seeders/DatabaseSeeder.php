@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $user1 = User::factory()->create([
             'firstname' => 'Gabriel',
             'lastname' => 'Abiah',
-            'role' => 'agent',
+            'user_type' => 'agent',
             'email' => 'gabriel@manifestghana.com',
             'mobile' => '0546747672',
             'password' => bcrypt('0546747672'),
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $user2 = User::factory()->create([
             'firstname' => 'Erob',
             'lastname' => 'Osei',
-            'role' => 'admin',
+            'user_type' => 'admin',
             'email' => 'info@1blockghana.com',
             'mobile' => '0546747672',
             'password' => bcrypt('1blockghana'),

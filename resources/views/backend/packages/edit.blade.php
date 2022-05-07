@@ -48,20 +48,10 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6">
-                                    <x-form.label value="{{ __('Number of Video Uploads') }}" />
-                                    <x-form.input name="videouploadlimit"  type="number" placeholder="Number of Video Uploads" value="{{$package->video_upload_limit ?? ''}}" />
-                                </div>
+
                             </div>
 
-                            <div class="clearfix mb-3 row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <x-form.label value="{{ __('Listing Limit') }}" />
-                                        <x-form.input name="listingLimit" type="number" placeholder="10" value="{{$package->listing_limit ?? ''}}"/>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <button type="submit" class="btn btn-primary btn-round">Update Package</button>
                         </form>
                     </div>

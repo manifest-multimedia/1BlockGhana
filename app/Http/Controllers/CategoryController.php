@@ -14,7 +14,7 @@ class CategoryController extends Controller
     }
 
     public function view(){
-        $categories = Category::all();
+        $categories = Category::orderBy('position')->get();
       //  return view('sbadmin.category.view', compact('categories'));
         return view('backend.category.list', compact('categories'));
     }
@@ -27,6 +27,7 @@ class CategoryController extends Controller
        // dd($request);
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories|max:255',
+            'position' => 'required',
         ],
         $messages = [
             'required' => 'The :attribute field is required.',
@@ -40,6 +41,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->name,
+            'position' => $request->position,
         ]);
 
         return back()->with('success','New Category has been created successfully');
@@ -56,11 +58,13 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
     $validated = $request->validate([
         'name' => 'required|max:255',
+        'position' => 'required|max:255',
     ]);
 
 
      Category::where('id',$id)->update([
         'name' => $request->name,
+        'position' => $request->position,
      ]);
         return redirect()->route('category.list')->with('success','Category name has been updated successfully');
     }

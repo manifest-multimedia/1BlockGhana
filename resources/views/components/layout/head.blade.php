@@ -11,7 +11,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="theme-purple authentication sidebar-collapse" style="background-image:url(assets/images/login-background.jpg)">
+    <body class="theme-purple authentication sidebar-collapse" style="background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(assets/images/login-background.jpg)">
 
         {{ $slot }}
 

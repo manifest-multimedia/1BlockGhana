@@ -1,5 +1,5 @@
 <div class="homepage__property bg-light">
-    <div class="homepage__property-carousel owl-carousel owl-theme owl-height">
+    <div class="homepage__property-carousel owl-carousel owl-carousel-slider owl-theme owl-height">
         <div class="item">
             <a href="#">
                 <div class="tc-image-caption4">
@@ -45,7 +45,7 @@
 
 @section('scripts')
     <script>
-        $('.owl-carousel').owlCarousel({
+        $('.owl-carousel-slider').owlCarousel({
             loop:true,
             margin:10,
             nav:true,
@@ -59,7 +59,7 @@
                     items:2
                 },
                 1000:{
-                    items:3
+                    items:2
                 }
             }
         })

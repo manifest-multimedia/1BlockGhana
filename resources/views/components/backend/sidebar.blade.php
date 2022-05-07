@@ -9,7 +9,7 @@
 					<div class="detail">
 						@auth
 						<h4>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h4>
-						<small>{{Str::ucfirst(Auth::user()->role)}}</small>
+						<small>{{Str::ucfirst(Auth::user()->user_type)}}</small>
 						@endauth
 					</div>
 
@@ -37,7 +37,7 @@
 
 
 
-            @if(Auth::check() && Auth::user()->role == "admin")
+            @role("admin")
             <li><a href="javascript:void(0);" class="menu-toggle"><i
                 class="zmdi zmdi-balance-wallet"></i><span>Packages</span> </a>
                 <ul class="ml-menu">
@@ -49,6 +49,7 @@
                         class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
             </li>
             <li class=""><a href="{{route('category.list')}}"><i class="zmdi zmdi-city"></i><span>Categories</span></a></li>
+            <li class=""><a href="{{route('partner.list')}}"><i class="zmdi zmdi-city"></i><span>Partners</span></a></li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                     class="zmdi zmdi-accounts-outline"></i><span>Agents</span> </a>
                     <ul class="ml-menu">
@@ -59,7 +60,7 @@
                 </li>
             @else
             <li class=""><a href="{{route('agent.profile')}}"><i class="zmdi zmdi-account"></i><span>Agent Profile</span></a></li>
-            @endif
+            @endrole
 	</div>
 	</div>
 
@@ -69,4 +70,5 @@
 						HOMEPAGE</span></a></li>
 			</ul>
 		</div>
+    </div>
 </aside>

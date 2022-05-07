@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailtrapAdmin;
-use App\Mail\MailtrapExample;
-use App\Models\Amenities;
 use App\Models\User;
 use App\Models\Business;
+use App\Models\Amenities;
 use App\Models\Properties;
+use App\Mail\MailtrapAdmin;
+use App\Models\BusinessType;
 use Illuminate\Http\Request;
+use App\Mail\MailtrapExample;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,7 +17,7 @@ class AdminController extends Controller
 {
 
     public function dashboard() {
-        $agentsCount = User::where('role','agent')->count();
+        $agentsCount = User::where('user_type','agent')->count();
         $totBusiness = Business::count();
         $totProperties = Properties::count();
         //dd($agents);
@@ -24,17 +25,18 @@ class AdminController extends Controller
     }
     public function signUpRequest(Request $request){
       //  dd($request);
-
+        $business_type = BusinessType::find($request->partner_id)->name;
+        dd($business_type);
         $data = array(
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'business_name' => $request->business_name,
-            'business_type' => $request->business_type,
+            'partners' => $business_type,
             'email' => $request->email,
             'physical_address' => $request->physical_address,
         );
         //dd($data);
-        Mail::to('admin@1blockghana.com')->send(new MailtrapAdmin($data));
+        Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
        // Mail::to($request->email)->send(new MailtrapExample($data));
        // return back()->with('success','Your request has been sent.');
         return redirect()->route('request.status');
@@ -63,10 +65,6 @@ class AdminController extends Controller
         ]
     );
 
-        /* if ($validator->fails()) {
-        return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
-    } */
-
     Amenities::create([
             'name' => $request->name,
         ]);
@@ -82,9 +80,9 @@ class AdminController extends Controller
     }
 
     public function update(Request $request, $id){
-    $validated = $request->validate([
-        'name' => 'required|max:255',
-    ]);
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+        ]);
 
 
     Amenities::where('id',$id)->update([
@@ -94,10 +92,66 @@ class AdminController extends Controller
     }
 
     public function delete($id){
-    
+
      $amenities =  Amenities::find($id);
 
      $amenities->delete();
      return redirect()->route('amenity.list')->with('success','Amenity has been successfully deleted');
+    }
+
+    //PARTNERS TYPES
+    public function viewPartners(){
+        $partners = BusinessType::select('id','name','position')->orderBy('position')->get();
+        return view('backend.partners.list', compact('partners'));
+    }
+
+
+    public function storePartner(Request $request){
+       // dd($request);
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|unique:business_type|max:255',
+        ],
+        $messages = [
+            'required' => 'The :attribute field is required.',
+            'name.unique' => 'Partner type already exist.',
+            'position.unique' => 'Position number already exist.',
+        ]
+    );
+
+        BusinessType::create([
+            'name' => $request->name,
+            'position' => $request->position,
+        ]);
+
+        return back()->with('success','New Partner Type has been created successfully');
+    }
+
+    public function editPartner($id){
+        //dd($amenities);
+     $partner =  BusinessType::find($id);
+     //dd($amenities);
+        return view('backend.partners.edit', compact('partner'));
+    }
+
+    public function updatePartner(Request $request, $id){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'position' => 'required|max:255',
+        ]);
+
+
+    BusinessType::where('id',$id)->update([
+        'name' => $request->name,
+        'position' => $request->position,
+     ]);
+        return redirect()->route('partner.list')->with('toast_success','Partner Type has been updated successfully');
+    }
+
+    public function deletePartner($id){
+
+     $partners =  BusinessType::find($id);
+
+     $partners->delete();
+     return redirect()->route('partner.list')->with('success','Partner Type has been successfully deleted');
     }
 }

@@ -5,6 +5,8 @@
             <div class="col-md-12 login-center">
                 <div class="card">
                     <div class="card-login">
+
+
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -13,10 +15,6 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
-
-                        @if(Session::has('message'))
-                        <p class="alert alert-danger">{{ Session::get('message') }}</p>
                         @endif
                         <form method="POST" action="{{ route('reset.password.post') }}">
                             @csrf

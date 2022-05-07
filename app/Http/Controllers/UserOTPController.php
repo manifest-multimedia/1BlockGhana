@@ -63,27 +63,30 @@ class UserOTPController extends Controller
                'package'=> $package->name,
                'url' =>  route('reset.password.get', ['token'=>$token,'email'=>$email]),
            ];
-          // dd($data['url']);
-           Mail::to($request->email)->send(new OTPMail($data));
-        $user = User::create([
+
+            $user = User::create([
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'physical_address' => $request->physical_address,
                 'email' => $request->email,
-                'role' => 'agent',
+                'user_type' => 'agent',
                 'password' => Hash::make('1blockghana')
             ]);
+            $user->assignRole('user');
 
-        foreach (User::where('email', $request->email)->cursor() as $agent) {
-            Business::create([
-                'user_id' => $agent->id,
-                'name' =>  $request->business_name,
-                'mobile' => $request->business_phone,
-                'email' => $request->business_email,
-                'category_id' => $request->category_id,
-                'package_id' => $request->package_id,
-            ]);
-        }
+            foreach (User::where('email', $request->email)->cursor() as $agent) {
+                Business::create([
+                    'user_id' => $agent->id,
+                    'name' =>  $request->business_name,
+                    'mobile' => $request->business_phone,
+                    'email' => $request->business_email,
+                    'category_id' => $request->category_id,
+                    'package_id' => $request->package_id,
+                ]);
+            }
+
+        // dd($data['url']);
+        Mail::to($request->email)->send(new OTPMail($data));
 
           return redirect()->route('agent.add')->with('toast_success', 'Registration Link has been sent to the agent email');
       }

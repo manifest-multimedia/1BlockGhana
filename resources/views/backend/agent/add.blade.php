@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="Agents" menu="Add Agent" />
+        <x-backend.breadcrumb page="Agents" menu="Add New Agent" />
         @if (session('status'))
             <div class="mb-4 text-sm font-medium text-green-600">
                 {{ session('status') }}
@@ -26,10 +26,10 @@
                                 <p><strong>You need to first add your Packages before an agent can be added to this
                                         platform</strong></p>
                                 <span><a href="{{ route('package.add') }}">Click here</a> to add a new package</span>
-                            @elseif ($categories->isEmpty())
+                            @elseif ($partners->isEmpty())
                                 <p><strong>You need to first add the Business Category before an agent can be added to
                                         this platform</strong></p>
-                                <span><a href="{{ route('category.add') }}">Click here</a> to add a new Category</span>
+                                <span><a href="{{ route('partner.add') }}">Click here</a> to add a new Category</span>
                             @else
                                 <form action="{{ route('send.agent.otp') }}" method="post">
                                     @csrf
@@ -57,10 +57,10 @@
                                         </div>
 
                                         <div class="col-sm-6">
-                                            <x-form.label value="{{ __('Business Category') }}" />
-                                            <select class="form-control" name="category_id" id="">
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <x-form.label value="{{ __('Partner Type') }}" />
+                                            <select class="form-control" name="partner_id" id="">
+                                                @foreach ($partners as $partner)
+                                                    <option value="{{ $partner->id }}">{{ $partner->name }}</option>
                                                 @endforeach
 
                                             </select>

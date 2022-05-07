@@ -190,13 +190,7 @@
 
 								</div>
 
-								<div class="mt-5 col-md-6">
-									<div class="form-group">
-										<label for="">Youtube Video link</label>
-										<input type="text" name="video_link" placeholder="https://youtu.be/gr6O1jRsvYg"
-											class="form-control">
-									</div>
-								</div>
+								
 							</div>
 
 						</div>

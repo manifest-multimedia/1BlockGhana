@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
 <section class="content agent">
-    <x-backend.breadcrumb page="Packages" menu="Agents" link="{{route('agent.add')}}" />
+    <x-backend.breadcrumb page="Agent" name="Add New Agent" menu="Agents" link="{{route('agent.add')}}" />
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
@@ -19,6 +19,7 @@
                                 <th>No.</th>
                                 <th>Name</th>
                                 <th>Business Name</th>
+                                <th>Partner Type</th>
                                 <th>Package</th>
                                 <th>Action</th>
                             </tr>
@@ -36,11 +37,17 @@
                                 <td width="25%"><span class="list-name">{{$agent->firstname}} {{$agent->lastname}}</span>
                                 </td>
                                 <td>{{$agent->business->name?? ''}}</td>
-                                <td>@if (!$agent->business == null)
-                                    {{App\Models\Package::find($agent->business->package_id)->name ?? ''}}
-                                @endif
-                                    </td>
+                                <td>
+                                    @if (!$agent->partner == null)
+                                        {{App\Models\BusinessType::find($agent->business->business_type_id)->name ?? ''}}
+                                    @endif
+                                </td>
 
+                                <td>
+                                    @if (!$agent->business == null)
+                                        {{App\Models\Package::find($agent->business->package_id)->name ?? ''}}
+                                    @endif
+                                </td>
 
                                 <td>
                                     <a href="{{route('agent.profile.id',$agent->id)}}"><button class="badge badge-success">View Profile</button></a>

@@ -43,7 +43,7 @@ class PackagesController extends Controller
             'name' => 'required|unique:packages|max:255',
             'type' => 'required',
             'imageLimit' => 'required',
-            'videouploadlimit' => 'required',
+
         ],
         $messages = [
             'required' => 'The :attribute field is required.',
@@ -54,14 +54,12 @@ class PackagesController extends Controller
         if ($validator->fails()) {
        // return back()->with('error', $validator->messages()->all()[0])->withInput();
     }
-        $totalLimit = $request->imageLimit + $request->videouploadlimit;
+       // $totalLimit = $request->imageLimit + $request->videouploadlimit;
 
         Package::create([
             'name' => $request->name,
             'type' => $request->type,
-            'listing_limit' => $totalLimit,
             'image_upload_limit' => $request->imageLimit,
-            'video_upload_limit' => $request->videouploadlimit,
         ]);
 
         return back()->with('success','Package created successfully');
@@ -80,18 +78,16 @@ class PackagesController extends Controller
         'name' => 'required|max:255',
         'type' => 'required',
         'imageLimit' => 'required',
-        'listingLimit' => 'required',
+
     ]);
 
 
-    $totalLimit = $request->imageLimit + $request->videouploadlimit;
+  // $totalLimit = $request->imageLimit + $request->videouploadlimit;
 
      Package::where('id',$id)->update([
         'name' => $request->name,
         'type' => $request->type,
-        'listing_limit' => $totalLimit,
         'image_upload_limit' => $request->imageLimit,
-        'listing_limit' => $request->listingLimit,
      ]);
         return redirect()->route('package.list')->with('success','Package updated successfully');
     }

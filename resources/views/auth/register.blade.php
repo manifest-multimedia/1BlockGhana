@@ -59,9 +59,18 @@
                                         <x-form.input name="business_name" placeholder="Business Name" />
                                     </div>
 
+                                    @php
+                                        $partners = App\Models\BusinessType::get();
+                                    @endphp
+
                                     <div class="col-md-6">
-                                        <x-jet-label value="{{ __('Business Type') }}" />
-                                        <x-form.input name="business_type" placeholder="Business Type" />
+                                        <x-jet-label value="{{ __('Partner Type') }}" />
+                                        <select class="form-control" name="partner_id" id="">
+                                            @foreach ($partners as $partner)
+                                                <option value="{{ $partner->id }}">{{ $partner->name }}</option>
+                                            @endforeach
+
+                                        </select>
                                     </div>
 
 

@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="Packages" menu="Packages" link="{{ route('package.add') }}" />
+        <x-backend.breadcrumb page="Packages" name="Add New Package" menu="Packages" link="{{ route('package.add') }}" />
         <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="card">
                 <div class="header">
@@ -19,10 +19,7 @@
                                         <th>No.</th>
                                         <th>Name</th>
                                         <th>Type</th>
-                                        <th>Listing Limit</th>
                                         <th>Image Upload</th>
-                                        <th>Video Upload</th>
-                                     {{--    <th>Video limit</th> --}}
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,22 +36,20 @@
                                             <td><span class="list-name">{{ $package->name }}</span>
                                             </td>
                                             <td>{{ $package->type }}</td>
-                                            <td>{{ $package->listing_limit }} listing</td>
                                             <td>{{ $package->image_upload_limit }} pictures</td>
-                                            <td>{{ $package->video_upload_limit }} video</td>
                                             {{-- <td>{{ $package->video_length_limit }} seconds</td> --}}
 
                                             <td>
                                                 <a href="{{ route('package.edit', ['id' => $package->id]) }}"><button class="badge badge-success">Edit</button></a>
 
 
-                                                
+
                                                 <button type="button" data-toggle="modal" data-target="#deleteModal{{$package->id}}"
                                                     class="badge badge-danger">Delete</button>
                                                 <!-- Button trigger modal -->
 
                                                 @include('backend.packages.modal.delete')
-                                                
+
                                             </td>
                                         </tr>
                                     @endforeach

@@ -18,6 +18,9 @@ class Business extends Model
     public function properties(){
         return $this->hasMany(Properties::class);
     }
+    public function partner(){
+        return $this->belongsTo(BusinessType::class, 'business_type_id','id');
+    }
     public function package(){
         return $this->belongsTo(Package::class, 'package_id','id');
     }

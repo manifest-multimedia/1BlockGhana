@@ -47,6 +47,9 @@ Route::get('/request-status', function () {
 Route::get('/listing', [HomeController::class, 'listingByHouses'])->name('listing');
 
 Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->name('listing.details');
+Route::get('/listing-partners/{id}', [HomeController::class, 'partnerListing'])->name('partner.listing');
+Route::get('/listing-category/{id}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/agent-listing/{id}', [HomeController::class, 'agentListing'])->name('agent.listing');
 
 /* Route::get('/listing-details', function () {
     return view('frontend.detail-listing');
@@ -57,6 +60,9 @@ Route::get('/about-us', function () {
 Route::get('/contact-us', function () {
     return view('frontend.contact');
 })->name('contact');
+Route::get('/property-news', function () {
+    return view('frontend.news');
+})->name('news');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -108,6 +114,14 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('amenities')->group( fun
     Route::get('/edit/{id}', [AdminController::class,'edit'])->name('amenity.edit');
     Route::patch('/update/{id}', [AdminController::class,'update'])->name('amenity.update');
     Route::delete('/delete/{id}', [AdminController::class,'delete'])->name('amenity.delete');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('partners')->group( function (){
+    Route::get('/list', [AdminController::class,'viewPartners'])->name('partner.list');
+    Route::post('/store', [AdminController::class,'storePartner'])->name('partner.store');
+    Route::get('/edit/{id}', [AdminController::class,'editPartner'])->name('partner.edit');
+    Route::patch('/update/{id}', [AdminController::class,'updatePartner'])->name('partner.update');
+    Route::delete('/delete/{id}', [AdminController::class,'deletePartner'])->name('partner.delete');
 });
 
 Route::post('/signup-request', [AdminController::class,'signUpRequest'])->name('signup.request');

@@ -195,8 +195,10 @@
                                     </figure>
 
                                     <ul class="list-unstyled mb-0">
-                                        <li>
+                                        <li><a href="{{ route('agent.listing', $property->business->id)}}">
                                             <h5 class="text-capitalize">{{$property->business->user->firstname}} {{$property->business->user->lastname}}</h5>
+                                        </a>
+
                                         </li>
                                         <li><a href="tel:123456"><i
                                                     class="fa fa-phone-square mr-1"></i>{{$property->business->user->mobile}}</a></li>
@@ -305,7 +307,7 @@
                                     </figure>
                                     <ul class="list-inline my-auto">
                                         <li class="list-inline-item">
-                                            <a href="#">
+                                            <a href="{{ route('agent.listing', $property->business->id)}}">
                                                 {{$property->business->user->firstname}} {{$property->business->user->lastname}} <br>
                                             </a>
 

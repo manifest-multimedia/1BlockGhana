@@ -1,13 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Properties;
+use App\Models\Business;
 use App\Models\Category;
+use App\Models\Properties;
+use App\Models\BusinessType;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home() {
+
+        if(auth()->user()){
+            auth()->user()->assignRole('admin');
+        }
         $properties = Properties::get();
       //  dd($properties);
         return view('frontend.homepage', compact('properties'));
@@ -36,5 +42,33 @@ class HomeController extends Controller
         $similar = Properties::whereNotIn('id', [$id])->get();
        // dd($similar);
         return view('frontend.property-details', compact('property','similar'));
+    }
+
+    public function partnerListing($id) {
+
+        $properties = Properties::where('category_id',$id)->get();
+
+        $business_type = BusinessType::find($id)->name;
+       // dd($similar);
+        return view('frontend.category-listing', compact('properties','business_type'));
+    }
+
+    public function categoryListing($id) {
+
+        $properties = Properties::where('category_id',$id)->get();
+
+        //SIMILAR PROPERTIES
+        $similar = Properties::whereNotIn('category_id', [$id])->get();
+       // dd($similar);
+        return view('frontend.category-listing', compact('properties','similar'));
+    }
+
+    public function agentListing($id) {
+        //AGENT PROPERTIES
+        $business = Business::find($id);
+
+        //SIMILAR PROPERTIES
+        $otherAgentsProperties = Properties::whereNotIn('business_id', [$id])->get();
+        return view('frontend.agent-listing', compact('otherAgentsProperties','business'));
     }
 }

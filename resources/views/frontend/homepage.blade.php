@@ -32,13 +32,6 @@
  </section>
  <!-- END VIDEO -->
 
- <!-- BLOG ON MOBILE-->
- <x-frontend.blog />
- <!-- END BLOG -->
-
- <!-- BLOG ON DESKTOP-->
- <x-frontend.blog_old />
- <!-- END BLOG -->
 
  <!-- TESTIMONIAL -->
 {{--  <x-frontend.testimonial /> --}}

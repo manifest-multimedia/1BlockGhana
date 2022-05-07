@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Package;
 use App\Models\Business;
 use App\Models\Category;
-use App\Models\Package;
-use App\Models\User;
-use App\Models\TemporaryFile;
+use App\Models\BusinessType;
 use Illuminate\Http\Request;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 
@@ -27,28 +28,28 @@ class AgentController extends Controller
 
     public function addAgent(){
         $packages = Package::all();
-        $categories = Category::all();
+        $partners = BusinessType::all();
        // return view('sbadmin.agents.add',compact('packages','categories'));
-        return view('backend.agent.add',compact('packages','categories'));
+        return view('backend.agent.add',compact('packages','partners'));
     }
 
     public function postAgent(Request $request){
-
-        /* User::create([
+        $request->validate(['email' => 'required|email|unique:users,email']);
+        User::create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
             'physical_address' => $request->physical_address,
-        ]); */
+        ]);
 
-       /*  $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
         $token = Password::getRepository()->create($user);
         $user->sendPasswordResetNotification($token);
- */
-        $request->validate(['email' => 'required|email']);
+
+
 
         $status = Password::sendResetLink($request->only('email'));
-        dd($status);
+        //dd($status);
         return $status === Password::RESET_LINK_SENT
             ? back()->with(['status' => __($status)])
             : back()->withErrors(['email' => __($status)]);
@@ -80,7 +81,7 @@ class AgentController extends Controller
 
         $validated = $request->validate([
             'business_phone' => 'required|numeric',
-            //'business_email' => 'required|unique:businesses,email',
+            'business_email' => 'unique:businesses,email',
             'business_description' => 'required',
         ]);
        // $id = Auth::user()->id;
@@ -90,8 +91,8 @@ class AgentController extends Controller
         [
             'mobile' => $request->business_phone,
             'email' => $request->business_email,
-            'package_id' => 1,
-            'category_id' => 2,
+            'package_id' => $request->package_id,
+            'business_type_id' => $request->partner_id,
             'website' => $request->business_website,
             'description' => $request->business_description,
          ]);
@@ -116,30 +117,6 @@ class AgentController extends Controller
                $temporaryFile->delete();
            }
 
-      /*    $old_image = $request->old_image;
-         $logo = $request->file('image');
-
-        if($logo){
-            $name_gen = hexdec(uniqid());
-            $logo_ext = strtolower($logo->getClientOriginalExtension());
-            $logo_name = $name_gen. '.'.$logo_ext;
-            $up_location = 'assets/business/';
-            $logo_path = $up_location.$logo_name;
-            $logo->move($up_location,$logo_name);
-
-            $old_paths = Business::where('user_id',$user->id)->get();
-            foreach ($old_paths as $old_path) {
-
-                if($old_path->path){
-                    unlink($old_path->path);
-                }
-            }
-
-
-            Business::where('user_id',$user->id)->update([
-                'path' => $logo_path,
-             ]);
-        } */
 
            return redirect()->route('agent.profile')->with('success', 'Logo has been uploaded successfully');
     }

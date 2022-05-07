@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer text-white">
     <div class="container">
         <nav>
             <ul>

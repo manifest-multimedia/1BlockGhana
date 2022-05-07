@@ -2,13 +2,12 @@
 
     <x-frontend.header />
 
-    <x-frontend.breadcrumb-list />
+    <x-frontend.breadcrumb-list title="{{$business->name}}" />
 
     <div class="clearfix"></div>
 
 
     <!-- LISTING LIST -->
-
     <section>
         <div class="container">
             <div class="row">
@@ -82,7 +81,7 @@
                                     {{-- LIST SECTION --}}
                                     {{-- <div class="tab-pane fade " id="pills-tab-one" role="tabpanel"
                                         aria-labelledby="pills-tab-one">
-                                        @foreach ($properties as $property)
+                                        @foreach ($agentProperties as $agentProperty)
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="card__image card__box-v1">
@@ -93,7 +92,7 @@
 
                                                                     <img src="frontend/images/gallery1.jpg" alt=""
                                                                         class="img-fluid w100 img-transition">
-                                                                    <div class="info"> {{$property->purpose}}</div>
+                                                                    <div class="info"> {{$agentProperty->purpose}}</div>
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -101,15 +100,15 @@
                                                             <div class="card__image__body">
 
                                                                 <span
-                                                                    class="badge badge-primary text-capitalize mb-2">{{$property->category->name}}</span>
+                                                                    class="badge badge-primary text-capitalize mb-2">{{$agentProperty->category->name}}</span>
                                                                 <h6>
-                                                                    <a href="#">{{$property->name}}</a>
+                                                                    <a href="#">{{$agentProperty->name}}</a>
                                                                 </h6>
                                                                 <div class="card__image__body-desc">
 
                                                                     <p class="text-capitalize">
                                                                         <i class="fa fa-map-marker"></i>
-                                                                       {{$property->location}}
+                                                                       {{$agentProperty->location}}
                                                                     </p>
                                                                 </div>
 
@@ -118,20 +117,20 @@
 
                                                                         <span>
                                                                             baths <br>
-                                                                            <i class="fa fa-bath"></i> {{$property->bathroom}}
+                                                                            <i class="fa fa-bath"></i> {{$agentProperty->bathroom}}
                                                                         </span>
                                                                     </li>
                                                                     <li class="list-inline-item">
                                                                         <span>
                                                                             bedroom <br>
-                                                                            <i class="fa fa-bed"></i> {{$property->bedroom}}
+                                                                            <i class="fa fa-bed"></i> {{$agentProperty->bedroom}}
                                                                         </span>
                                                                     </li>
 
                                                                     <li class="list-inline-item">
                                                                         <span>
                                                                             area <br>
-                                                                            <i class="fa fa-map"></i> {{$property->size}} sq ft
+                                                                            <i class="fa fa-map"></i> {{$agentProperty->size}} sq ft
                                                                         </span>
                                                                     </li>
                                                                 </ul>
@@ -147,7 +146,7 @@
                                                                 <ul class="list-inline my-auto">
                                                                     <li class="list-inline-item name">
                                                                         <a href="#">
-                                                                            {{$property->business->user->firstname}} {{$property->business->user->lastname}}
+                                                                            {{$agentProperty->business->user->firstname}} {{$agentProperty->business->user->lastname}}
                                                                         </a>
 
                                                                     </li>
@@ -157,7 +156,7 @@
                                                                 <ul class="list-inline my-auto ml-auto price">
                                                                     <li class="list-inline-item ">
 
-                                                                        <h6>{{ $property->currency->code }}{{$property->price}}</h6>
+                                                                        <h6>{{ $agentProperty->currency->code }}{{$agentProperty->price}}</h6>
                                                                     </li>
 
                                                                 </ul>
@@ -177,61 +176,61 @@
                                     <div class="tab-pane fade show active" id="pills-tab-two" role="tabpanel"
                                         aria-labelledby="pills-tab-two">
                                         <div class="row">
-                                            @foreach ($properties as $property)
+                                            @foreach ($business->properties as $agentProperty)
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="card__image card__box-v1">
                                                     <div class="card__image-header h-250 img-space">
                                                        {{--  <div class="ribbon text-capitalize">sold out</div> --}}
 
-                                                            <a href="{{ route('listing.details', $property->id)}}">
-                                                                <img src="{{$property->getFirstMediaUrl('properties')}}" alt=""
+                                                            <a href="{{ route('listing.details', $agentProperty->id)}}">
+                                                                <img src="{{$agentProperty->getFirstMediaUrl('properties')}}" alt=""
                                                                 class="img-fluid w100 img-transition">
                                                             </a>
-                                                        <div class="info"> {{$property->purpose ?? 'Not Stated'}}</div>
+                                                        <div class="info"> {{$agentProperty->purpose ?? 'Not Stated'}}</div>
                                                     </div>
                                                     <div class="card__image-body">
                                                         <span
-                                                            class="badge badge-primary text-capitalize mb-2">{{$property->category->name ?? 'Uncategorised'}}</span>
+                                                            class="badge badge-primary text-capitalize mb-2">{{$agentProperty->category->name ?? 'Uncategorised'}}</span>
                                                         <h6 class="text-capitalize">
-                                                            <a href="{{ route('listing.details', $property->id)}}">{{$property->name ?? 'Not Stated'}}</a>
+                                                            <a href="{{ route('listing.details', $agentProperty->id)}}">{{$agentProperty->name ?? 'Not Stated'}}</a>
                                                         </h6>
 
                                                         <p class="text-capitalize">
                                                             <i class="fa fa-map-marker"></i>
-                                                            {{$property->location ?? '--'}}
+                                                            {{$agentProperty->location ?? '--'}}
                                                         </p>
                                                         <ul class="list-inline card__content">
                                                             <li class="list-inline-item">
 
                                                                 <span>
                                                                     baths <br>
-                                                                    <i class="fa fa-bath"></i> {{$property->bathroom ?? ''}}
+                                                                    <i class="fa fa-bath"></i> {{$agentProperty->bathroom ?? ''}}
                                                                 </span>
                                                             </li>
                                                             <li class="list-inline-item">
                                                                 <span>
                                                                     bedroom <br>
-                                                                    <i class="fa fa-bed"></i> {{$property->bedroom ?? ''}}
+                                                                    <i class="fa fa-bed"></i> {{$agentProperty->bedroom ?? ''}}
                                                                 </span>
                                                             </li>
 
                                                             <li class="list-inline-item">
                                                                 <span>
                                                                     area <br>
-                                                                    <i class="fa fa-map"></i> {{$property->size ?? ''}} sq ft
+                                                                    <i class="fa fa-map"></i> {{$agentProperty->size ?? ''}} sq ft
                                                                 </span>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="card__image-footer">
                                                         <figure>
-                                                            <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg'}}" alt=""
+                                                            <img src="{{$agentProperty->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg'}}" alt=""
                                                                 class="img-fluid rounded-circle">
                                                         </figure>
                                                         <ul class="list-inline my-auto">
                                                             <li class="list-inline-item">
-                                                                <a href="{{ route('agent.listing', $property->business->id)}}">
-                                                                    {{$property->business->user->firstname ?? ''}} {{$property->business->user->lastname ?? ''}}
+                                                                <a href="#">
+                                                                    {{$agentProperty->business->user->firstname ?? ''}} {{$agentProperty->business->user->lastname ?? ''}}
                                                                 </a>
 
                                                             </li>
@@ -240,7 +239,7 @@
                                                         <ul class="list-inline my-auto ml-auto">
                                                             <li class="list-inline-item">
 
-                                                                <h6>{{ $property->currency->code }}{{$property->price ?? ''}}</h6>
+                                                                <h6>{{ $agentProperty->currency->code }}{{$agentProperty->price ?? ''}}</h6>
                                                             </li>
 
                                                         </ul>
@@ -267,12 +266,98 @@
         </div>
     </section>
 
-    <!-- END LISTING LIST -->
 
-    <!-- BRAND PARTNER -->
-    <x-frontend.partners />
-    <!-- END BRAND PARTNER -->
+    @if (!($business->properties->isEmpty()))
+    <section>
+        <div class="container">
+             <!-- OTHER AGENTS PROPERTIES -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="similiar__item">
+                    <h6 class="text-capitalize detail-heading">
+                        Other properties
+                    </h6>
+                    <div class="similiar__property-carousel owl-carousel owl-theme">
+                        @forelse ($otherAgentsProperties as $prop)
+                        <div class="item">
+                            <!-- ONE -->
+                            <div class="card__image">
+                                <div class="card__image-header h-250">
+                                    {{-- <div class="ribbon text-capitalize">featured</div> --}}
+                                    <a href="{{route('listing.details', $prop->id)}}">
+                                        <img src="{{$prop->getFirstMediaUrl('properties')}}" alt="" class="img-fluid w100 img-transition">
+                                    </a>
+                                    <div class="info"> {{$prop->purpose}}</div>
+                                </div>
+                                <div class="card__image-body">
+                                    <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name ?? ''}}</span>
+                                    <h6 class="text-capitalize">
+                                        <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
+                                    </h6>
 
+                                    <p class="text-capitalize">
+                                        <i class="fa fa-map-marker"></i>
+                                        {{$prop->location}}
+                                    </p>
+                                    <ul class="list-inline card__content">
+                                        <li class="list-inline-item">
+
+                                            <span>
+                                                baths <br>
+                                                <i class="fa fa-bath"></i> {{$prop->bathroom}}
+                                            </span>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <span>
+                                                beds <br>
+                                                <i class="fa fa-bed"></i>{{$prop->bedroom}}
+                                            </span>
+                                        </li>
+
+                                        <li class="list-inline-item">
+                                            <span>
+                                                area <br>
+                                                <i class="fa fa-map"></i> {{$prop->size}} sq ft
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card__image-footer">
+                                    <figure>
+                                        <img src="{{$property->business->user->getFirstMediaUrl('logos', 'thumb-100')}}" alt="" class="img-fluid rounded-circle">
+                                    </figure>
+                                    <ul class="list-inline my-auto">
+                                        <li class="list-inline-item">
+                                            <a href="{{ route('agent.listing', $property->business->id)}}">
+                                                {{$property->business->user->firstname}} {{$property->business->user->lastname}} <br>
+                                            </a>
+
+                                        </li>
+
+                                    </ul>
+                                    <ul class="list-inline my-auto ml-auto">
+                                        <li class="list-inline-item">
+
+                                            <h6 class="">{{$prop->price}}</h6>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                            <p>There is no Similar Property</p>
+                        @endforelse
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SIMILIAR PROPERTY -->
+        </div>
+    </section>
+    @endif
 
 
     <!-- CALL TO ACTION -->

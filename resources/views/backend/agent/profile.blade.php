@@ -17,7 +17,23 @@
                         <form action="{{ route('agent.update', $user->id) }}" method="POST">
                             @csrf
                             <div class="body">
+                                @role('admin')
+                                <div class="row clearfix mb-3">
+                                    <div class="col-sm-6">
+                                        <x-form.label value="{{ __('First Name') }}" />
+                                        <x-form.input name="firstname" placeholder="Firstname"
+                                            value="{{ $user->firstname }}" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <x-form.label value="{{ __('Last Name') }}" />
+                                            <x-form.input name="lastname" placeholder="Lastname"
+                                                value="{{ $user->lastname }}" />
+                                        </div>
+                                    </div>
+                                </div>
 
+                                @else
                                 <div class="row clearfix mb-3">
                                     <div class="col-sm-6">
                                         <x-form.label value="{{ __('First Name') }}" />
@@ -31,8 +47,8 @@
                                                 value="{{ $user->lastname }}" readonly />
                                         </div>
                                     </div>
-
                                 </div>
+                                @endrole
 
                                 <div class="row clearfix mb-3">
                                     <div class="col-sm-6">
@@ -143,7 +159,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-2">
-                                            <img src="{{ auth()->user()->getFirstMediaUrl('logos', 'thumb-100')? auth()->user()->getFirstMediaUrl('logos', 'thumb-100'): url('assets/images/avatar.jpg') }}"
+                                            <img src="{{ $user->getFirstMediaUrl('logos', 'thumb-100')? auth()->user()->getFirstMediaUrl('logos', 'thumb-100'): url('assets/images/avatar.jpg') }}"
                                                 alt="preview image" style="max-width: 100px;">
                                         </div>
                                     </div>
