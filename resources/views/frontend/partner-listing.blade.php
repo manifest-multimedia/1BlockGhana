@@ -2,7 +2,7 @@
 
     <x-frontend.header />
 
-    <x-frontend.breadcrumb-list />
+    <x-frontend.breadcrumb-list title="{{$business_type}}" />
 
     <div class="clearfix"></div>
 

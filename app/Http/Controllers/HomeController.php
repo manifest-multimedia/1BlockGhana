@@ -50,17 +50,18 @@ class HomeController extends Controller
 
         $business_type = BusinessType::find($id)->name;
        // dd($similar);
-        return view('frontend.category-listing', compact('properties','business_type'));
+        return view('frontend.partner-listing', compact('properties','business_type'));
     }
 
     public function categoryListing($id) {
 
         $properties = Properties::where('category_id',$id)->get();
 
+        $category_name = Category::find($id)->name;
         //SIMILAR PROPERTIES
         $similar = Properties::whereNotIn('category_id', [$id])->get();
        // dd($similar);
-        return view('frontend.category-listing', compact('properties','similar'));
+        return view('frontend.category-listing', compact('properties','similar','category_name'));
     }
 
     public function agentListing($id) {
