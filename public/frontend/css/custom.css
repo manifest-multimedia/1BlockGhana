@@ -349,7 +349,7 @@ a.play-video-12 {
     max-height: 55vh;
 }
 
-.homepage__property-carousel.owl-carousel .owl-nav button{
+.homepage__property-carousel.owl-carousel .owl-nav button, .search__property .position-relative .nav-tabs-02 .nav-item .nav-link.active{
     background: #b78746;
 }
 
@@ -365,4 +365,18 @@ a.play-video-12 {
     opacity: 1;
     transition: all ease 0.25s;
     transform: rotate(0deg);
+}
+
+
+.search__property .position-relative .nav-tabs-02 .nav-item .nav-link
+{
+    color: #002247;
+}
+
+.bg-light-gray {
+    background-color: #f3f3ed !important;
+}
+
+section {
+    padding: 40px 0;
 }

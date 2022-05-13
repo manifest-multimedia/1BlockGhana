@@ -88,7 +88,7 @@ class PropertyController extends Controller
                     }
             }
         }
-        else{ dd($request);}
+
 
         return redirect()->route('property.view');
     }
@@ -166,6 +166,11 @@ class PropertyController extends Controller
             $bus_id = $bus->id;
         }
         return view('backend.properties.edit',compact('property','categories','amenities','currencies','package'));
+    }
+
+    public function delete($id){
+        Properties::find($id)->delete();
+        return redirect()->route('property.view')->with('success','Property has been deleted');
     }
 
 }

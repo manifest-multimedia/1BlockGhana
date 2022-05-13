@@ -77,7 +77,7 @@
 
                 {{-- <li class="nav-item"><a class="nav-link" href="/listing"> Listing</a></li> --}}
 
-                <li class="nav-item"><a class="nav-link" href="{{ route('news') }}"> Property News </a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('news') }}"> Blog </a></li>
 
             </ul>
 

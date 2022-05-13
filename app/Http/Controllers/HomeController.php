@@ -14,9 +14,9 @@ class HomeController extends Controller
         /* if(auth()->user()){
             auth()->user()->assignRole('admin');
         } */
-        $properties = Properties::get();
-      //  dd($properties);
-        return view('frontend.homepage', compact('properties'));
+        $properties = Properties::where('status','>=',1)->orderBy('status')->get();
+        $categories = Category::get();
+        return view('frontend.homepage', compact('properties','categories'));
     }
 
     public function listing() {
@@ -46,11 +46,11 @@ class HomeController extends Controller
 
     public function partnerListing($id) {
 
-        $properties = Properties::where('category_id',$id)->get();
+        $businesses = Business::get();
 
-        $business_type = BusinessType::find($id)->name;
+        $businessType = BusinessType::find($id)->name;
        // dd($similar);
-        return view('frontend.partner-listing', compact('properties','business_type'));
+        return view('frontend.partner-listing', compact('businesses','businessType'));
     }
 
     public function categoryListing($id) {
@@ -71,5 +71,13 @@ class HomeController extends Controller
         //SIMILAR PROPERTIES
         $otherAgentsProperties = Properties::whereNotIn('business_id', [$id])->get();
         return view('frontend.agent-listing', compact('otherAgentsProperties','business'));
+    }
+
+
+    public function autocompleteLocation(Request $request){
+
+        $locations = Properties::select('name')->where('name','LIKE', '%'. $request->location. '%')->get();
+
+        return response()->json($locations);
     }
 }

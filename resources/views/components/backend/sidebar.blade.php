@@ -26,7 +26,8 @@
 					<li><a href="{{route('amenity.add')}}">Add Amenities</a></li>
 				</ul>
 			</li> -->
-			<li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Properties</span> </a>
+
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Properties</span> </a>
 				<ul class="ml-menu">
 					<li><a href="/properties">Listed Properties</a></li>
 					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
@@ -36,8 +37,19 @@
 			</li>
 
 
-
             @role("admin")
+
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Adverts</span> </a>
+				<ul class="ml-menu">
+					<li><a href="{{route('topads.view')}}">Top Ads</a></li>
+					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
+					<li><a href="{{ route('featuredads.view')}}">Featured Ads</a></li>
+					{{-- <li><a href="property/details">Property Detail</a></li> --}}
+				</ul>
+			</li>
+
+
+
             <li><a href="javascript:void(0);" class="menu-toggle"><i
                 class="zmdi zmdi-balance-wallet"></i><span>Packages</span> </a>
                 <ul class="ml-menu">

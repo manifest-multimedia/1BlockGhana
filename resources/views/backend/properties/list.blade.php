@@ -2,10 +2,10 @@
 
 	<!-- Main Content -->
 	<section class="content agent">
-		<x-backend.breadcrumb page="Properties" name="Add New Property" menu="Properties" link="Properties/add" />
+		<x-backend.breadcrumb page="Properties" name="Add New Property" menu="Properties" link="{{route('property.add')}}" />
 
 		<div class="clearfix row">
-			<div class="col-lg-12">
+			{{-- <div class="col-lg-12">
 				@if (!$properties->isEmpty())
 				@foreach ($properties as $property)
 				<div class="card property_list">
@@ -22,7 +22,7 @@
 												@endforeach
 
 										</div>
-										<!-- Left and right controls -->
+
 										<a class="carousel-control-prev" href="#demo2" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
 										<a class="carousel-control-next"  href="#demo2" data-slide="next"><span style="color:red;" class="carousel-control-next-icon"></span></a>
 									</div>
@@ -48,14 +48,7 @@
 										@endforeach
 
 									</div>
-									{{-- <div class="property-action m-t-15">
-										<a href="#" title="Square Feet"><i
-												class="zmdi zmdi-view-dashboard"></i><span>{{$property->size}}</span></a>
-										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>{{$property->bedroom}}</span></a>
-										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
-										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
-												24H</span></a>
-									</div> --}}
+
 								</div>
 							</div>
 						</div>
@@ -67,147 +60,75 @@
 				<p><strong>No Property listed</strong></p>
 				<span><a href="{{ route('property.add') }}">Click here</a> to add a new Property</span>
 				@endif
-				{{-- <div class="card property_list">
-					<div class="body">
-						<div class="row">
-							<div class="col-lg-4 col-md-6">
-								<div class="property_image">
-									<img class="img-thumbnail img-fluid" src="assets/images/image-gallery/1.jpg" alt="img">
-									<span class="badge badge-danger">For Sale</span>
-								</div>
-							</div>
-							<div class="col-lg-8 col-md-6">
-								<div class="property-content">
-									<div class="detail">
-										<h5 class="text-success m-t-0 m-b-0">$390,000 - $430,000</h5>
-										<h4 class="m-t-0"><a href="#" class="col-blue-grey">Accra
-												Estate</a></h4>
-										<p class="text-muted"><i class="zmdi zmdi-pin m-r-5"></i>East Legon,
-											Accra, GA
-										</p>
-										<p class="text-muted m-b-0">Lorem ipsum dolor sit amet, consectetur
-											adipiscing elit
-											Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb
-										</p>
-									</div>
-									<div class="property-action m-t-15">
-										<a href="#" title="Square Feet"><i class="zmdi zmdi-view-dashboard"></i><span>280</span></a>
-										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>4</span></a>
-										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
-										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
-												24H</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card property_list">
-					<div class="body">
-						<div class="row">
-							<div class="col-lg-4 col-md-6">
-								<div class="property_image">
-									<img class="img-thumbnail img-fluid" src="assets/images/image-gallery/2.jpg" alt="img">
-									<span class="badge badge-warning">For Rent</span>
-								</div>
-							</div>
-							<div class="col-lg-8 col-md-6">
-								<div class="property-content">
-									<div class="detail">
-										<h5 class="text-success m-t-0 m-b-0">$390,000 - $430,000</h5>
-										<h4 class="m-t-0"><a href="#" class="col-blue-grey">Accra
-												Estate</a></h4>
-										<p class="text-muted"><i class="zmdi zmdi-pin m-r-5"></i>East Legon,
-											Accra, GA
-										</p>
-										<p class="text-muted m-b-0">Lorem ipsum dolor sit amet, consectetur
-											adipiscing elit
-											Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb
-										</p>
-									</div>
-									<div class="property-action m-t-15">
-										<a href="#" title="Square Feet"><i class="zmdi zmdi-view-dashboard"></i><span>280</span></a>
-										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>4</span></a>
-										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
-										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
-												24H</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card property_list">
-					<div class="body">
-						<div class="row">
-							<div class="col-lg-4 col-md-6">
-								<div class="property_image">
-									<img class="img-thumbnail img-fluid" src="assets/images/image-gallery/3.jpg" alt="img">
-									<span class="badge badge-danger">For Sale</span>
-								</div>
-							</div>
-							<div class="col-lg-8 col-md-6">
-								<div class="property-content">
-									<div class="detail">
-										<h5 class="text-success m-t-0 m-b-0">$390,000 - $430,000</h5>
-										<h4 class="m-t-0"><a href="#" class="col-blue-grey">Accra
-												Estate</a></h4>
-										<p class="text-muted"><i class="zmdi zmdi-pin m-r-5"></i>East Legon,
-											Accra, GA
-										</p>
-										<p class="text-muted m-b-0">Lorem ipsum dolor sit amet, consectetur
-											adipiscing elit
-											Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb
-										</p>
-									</div>
-									<div class="property-action m-t-15">
-										<a href="#" title="Square Feet"><i class="zmdi zmdi-view-dashboard"></i><span>280</span></a>
-										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>4</span></a>
-										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
-										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
-												24H</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="card property_list">
-					<div class="body">
-						<div class="row">
-							<div class="col-lg-4 col-md-6">
-								<div class="property_image">
-									<img class="img-thumbnail img-fluid" src="assets/images/image-gallery/4.jpg" alt="img">
-									<span class="badge badge-danger">For Sale</span>
-								</div>
-							</div>
-							<div class="col-lg-8 col-md-6">
-								<div class="property-content">
-									<div class="detail">
-										<h5 class="text-success m-t-0 m-b-0">$390,000 - $430,000</h5>
-										<h4 class="m-t-0"><a href="#" class="col-blue-grey">Accra
-												Estate</a></h4>
-										<p class="text-muted"><i class="zmdi zmdi-pin m-r-5"></i>East Legon,
-											Accra, GA
-										</p>
-										<p class="text-muted m-b-0">Lorem ipsum dolor sit amet, consectetur
-											adipiscing elit
-											Aliquam gravida magna et fringilla convallis. Pellentesque habitant morb
-										</p>
-									</div>
-									<div class="property-action m-t-15">
-										<a href="#" title="Square Feet"><i class="zmdi zmdi-view-dashboard"></i><span>280</span></a>
-										<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>4</span></a>
-										<a href="#" title="Parking space"><i class="zmdi zmdi-car-taxi"></i><span>2</span></a>
-										<a href="#" title="Garages"><i class="zmdi zmdi-home"></i><span>
-												24H</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> --}}
-			</div>
+
+			</div> --}}
+
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Select Featured Ads</strong> </h2>
+
+                    </div>
+                    <x-notification.message />
+
+                    <div class="body">
+                        <div class="table-responsive">
+                            @if (!$properties->isEmpty())
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Image</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Purpose</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $count = 0;
+                                        @endphp
+
+                                        @foreach ($properties as $property)
+                                            @php $count++;@endphp
+                                            <tr>
+                                                <td><span class="social_icon linkedin">{{ $count }}</span>
+                                                </td>
+                                                <td><span class="list-name"><img src="{{$property->getFirstMediaUrl('properties') ?? url('assets/images/avatar.jpg')}}" alt="{{$property->name}}" width="100"></span>
+                                                </td>
+                                                <td><span class="list-name">{{ $property->name }}</span>
+                                                </td>
+                                                <td><span class="list-name">{{ $property->currency->code }}
+                                                    {{ $property->price }}</span>
+                                                </td>
+                                                <td><span class="list-name">{{ $property->purpose }}</span>
+                                                </td>
+
+                                                <td>
+                                                    <span>
+                                                     <a href="{{ route('property.details', $property->id)}}" class="badge badge-success">View</a>
+                                                    </span>
+                                                     <button type="button" data-toggle="modal"
+                                                     data-target="#deleteModal{{$property->id}}" class="badge badge-danger">Delete</button>
+                                                    </span>
+
+                                                         <!-- Modal -->
+                                                         @include('backend.properties.modal.delete')
+
+
+                                                 </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @else
+                                <p><strong>Properties not available for Featured Ads</strong></p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 		</div>
 

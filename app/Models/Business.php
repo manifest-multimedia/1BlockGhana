@@ -24,5 +24,8 @@ class Business extends Model
     public function package(){
         return $this->belongsTo(Package::class, 'package_id','id');
     }
+    public function businessType(){
+        return $this->belongsTo(businessType::class, 'business_type_id','id');
+    }
 
 }

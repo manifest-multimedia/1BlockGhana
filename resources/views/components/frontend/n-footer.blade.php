@@ -8,10 +8,6 @@
                         {{-- <figure>
                             <img src="frontend/images/logo-blue.png" alt="" class="logo-footer">
                         </figure> --}}
-                        <p>
-                            1Block Ghana helped thousands of clients to find the right property for their needs.
-
-                        </p>
 
                         <ul class="mt-3 mb-0 list-unstyled">
                             <li> <b> <i class="fa fa-map-marker"></i></b><span>Accra, Ghana</span> </li>
@@ -40,39 +36,7 @@
                                 <li class="list-inline-item">
                                     <a href="#">Contact Us</a>
                                 </li>
-                                {{-- <li class="list-inline-item">
-                                    <a href="#">Residential</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Residential Tower</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Beverly Hills</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Los angeles</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">The beach</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Property Listing</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Clasic</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Modern Home</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Luxury</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Beach Pasadena</a>
-                                </li> --}}
+                               
                             </ul>
                         </div>
                     </div>

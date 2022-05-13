@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AgentController;
-use App\Http\Controllers\CategoryController;
+use App\Models\Properties;
 use App\Http\Livewire\Crud;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdsController;
+use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\UserOTPController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\UserOTPController;
-use App\Http\Controllers\UploadController;
-use App\Http\Controllers\HomeController;
-use App\Models\Properties;
 
 
 /*
@@ -25,6 +26,7 @@ use App\Models\Properties;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 Route::post('save-images', function(Request $request){
@@ -50,6 +52,7 @@ Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->na
 Route::get('/listing-partners/{id}', [HomeController::class, 'partnerListing'])->name('partner.listing');
 Route::get('/listing-category/{id}', [HomeController::class, 'categoryListing'])->name('category.listing');
 Route::get('/agent-listing/{id}', [HomeController::class, 'agentListing'])->name('agent.listing');
+Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
 
 /* Route::get('/listing-details', function () {
     return view('frontend.detail-listing');
@@ -138,8 +141,27 @@ Route::get('edit/{id}', [PropertyController::class, 'edit'])->name('property.edi
 Route::get('/add', [PropertyController::class, 'add'])->name('property.add');
 Route::post('/store/{id}', [PropertyController::class, 'store'])->name('property.store');
 Route::post('/update/{id}', [PropertyController::class, 'update'])->name('property.update');
+Route::delete('/delete/{id}', [PropertyController::class, 'delete'])->name('property.delete');
 
 Route::post('upload', [UploadController::class, 'storeProperties']);
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin/ads/')->group( function (){
+
+Route::get('/view', [AdsController::class, 'viewTopAds'])->name('topads.view');
+Route::get('delete/{id}', [AdsController::class, 'deleteTopAds'])->name('topads.delete');
+Route::get('/add', [AdsController::class, 'addTopAds'])->name('topads.add');
+Route::post('/store/{id}', [AdsController::class, 'storeTopAds'])->name('topads.store');
+Route::post('upload', [UploadController::class, 'storeAdImage']);
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin/featured/')->group( function (){
+// FEATURED ADS ROUTES
+Route::get('/view', [AdsController::class, 'viewFeaturedAds'])->name('featuredads.view');
+Route::get('/add', [AdsController::class, 'addFeaturedAds'])->name('featuredads.add');
+Route::post('/store/{id}', [AdsController::class, 'storeFeaturedAds'])->name('featuredads.store');
+Route::patch('/update/{id}', [AdsController::class, 'updateFeaturedAds'])->name('featuredads.update');
+Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedAds'])->name('featuredads.remove');
 });
 
 Route::get('users', Crud::class);

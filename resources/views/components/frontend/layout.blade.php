@@ -11,23 +11,13 @@
     <meta name="author" content="Erob Osei - 1blockghana.com">
     <title>1Block Ghana</title>
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content="" />
-    <meta property="og:image" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta property="og:description" content="" />
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
     <link rel="icon" href="/favicon.png" type="image/x-icon"> <!-- Favicon-->
-    <link rel="manifest" href="/site.webmanifest">
     <!-- favicon.ico in the root directory -->
     <link rel="apple-touch-icon" href="/icon.png">
     <meta name="theme-color" content="#3454d1">
     <link href="/frontend/css/styles.css" rel="stylesheet">
     <link href="/frontend/css/custom.css" rel="stylesheet">
+
 </head>
 
 <style>
@@ -64,6 +54,12 @@
         }
     }
 
+    .imgslider{
+        display: block;
+        width: 100px;
+        height: auto;
+    }
+
 </style>
 <body>
 
@@ -82,9 +78,12 @@
 	<!-- SCROLL TO TOP -->
     <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- END SCROLL TO TOP -->
-    <script src="/frontend/js/index.bundle.js"></script>
 
+
+    <script src="/frontend/js/index.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" integrity="sha512-HWlJyU4ut5HkEj0QsK/IxBCY55n5ZpskyjVlAoV9Z7XQwwkqXoYdCIC93/htL3Gu5H3R4an/S0h2NXfbZk3g7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('scripts')
+    @yield('autocomplete')
 </body>
 
 </html>

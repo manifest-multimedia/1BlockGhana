@@ -1,43 +1,19 @@
 <div class="homepage__property bg-light">
     <div class="homepage__property-carousel owl-carousel owl-carousel-slider owl-theme owl-height">
+        @php
+            $topAds = App\Models\TopAds::orderBy('priority')->get();
+        @endphp
+
+        @foreach ($topAds as $topAd)
         <div class="item">
-            <a href="#">
+            <a href="http://{{$topAd->website}}" target="_blank">
                 <div class="tc-image-caption4">
-                    <img src="/frontend/images/bg19.jpg" alt="img1">
-
-
+                    <img src="{{$topAd->getFirstMediaUrl('topAds')}}" alt="{{$topAd->name}}">
                 </div>
             </a>
         </div>
-        <div class="item">
-            <a href="#">
-                <div class="tc-image-caption4">
-                    <img src="/frontend/images/2.jpg" alt="img1">
-
-                </div>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="tc-image-caption4">
-                    <img src="/frontend/images/01.jpg" alt="img1">
-
-
-                </div>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <div class="tc-image-caption4">
-                    <img src="/frontend/images/2.jpg" alt="img1">
-
-                </div>
-            </a>
-        </div>
-
-
+        @endforeach
     </div>
-
 </div>
 
 <div class="clearfix"></div>
@@ -49,7 +25,10 @@
             loop:true,
             margin:10,
             nav:true,
+            dots:false,
             autoplay:true,
+           // autoWidth:false,
+            height: 100,
             autoplayTimeout:3500,
             responsive:{
                 0:{

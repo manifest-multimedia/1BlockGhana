@@ -27,6 +27,26 @@ class UploadController extends Controller
         return '';
     }
 
+    public function storeAdImage(Request $request){
+
+        if($request->hasFile('adImage')){
+            $file = $request->file('adImage');
+            $filename = $file->getClientOriginalName();
+            $folder = uniqid() . '-' . now()->timestamp;
+            $file->storeAs('public/adImage/tmp/' . $folder, $filename);
+
+
+            TemporaryFile::create([
+                'folder' => $folder,
+                'filename' => $filename
+            ]);
+
+            return $folder;
+        }
+
+        return '';
+    }
+
 
     public function storeProperties(Request $request){
 
