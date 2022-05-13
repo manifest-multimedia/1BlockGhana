@@ -5,11 +5,9 @@
                 <!-- ADDRESS -->
                 <div class="col-md-3">
                     <div class="widget__footer">
-                        {{-- <figure>
-                            <img src="frontend/images/logo-blue.png" alt="" class="logo-footer">
-                        </figure> --}}
+                        <h4 class="footer-title">contact us </h4>
 
-                        <ul class="mt-3 mb-0 list-unstyled">
+                        <ul class="mb-0 list-unstyled">
                             <li> <b> <i class="fa fa-map-marker"></i></b><span>Accra, Ghana</span> </li>
 
                             <li> <b><i class="fa fa-phone-square"></i></b><span>+44 7393 354293</span> </li>
