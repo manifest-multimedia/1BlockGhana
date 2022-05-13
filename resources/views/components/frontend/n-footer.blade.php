@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <!-- ADDRESS -->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="widget__footer">
                         {{-- <figure>
                             <img src="frontend/images/logo-blue.png" alt="" class="logo-footer">
@@ -36,69 +36,15 @@
                                 <li class="list-inline-item">
                                     <a href="#">Contact Us</a>
                                 </li>
-                               
+
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!-- END QUICK LINKS -->
-                <!-- Categories LINKS -->
-                <div class="col-md-2">
-                    <div class="widget__footer">
-                        <h4 class="footer-title">Quick Links</h4>
-                        <div class="link__category-two-column">
-                            <ul class="list-unstyled ">
-                                <li class="list-inline-item">
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">About Us</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Contact Us</a>
-                                </li>
-                                {{-- <li class="list-inline-item">
-                                    <a href="#">Residential</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Residential Tower</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Beverly Hills</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Los angeles</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">The beach</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Property Listing</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Clasic</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Modern Home</a>
-                                </li>
-
-                                <li class="list-inline-item">
-                                    <a href="#">Luxury</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Beach Pasadena</a>
-                                </li> --}}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- END QUICK LINKS -->
-
 
                 <!-- NEWSLETTERS -->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="widget__footer">
                         <h4 class="footer-title">follow us </h4>
                         <p class="mb-2">
@@ -121,7 +67,11 @@
 
 
                         </p>
-                        <br>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget__footer">
                         <h4 class="footer-title">newsletter</h4>
                         <!-- Form Newsletter -->
                         <div class="widget__form-newsletter ">
@@ -137,7 +87,6 @@
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- END NEWSLETTER -->

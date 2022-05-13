@@ -72,16 +72,16 @@
                                         <p class="text-capitalize mb-1">{{$business->businessType->name ?? ''}}</p>
 
                                         <ul class="list-unstyled mt-2">
-                                            <li><a href="#" class="text-capitalize"><span><i class="fa fa-phone"></i>
+                                            <li><a href="tel:{{$business->mobile}}" class="text-capitalize"><span><i class="fa fa-phone"></i>
                                                         Mobile :</span> {{$business->mobile}}</a>
                                             </li>
 
 
-                                            <li><a href="#" class="text-capitalize"><span><i class="fa fa-envelope"></i>
+                                            <li><a href="mailto:{{$business->email}}" class="text-capitalize"><span><i class="fa fa-envelope"></i>
                                                         email :</span>
                                                     {{$business->email}}</a></li>
-                                            <li><a href="#" class="text-capitalize"><span><i class="fa fa-globe"></i>
-                                                        email :</span>
+                                            <li><a href="http://{{$business->website}}" class="text"><span><i class="fa fa-globe"></i>
+                                                        Website :</span>
                                                     {{$business->website}}</a></li>
                                         </ul>
 
