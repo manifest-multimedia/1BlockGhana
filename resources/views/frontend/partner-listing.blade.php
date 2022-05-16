@@ -2,7 +2,7 @@
 
     <x-frontend.header />
 
-    <x-frontend.breadcrumb-list title="{{ $businessType }}" />
+    <x-frontend.breadcrumb-list title="{{ $type }}" />
 
     <div class="clearfix"></div>
 
@@ -67,7 +67,7 @@
                                 <div class="profile__agents-body">
                                     <div class="profile__agents-info">
                                         <h5 class="text-capitalize">
-                                            <a href="#" target="_blank">{{$business->name}}</a>
+                                            <a href="{{ route('agent.listing', $business->id)}}">{{$business->name}}</a>
                                         </h5>
                                         <p class="text-capitalize mb-1">{{$business->businessType->name ?? ''}}</p>
 
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         @empty
-                        <p>No Agent at the moment</p>
+                        <p>No {{$type}} at the moment</p>
                         @endforelse
 
                     </div>

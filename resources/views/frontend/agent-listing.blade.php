@@ -78,105 +78,11 @@
 
 
                                 <div class="tab-content" id="myTabContent">
-                                    {{-- LIST SECTION --}}
-                                    {{-- <div class="tab-pane fade " id="pills-tab-one" role="tabpanel"
-                                        aria-labelledby="pills-tab-one">
-                                        @foreach ($agentProperties as $agentProperty)
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="card__image card__box-v1">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-md-4 col-lg-3 col-xl-4">
-                                                            <div class="card__image__header h-250">
-                                                                <a href="#">
-
-                                                                    <img src="frontend/images/gallery1.jpg" alt=""
-                                                                        class="img-fluid w100 img-transition">
-                                                                    <div class="info"> {{$agentProperty->purpose}}</div>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4 col-lg-6 col-xl-5 my-auto">
-                                                            <div class="card__image__body">
-
-                                                                <span
-                                                                    class="badge badge-primary text-capitalize mb-2">{{$agentProperty->category->name}}</span>
-                                                                <h6>
-                                                                    <a href="#">{{$agentProperty->name}}</a>
-                                                                </h6>
-                                                                <div class="card__image__body-desc">
-
-                                                                    <p class="text-capitalize">
-                                                                        <i class="fa fa-map-marker"></i>
-                                                                       {{$agentProperty->location}}
-                                                                    </p>
-                                                                </div>
-
-                                                                <ul class="list-inline card__content">
-                                                                    <li class="list-inline-item">
-
-                                                                        <span>
-                                                                            baths <br>
-                                                                            <i class="fa fa-bath"></i> {{$agentProperty->bathroom}}
-                                                                        </span>
-                                                                    </li>
-                                                                    <li class="list-inline-item">
-                                                                        <span>
-                                                                            bedroom <br>
-                                                                            <i class="fa fa-bed"></i> {{$agentProperty->bedroom}}
-                                                                        </span>
-                                                                    </li>
-
-                                                                    <li class="list-inline-item">
-                                                                        <span>
-                                                                            area <br>
-                                                                            <i class="fa fa-map"></i> {{$agentProperty->size}} sq ft
-                                                                        </span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="col-md-4 col-lg-3 col-xl-3 my-auto card__image__footer-first">
-                                                            <div class="card__image__footer">
-                                                                <figure>
-                                                                    <img src="frontend/images/80x80.jpg" alt=""
-                                                                        class="img-fluid rounded-circle">
-                                                                </figure>
-                                                                <ul class="list-inline my-auto">
-                                                                    <li class="list-inline-item name">
-                                                                        <a href="#">
-                                                                            {{$agentProperty->business->user->firstname}} {{$agentProperty->business->user->lastname}}
-                                                                        </a>
-
-                                                                    </li>
-
-
-                                                                </ul>
-                                                                <ul class="list-inline my-auto ml-auto price">
-                                                                    <li class="list-inline-item ">
-
-                                                                        <h6>{{ $agentProperty->currency->code }}{{$agentProperty->price}}</h6>
-                                                                    </li>
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        @endforeach
-                                        <div class="clearfix"></div>
-                                    </div> --}}
-
-                                    {{-- GRID SECTION --}}
 
                                     <div class="tab-pane fade show active" id="pills-tab-two" role="tabpanel"
                                         aria-labelledby="pills-tab-two">
                                         <div class="row">
-                                            @foreach ($business->properties as $agentProperty)
+                                            @forelse ($business->properties as $agentProperty)
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="card__image card__box-v1">
                                                     <div class="card__image-header h-250 img-space">
@@ -246,7 +152,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endforeach
+                                            @empty
+                                            <div class="mt-4 mx-auto">
+                                                <p>No listing found for <strong>{{ $business->name}}</strong> at the moment</p>
+                                            </div>
+                                            @endforelse
 
                                         </div>
 

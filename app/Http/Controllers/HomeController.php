@@ -37,20 +37,22 @@ class HomeController extends Controller
     public function listingById($id) {
 
         $property = Properties::find($id);
-
         //SIMILAR PROPERTIES
         $similar = Properties::whereNotIn('id', [$id])->get();
        // dd($similar);
         return view('frontend.property-details', compact('property','similar'));
     }
 
-    public function partnerListing($id) {
+    public function partnerListing($type) {
 
-        $businesses = Business::get();
 
-        $businessType = BusinessType::find($id)->name;
-       // dd($similar);
-        return view('frontend.partner-listing', compact('businesses','businessType'));
+        $businessType = BusinessType::where('name',$type)->get();
+        //dd($businessType);
+        foreach ($businessType as $busType) {
+            $businesses = Business::where('business_type_id', $busType->id)->get();
+        }
+        //dd($businessType);
+        return view('frontend.partner-listing', compact('businesses','type'));
     }
 
     public function categoryListing($id) {

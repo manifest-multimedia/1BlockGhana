@@ -49,8 +49,8 @@ Route::get('/request-status', function () {
 Route::get('/listing', [HomeController::class, 'listingByHouses'])->name('listing');
 
 Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->name('listing.details');
-Route::get('/listing-partners/{id}', [HomeController::class, 'partnerListing'])->name('partner.listing');
-Route::get('/listing-category/{id}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/partners/{type}', [HomeController::class, 'partnerListing'])->name('partner.listing');
+Route::get('/category/{id}', [HomeController::class, 'categoryListing'])->name('category.listing');
 Route::get('/agent-listing/{id}', [HomeController::class, 'agentListing'])->name('agent.listing');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
 
@@ -69,7 +69,7 @@ Route::get('/property-news', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('agent')->group( function (){
+Route::middleware(['auth:sanctum', 'verified'])->prefix('users')->group( function (){
     Route::get('/list', [AgentController::class,'view'])->name('agent.view');
     Route::get('/add', [AgentController::class,'addAgent'])->name('agent.add');
     Route::post('/save', [AgentController::class, 'postAgent']);
@@ -89,6 +89,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('agent')->group( functio
     Route::get('/logo/delete', [AgentController::class,'deleteLogo'])->name('agent.logo.delete');
 
     Route::post('upload', [UploadController::class, 'storeLogo']);
+
+    Route::get('/role', [AgentController::class,'userRole'])->name('role.view');
 });
 
 

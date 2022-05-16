@@ -250,6 +250,7 @@
         </div>
 
         <!-- SIMILIAR PROPERTY -->
+        @if(!$similar->isEmpty())
         <div class="row">
             <div class="col-lg-12">
                 <div class="similiar__item">
@@ -257,7 +258,7 @@
                         similiar properties
                     </h6>
                     <div class="similiar__property-carousel owl-carousel owl-theme">
-                        @forelse ($similar as $prop)
+                        @foreach ($similar as $prop)
                         <div class="item">
                             <!-- ONE -->
                             <div class="card__image">
@@ -324,15 +325,18 @@
                                 </div>
                             </div>
                         </div>
-                        @empty
-                            <p>There is no Similar Property</p>
-                        @endforelse
+                        @endforeach
 
 
                     </div>
+
+
+
+
                 </div>
             </div>
         </div>
+        @endif
         <!-- END SIMILIAR PROPERTY -->
 
     </div>

@@ -18,36 +18,49 @@
                             @csrf
                             <div class="body">
                                 @role('admin')
-                                <div class="row clearfix mb-3">
-                                    <div class="col-sm-6">
-                                        <x-form.label value="{{ __('First Name') }}" />
-                                        <x-form.input name="firstname" placeholder="Firstname"
-                                            value="{{ $user->firstname }}" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Last Name') }}" />
-                                            <x-form.input name="lastname" placeholder="Lastname"
-                                                value="{{ $user->lastname }}" />
+                                    <div class="row clearfix mb-3">
+                                        <div class="col-sm-6">
+                                            <x-form.label value="{{ __('First Name') }}" />
+                                            <x-form.input name="firstname" placeholder="Firstname"
+                                                value="{{ $user->firstname }}" />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Last Name') }}" />
+                                                <x-form.input name="lastname" placeholder="Lastname"
+                                                    value="{{ $user->lastname }}" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
                                 @else
-                                <div class="row clearfix mb-3">
-                                    <div class="col-sm-6">
-                                        <x-form.label value="{{ __('First Name') }}" />
-                                        <x-form.input name="firstname" placeholder="Firstname"
-                                            value="{{ $user->firstname }}" readonly />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Last Name') }}" />
-                                            <x-form.input name="lastname" placeholder="Lastname"
-                                                value="{{ $user->lastname }}" readonly />
+                                    <div class="row clearfix mb-3">
+                                        <div class="col-sm-4">
+                                            <x-form.label value="{{ __('First Name') }}" />
+                                            <x-form.input name="firstname" placeholder="Firstname"
+                                                value="{{ $user->firstname }}" readonly />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Last Name') }}" />
+                                                <x-form.input name="lastname" placeholder="Lastname"
+                                                    value="{{ $user->lastname }}" readonly />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Business Type') }}" />
+                                                <select class="form-control" name="partner_id" id="">
+                                                    @foreach ($partners as $partner)
+                                                        <option value="{{ $partner->id }}">{{ $partner->name }}
+                                                        </option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
                                 @endrole
 
                                 <div class="row clearfix mb-3">
@@ -106,7 +119,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12">
+
+
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <x-form.label value="{{ __('Business Website') }}" />
                                             <x-form.input name="business_website" type="text"
@@ -140,9 +155,9 @@
                         </div>
                         <div class="body">
                             <form method="POST" enctype="multipart/form-data" id="upload-image"
-                            action="{{ route('agent.logo.upload', $user->id) }}">
-                            @csrf
-                            <div class="row clearfix">
+                                action="{{ route('agent.logo.upload', $user->id) }}">
+                                @csrf
+                                <div class="row clearfix">
 
                                     <div class="col-sm-6">
                                         <div class="row">
@@ -168,8 +183,8 @@
                                             Logo</button>
                                     </div>
 
-                            </div>
-                        </form>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

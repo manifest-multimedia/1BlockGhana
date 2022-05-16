@@ -12,6 +12,7 @@
         </div>
         <div class="recent__property-carousel owl-carousel owl-theme">
             @foreach ($properties as $property)
+            @if ($loop->odd)
             <div class="item">
                 <!-- CARD IMAGE -->
 
@@ -60,11 +61,15 @@
                     </div>
                 </a>
             </div>
-            @endforeach
+            @endif
 
+            @endforeach
         </div>
+
+        {{-- SECOND LAYOUT --}}
         <div class="recent__property-carousel owl-carousel owl-theme mt-2">
             @foreach ($properties as $property)
+            @if ($loop->even)
             <div class="item">
                 <!-- CARD IMAGE -->
 
@@ -113,6 +118,8 @@
                     </div>
                 </a>
             </div>
+            @endif
+
             @endforeach
 
         </div>

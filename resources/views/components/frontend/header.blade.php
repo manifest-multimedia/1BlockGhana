@@ -54,11 +54,8 @@
 
                         @if ($partners)
                             @foreach ($partners as $partner)
-                                <li><a class="dropdown-item" href="{{ route('partner.listing', $partner->id) }}">{{ $partner->name }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('partner.listing', Str::lower($partner->name)) }}">{{ $partner->name }}</a></li>
                             @endforeach
-                        @else
-                            <li><a class="dropdown-item" href="#">Agents</a></li>
-                            <li><a class="dropdown-item" href="#">Developers</a></li>
                         @endif
                     </ul>
                 </li>

@@ -9,8 +9,10 @@ use App\Models\Category;
 use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Models\TemporaryFile;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
+use Spatie\Permission\Models\Permission;
 
 class AgentController extends Controller
 {
@@ -60,8 +62,9 @@ class AgentController extends Controller
     public function agentProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
+        $partners = BusinessType::all();
       //  return view('sbadmin.agent.profile',compact('user'));
-        return view('backend.agent.profile',compact('user'));
+        return view('backend.agent.profile',compact('user','partners'));
     }
 
     public function agentProfileUpdate(Request $request, $id){
@@ -81,7 +84,7 @@ class AgentController extends Controller
 
         $validated = $request->validate([
             'business_phone' => 'required|numeric',
-            'business_email' => 'unique:businesses,email',
+            'business_email' => 'email',
             'business_description' => 'required',
         ]);
        // $id = Auth::user()->id;
@@ -100,8 +103,8 @@ class AgentController extends Controller
     }
     public function agentProfileId($id){
         $user = User::find($id);
-      //  return view('sbadmin.agents.profile',compact('user'));
-        return view('backend.agent.profile',compact('user'));
+        $partners = BusinessType::all();
+        return view('backend.agent.profile',compact('user','partners'));
     }
 
     public function uploadLogo(Request $request,$id){
@@ -127,6 +130,14 @@ class AgentController extends Controller
     }
     public function deleteLogo($id){
         dd($id);
+    }
+
+    public function userRole(){
+        $roles = Role::all();
+        $permissions = Permission::all();
+        $partners = BusinessType::all();
+        //dd($partners);
+        return view('backend.admin.role', compact('partners','roles','permissions'));
     }
 
 }
