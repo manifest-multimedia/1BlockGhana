@@ -11,11 +11,6 @@
 <x-frontend.contact />
 <!-- END LISTING LIST -->
 
- <!-- BRAND PARTNER -->
- <x-frontend.partners />
- <!-- END BRAND PARTNER -->
-
-
 
  <!-- CALL TO ACTION -->
  <x-frontend.cta />

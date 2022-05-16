@@ -55,7 +55,7 @@
                                 <a href="javascript:void(0)">Genuity</a>
                             </h6>
 
-                            <p class="text-capitalize">
+                            <p>
 
                                 Established to help promote genuine real estate companies, we also look to ensure that patrons are well protected from fraudsters and scammers.All listings on the site are vetted by our team to ensure that they come from a registered real estate entity.
                             </p>
@@ -80,7 +80,7 @@
                                 <a href="javascript:void(0)">Reliability</a>
                             </h6>
 
-                            <p class="text-capitalize">
+                            <p>
 
                                 Get connected promptly and experience the best of Ghanaian hospitality by the leading real estate companies in serene and secured settlements all over the country.
                             </p>
@@ -105,7 +105,7 @@
                                 <a href="javascript:void(0)">Secured</a>
                             </h6>
 
-                            <p class="text-capitalize">
+                            <p>
                                 Acquiring a property does not have to be scary.Protect yourself and your investment by speaking to professionals who will ensure you do not fall prey to fraudsters. You can choose to speak to any of our affiliate advisors on the best way to acquire property in Ghana.
                             </p>
 
