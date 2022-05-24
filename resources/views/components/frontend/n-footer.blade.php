@@ -10,8 +10,8 @@
                         <ul class="mb-0 list-unstyled">
                             <li> <b> <i class="fa fa-map-marker"></i></b><span>Accra, Ghana</span> </li>
 
-                            <li> <b><i class="fa fa-phone-square"></i></b><span>+44 7393 354293</span> </li>
-                            <li> <b><i class="fa fa-headphones"></i></b><span>support@1blockghana.com</span> </li>
+                            <li> <b><i class="fa fa-phone-square"></i></b><span>+233 24 621 0275</span> </li>
+                            <li> <b><i class="fa fa-headphones"></i></b><span>info@1blockghana.com</span> </li>
 
                         </ul>
                     </div>

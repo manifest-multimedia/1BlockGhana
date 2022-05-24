@@ -5,7 +5,7 @@
 			<li>
 				<div class="user-info">
 
-					<div class="image"><a href="/profile"><img src="{{auth()->user()->getFirstMediaUrl('logos', 'thumb-100') ? auth()->user()->getFirstMediaUrl('logos', 'thumb-100') : url('assets/images/avatar.jpg')}}" alt="User"></a></div>
+					<div class="image"><a href="{{route('user.profile')}}"><img src="{{auth()->user()->getFirstMediaUrl('logos', 'thumb-100') ? auth()->user()->getFirstMediaUrl('logos', 'thumb-100') : url('assets/images/avatar.jpg')}}" alt="User"></a></div>
 					<div class="detail">
 						@auth
 						<h4>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h4>
@@ -29,10 +29,8 @@
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Properties</span> </a>
 				<ul class="ml-menu">
-					<li><a href="/properties">Listed Properties</a></li>
-					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
+					<li><a href="{{route('property.view')}}">Listed Properties</a></li>
 					<li><a href="{{ route('property.add')}}">Add Property</a></li>
-					{{-- <li><a href="property/details">Property Detail</a></li> --}}
 				</ul>
 			</li>
 
@@ -42,9 +40,7 @@
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Adverts</span> </a>
 				<ul class="ml-menu">
 					<li><a href="{{route('topads.view')}}">Top Ads</a></li>
-					{{--  <li><a href="/properties/grid">Properties Grid view</a></li> --}}
 					<li><a href="{{ route('featuredads.view')}}">Featured Ads</a></li>
-					{{-- <li><a href="property/details">Property Detail</a></li> --}}
 				</ul>
 			</li>
 
@@ -61,17 +57,16 @@
                         class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
             </li>
             <li class=""><a href="{{route('category.list')}}"><i class="zmdi zmdi-city"></i><span>Categories</span></a></li>
-            <li class=""><a href="{{route('partner.list')}}"><i class="zmdi zmdi-city"></i><span>Partners</span></a></li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
-                    class="zmdi zmdi-accounts-outline"></i><span>Agents</span> </a>
+                    class="zmdi zmdi-accounts-outline"></i><span>Partners</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="{{ route('agent.view') }}">All Agents</a></li>
-                        <li><a href="{{ route('agent.add') }}">Add Agent</a></li>
-                        <li><a href="{{ route('agent.profile')}}">Agent Profile</a></li>
+                        <li><a href="{{ route('user.view') }}">All Partners</a></li>
+                        <li><a href="{{ route('user.add') }}">Add Partner</a></li>
+                        <li><a href="{{ route('user.profile')}}">Partner Profile</a></li>
                     </ul>
                 </li>
             @else
-            <li class=""><a href="{{route('agent.profile')}}"><i class="zmdi zmdi-account"></i><span>Agent Profile</span></a></li>
+            <li class=""><a href="{{route('user.profile')}}"><i class="zmdi zmdi-account"></i><span>Partner Profile</span></a></li>
             @endrole
 	</div>
 	</div>

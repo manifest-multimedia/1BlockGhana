@@ -22,20 +22,20 @@ class AgentController extends Controller
     }
 
     public function view(){
-      //  $agents = User::where('role', 'agent')->get();
-        $agents= User::all();
-      //  return view('sbadmin.agents.lists',compact('agents'));
-        return view('backend.agent.view',compact('agents'));
+      //  $partners = User::where('role', 'partner')->get();
+        $partners= User::all();
+      //  return view('sbadmin.partners.lists',compact('partners'));
+        return view('backend.partners.view',compact('partners'));
     }
 
-    public function addAgent(){
+    public function addUser(){
         $packages = Package::all();
         $partners = BusinessType::all();
-       // return view('sbadmin.agents.add',compact('packages','categories'));
-        return view('backend.agent.add',compact('packages','partners'));
+       // return view('sbadmin.partners.add',compact('packages','categories'));
+        return view('backend.partners.add',compact('packages','partners'));
     }
 
-    public function postAgent(Request $request){
+    public function postPartner(Request $request){
         $request->validate(['email' => 'required|email|unique:users,email']);
         User::create([
             'firstname' => $request->firstname,
@@ -59,15 +59,15 @@ class AgentController extends Controller
 
     }
 
-    public function agentProfile(){
+    public function userProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
         $partners = BusinessType::all();
-      //  return view('sbadmin.agent.profile',compact('user'));
-        return view('backend.agent.profile',compact('user','partners'));
+      //  return view('sbadmin.partner.profile',compact('user'));
+        return view('backend.partners.profile',compact('user','partners'));
     }
 
-    public function agentProfileUpdate(Request $request, $id){
+    public function userProfileUpdate(Request $request, $id){
 
        // $id = Auth::user()->id;
         User::where('id',$id)->update([
@@ -76,10 +76,10 @@ class AgentController extends Controller
             'mobile' => $request->phone,
             'email' => $request->email,
         ]);
-        return redirect()->route('agent.profile')->with('success','Personal Information has been updated');
+        return redirect()->route('user.profile')->with('success','Personal Information has been updated');
     }
 
-    public function agentBusinessUpdate(Request $request, $id){
+    public function userBusinessUpdate(Request $request, $id){
        // dd($request);
 
         $validated = $request->validate([
@@ -92,19 +92,19 @@ class AgentController extends Controller
             'user_id' => $id,
         ],
         [
+            'name' => $request->business_name,
             'mobile' => $request->business_phone,
             'email' => $request->business_email,
-            'package_id' => $request->package_id,
             'business_type_id' => $request->partner_id,
             'website' => $request->business_website,
             'description' => $request->business_description,
          ]);
-        return redirect()->route('agent.profile')->with('success','Business Information has been updated');
+        return redirect()->back()->with('success','Business Information has been updated');
     }
-    public function agentProfileId($id){
+    public function userProfileId($id){
         $user = User::find($id);
         $partners = BusinessType::all();
-        return view('backend.agent.profile',compact('user','partners'));
+        return view('backend.partners.profile',compact('user','partners'));
     }
 
     public function uploadLogo(Request $request,$id){
@@ -121,7 +121,7 @@ class AgentController extends Controller
            }
 
 
-           return redirect()->route('agent.profile')->with('success', 'Logo has been uploaded successfully');
+           return redirect()->route('user.profile')->with('success', 'Logo has been uploaded successfully');
     }
 
 

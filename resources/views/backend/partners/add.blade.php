@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="Agents" menu="Add New Agent" />
+        <x-backend.breadcrumb page="Partners" menu="Add New Partner" />
         @if (session('status'))
             <div class="mb-4 text-sm font-medium text-green-600">
                 {{ session('status') }}
@@ -29,9 +29,9 @@
                             @elseif ($partners->isEmpty())
                                 <p><strong>You need to first add the Business Category before an agent can be added to
                                         this platform</strong></p>
-                                <span><a href="{{ route('partner.add') }}">Click here</a> to add a new Category</span>
+                                <span><a href="{{ route('user.add') }}">Click here</a> to add a new Category</span>
                             @else
-                                <form action="{{ route('send.agent.otp') }}" method="post">
+                                <form action="{{ route('send.user.otp') }}" method="post">
                                     @csrf
                                     <div class="clearfix mb-3 row">
                                         <div class="col-sm-6">
@@ -95,7 +95,7 @@
 
                                     <div class="clearfix mb-3 row">
                                         <div class="col-md-4">
-                                            <button type="submit" class="btn btn-primary">Send Agent OTP</button>
+                                            <button type="submit" class="btn btn-primary">Send Partner OTP</button>
                                         </div>
                                     </div>
                                 </form>

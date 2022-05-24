@@ -22,12 +22,6 @@
 											<x-form.input name="name" value="{{$property->name}}" placeholder="Property Title" />
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<x-form.label value="{{ __('ID') }}" />
-											<x-form.input name="id" value="{{$property->property_id}}" placeholder="RV151" />
-										</div>
-									</div>
 
 									<div class="col-sm-6">
 										<div class="form-group">
@@ -114,12 +108,7 @@
 											<x-form.input name="bedroom" value="{{$property->bedroom}}" placeholder="0" />
 										</div>
 									</div>
-									{{-- <div class="col-sm-3">
-										<div class="form-group">
-											<x-form.label type="number" value="{{ __('Number of Kitchen') }}" />
-											<x-form.input name="kitchen" value="{{$property->kitchen}}" placeholder="0" />
-										</div>
-									</div> --}}
+
 
 									<div class="col-sm-3">
 										<div class="form-group">
@@ -141,16 +130,10 @@
 								<div class="row">
 									<div class="col-sm-12">
 
-                                        @php
-
-                                            $amen =  Illuminate\Support\Facades\DB::table('amenities_properties')->where('properties_id', $property->id)->get();
-                                         //   dd($amen);
-                                        @endphp
-										@foreach ($amenities as $amenity)
+                                        @foreach ($amenities as $amenity)
 										<div class="checkbox1 inlineblock m-r-20">
-
 											<input id="checkbox{{$amenity->id}}" type="checkbox" name="amenities[]" value="{{$amenity->id}}"
-												value="{{$amenity->name}}">
+												 {{ in_array($amenity->id, $property_amenities) ? 'checked' : '' }}>
 											<label for="checkbox{{$amenity->id}}">{{$amenity->name}}</label>
 										</div>
 										@endforeach
@@ -198,15 +181,7 @@
                                         <img src="" id="previewImg"  style="max-width: 100px;">
                                     </div>
 
-								</div>
-
-								<div class="mt-5 col-md-6">
-									<div class="form-group">
-										<label for="">Youtube Video link</label>
-										<input type="text" name="video_link" placeholder="https://youtu.be/gr6O1jRsvYg"
-											class="form-control">
-									</div>
-								</div>
+								</div>								
 							</div>
 
 						</div>
@@ -256,7 +231,7 @@
         });
         FilePond.setOptions({
             server: {
-                url: '/properties/upload',
+                url: '/dashboard/properties/upload',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

@@ -82,26 +82,26 @@ class AdsController extends Controller
 
 
     public function viewFeaturedAds(){
-        $featureds = Properties::select('id','name','status')->where('status', '>=' ,1)->get();
+        $featureds = Properties::select('id','name','adStatus')->where('adStatus', '>=' ,1)->get();
        // dd($featureds);
         return view('backend.ads.featured_ads.list',compact('featureds'));
     }
 
     public function addFeaturedAds(){
-        $properties = Properties::select('id','name')->where('status','<','1')->orWhere('status', NULL)->get();
+        $properties = Properties::select('id','name')->where('adStatus','<','1')->orWhere('adStatus', NULL)->get();
         return view('backend.ads.featured_ads.properties', compact('properties'));
     }
 
     public function storeFeaturedAds(Request $request, Properties $id){
         $id->update([
-            'status' => $request->priority,
+            'adStatus' => $request->priority,
         ]);
 
         return redirect()->route('featuredads.view')->with('success','FeaturedAd Priority  has been added');
     }
     public function updateFeaturedAds(Request $request, Properties $id){
         $id->update([
-            'status' => $request->priority,
+            'adStatus' => $request->priority,
         ]);
 
         return redirect()->route('featuredads.view')->with('success','FeaturedAd Priority  has been updated');
@@ -109,7 +109,7 @@ class AdsController extends Controller
 
     public function deleteFeaturedAds(Properties $id){
         $id->update([
-            'status' => 0,
+            'adStatus' => 0,
         ]);
 
         return redirect()->route('featuredads.view')->with('success','Priority has been removed');

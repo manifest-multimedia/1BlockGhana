@@ -18,10 +18,14 @@
                             <x-form.error />
                             <div class="content">
                                 <x-form.label for="email" value="{{ __('Email Address') }}" />
-                                <x-form.input name="email" placeholder="Email Address" />
+                                <div class="input-group">
+                                    <input id="email" class="form-control"  name="email" placeholder="Email Address" required>
+                                </div>
 
                                 <x-form.label for="password" value="{{ __('Password') }}" />
-                                <x-form.input name="password"  type="password" placeholder="New Password" />
+                                <div class="input-group">
+                                    <input id="password" class="form-control" name="password"  type="password" placeholder="Password" required>
+                                </div>
 
                             </div>
 

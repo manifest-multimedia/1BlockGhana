@@ -66,7 +66,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h2><strong>Select Featured Ads</strong> </h2>
+                        <h2><strong>Listed Properties</strong> </h2>
 
                     </div>
                     <x-notification.message />
@@ -79,6 +79,7 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Image</th>
+                                            <th>Name</th>
                                             <th>Name</th>
                                             <th>Price</th>
                                             <th>Purpose</th>
@@ -123,7 +124,7 @@
                                     </tbody>
                                 </table>
                             @else
-                                <p><strong>Properties not available for Featured Ads</strong></p>
+                                <p><strong>No property listed. <a href="{{route('property.add')}}">Click here</a> to add a new listing</strong></p>
                             @endif
                         </div>
                     </div>

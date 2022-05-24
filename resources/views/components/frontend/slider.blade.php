@@ -1,11 +1,11 @@
 <div class="homepage__property bg-light">
-    <div class="homepage__property-carousel owl-carousel owl-carousel-slider owl-theme owl-height">
+    <div class="homepage__property-carousel owl-carousel owl-carousel-slider owl-theme">
         @php
             $topAds = App\Models\TopAds::orderBy('priority')->get();
         @endphp
 
         @foreach ($topAds as $topAd)
-        <div class="item">
+        <div class="item1">
             <a href="http://{{$topAd->website}}" target="_blank">
                 <div class="tc-image-caption4">
                     <img src="{{$topAd->getFirstMediaUrl('topAds')}}" alt="{{$topAd->name}}">

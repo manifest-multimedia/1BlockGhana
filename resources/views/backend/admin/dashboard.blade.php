@@ -1,5 +1,4 @@
 <x-backend.app >
-    <!-- Top Bar -->
     <x-backend.header />
 
     <x-backend.sidebar />
@@ -27,36 +26,36 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="card">
                         <div class="body">
-                            <p class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >Listed Properties</p>
-                            <p class="text-muted"><strong>{{$business->properties->count()}}</strong></p>
+                            <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >{{$activeBusiness}}</h3>
+                            <p class="text-muted">Active Business</p>
                             <div class="progress">
                                 <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>
-                            <small><a href="{{ route('property.view')}}">View</a></small>
+                            <small><a href="{{ route('user.view')}}">View</a></small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="card">
                         <div class="body">
-                            <p class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >Business Type</p>
-                            <p class="text-muted"><strong>{{Str::singular($business->businessType->name)}}</strong></p>
+                            <h3 class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >{{$suspendedBusiness}}</h3>
+                            <p class="text-muted">Suspended Businesses</p>
                             <div class="progress">
                                 <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>
-                            <small style="visibility: hidden"><a href="{{ route('user.view')}}">View</a></small>
+                            <small><a href="{{ route('user.view')}}">View</a></small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
                     <div class="card">
                         <div class="body">
-                            <p class="number count-to" data-from="0" data-to="758" data-speed="2000" data-fresh-interval="700" >Suscribed Package</p>
-                            <p class="text-muted"><strong>{{$business->package->name}}</strong></p>
+                            <h3 class="number count-to" data-from="0" data-to="758" data-speed="2000" data-fresh-interval="700" >{{$totProperties}}</h3>
+                            <p class="text-muted">Total Properties</p>
                             <div class="progress">
                                 <div class="progress-bar l-green" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>
-                            <small style="visibility: hidden"><a href="{{ route('property.view')}}">View</a></small>
+                            <small><a href="{{ route('property.view')}}">View</a></small>
                         </div>
                     </div>
                 </div>

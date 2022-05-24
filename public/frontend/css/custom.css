@@ -344,7 +344,7 @@ a.play-video-12 {
 }
 
 .tc-image-caption4 img {
-    height: 55vh;
+    height: auto;
     width: auto;
     max-height: 55vh;
 }
@@ -379,4 +379,9 @@ a.play-video-12 {
 
 section {
     padding: 40px 0;
+}
+
+
+.profile__agents-avatar img {
+    height: 200px;
 }

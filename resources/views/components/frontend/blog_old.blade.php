@@ -6,8 +6,6 @@
                     <h2 class="text-center text-capitalize">
                         lastest property news
                     </h2>
-                    <p class="text-center text-capitalize">Find Of The Most Popular Real Estate Company All Around
-                        Indonesia.</p>
                 </div>
             </div>
             <div class="clearfix"></div>

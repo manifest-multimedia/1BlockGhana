@@ -14,7 +14,7 @@ class HomeController extends Controller
         /* if(auth()->user()){
             auth()->user()->assignRole('admin');
         } */
-        $properties = Properties::where('status','>=',1)->orderBy('status')->get();
+        $properties = Properties::where('adStatus','>=',1)->orderBy('adStatus')->get();
         $categories = Category::get();
         return view('frontend.homepage', compact('properties','categories'));
     }
@@ -43,7 +43,7 @@ class HomeController extends Controller
         return view('frontend.property-details', compact('property','similar'));
     }
 
-    public function partnerListing($type) {
+    public function userListing($type) {
 
 
         $businessType = BusinessType::where('name',$type)->get();
@@ -81,5 +81,18 @@ class HomeController extends Controller
         $locations = Properties::select('name')->where('name','LIKE', '%'. $request->location. '%')->get();
 
         return response()->json($locations);
+    }
+
+    public function accountSuspended(){
+        if(auth()->user()){
+            if(auth()->user()->business->business_status < 1){
+                $account = auth()->user()->business;
+                return view('frontend.message-suspension', compact('account'));
+            }else{
+                return redirect()->route('dashboard');
+            }
+        }else{
+            return redirect()->route('login');
+        }
     }
 }

@@ -56,15 +56,14 @@
                                 <i class="fa fa-home"></i>
                             </span>
 
-                            PO Box 16122 Collins Street West Victoria
-                            8007 Australia
+                            Accra, Ghana
 
 
                         </li>
                         <li>
                             <span>
                                 <i class="fa fa-phone"></i>
-                                <a href="tel:">(+233) 0240 000 000</a>
+                                <a href="tel:+233246210275">(+233) 24 621 0275</a>
                             </span>
 
                         </li>
@@ -92,7 +91,7 @@
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </li>
-                            
+
                             <li class="list-inline-item">
                                 <a href="#" class="btn btn-social rounded text-white linkedin">
                                     <i class="fa fa-linkedin"></i>

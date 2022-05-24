@@ -50,7 +50,6 @@ class PropertyController extends Controller
         $business = User::find($id)->business;
 
         $property =  Properties::create([
-            'property_id'=> $request->id,
             'business_id'=> $business->id,
             'category_id'=> $request->category_id,
             'name'=> $request->name,
@@ -114,10 +113,13 @@ class PropertyController extends Controller
           $property->date_built= $request->year_built;
             //'status'=> 1
           $property->save();
-
-        /* foreach ($request->amenities as $amenity) {
+        
+          //Delete old amenities
+          DB::insert('delete from amenities_properties where properties_id =' .$property->id);
+        // Insert new amenities
+          foreach ($request->amenities as $amenity) {
             DB::insert('insert into amenities_properties (properties_id, amenities_id) values (?,?)', [$property->id,$amenity]);
-        } */
+        }
 
       //  dd($property);
         if($request->properties){
@@ -165,7 +167,11 @@ class PropertyController extends Controller
            // dd($package);
             $bus_id = $bus->id;
         }
-        return view('backend.properties.edit',compact('property','categories','amenities','currencies','package'));
+        foreach($property->amenities as $amens){
+            $property_amenities[] = $amens->id;
+        }
+      //  dd($property_amenities);
+        return view('backend.properties.edit',compact('property','categories','amenities','property_amenities','currencies','package'));
     }
 
     public function delete($id){

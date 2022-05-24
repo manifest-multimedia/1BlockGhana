@@ -1,27 +1,27 @@
-﻿.card {    
+﻿.card {
     @include transition(all .5s);
     @extend .m-b-30;
     @extend .inlineblock;
-    background: $white;    
-    border-radius: $border-radius-small;    
+    background: $white;
+    border-radius: $border-radius-small;
     position: relative;
     box-shadow: none;
     width: 100%;
-    border: 0;    
+    border: 0;
 
-    .card-inside-title {        
+    .card-inside-title {
         @extend .m-t-25;
         @extend .m-b-15;
         @extend .displayblock;
         font-size: 15px;
         color: $black;
 
-        small {            
+        small {
             @extend .displayblock;
             @extend .m-t-5;
             color: $grey-500;
             font-size: 11px;
-            
+
             a {
                 color: $grey-600;
                 font-weight: $font-weight-bold;
@@ -69,7 +69,7 @@
     .header {
         color: $grey-800;
         padding:20px;
-        position: relative;       
+        position: relative;
         box-shadow: none;
         @extend .m-b-0;
 
@@ -92,23 +92,23 @@
                     padding: 5px;
                     right: 0 !important;
                     left: auto !important;
-                    transform: none !important;  
-                    top: 30px !important; 
+                    transform: none !important;
+                    top: 30px !important;
                     li {
                         display: block !important;
-    
+
                         a {
                             padding: 5px 10px;
                         }
                     }
                 }
-    
-            }            
+
+            }
             i {
                 @include transition(all .5s);
                 font-size: 20px;
                 color: $grey-500;
-                
+
                 &:hover {
                     color: $black;
                 }
@@ -116,7 +116,7 @@
         }
         h2 {
             @extend .margin-0;
-            font-size: 17px;            
+            font-size: 17px;
             color: $grey-600;
             position: relative;
 
@@ -133,7 +133,7 @@
                 @extend .displayblock;
                 @extend .m-t-5;
                 color: $grey-500;
-                line-height: 15px;                
+                line-height: 15px;
                 a {
                     font-weight: $font-weight-bold;
                     color: $grey-600;
@@ -150,6 +150,6 @@
         font-size: 14px;
         color: $grey-800;
         padding: 20px;
-        font-weight: $font-weight-normal;        
+        font-weight: $font-weight-normal;
     }
 }

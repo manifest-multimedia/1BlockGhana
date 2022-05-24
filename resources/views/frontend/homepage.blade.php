@@ -14,21 +14,6 @@
  <x-frontend.popular-cities />
 
 
-
-
-
-
- <!-- TESTIMONIAL -->
-{{--  <x-frontend.testimonial /> --}}
- <!-- END TESTIMONIAL -->
-
-
- <!-- BRAND PARTNER -->
-{{--  <x-frontend.partners /> --}}
- <!-- END BRAND PARTNER -->
-
-
-
  <!-- CALL TO ACTION -->
 <x-frontend.cta />
  <!-- END CALL TO ACTION -->

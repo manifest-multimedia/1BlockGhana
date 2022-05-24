@@ -2,17 +2,16 @@
 
     <!-- Main Content -->
 <section class="content agent">
-    <x-backend.breadcrumb page="Agent" name="Add New Agent" menu="Agents" link="{{route('agent.add')}}" />
+    <x-backend.breadcrumb page="Partner" name="Add New Partner" menu="Partners" link="{{route('user.add')}}" />
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
-                <h2><strong></strong> Agents</h2>
-
+                <h2><strong></strong> Partners</h2>
             </div>
 
             <div class="body">
                 <div class="table-responsive social_media_table">
-                    @if (!$agents->isEmpty())
+                    @if (!$partners->isEmpty())
                     <table class="table">
                         <thead>
                             <tr>
@@ -22,6 +21,7 @@
                                 <th>Partner Type</th>
                                 <th>Package</th>
                                 <th>Action</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,28 +29,35 @@
                             $count = 0;
                             @endphp
 
-                            @foreach ($agents as $agent)
+                            @foreach ($partners as $partner)
                              @php $count++;@endphp
                             <tr>
                                 <td><span class="">{{$count}}</span>
                                 </td>
-                                <td width="25%"><span class="list-name">{{$agent->firstname}} {{$agent->lastname}}</span>
+                                <td width="25%"><span class="list-name">{{$partner->firstname}} {{$partner->lastname}}</span>
                                 </td>
-                                <td>{{$agent->business->name?? ''}}</td>
+                                <td>{{$partner->business->name?? ''}}</td>
                                 <td>
-                                    @if (!$agent->partner == null)
-                                        {{App\Models\BusinessType::find($agent->business->business_type_id)->name ?? ''}}
+
+                                        {{App\Models\BusinessType::find($partner->business->business_type_id)->name ?? ''}}
+
+                                </td>
+
+                                <td>
+                                    @if (!$partner->business == null)
+                                        {{App\Models\Package::find($partner->business->package_id)->name ?? ''}}
                                     @endif
                                 </td>
 
                                 <td>
-                                    @if (!$agent->business == null)
-                                        {{App\Models\Package::find($agent->business->package_id)->name ?? ''}}
-                                    @endif
+                                    <a href="{{route('user.profile.id',$partner->id)}}"><button class="badge badge-success">View Profile</button></a>
                                 </td>
-
                                 <td>
-                                    <a href="{{route('agent.profile.id',$agent->id)}}"><button class="badge badge-success">View Profile</button></a>
+                                    @livewire('admin.business-status', [
+                                        'model' => $partner->business,
+                                        'field' => 'business_status',
+                                    ])
+
                                 </td>
                             </tr>
                             @endforeach
@@ -58,7 +65,7 @@
                     </table>
                     @else
                     <p><strong>No Package listed</strong></p>
-                    <span><a href="{{route('agent.add')}}">Click here</a> to add a new agent</span>
+                    <span><a href="{{route('user.add')}}">Click here</a> to add a new partner</span>
                     @endif
 
 
@@ -66,6 +73,7 @@
             </div>
         </div>
     </div>
+
 
 </section>
 </x-backend.app>

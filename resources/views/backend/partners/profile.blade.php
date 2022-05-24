@@ -14,39 +14,23 @@
 
                         </div>
 
-                        <form action="{{ route('agent.update', $user->id) }}" method="POST">
+                        <form action="{{ route('user.update', $user->id) }}" method="POST">
                             @csrf
                             <div class="body">
                                 @role('admin')
                                     <div class="row clearfix mb-3">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <x-form.label value="{{ __('First Name') }}" />
                                             <x-form.input name="firstname" placeholder="Firstname"
                                                 value="{{ $user->firstname }}" />
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <x-form.label value="{{ __('Last Name') }}" />
                                                 <x-form.input name="lastname" placeholder="Lastname"
                                                     value="{{ $user->lastname }}" />
                                             </div>
                                         </div>
-                                    </div>
-                                @else
-                                    <div class="row clearfix mb-3">
-                                        <div class="col-sm-4">
-                                            <x-form.label value="{{ __('First Name') }}" />
-                                            <x-form.input name="firstname" placeholder="Firstname"
-                                                value="{{ $user->firstname }}" readonly />
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <x-form.label value="{{ __('Last Name') }}" />
-                                                <x-form.input name="lastname" placeholder="Lastname"
-                                                    value="{{ $user->lastname }}" readonly />
-                                            </div>
-                                        </div>
-                                        
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <x-form.label value="{{ __('Business Type') }}" />
@@ -60,6 +44,23 @@
                                             </div>
 
                                         </div>
+                                    </div>
+                                @else
+                                    <div class="row clearfix mb-3">
+                                        <div class="col-sm-6">
+                                            <x-form.label value="{{ __('First Name') }}" />
+                                            <x-form.input name="firstname" placeholder="Firstname"
+                                                value="{{ $user->firstname }}" readonly />
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Last Name') }}" />
+                                                <x-form.input name="lastname" placeholder="Lastname"
+                                                    value="{{ $user->lastname }}" readonly />
+                                            </div>
+                                        </div>
+
+                                        
                                     </div>
                                 @endrole
 
@@ -92,7 +93,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-8 col-md-12">
-                    <form action="{{ route('agent.update.business', $user->id) }}" method="POST">
+                    <form action="{{ route('user.update.business', $user->id) }}" method="POST">
                         @csrf
                         <div class="card">
                             <div class="header">
@@ -101,6 +102,32 @@
                             </div>
                             <div class="body">
                                 <div class="row clearfix">
+
+                                    @php
+                                        $userType = Illuminate\Support\Facades\Auth::user()->user_type;
+                                    @endphp
+
+                                    @if ($userType == "admin")
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <x-form.label value="{{ __('Business Name') }}" />
+                                            <x-form.input name="business_name"  placeholder="Business Name"
+                                                value="{{ $user->business->name ?? '' }}" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <x-form.label value="{{ __('Partner Type') }}" />
+                                        <select class="form-control" name="partner_id" id="">
+                                            @foreach ($partners as $partner)
+                                                <option {{($user->business->business_type_id == $partner->id) ? 'selected' : ''}} value="{{ $partner->id }}">{{ $partner->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    @else
+                                    <input type="hidden" name="business_name" value="{{ $user->business->name }}">
+                                    @endif
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -150,12 +177,12 @@
                 <div class="col-lg-4 col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2><strong>Business</strong> Logo</h2>
+                            <h2><strong>Business</strong> Photo</h2>
 
                         </div>
                         <div class="body">
                             <form method="POST" enctype="multipart/form-data" id="upload-image"
-                                action="{{ route('agent.logo.upload', $user->id) }}">
+                                action="{{ route('user.logo.upload', $user->id) }}">
                                 @csrf
                                 <div class="row clearfix">
 
@@ -174,13 +201,13 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-2">
-                                            <img src="{{ $user->getFirstMediaUrl('logos', 'thumb-100')? auth()->user()->getFirstMediaUrl('logos', 'thumb-100'): url('assets/images/avatar.jpg') }}"
-                                                alt="preview image" style="max-width: 100px;">
+                                            <img src="{{ $user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos'): url('assets/images/avatar.jpg') }}"
+                                                alt="preview image" style="width: 200px;">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary" id="submit">Save
-                                            Logo</button>
+                                        <button type="submit" class="btn btn-primary" id="submit">Update
+                                            Photo</button>
                                     </div>
 
                                 </div>
@@ -211,15 +238,15 @@
                 labelIdle: `Click here to upload your logo`,
                 imagePreviewMaxHeight: 50,
                 imageCropAspectRatio: '1:1',
-                imageResizeTargetWidth: 50,
-                imageResizeTargetHeight: 50,
+                imageResizeTargetWidth: 200,
+                imageResizeTargetHeight: 200,
                 stylePanelLayout: 'compact circle',
                 styleLoadIndicatorPosition: 'center bottom',
                 styleButtonRemoveItemPosition: 'center bottom'
             });
             FilePond.setOptions({
                 server: {
-                    url: '/agent/upload',
+                    url: '/dashboard/user/upload',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }

@@ -10,6 +10,7 @@ use App\Mail\MailtrapAdmin;
 use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\MailtrapExample;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,16 +18,19 @@ class AdminController extends Controller
 {
 
     public function dashboard() {
-        $agentsCount = User::where('user_type','agent')->count();
-        $totBusiness = Business::count();
+        if(auth()->user()->user_type =='admin'){
+        $activeBusiness = Business::where('business_status', '>=', 1)->count();
+        $suspendedBusiness = Business::where('business_status', '<', 1)->count();
         $totProperties = Properties::count();
-        //dd($agents);
-        return view('backend.index',compact('agentsCount','totBusiness','totProperties'));
+        return view('backend.admin.dashboard',compact('activeBusiness','suspendedBusiness','totProperties'));
+        }
+        $business = auth()->user()->business;;
+        return view('backend.index',compact('business'));
     }
     public function signUpRequest(Request $request){
-      //  dd($request);
+
         $business_type = BusinessType::find($request->partner_id)->name;
-        dd($business_type);
+
         $data = array(
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
@@ -35,7 +39,8 @@ class AdminController extends Controller
             'email' => $request->email,
             'physical_address' => $request->physical_address,
         );
-        //dd($data);
+
+       // Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
         Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
        // Mail::to($request->email)->send(new MailtrapExample($data));
        // return back()->with('success','Your request has been sent.');

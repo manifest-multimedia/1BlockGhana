@@ -11,7 +11,7 @@
                         <h2><strong>Package</strong> Details</h2>
                     </div>
 
-                    {{-- @if (count($errors) > 0)
+                    @if (count($errors) > 0)
                     <div class="alert alert-danger">
                         Error occured.<br><br>
                         <ul>
@@ -20,7 +20,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    @endif --}}
+                    @endif
                     <div class="body">
                         <form action="{{route('package.store')}}" method="POST">
                             @csrf
@@ -50,7 +50,7 @@
 
                             </div>
 
-                            
+
                             <button type="submit" class="btn btn-primary btn-round">Create Package</button>
                         </form>
                     </div>

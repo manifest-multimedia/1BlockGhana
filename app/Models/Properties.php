@@ -62,4 +62,14 @@ class Properties extends Model implements HasMedia
     {
         return static::all()->last();
     }
+
+    public static function boot(){
+
+        parent::boot();
+
+        static::creating(function($model){
+            $model->property_id = 'P' . str_pad($model->max('id')+1, 6,0,STR_PAD_LEFT);
+
+        });
+    }
 }

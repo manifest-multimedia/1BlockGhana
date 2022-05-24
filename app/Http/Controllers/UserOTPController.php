@@ -88,7 +88,7 @@ class UserOTPController extends Controller
         // dd($data['url']);
         Mail::to($request->email)->send(new OTPMail($data));
 
-          return redirect()->route('agent.add')->with('toast_success', 'Registration Link has been sent to the agent email');
+          return redirect()->route('user.add')->with('toast_success', 'Registration Link has been sent to the Partner email');
       }
       /**
        * Write code on Method
@@ -96,7 +96,7 @@ class UserOTPController extends Controller
        * @return response()
        */
       public function showAgentResetPasswordForm($token,$email) {
-         return view('backend.agent.passwordReset', ['token' => $token,'email'=>$email]);
+         return view('backend.partners.passwordReset', ['token' => $token,'email'=>$email]);
       }
 
       /**
@@ -129,6 +129,6 @@ class UserOTPController extends Controller
 
           DB::table('password_resets')->where(['email'=> $request->email])->delete();
 
-          return redirect()->route('agent.profile')->with('toast_success', 'Your password has been updated!');
+          return redirect()->route('user.profile')->with('toast_success', 'Your password has been updated!');
       }
 }

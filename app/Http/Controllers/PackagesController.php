@@ -24,16 +24,6 @@ class PackagesController extends Controller
     }
 
     public function create(){
-      $pack=   Package::create([
-            'name' => 'testname',
-            'type' => 'testtype',
-            'listing_limit' => 4,
-            'image_upload_limit' => 3,
-            'video_upload_limit' => 1,
-        ]);
-
-      //  dd($pack->id);
-       // return view('sbadmin.packages.create');
         return view('backend.packages.create');
     }
 
@@ -62,7 +52,7 @@ class PackagesController extends Controller
             'image_upload_limit' => $request->imageLimit,
         ]);
 
-        return back()->with('success','Package created successfully');
+        return redirect()->route('package.list')->with('success','Package updated successfully');
     }
 
     public function edit($id){

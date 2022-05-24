@@ -22,12 +22,6 @@
 											<x-form.input name="name" placeholder="Property Title" />
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<x-form.label value="{{ __('ID') }}" />
-											<x-form.input name="id" placeholder="RV151" />
-										</div>
-									</div>
 
 									<div class="col-sm-6">
 										<div class="form-group">
@@ -190,7 +184,7 @@
 
 								</div>
 
-								
+
 							</div>
 
 						</div>
@@ -240,7 +234,7 @@
         });
         FilePond.setOptions({
             server: {
-                url: '/properties/upload',
+                url: '/dashboard/properties/upload',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

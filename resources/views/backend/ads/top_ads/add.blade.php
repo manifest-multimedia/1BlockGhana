@@ -122,7 +122,7 @@
             });
             FilePond.setOptions({
                 server: {
-                    url: '/admin/ads/upload',
+                    url: '/dashboard/ads/upload',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }

@@ -56,18 +56,22 @@
                 <div class="col-lg-8">
                     <div class="row">
                         @forelse ($businesses as $business)
+
                         <div class="col-lg-6">
                             <div class="cards mt-4">
                                 <div class="profile__agents-header">
                                     <a href="#" class="profile__agents-avatar">
-                                        <img src="{{$business->user->getFirstMediaUrl('logos')}}" alt="" class="img-fluid">
+                                       
+                                        <img src="{{$business->user->getFirstMediaUrl('logos')? $business->user->getFirstMediaUrl('logos') : url('assets/images/avatar.jpg')}}" alt="" class="img-fluid">
+                                       
+
                                         <div class="total__property-agent">{{$business->properties->count()}} listing</div>
                                     </a>
                                 </div>
                                 <div class="profile__agents-body">
                                     <div class="profile__agents-info">
                                         <h5 class="text-capitalize">
-                                            <a href="{{ route('agent.listing', $business->id)}}">{{$business->name}}</a>
+                                            <a href="{{ route('partner.listing', $business->id)}}">{{$business->name}}</a>
                                         </h5>
                                         <p class="text-capitalize mb-1">{{$business->businessType->name ?? ''}}</p>
 
