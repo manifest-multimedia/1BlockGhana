@@ -16,7 +16,7 @@ class CreateDevelopmentsTable extends Migration
         Schema::create('developments', function (Blueprint $table) {
             $table->id();
             $table->string('development_id')->nullable();
-            $table->foreignId('business_id')->constrained('businesses')->onDelete('cascade');
+            $table->foreignId('business_id');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
