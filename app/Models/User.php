@@ -70,6 +70,10 @@ class User extends Authenticatable implements HasMedia
         return $this->hasManyThrough(Properties::class, Business::class)->orderBy('created_at', 'desc');
     }
 
+    public function developments(){
+        return $this->hasManyThrough(Development::class, Business::class)->orderBy('created_at', 'desc');
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb-50')

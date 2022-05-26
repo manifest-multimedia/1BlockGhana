@@ -33,8 +33,14 @@
 					<li><a href="{{ route('property.add')}}">Add Property</a></li>
 				</ul>
 			</li>
-
-
+            @role("admin")
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Developments</span> </a>
+				<ul class="ml-menu">
+					<li><a href="{{route('development.view')}}">Listed Developments</a></li>
+					<li><a href="{{ route('development.add')}}">Add Development</a></li>
+				</ul>
+			</li>
+            @endrole
             @role("admin")
 
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Adverts</span> </a>

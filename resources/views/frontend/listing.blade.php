@@ -178,6 +178,7 @@
                                         aria-labelledby="pills-tab-two">
                                         <div class="row">
                                             @foreach ($properties as $property)
+                                            @if ($property->business->business_status >= 1)
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="card__image card__box-v1">
                                                     <div class="card__image-header h-250 img-space">
@@ -247,6 +248,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                             @endforeach
 
                                         </div>

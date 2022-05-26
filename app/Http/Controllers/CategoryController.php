@@ -19,14 +19,15 @@ class CategoryController extends Controller
         return view('backend.category.list', compact('categories'));
     }
 
-    public function create(){
+    /* public function create(){
         return view('backend.category.create');
-    }
+    } */
 
     public function store(Request $request){
        // dd($request);
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories|max:255',
+            'type' => 'required',
             'position' => 'required',
         ],
         $messages = [
@@ -41,6 +42,7 @@ class CategoryController extends Controller
 
         Category::create([
             'name' => $request->name,
+            'type' => $request->type,
             'position' => $request->position,
         ]);
 

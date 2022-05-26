@@ -22,6 +22,7 @@
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Name</th>
+                                                <th>Type</th>
                                                 <th>Position</th>
                                                 <th>Action</th>
                                             </tr>
@@ -37,6 +38,8 @@
                                                     <td><span class="social_icon linkedin">{{ $count }}</span>
                                                     </td>
                                                     <td><span class="list-name">{{ $category->name }}</span>
+                                                    </td>
+                                                    <td><span class="list-name">{{ $category->type }}</span>
                                                     </td>
                                                     <td><span class="list-name">{{ $category->position }}</span>
                                                     </td>
@@ -90,6 +93,12 @@
                                     <div class="col-sm-12">
                                         <x-form.label value="{{ __('Category Name') }}" />
                                         <x-form.input name="name" placeholder="Category Name" />
+
+                                        <x-form.label value="{{ __('Category Type') }}" />
+                                        <select class="form-control" name="type" id="">
+                                           <option value="property">Property</option>
+                                           <option value="development">Development</option>
+                                        </select>
 
                                         <x-form.label value="{{ __('Position Number') }}" />
                                         <x-form.input type="number" name="position"

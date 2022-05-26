@@ -71,6 +71,29 @@ class UploadController extends Controller
 
         return '';
     }
+    public function storeDevelopments(Request $request){
+
+            if($request->hasFile('developments')){
+
+                $files = $request->file('developments');
+
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    $folder = uniqid();
+                    $folder = uniqid() . '-' . now()->timestamp;
+                    $file->storeAs('public/developments/tmp/' . $folder, $filename);
+
+                    TemporaryFile::create([
+                        'folder' => $folder,
+                        'filename' => $filename
+                    ]);
+
+                    return $folder;
+                }
+            }
+
+        return '';
+    }
 
 
 }

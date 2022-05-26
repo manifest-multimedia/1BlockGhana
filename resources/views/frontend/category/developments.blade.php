@@ -35,39 +35,11 @@
                                                     <option>Kumasi</option>
                                                 </select>
                                             </div>
-                                            <div class="inline-filter mx-2">
-                                                <select class="wide select_option">
-                                                    <option data-display="Bedrooms">Bedrooms</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                    <option>7</option>
-                                                    <option>8</option>
-                                                    <option>9</option>
-                                                </select>
-                                            </div>
-                                            <div class="inline-filter mx-2">
-                                                <select class="wide select_option">
-                                                    <option data-display="Bathrooms">Bathrooms</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
+
                                         </div>
 
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link pills-tab-one" data-toggle="pill" href="#pills-tab-one"
-                                            role="tab" aria-controls="pills-tab-one" aria-selected="true">
-                                            <span class="fa fa-th-list"></span>
-                                        </a>
-                                    </li> --}}
+
                                     <li class="nav-item">
                                         <a class="nav-link active pills-tab-two" data-toggle="pill"
                                             href="#pills-tab-two" role="tab" aria-controls="pills-tab-two"
@@ -86,46 +58,46 @@
                                         <div class="row">
 
 
-                                            @forelse ($properties as $property)
-                                                @if ($property->business->business_status >= 1)
+                                            @forelse ($developments as $development)
+                                                @if ($development->business->business_status >= 1)
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="card__image card__box-v1">
                                                         <div class="card__image-header h-250 img-space">
                                                             {{-- <div class="ribbon text-capitalize">sold out</div> --}}
 
-                                                            <a href="{{ route('listing.details', $property->id) }}">
-                                                                <img src="{{ $property->getFirstMediaUrl('properties') }}"
+                                                            <a href="{{ route('development.listing.details', $development->id) }}">
+                                                                <img src="{{ $development->getFirstMediaUrl('developments') }}"
                                                                     alt="" class="img-fluid w100 img-transition">
                                                             </a>
-                                                            <div class="info">
-                                                                {{ $property->purpose ?? 'Not Stated' }}</div>
+                                                           {{--  <div class="info">
+                                                                {{ $development->purpose ?? 'Not Stated' }}</div> --}}
                                                         </div>
                                                         <div class="card__image-body">
                                                             <span
-                                                                class="badge badge-primary text-capitalize mb-2">{{ $property->category->name ?? 'Uncategorised' }}</span>
+                                                                class="badge badge-primary text-capitalize mb-2">{{ $development->category->name ?? 'Uncategorised' }}</span>
                                                             <h6 class="text-capitalize">
                                                                 <a
-                                                                    href="{{ route('listing.details', $property->id) }}">{{ $property->name ?? 'Not Stated' }}</a>
+                                                                    href="{{ route('development.listing.details', $development->id) }}">{{ $development->name ?? 'Not Stated' }}</a>
                                                             </h6>
 
                                                             <p class="text-capitalize">
                                                                 <i class="fa fa-map-marker"></i>
-                                                                {{ $property->location ?? '--' }}
+                                                                {{ $development->location ?? '--' }}
                                                             </p>
-                                                            <ul class="list-inline card__content">
+                                                            {{-- <ul class="list-inline card__content">
                                                                 <li class="list-inline-item">
 
                                                                     <span>
                                                                         baths <br>
                                                                         <i class="fa fa-bath"></i>
-                                                                        {{ $property->bathroom ?? '' }}
+                                                                        {{ $development->bathroom ?? '' }}
                                                                     </span>
                                                                 </li>
                                                                 <li class="list-inline-item">
                                                                     <span>
                                                                         bedroom <br>
                                                                         <i class="fa fa-bed"></i>
-                                                                        {{ $property->bedroom ?? '' }}
+                                                                        {{ $development->bedroom ?? '' }}
                                                                     </span>
                                                                 </li>
 
@@ -133,35 +105,35 @@
                                                                     <span>
                                                                         area <br>
                                                                         <i class="fa fa-map"></i>
-                                                                        {{ $property->size ?? '' }} sq ft
+                                                                        {{ $development->size ?? '' }} sq ft
                                                                     </span>
                                                                 </li>
-                                                            </ul>
+                                                            </ul> --}}
                                                         </div>
                                                         <div class="card__image-footer">
                                                             <figure>
-                                                                <img src="{{ $property->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg' }}"
+                                                                <img src="{{ $development->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg' }}"
                                                                     alt="" class="img-fluid rounded-circle">
                                                             </figure>
                                                             <ul class="list-inline my-auto">
                                                                 <li class="list-inline-item">
                                                                     <a
-                                                                        href="{{ route('partner.listing', $property->business->id) }}">
-                                                                        {{ $property->business->user->firstname ?? '' }}
-                                                                        {{ $property->business->user->lastname ?? '' }}
+                                                                        href="{{ route('partner.listing', $development->business->id) }}">
+                                                                        {{ $development->business->user->firstname ?? '' }}
+                                                                        {{ $development->business->user->lastname ?? '' }}
                                                                     </a>
 
                                                                 </li>
 
                                                             </ul>
-                                                            <ul class="list-inline my-auto ml-auto">
+                                                            {{-- <ul class="list-inline my-auto ml-auto">
                                                                 <li class="list-inline-item">
 
-                                                                    <h6>{{ $property->currency->code }}{{ $property->price ?? '' }}
+                                                                    <h6>{{ $development->currency->code }}{{ $development->price ?? '' }}
                                                                     </h6>
                                                                 </li>
 
-                                                            </ul>
+                                                            </ul> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -199,9 +171,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-9">
                     <h2 class="text-white text-uppercase">Looking To Sell Or Rent Your Property?</h2>
-                    <p class="text-white text-capitalize">We Will Assist You In The Best And Comfortable Property
-                        Services
-                        For You
+                    <p class="text-white text-capitalize">We Will Assist You In The Best And Comfortable Property Services For You
                     </p>
 
                 </div>

@@ -31,7 +31,7 @@ class PropertyController extends Controller
     }
 
     public function add(){
-        $categories = Category::all();
+        $categories = Category::where('type','property')->get();
         $amenities = Amenities::all();
         $currencies = Currency::all();
         $id = Auth::user()->id;
@@ -59,7 +59,6 @@ class PropertyController extends Controller
             'size'=> $request->size,
             'bedroom'=> $request->bedroom,
             'bathroom'=> $request->bathroom,
-          //  'kitchen'=> $request->size,
             'size'=> $request->size,
             'purpose'=> $request->purpose,
             'location'=> $request->location,
@@ -113,7 +112,7 @@ class PropertyController extends Controller
           $property->date_built= $request->year_built;
             //'status'=> 1
           $property->save();
-        
+
           //Delete old amenities
           DB::insert('delete from amenities_properties where properties_id =' .$property->id);
         // Insert new amenities

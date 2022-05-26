@@ -80,7 +80,6 @@
                                             <th>No.</th>
                                             <th>Image</th>
                                             <th>Name</th>
-                                            <th>Name</th>
                                             <th>Price</th>
                                             <th>Purpose</th>
                                             <th>Action</th>

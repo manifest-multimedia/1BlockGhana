@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Business;
 use App\Models\Amenities;
 use App\Models\Properties;
-use App\Mail\MailtrapAdmin;
+use App\Mail\MailTrapAdmin;
 use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\MailtrapExample;
@@ -40,8 +40,8 @@ class AdminController extends Controller
             'physical_address' => $request->physical_address,
         );
 
-       // Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
         Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
+       // Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
        // Mail::to($request->email)->send(new MailtrapExample($data));
        // return back()->with('success','Your request has been sent.');
         return redirect()->route('request.status');
