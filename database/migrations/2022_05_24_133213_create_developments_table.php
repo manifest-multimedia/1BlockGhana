@@ -17,7 +17,7 @@ class CreateDevelopmentsTable extends Migration
             $table->id();
             $table->string('development_id')->nullable();
             $table->foreignId('business_id');
-            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
+            $table->foreignId('category_id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('location')->nullable();
