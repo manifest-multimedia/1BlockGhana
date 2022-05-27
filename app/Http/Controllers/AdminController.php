@@ -24,7 +24,7 @@ class AdminController extends Controller
         $totProperties = Properties::count();
         return view('backend.admin.dashboard',compact('activeBusiness','suspendedBusiness','totProperties'));
         }
-        $business = auth()->user()->business;;
+        $business = auth()->user()->business;
         return view('backend.index',compact('business'));
     }
     public function signUpRequest(Request $request){
