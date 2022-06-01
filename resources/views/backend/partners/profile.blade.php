@@ -36,8 +36,8 @@
                                                 <x-form.label value="{{ __('Business Type') }}" />
                                                 <select class="form-control" name="role_name" id="">
 
-                                                    @foreach ($partners as $partner)
-                                                        <option {{$user->getRoleNames()[0] == $partner->name ? 'selected' : ''}} value="{{ $partner->name }}">{{ Str::ucfirst($partner->name) }}
+                                                    @foreach ($roles as $role)
+                                                        <option {{$user->getRoleNames()[0] == $role->name ? 'selected' : ''}} value="{{ $role->name }}">{{ Str::ucfirst($role->name) }}
                                                         </option>
                                                     @endforeach
 
@@ -127,7 +127,7 @@
                                             <select class="form-control" name="package_id" id="">
 
                                                 @foreach ($packages as $package)
-                                                    <option {{$user->business->package_id  == $package->id ? 'selected' : ''}} value="{{ $package->name }}">{{ $package->name }}
+                                                    <option {{$user->business->package_id  == $package->id ? 'selected' : ''}} value="{{ $package->id }}">{{ $package->name }}
                                                     </option>
                                                 @endforeach
 
@@ -142,7 +142,7 @@
 
                                             </select>
                                             @endif
-                                            
+
                                         </div>
                                     </div>
                                     @else

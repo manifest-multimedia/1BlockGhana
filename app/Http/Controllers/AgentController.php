@@ -65,17 +65,19 @@ class AgentController extends Controller
     public function userProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
-        $partners = Role::whereNotIn('name', ['admin', 'super admin'])->get();
+        $packages = Package::all();
+        $roles = Role::whereNotIn('name', ['admin', 'super admin'])->get();
       //  $partners = BusinessType::all();
       //  return view('sbadmin.partner.profile',compact('user'));
-        return view('backend.partners.profile',compact('user','partners'));
+        return view('backend.partners.profile',compact('user','roles','packages'));
     }
 
     public function userProfileId($id){
         $user = User::find($id);
         $packages = Package::all();
-        $partners = Role::whereNotIn('name', ['super admin'])->get();
-        return view('backend.partners.profile',compact('user','partners','packages'));
+       // dd($packages);
+        $roles = Role::whereNotIn('name', ['super admin'])->get();
+        return view('backend.partners.profile',compact('user','roles','packages'));
     }
 
     public function userProfileUpdate(Request $request, $id){
@@ -111,7 +113,7 @@ class AgentController extends Controller
     }
 
     public function userBusinessUpdate(Request $request, $id){
-       $response = $this->authorize('update business'); //SAME AS -> Gate::inspect('update business');
+       $response = $this->authorize('update business','update all'); //SAME AS -> Gate::inspect('update business');
 
 
         $validated = $request->validate([
