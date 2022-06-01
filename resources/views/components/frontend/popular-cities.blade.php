@@ -10,7 +10,7 @@
                     <div class="carousel-inner">
                         @foreach ($developments as $key => $development)
                         <div class="carousel-item {{ $key == 0 ? 'active':''}}">
-                            <img class="d-block mx-auto" height="300px" src="{{$development->getFirstMediaUrl('development_banner')}}" alt="First slide">
+                            <img class="d-block mx-auto" width="100%" style="max-height: 300px;" src="{{$development->getFirstMediaUrl('development_banner')}}" alt="{{$development->name}}">
                         </div>
                         @endforeach
                   </div>

@@ -102,19 +102,17 @@
 						<div class="card">
 							<div class="header">
 								<h2><strong>Banner</strong> </h2>
-
 							</div>
 							<div class="body">
 								<div class="clearfix row">
 									<div class="col-sm-12">
 										<h6>Uploaded banner</h6>
                                             <div class="col-md-12 mb-2" >
-												@forelse ($development->getMedia('banner') as $key => $image)
-
-													<img src="{{asset($image->getUrl())}}" class="img-fluid" style="max-width: 300px;">
-                                                @empty
+												@if ($development->getFirstMediaUrl('development_banner'))
+													<img src="{{$development->getFirstMediaUrl('development_banner')}}" class="img-fluid" style="max-width: 300px;">
+                                                @else
                                                     <p>No added images</p>
-												@endforelse
+												@endif
 
 											</div>
 
