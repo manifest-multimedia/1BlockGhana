@@ -2,20 +2,21 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="FeaturedAds" name="Add Featured Ad" menu="FeaturedAds" link="{{route('featuredads.add')}}" />
+        <x-backend.breadcrumb menu="Select Development Ads" page="Select Development Ads" name="View Development Ads" link="{{route('developmentads.view')}}" />
         <div class="container-fluid">
 
             <div class="row clearfix">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="header">
-                            <h2><strong>Featured Ads</strong> </h2>
+                            <h2><strong>Select Development Ads</strong> </h2>
+
                         </div>
                         <x-notification.message />
 
                         <div class="body">
                             <div class="table-responsive">
-                                @if (!$featureds->isEmpty())
+                                @if (!$developments->isEmpty())
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
@@ -23,7 +24,7 @@
                                                 <th>Image</th>
                                                 <th>Name</th>
 
-                                                <th>Position</th>
+
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -32,35 +33,29 @@
                                                 $count = 0;
                                             @endphp
 
-                                            @foreach ($featureds as $featured)
+                                            @foreach ($developments as $development)
                                                 @php $count++;@endphp
                                                 <tr>
                                                     <td><span class="social_icon linkedin">{{ $count }}</span>
                                                     </td>
-                                                    <td><span class="list-name"><img src="{{$featured->getFirstMediaUrl('properties') ?? url('assets/images/avatar.jpg')}}" alt="{{$featured->name}}" width="150"></span>
+                                                    <td><span class="list-name"><img src="{{$development->getFirstMediaUrl('developments') ?? url('assets/images/avatar.jpg')}}" alt="{{$development->name}}" width="150"></span>
                                                     </td>
-                                                    <td><span class="list-name">{{ $featured->name }}</span>
-                                                    </td>
-
-                                                    <td><span class="list-name">{{ $featured->adStatus }}</span>
+                                                    <td><span class="list-name">{{ $development->name }}</span>
                                                     </td>
 
                                                     <td>
                                                         <span>
                                                          <button type="button" data-toggle="modal"
-                                                         data-target="#editModal{{$featured->id}}" class="badge badge-success">Edit</button>
+                                                         data-target="#editModal{{$development->id}}" class="badge badge-success">Add</button>
                                                         </span>
 
 
 
-                                                             <button type="button" data-toggle="modal"
-                                                                             data-target="#removeModal{{$featured->id}}" class="badge badge-danger">Remove
-                                                             </button>
-                                                             <!-- Button trigger modal -->
+
 
                                                              <!-- Modal -->
-                                                             @include('backend.ads.featured_ads.modal.edit')
-                                                             @include('backend.ads.featured_ads.modal.remove')
+                                                             @include('backend.ads.development_ads.modal.store')
+
 
                                                      </td>
                                                 </tr>
@@ -68,7 +63,7 @@
                                         </tbody>
                                     </table>
                                 @else
-                                    <p><strong>No Featured Ad listed</strong></p>
+                                    <p><strong>No Development Listing available at the moment</strong></p>
                                 @endif
                             </div>
                         </div>

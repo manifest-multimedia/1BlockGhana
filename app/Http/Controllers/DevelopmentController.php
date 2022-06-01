@@ -59,7 +59,7 @@ class DevelopmentController extends Controller
             if ($request->hasFile('banner')) {
                 $file = $request->file('banner');
               //  $development->clearMediaCollection('banner');
-                $development->addMedia($file)->toMediaCollection('banner');
+                $development->addMedia($file)->toMediaCollection('development_banner');
             }
         }
 
@@ -123,6 +123,15 @@ class DevelopmentController extends Controller
         // Insert new amenities
           foreach ($request->amenities as $amenity) {
             DB::insert('insert into amenities_development (development_id, amenities_id) values (?,?)', [$development->id,$amenity]);
+        }
+
+        if($request->banner){
+            if ($request->hasFile('banner')) {
+                $file = $request->file('banner');
+               // $development->clearMediaCollection('banner');
+                $development->clearMediaCollection('development_banner');
+                $development->addMedia($file)->toMediaCollection('development_banner');
+            }
         }
 
       //  dd($development);

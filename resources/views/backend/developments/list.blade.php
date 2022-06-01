@@ -36,7 +36,7 @@
                                             <tr>
                                                 <td><span class="social_icon linkedin">{{ $count }}</span>
                                                 </td>
-                                                <td><span class="list-name"><img src="{{$development->getFirstMediaUrl('developments') ?? url('assets/images/avatar.jpg')}}" alt="{{$development->name}}" width="100"></span>
+                                                <td><span class="list-name"><img src="{{$development->getFirstMediaUrl('development_banner') ?? url('/assets/images/avatar.jpg')}}" alt="{{$development->name}}" width="100"></span>
                                                 </td>
                                                 <td><span class="list-name">{{ $development->name }}</span>
                                                 </td>

@@ -11,7 +11,7 @@
 
  <x-frontend.explore-section :properties="$properties"/>
 
- <x-frontend.popular-cities />
+ <x-frontend.popular-cities  :developments="$developments"/>
 
 
  <!-- CALL TO ACTION -->

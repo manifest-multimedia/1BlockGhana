@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\TopAds;
 use App\Models\Properties;
+use App\Models\Development;
 use Illuminate\Http\Request;
 use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Auth;
@@ -113,6 +114,42 @@ class AdsController extends Controller
         ]);
 
         return redirect()->route('featuredads.view')->with('success','Priority has been removed');
+    }
+
+
+    public function viewDevelopmentAds(){
+        $developmentads = Development::select('id','name','adStatus')->where('adStatus', '>=' ,1)->get();
+       // dd($featureds);
+        return view('backend.ads.development_ads.list',compact('developmentads'));
+    }
+
+    public function addDevelopmentAds(){
+        $developments = Development::select('id','name')->where('adStatus','<','1')->orWhere('adStatus', NULL)->get();
+        return view('backend.ads.development_ads.developments', compact('developments'));
+    }
+
+    public function storeDevelopmentAds(Request $request, Development $id){
+        $id->update([
+            'adStatus' => $request->priority,
+        ]);
+
+        return redirect()->route('developmentads.view')->with('success','Development Ad Priority  has been added');
+    }
+    public function updateDevelopmentAds(Request $request, Development $id){
+       // dd($request->priority);
+        $id->update([
+            'adStatus' => $request->priority,
+        ]);
+
+        return redirect()->route('developmentads.view')->with('success','Development Ad Priority  has been updated');
+    }
+
+    public function deleteDevelopmentAds(Development $id){
+        $id->update([
+            'adStatus' => 0,
+        ]);
+
+        return redirect()->route('developmentads.view')->with('success','Priority has been removed');
     }
 
 

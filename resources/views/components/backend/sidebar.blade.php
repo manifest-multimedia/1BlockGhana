@@ -28,6 +28,7 @@
                     <ul class="ml-menu">
                         <li><a href="{{ route('topads.view') }}">Top Ads</a></li>
                         <li><a href="{{ route('featuredads.view') }}">Featured Ads</a></li>
+                        <li><a href="{{ route('developmentads.view') }}">Development Ads</a></li>
                     </ul>
                 </li>
             @endcan
@@ -41,8 +42,8 @@
             </li>
 
             @can('update all')
-                
-            
+
+
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-city"></i><span>Developments</span> </a>
                     <ul class="ml-menu">

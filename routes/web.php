@@ -201,6 +201,15 @@ Route::patch('/update/{id}', [AdsController::class, 'updateFeaturedAds'])->name(
 Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedAds'])->name('featuredads.remove');
 });
 
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/dev/ads/')->group( function (){
+// FEATURED ADS ROUTES
+Route::get('/view', [AdsController::class, 'viewDevelopmentAds'])->name('developmentads.view');
+Route::get('/add', [AdsController::class, 'addDevelopmentAds'])->name('developmentads.add');
+Route::post('/store/{id}', [AdsController::class, 'storeDevelopmentAds'])->name('developmentads.store');
+Route::patch('/update/{id}', [AdsController::class, 'updateDevelopmentAds'])->name('developmentads.update');
+Route::get('remove/{id}', [AdsController::class, 'deleteDevelopmentAds'])->name('developmentads.remove');
+});
+
 
 
 Route::get('forget-password', [UserOTPController::class, 'showForgetPasswordForm'])->name('forget.password.get');

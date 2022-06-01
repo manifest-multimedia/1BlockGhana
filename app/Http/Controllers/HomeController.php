@@ -19,8 +19,9 @@ class HomeController extends Controller
             auth()->user()->assignRole('admin');
         } */
         $properties = Properties::where('adStatus','>=',1)->orderBy('adStatus')->get();
+        $developments = Development::where('adStatus','>=',1)->orderBy('adStatus')->get();
         $categories = Category::get();
-        return view('frontend.homepage', compact('properties','categories'));
+        return view('frontend.homepage', compact('properties','categories','developments'));
     }
 
     public function listing() {
@@ -58,7 +59,7 @@ class HomeController extends Controller
 
     public function userListing($type) {
         $users = User::role($type)->get();
-      
+
         return view('frontend.partner-listing', compact('users','type'));
     }
 

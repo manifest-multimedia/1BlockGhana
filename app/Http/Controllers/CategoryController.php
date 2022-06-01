@@ -66,6 +66,7 @@ class CategoryController extends Controller
 
      Category::where('id',$id)->update([
         'name' => $request->name,
+        'type' => $request->type,
         'position' => $request->position,
      ]);
         return redirect()->route('category.list')->with('success','Category name has been updated successfully');

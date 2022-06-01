@@ -29,6 +29,13 @@
                             placeholder="Category Name"
                             value="{{ $category->name }}" />
 
+                        <x-form.label value="{{ __('Category Type') }}" />
+
+                        <select class="form-control" name="type" id="">
+                            <option {{$category->type == "property" ? 'selected' : ''}} value="property">Property</option>
+                            <option {{$category->type == "property" ? 'development' : ''}} value="development">Development</option>
+                        </select>
+
                         <x-form.label
                             value="{{ __('Position Number') }}" />
                         <x-form.input name="position"

@@ -1,18 +1,18 @@
+@props(['developments'])
+
 <!-- HIDE ONLY ON MOBILE -->
 <section class="popular__city-large" id="hide_on_mobile_only">
     <div class="container">
         <div class="row">
 
-            <div class="mx-auto mt-4 col-md-12">
-                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="mx-auto mt-4 px-0 col-md-12">
+                <div id="carouselExampleFade" class="carousel carousel-dev-banner slide carousel-fade" data-ride="carousel">
                     <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img class="d-block mx-auto" src="storage/ads/a3.jpg" alt="First slide">
-                      </div>
-                      {{-- <div class="carousel-item">
-                        <img class="d-block h-50" src="storage/ads/a3.jpg" alt="Second slide">
-                      </div> --}}
-                    </a>
+                        @foreach ($developments as $key => $development)
+                        <div class="carousel-item {{ $key == 0 ? 'active':''}}">
+                            <img class="d-block mx-auto" height="300px" src="{{$development->getFirstMediaUrl('development_banner')}}" alt="First slide">
+                        </div>
+                        @endforeach
                   </div>
             </div>
 
@@ -151,6 +151,16 @@
             </div>
         </div>
     </div>
+
+
+    @section('development_banner_scripts')
+    <script>
+        $('.carousel-dev-banner').owlCarousel({
+            //autoplayTimeout:3500,
+            interval: 1000
+        });
+
+    </script>
 </section>
 
 
