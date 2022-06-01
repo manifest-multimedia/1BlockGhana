@@ -80,6 +80,9 @@
                                             <th>No.</th>
                                             <th>Image</th>
                                             <th>Name</th>
+                                            @can('update all')
+                                            <th> Owner </th>
+                                            @endcan
                                             <th>Price</th>
                                             <th>Purpose</th>
                                             <th>Action</th>
@@ -99,6 +102,11 @@
                                                 </td>
                                                 <td><span class="list-name">{{ $property->name }}</span>
                                                 </td>
+                                                @can('update all')
+                                                <td><span class="list-name">{{ $property->business->user->firstname }} {{ $property->business->user->lastname }}</span>
+                                                </td>
+                                                @endcan
+                                                
                                                 <td><span class="list-name">{{ $property->currency->code }}
                                                     {{ $property->price }}</span>
                                                 </td>

@@ -1,5 +1,5 @@
 <h4>Dear Admin,</h4>
-<p>I would like to have an account to start listing on your platform. Below are my details</p>
+<p></p>
 
 <table class="table table-striped thead-default table-bordered" border="0" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 100%; border: 1px solid #e2e8f0;">
     <thead bgcolor="#f2f2f2">
@@ -36,3 +36,4 @@
 
 
 <p>Best Regards.</p>
+

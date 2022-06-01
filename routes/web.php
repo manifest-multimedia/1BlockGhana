@@ -54,10 +54,11 @@ Route::get('/listing', [HomeController::class, 'listingByHouses'])->name('listin
 Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->name('listing.details');
 Route::get('/development-details/{id}', [HomeController::class, 'developmentById'])->name('development.listing.details');
 Route::get('/partners/{type}', [HomeController::class, 'userListing'])->name('partner.listing');
-Route::get('/category/{id}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/category/{name}', [HomeController::class, 'categoryListing'])->name('category.listing');
 Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('user.listing');
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
+Route::post('/send/mail/{id}', [HomeController::class, 'sendPartnerMail'])->name('send.partner.mail');
 
 
 Route::get('/about-us', function () {

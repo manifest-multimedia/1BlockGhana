@@ -11,16 +11,17 @@ use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\MailtrapExample;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
 
     public function dashboard() {
-        if(auth()->user()->user_type =='admin'){
+        if(Gate::inspect('update all')->allowed() ){
         $activeBusiness = Business::where('business_status', '>=', 1)->count();
         $suspendedBusiness = Business::where('business_status', '<', 1)->count();
         $totProperties = Properties::count();

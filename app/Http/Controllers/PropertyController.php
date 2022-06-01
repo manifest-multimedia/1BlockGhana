@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Amenities;
+use App\Models\User;
+use App\Models\Gallery;
+use App\Models\Package;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\Currency;
+use App\Models\Amenities;
 use App\Models\Properties;
-use App\Models\Gallery;
-use App\Models\PropertyAmenities;
-use App\Models\User;
-use App\Models\Package;
-use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\TemporaryFile;
+use App\Models\PropertyAmenities;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PropertyController extends Controller
 {
@@ -24,7 +25,12 @@ class PropertyController extends Controller
     }
 
     public function view(){
-       $properties = Auth::user()->properties;
+        if(Gate::inspect('update all')->allowed() ){
+            $properties = Properties::all();
+        }else{
+            $properties = Auth::user()->properties;
+        }
+       
         
         return view('backend.properties.list',compact('properties'));
        // return view('backend.properties.grid',compact('properties'));

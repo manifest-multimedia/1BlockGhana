@@ -73,9 +73,9 @@ class AgentController extends Controller
 
     public function userProfileId($id){
         $user = User::find($id);
-       // $partners = BusinessType::all();
-        $partners = Role::whereNotIn('name', ['admin', 'super admin'])->get();
-        return view('backend.partners.profile',compact('user','partners'));
+        $packages = Package::all();
+        $partners = Role::whereNotIn('name', ['super admin'])->get();
+        return view('backend.partners.profile',compact('user','partners','packages'));
     }
 
     public function userProfileUpdate(Request $request, $id){
@@ -126,6 +126,7 @@ class AgentController extends Controller
             ],
             [
                 'name' => $request->business_name,
+                'package_id' => $request->package_id,
                 'mobile' => $request->business_phone,
                 'email' => $request->business_email,
                 'website' => $request->business_website,
@@ -167,7 +168,7 @@ class AgentController extends Controller
            }
 
 
-           return redirect()->route('user.profile')->with('success', 'Logo has been uploaded successfully');
+           return redirect()->back()->with('success', 'Logo has been uploaded successfully');
     }
 
 

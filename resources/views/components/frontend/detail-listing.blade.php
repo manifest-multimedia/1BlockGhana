@@ -218,28 +218,33 @@
                                 </div>
 
                             </div>
-                            <div class="profile__agent__body">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name">
+                            <x-notification.message />
+                            <form class="form" method="POST" action="{{ route('send.partner.mail',$property->id) }}">
+                                @csrf
+                                <div class="profile__agent__body">
+                                    <div class="form-group">
+                                        <input type="text" name="fullname" class="form-control" placeholder="Your Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="email" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group mb-0">
+                                        <textarea name="message" class="form-control required" rows="5" required="required"
+                                            placeholder="I'm interest in ..."></textarea>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone">
+                                <div class="profile__agent__footer">
+                                    <div class="form-group mb-0">
+                                        <button class="btn btn-primary text-capitalize btn-block"> send message <i
+                                                class="fa fa-paper-plane ml-1"></i>
+                                        </button>
+    
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email">
-                                </div>
-                                <div class="form-group mb-0">
-                                    <textarea class="form-control required" rows="5" required="required"
-                                        placeholder="I'm interest in ..."></textarea>
-                                </div>
-                            </div>
-                            <div class="profile__agent__footer">
-                                <div class="form-group mb-0">
-                                    <button class="btn btn-primary text-capitalize btn-block"> send message <i
-                                            class="fa fa-paper-plane ml-1"></i></button>
-
-                                </div>
-                            </div>
+                            </form>
                         </div>
 
                     </div>

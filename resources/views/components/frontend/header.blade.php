@@ -49,12 +49,12 @@
                         Partners </a>
                     <ul class="dropdown-menu animate fade-up">
                         @php
-                            $partners = App\Models\BusinessType::orderBy('position')->get();
+                            $partners = Spatie\Permission\Models\Role::where('name','agent')->orwhere('name','developer')->get();
                         @endphp
 
                         @if ($partners)
                             @foreach ($partners as $partner)
-                                <li><a class="dropdown-item" href="{{ route('partner.listing', Str::lower($partner->name)) }}">{{ $partner->name }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('partner.listing', Str::lower($partner->name)) }}">{{ Str::ucfirst($partner->name) }}</a></li>
                             @endforeach
                         @endif
                     </ul>

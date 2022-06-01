@@ -11,7 +11,7 @@
                     <div class="detail">
                         @auth
                             <h4>{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}</h4>
-                           {{--  <small>{{ Str::ucfirst(Auth::user()->user_type) }}</small> --}}
+                            {{-- <small>{{ Str::ucfirst(Auth::user()->user_type) }}</small> --}}
                             <small>{{ Str::ucfirst(Auth::user()->roles->pluck('name')[0]) }}</small>
                         @endauth
                     </div>
@@ -22,6 +22,16 @@
             <li class="header">MAIN</li>
             <li class="active open"><a href="/dashboard"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
 
+            @can('update all')
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Adverts</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li><a href="{{ route('topads.view') }}">Top Ads</a></li>
+                        <li><a href="{{ route('featuredads.view') }}">Featured Ads</a></li>
+                    </ul>
+                </li>
+            @endcan
+
             <li><a href="javascript:void(0);" class="menu-toggle"><i
                         class="zmdi zmdi-city"></i><span>Properties</span> </a>
                 <ul class="ml-menu">
@@ -30,21 +40,17 @@
                 </ul>
             </li>
 
-            @role('admin')
+            @can('update all')
+                
+            
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
-                    class="zmdi zmdi-city"></i><span>Developments</span> </a>
+                            class="zmdi zmdi-city"></i><span>Developments</span> </a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('development.view') }}">Listed Developments</a></li>
                         <li><a href="{{ route('development.add') }}">Add Development</a></li>
                     </ul>
                 </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-city"></i><span>Adverts</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li><a href="{{ route('topads.view') }}">Top Ads</a></li>
-                        <li><a href="{{ route('featuredads.view') }}">Featured Ads</a></li>
-                    </ul>
-                </li>
+
 
 
 
@@ -76,26 +82,26 @@
                         <i class="zmdi zmdi-account"></i><span>Partner Profile</span>
                     </a>
                 </li>
-            @endrole
+            @endcan
 
 
 
-            @role('admin')
-            <li class="{{ request()->routeIs('business.type.list') ? 'active' : '' }} open"><a
-                href="{{ route('business.type.list') }}"><i
-                    class="zmdi zmdi-balance-wallet"></i><span>Business Type</span></a>
-            </li>
+            @can('update all')
+                <li class="{{ request()->routeIs('business.type.list') ? 'active' : '' }} open"><a
+                        href="{{ route('business.type.list') }}"><i class="zmdi zmdi-balance-wallet"></i><span>Business
+                            Type</span></a>
+                </li>
 
-            <li class="{{ request()->routeIs('role.list') ? 'active' : '' }} open">
-                <a href="javascript:void(0);" class="menu-toggle"><i
-                class="zmdi zmdi-accounts-outline"></i><span>Roles & Permissions</span>
-                </a>
-                <ul class="ml-menu">
-                    <li><a href="{{ route('role.list') }}">Roles</a></li>
-                    <li><a href="{{ route('permission.list') }}">Permissions</a></li>
-                </ul>
-            </li>
-            @endrole
+                <li class="{{ request()->routeIs('role.list') ? 'active' : '' }} open">
+                    <a href="javascript:void(0);" class="menu-toggle"><i
+                            class="zmdi zmdi-accounts-outline"></i><span>Roles & Permissions</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li><a href="{{ route('role.list') }}">Roles</a></li>
+                        <li><a href="{{ route('permission.list') }}">Permissions</a></li>
+                    </ul>
+                </li>
+            @endcan
             <div class="menu">
                 <div class="list">
                     <li class="open">

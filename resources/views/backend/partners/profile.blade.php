@@ -113,11 +113,36 @@
                                 <div class="row clearfix">
 
                                     @role('admin|super admin')
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <x-form.label value="{{ __('Business Name') }}" />
                                             <x-form.input name="business_name"  placeholder="Business Name"
                                                 value="{{ $user->business->name ?? '' }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <x-form.label value="{{ __('Package') }}" />
+                                            @if ($user->business)
+                                            <select class="form-control" name="package_id" id="">
+
+                                                @foreach ($packages as $package)
+                                                    <option {{$user->business->package_id  == $package->id ? 'selected' : ''}} value="{{ $package->name }}">{{ $package->name }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+                                            @else
+                                            <select class="form-control" name="package_id" id="">
+
+                                                @foreach ($packages as $package)
+                                                    <option value="{{ $package->id }}">{{ $package->name }}
+                                                    </option>
+                                                @endforeach
+
+                                            </select>
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                     @else
@@ -202,7 +227,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-2">
-                                            
+
                                             <img src="{{ $user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos'): url('assets/images/avatar.jpg') }}"
                                                 alt="preview image" style="width: 200px;">
                                         </div>
@@ -237,7 +262,7 @@
 
             // Create a FilePond instance
             const pond = FilePond.create(inputElement, {
-                labelIdle: `Click here to upload your logo`,
+                labelIdle: `<p style='font-size:0.8rem'>Click here to upload your profile photo</p>`,
                 imagePreviewMaxHeight: 50,
                 imageCropAspectRatio: '1:1',
                 imageResizeTargetWidth: 200,

@@ -55,38 +55,42 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
-                        @forelse ($businesses as $business)
+                        @forelse ($users as $user)
 
                         <div class="col-lg-6">
                             <div class="cards mt-4">
                                 <div class="profile__agents-header">
                                     <a href="#" class="profile__agents-avatar">
                                        
-                                        <img src="{{$business->user->getFirstMediaUrl('logos')? $business->user->getFirstMediaUrl('logos') : url('assets/images/avatar.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{$user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos') : url('assets/images/avatar.jpg')}}" alt="" class="img-fluid">
                                        
 
-                                        <div class="total__property-agent">{{$business->properties->count()}} listing</div>
+                                        <div class="total__property-agent">{{$user->business->properties->count()}} listing</div>
                                     </a>
                                 </div>
                                 <div class="profile__agents-body">
                                     <div class="profile__agents-info">
                                         <h5 class="text-capitalize">
-                                            <a href="{{ route('partner.listing', $business->id)}}">{{$business->name}}</a>
+                                            <a href="{{ route('partner.listing', $user->business->id)}}">{{$user->business->name}}</a>
                                         </h5>
-                                        <p class="text-capitalize mb-1">{{$business->businessType->name ?? ''}}</p>
-
+                                        @foreach ($user->roles as $role)
+                                        <p class="text-capitalize mb-1">
+                                          {{Str::ucfirst($role->name ?? '')}}                                        
+                                        </p>
+                                        @endforeach
+                                        
                                         <ul class="list-unstyled mt-2">
-                                            <li><a href="tel:{{$business->mobile}}" class="text-capitalize"><span><i class="fa fa-phone"></i>
-                                                        Mobile :</span> {{$business->mobile}}</a>
+                                            <li><a href="tel:{{$user->business->mobile}}" class="text-capitalize"><span><i class="fa fa-phone"></i>
+                                                        Mobile :</span> {{$user->business->mobile}}</a>
                                             </li>
 
 
-                                            <li><a href="mailto:{{$business->email}}" class="text-capitalize"><span><i class="fa fa-envelope"></i>
+                                            <li><a href="mailto:{{$user->business->email}}" class="text-capitalize"><span><i class="fa fa-envelope"></i>
                                                         email :</span>
-                                                    {{$business->email}}</a></li>
-                                            <li><a href="http://{{$business->website}}" class="text"><span><i class="fa fa-globe"></i>
+                                                    {{$user->business->email}}</a></li>
+                                            <li><a href="http://{{$user->business->website}}" class="text"><span><i class="fa fa-globe"></i>
                                                         Website :</span>
-                                                    {{$business->website}}</a></li>
+                                                    {{$user->business->website}}</a></li>
                                         </ul>
 
 
