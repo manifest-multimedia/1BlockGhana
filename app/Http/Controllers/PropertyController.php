@@ -25,12 +25,14 @@ class PropertyController extends Controller
 
     public function view(){
        $properties = Auth::user()->properties;
-
+        
         return view('backend.properties.list',compact('properties'));
        // return view('backend.properties.grid',compact('properties'));
     }
 
     public function add(){
+        $this->authorize('create property');
+
         $categories = Category::where('type','property')->get();
         $amenities = Amenities::all();
         $currencies = Currency::all();

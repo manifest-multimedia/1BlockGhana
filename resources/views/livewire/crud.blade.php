@@ -32,7 +32,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @dd($users)
                     @foreach($users as $user)
                     <tr class="text-gray-700">
                         <td class="px-4 py-2 border">{{ $user->id }}</td>

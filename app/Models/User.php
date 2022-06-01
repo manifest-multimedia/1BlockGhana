@@ -62,8 +62,10 @@ class User extends Authenticatable implements HasMedia
         'profile_photo_url',
     ];
 
+    protected $guard_name = 'web';
+
     public function business(){
-        return $this->hasOne(Business::class);
+        return $this->hasOne(Business::class,'user_id');
     }
 
     public function properties(){

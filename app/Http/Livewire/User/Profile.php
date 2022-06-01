@@ -8,11 +8,11 @@ use Livewire\Component;
 
 class Profile extends Component
 {
-    public $user, $firstname, $lastname, $email, $mobile, $user_id, $gender, $address;
+    public $users, $firstname, $lastname, $email, $mobile, $user_id, $gender, $address;
 
 
     public function mount(User $user){
-        $this->user = $user;
+        $this->users = $user;
         $this->firstname = $user->firstname;
         $this->lastname = $user->lastname;
         $this->email = $user->email;
@@ -24,7 +24,7 @@ class Profile extends Component
 
     public function render()
     {
-        $this->user = User::all();
+        $this->users = User::all();
         return view('livewire.user.profile');
     }
 

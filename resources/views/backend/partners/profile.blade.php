@@ -34,15 +34,16 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <x-form.label value="{{ __('Business Type') }}" />
-                                                <select class="form-control" name="partner_id" id="">
+                                                <select class="form-control" name="role_name" id="">
+
                                                     @foreach ($partners as $partner)
-                                                        <option value="{{ $partner->id }}">{{ $partner->name }}
+                                                        <option {{$user->getRoleNames()[0] == $partner->name ? 'selected' : ''}} value="{{ $partner->name }}">{{ Str::ucfirst($partner->name) }}
                                                         </option>
                                                     @endforeach
 
                                                 </select>
                                             </div>
-
+                                         {{--    @dd($user->getRoleNames()) --}}
                                         </div>
                                     </div>
                                 @else
@@ -60,7 +61,7 @@
                                             </div>
                                         </div>
 
-                                        
+
                                     </div>
                                 @endrole
 
@@ -72,15 +73,23 @@
                                                 value="{{ $user->mobile }}" />
                                         </div>
                                     </div>
-
+                                @role('admin')
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <x-form.label value="{{ __('Email Address') }}" />
                                             <x-form.input name="email" type="email" placeholder="Email Address"
-                                                value="{{ $user->email }}" />
+                                                value="{{ $user->email }}"/>
                                         </div>
                                     </div>
-
+                                @else
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <x-form.label value="{{ __('Email Address') }}" />
+                                        <x-form.input name="email" type="email" placeholder="Email Address"
+                                            value="{{ $user->email }}" disabled/>
+                                    </div>
+                                </div>
+                                @endrole
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-primary btn-round">Update</button>
 
@@ -103,31 +112,23 @@
                             <div class="body">
                                 <div class="row clearfix">
 
-                                    @php
-                                        $userType = Illuminate\Support\Facades\Auth::user()->user_type;
-                                    @endphp
-
-                                    @if ($userType == "admin")
-                                    <div class="col-sm-6">
+                                    @role('admin|super admin')
+                                    <div class="col-sm-12">
                                         <div class="form-group">
                                             <x-form.label value="{{ __('Business Name') }}" />
                                             <x-form.input name="business_name"  placeholder="Business Name"
                                                 value="{{ $user->business->name ?? '' }}" />
                                         </div>
                                     </div>
-
-                                    <div class="col-sm-6">
-                                        <x-form.label value="{{ __('Partner Type') }}" />
-                                        <select class="form-control" name="partner_id" id="">
-                                            @foreach ($partners as $partner)
-                                                <option {{($user->business->business_type_id == $partner->id) ? 'selected' : ''}} value="{{ $partner->id }}">{{ $partner->name }}</option>
-                                            @endforeach
-
-                                        </select>
-                                    </div>
                                     @else
-                                    <input type="hidden" name="business_name" value="{{ $user->business->name }}">
-                                    @endif
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <x-form.label value="{{ __('Business Name') }}" />
+                                            <x-form.input disabled name="business_name"  placeholder="Business Name"
+                                                value="{{ $user->business->name ?? '' }}" />
+                                        </div>
+                                    </div>
+                                    @endrole
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -166,7 +167,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary btn-round">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-round">Update Business</button>
 
                                     </div>
                                 </div>
@@ -201,6 +202,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-2">
+                                            
                                             <img src="{{ $user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos'): url('assets/images/avatar.jpg') }}"
                                                 alt="preview image" style="width: 200px;">
                                         </div>

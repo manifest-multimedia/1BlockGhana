@@ -5,8 +5,9 @@ use App\Http\Livewire\Crud;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\_RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UploadController;
@@ -14,7 +15,10 @@ use App\Http\Controllers\UserOTPController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Livewire\Admin\AccessControlList;
+use App\Http\Controllers\_PermissionController;
 use App\Http\Controllers\DevelopmentController;
+use App\Http\Controllers\_AccessControlController;
 
 
 /*
@@ -93,6 +97,9 @@ Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/user'
 });
 
 
+
+Route::get('users', Crud::class);
+
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/packages')->group( function (){
     Route::get('/list', [PackagesController::class,'view'])->name('package.list');
     Route::get('/add', [PackagesController::class,'create'])->name('package.add');
@@ -112,12 +119,37 @@ Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/categ
 });
 
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/amenities')->group( function (){
-    Route::get('/list', [AdminController::class,'view'])->name('amenity.list');
-    Route::get('/add', [AdminController::class,'create'])->name('amenity.add');
-    Route::post('/store', [AdminController::class,'store'])->name('amenity.store');
-    Route::get('/edit/{id}', [AdminController::class,'edit'])->name('amenity.edit');
-    Route::patch('/update/{id}', [AdminController::class,'update'])->name('amenity.update');
-    Route::delete('/delete/{id}', [AdminController::class,'delete'])->name('amenity.delete');
+    Route::get('/list', [AdminController::class,'viewAmenities'])->name('amenity.list');
+    Route::get('/add', [AdminController::class,'createAmenity'])->name('amenity.add');
+    Route::post('/store', [AdminController::class,'storeAmenity'])->name('amenity.store');
+    Route::patch('/update/{id}', [AdminController::class,'updateAmenity'])->name('amenity.update');
+    Route::delete('/delete/{id}', [AdminController::class,'deleteAmenity'])->name('amenity.delete');
+});
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/business-type')->group( function (){
+    Route::get('/list', [AdminController::class,'viewBusinessTypes'])->name('business.type.list');
+    Route::get('/add', [AdminController::class,'createBusinessType'])->name('business.type.add');
+    Route::post('/store', [AdminController::class,'storeBusinessType'])->name('business.type.store');
+    Route::patch('/update/{id}', [AdminController::class,'updateBusinessType'])->name('business.type.update');
+    Route::delete('/delete/{id}', [AdminController::class,'deleteBusinessType'])->name('business.type.delete');
+});
+
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/role')->group( function (){
+    Route::get('/list', [_RoleController::class,'viewRole'])->name('role.list');
+    Route::post('/store', [_RoleController::class,'storeRole'])->name('role.store');
+    Route::patch('/update/{id}', [_RoleController::class,'updateRole'])->name('role.update');
+    Route::delete('/delete/{id}', [_RoleController::class,'deleteRole'])->name('role.delete');
+});
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/permission')->group( function (){
+    Route::get('/list', [_PermissionController::class,'viewPermission'])->name('permission.list');
+    Route::post('/store', [_PermissionController::class,'storePermission'])->name('permission.store');
+    Route::patch('/update/{name}', [_PermissionController::class,'updatePermission'])->name('permission.update');
+    Route::patch('/revoke/{name}', [_PermissionController::class,'revokePermission'])->name('permission.revoke');
+    Route::delete('/delete/{id}', [_PermissionController::class,'deletePermission'])->name('permission.delete');
+});
+
+Route::middleware(['auth:sanctum'])->prefix('dashboard/admin/access')->group( function (){
+    Route::get('/', [_AccessControlController::class, 'viewAccessControlList'])->name('access.role.view');
+    Route::patch('/update/{id}', [_AccessControlController::class,'updateAccessControlList'])->name('access.role.update');
 });
 
 Route::post('/signup-request', [AdminController::class,'signUpRequest'])->name('signup.request');
@@ -168,7 +200,7 @@ Route::patch('/update/{id}', [AdsController::class, 'updateFeaturedAds'])->name(
 Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedAds'])->name('featuredads.remove');
 });
 
-Route::get('users', Crud::class);
+
 
 Route::get('forget-password', [UserOTPController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('send-user-otp', [UserOTPController::class, 'submitAgentForm'])->name('send.user.otp');

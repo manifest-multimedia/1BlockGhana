@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\TemporaryFile;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Password;
 use Spatie\Permission\Models\Permission;
 
@@ -30,9 +31,11 @@ class AgentController extends Controller
 
     public function addUser(){
         $packages = Package::all();
-        $partners = BusinessType::all();
+      //  $partners = BusinessType::all();
+        $roles = Role::where('name','agent')->orwhere('name','developer')->get();
+
        // return view('sbadmin.partners.add',compact('packages','categories'));
-        return view('backend.partners.add',compact('packages','partners'));
+        return view('backend.partners.add',compact('packages','roles'));
     }
 
     public function postPartner(Request $request){
@@ -62,50 +65,93 @@ class AgentController extends Controller
     public function userProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
-        $partners = BusinessType::all();
+        $partners = Role::whereNotIn('name', ['admin', 'super admin'])->get();
+      //  $partners = BusinessType::all();
       //  return view('sbadmin.partner.profile',compact('user'));
         return view('backend.partners.profile',compact('user','partners'));
     }
 
-    public function userProfileUpdate(Request $request, $id){
+    public function userProfileId($id){
+        $user = User::find($id);
+       // $partners = BusinessType::all();
+        $partners = Role::whereNotIn('name', ['admin', 'super admin'])->get();
+        return view('backend.partners.profile',compact('user','partners'));
+    }
 
-       // $id = Auth::user()->id;
-        User::where('id',$id)->update([
+    public function userProfileUpdate(Request $request, $id){
+        $user = User::find($id);
+        $user_role = Auth::user()->roles->pluck('name')[0];
+        if($user_role == 'admin' || $user_role == 'super admin'){
+            $user->firstname = $request->firstname;
+            $user->lastname = $request->lastname;
+            $user->mobile = $request->phone;
+            $user->email = $request->email;
+
+            $user->save();
+
+            /* Business::where('user_id', $id)->update([
+                'business_type_id' => $id
+            ]); */
+
+            $user->syncRoles($request->role_name);
+
+            return redirect()->back()->with('success','User Information has been updated');
+        }
+        // $id = Auth::user()->id;
+        /* User::where('id',$id)->update([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'mobile' => $request->phone,
             'email' => $request->email,
-        ]);
-        return redirect()->route('user.profile')->with('success','Personal Information has been updated');
+        ]); */
+
+        $user->mobile = $request->phone;
+        $user->save();
+        return redirect()->back()->with('success','Personal Information has been updated');
     }
 
     public function userBusinessUpdate(Request $request, $id){
-       // dd($request);
+       $response = $this->authorize('update business'); //SAME AS -> Gate::inspect('update business');
+
 
         $validated = $request->validate([
             'business_phone' => 'required|numeric',
             'business_email' => 'email',
             'business_description' => 'required',
         ]);
-       // $id = Auth::user()->id;
-        Business::updateOrCreate([
-            'user_id' => $id,
-        ],
-        [
-            'name' => $request->business_name,
-            'mobile' => $request->business_phone,
-            'email' => $request->business_email,
-            'business_type_id' => $request->partner_id,
-            'website' => $request->business_website,
-            'description' => $request->business_description,
-         ]);
-        return redirect()->back()->with('success','Business Information has been updated');
+
+        if (Gate::inspect('update all')->allowed()) {
+            Business::updateOrCreate([
+                'user_id' => $id,
+            ],
+            [
+                'name' => $request->business_name,
+                'mobile' => $request->business_phone,
+                'email' => $request->business_email,
+                'website' => $request->business_website,
+                'description' => $request->business_description,
+             ]);
+
+            return redirect()->back()->with('success','Business Information has been updated');
+
+            }
+            else {
+            Business::updateOrCreate([
+                'user_id' => $id,
+            ],
+            [
+
+                'mobile' => $request->business_phone,
+                'email' => $request->business_email,
+                'website' => $request->business_website,
+                'description' => $request->business_description,
+             ]);
+            return redirect()->back()->with('success','Business Information has been updated');
+        }
+
+
     }
-    public function userProfileId($id){
-        $user = User::find($id);
-        $partners = BusinessType::all();
-        return view('backend.partners.profile',compact('user','partners'));
-    }
+
 
     public function uploadLogo(Request $request,$id){
 

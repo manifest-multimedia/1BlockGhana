@@ -72,7 +72,7 @@ class UserOTPController extends Controller
                 'user_type' => 'agent',
                 'password' => Hash::make('1blockghana')
             ]);
-            $user->assignRole('user');
+            $user->assignRole($request->role_name);
 
             foreach (User::where('email', $request->email)->cursor() as $agent) {
                 Business::create([

@@ -30,7 +30,7 @@ class HomeController extends Controller
         $category = Category::where('id',1)->first();
         //dd($category->id);
         $properties = Properties::get();
-        dd($properties);
+       // dd($properties);
        // $properties = Properties::get();
         return view('frontend.listing', compact('properties'));
     }
@@ -54,8 +54,6 @@ class HomeController extends Controller
     }
 
     public function userListing($type) {
-
-
         $businessType = BusinessType::where('name',$type)->get();
         //dd($businessType);
         foreach ($businessType as $busType) {

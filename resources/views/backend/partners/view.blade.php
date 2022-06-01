@@ -1,12 +1,11 @@
 <x-backend.app >
 
-    <!-- Main Content -->
 <section class="content agent">
     <x-backend.breadcrumb page="Partner" name="Add New Partner" menu="Partners" link="{{route('user.add')}}" />
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <div class="header">
-                <h2><strong></strong> Partners</h2>
+                <h2><strong></strong>Partners</h2>
             </div>
 
             <div class="body">
@@ -38,9 +37,9 @@
                                 </td>
                                 <td>{{$partner->business->name?? ''}}</td>
                                 <td>
-
-                                        {{App\Models\BusinessType::find($partner->business->business_type_id)->name ?? ''}}
-
+                                    @foreach ($partner->getRoleNames() as $key => $value)
+                                    {{ Str::ucfirst($value) }}
+                                    @endforeach
                                 </td>
 
                                 <td>
@@ -53,10 +52,12 @@
                                     <a href="{{route('user.profile.id',$partner->id)}}"><button class="badge badge-success">View Profile</button></a>
                                 </td>
                                 <td>
+                                    @if($partner->business)
                                     @livewire('admin.business-status', [
                                         'model' => $partner->business,
                                         'field' => 'business_status',
                                     ])
+                                    @endif
 
                                 </td>
                             </tr>

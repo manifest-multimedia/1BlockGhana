@@ -10,6 +10,8 @@ use App\Mail\MailTrapAdmin;
 use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\MailtrapExample;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -40,29 +42,31 @@ class AdminController extends Controller
             'physical_address' => $request->physical_address,
         );
 
+        //live email
         Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
-       // Mail::to('info@1blockghana.com')->send(new MailtrapAdmin($data));
-       // Mail::to($request->email)->send(new MailtrapExample($data));
-       // return back()->with('success','Your request has been sent.');
+
+        //test email
+       // Mail::to('admin@1blockghana.com')->send(new MailtrapAdmin($data));
+
         return redirect()->route('request.status');
     }
 
 
     //AMENITIES
-    public function view(){
+    public function viewAmenities(){
         $amenities = Amenities::all();
      //   return view('sbadmin.amenities.view', compact('amenities'));
         return view('backend.amenities.list', compact('amenities'));
     }
 
-    public function create(){
+    public function createAmenity(){
         return view('backend.amenities.create');
     }
 
-    public function store(Request $request){
+    public function storeAmenity(Request $request){
        // dd($request);
         $validator = Validator::make($request->all(),[
-            'name' => 'required|unique:amenities|max:255',
+            'name' => 'required|unique:amenities,name|max:255',
         ],
         $messages = [
             'required' => 'The :attribute field is required.',
@@ -77,14 +81,12 @@ class AdminController extends Controller
         return back()->with('success','New Amenity has been created successfully');
     }
 
-    public function edit($id){
-        //dd($amenities);
+    public function editAmenity($id){
      $amenities =  Amenities::find($id);
-     //dd($amenities);
         return view('backend.amenities.edit', compact('amenities'));
     }
 
-    public function update(Request $request, $id){
+    public function updateAmenity(Request $request, $id){
         $validated = $request->validate([
             'name' => 'required|max:255',
         ]);
@@ -96,7 +98,7 @@ class AdminController extends Controller
         return redirect()->route('amenity.list')->with('toast_success','Amenity name has been updated successfully');
     }
 
-    public function delete($id){
+    public function deleteAmenity($id){
 
      $amenities =  Amenities::find($id);
 
@@ -104,22 +106,22 @@ class AdminController extends Controller
      return redirect()->route('amenity.list')->with('success','Amenity has been successfully deleted');
     }
 
-    //PARTNERS TYPES
-    public function viewPartners(){
-        $partners = BusinessType::select('id','name','position')->orderBy('position')->get();
-        return view('backend.partners.list', compact('partners'));
+
+    //BUSINESS TYPES
+    public function viewBusinessTypes(){
+        $business_types = BusinessType::select('id','name','position')->orderBy('position')->get();
+        return view('backend.business_type.list', compact('business_types'));
     }
 
 
-    public function storePartner(Request $request){
+    public function storeBusinessType(Request $request){
        // dd($request);
         $validator = Validator::make($request->all(),[
-            'name' => 'required|unique:business_type|max:255',
+            'name' => 'required|unique:business_type,name|max:255',
         ],
         $messages = [
             'required' => 'The :attribute field is required.',
-            'name.unique' => 'Partner type already exist.',
-            'position.unique' => 'Position number already exist.',
+            'name.unique' => 'Business type already exist.',
         ]
     );
 
@@ -131,32 +133,29 @@ class AdminController extends Controller
         return back()->with('success','New Partner Type has been created successfully');
     }
 
-    public function editPartner($id){
-        //dd($amenities);
-     $partner =  BusinessType::find($id);
-     //dd($amenities);
-        return view('backend.partners.edit', compact('partner'));
+    public function editBusinessType($id){
+     $business_types =  BusinessType::find($id);
+        return view('backend.busines_type.edit', compact('business_types'));
     }
 
-    public function updatePartner(Request $request, $id){
+    public function updateBusinessType(Request $request, $id){
         $validated = $request->validate([
-            'name' => 'required|max:255',
-            'position' => 'required|max:255',
+            'name' => 'required|max:255'
         ]);
 
 
     BusinessType::where('id',$id)->update([
         'name' => $request->name,
-        'position' => $request->position,
      ]);
-        return redirect()->route('partner.list')->with('toast_success','Partner Type has been updated successfully');
+        return redirect()->route('business.type.list')->with('toast_success','Business Type has been updated successfully');
     }
 
-    public function deletePartner($id){
+    public function deleteBusinessType($id){
 
      $partners =  BusinessType::find($id);
 
      $partners->delete();
-     return redirect()->route('partner.list')->with('success','Partner Type has been successfully deleted');
+     return redirect()->route('business.type.list')->with('success','Business Type has been successfully deleted');
     }
+
 }

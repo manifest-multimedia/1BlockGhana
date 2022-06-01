@@ -26,10 +26,10 @@
                                 <p><strong>You need to first add your Packages before an agent can be added to this
                                         platform</strong></p>
                                 <span><a href="{{ route('package.add') }}">Click here</a> to add a new package</span>
-                            @elseif ($partners->isEmpty())
-                                <p><strong>You need to first add the Business Category before an agent can be added to
+                            @elseif ($roles->isEmpty())
+                                <p><strong>You need to first add the User Role before an agent can be added to
                                         this platform</strong></p>
-                                <span><a href="{{ route('user.add') }}">Click here</a> to add a new Category</span>
+                                <span><a href="{{ route('role.list') }}">Click here</a> to add a new Category</span>
                             @else
                                 <form action="{{ route('send.user.otp') }}" method="post">
                                     @csrf
@@ -58,9 +58,9 @@
 
                                         <div class="col-sm-6">
                                             <x-form.label value="{{ __('Partner Type') }}" />
-                                            <select class="form-control" name="partner_id" id="">
-                                                @foreach ($partners as $partner)
-                                                    <option value="{{ $partner->id }}">{{ $partner->name }}</option>
+                                            <select class="form-control" name="role_name" id="">
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->name }}">{{ Str::ucfirst($role->name) }}</option>
                                                 @endforeach
 
                                             </select>

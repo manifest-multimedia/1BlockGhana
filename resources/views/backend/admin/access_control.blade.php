@@ -1,11 +1,17 @@
+<x-backend.app2>
 
+    <!-- Main Content -->
+    <section class="content agent">
+        <x-backend.breadcrumb page="Access Control List" menu="Access Control List" />
+
+        <div class="container-fluid">
 
             <div class="row clearfix">
-                <div class="col-lg-8 col-md-12">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="header">
 
-                            <h2><strong>Assign Role</strong> </h2>
+                            <h2><strong>Access Control</strong> </h2>
 
                         </div>
                         <x-notification.message />
@@ -18,6 +24,7 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Name</th>
+                                            <th>Assigned Role</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -31,8 +38,14 @@
                                             <tr>
                                                 <td><span class="social_icon linkedin">{{ $count }}</span>
                                                 </td>
-                                                <td><span class="list-name">{{ $user->firstname }}</span>
+                                                <td><span class="list-name">{{ $user->firstname }} {{ $user->lastname }}</span>
                                                 </td>
+
+                                                <td>
+                                                 @foreach ($user->getRoleNames() as $key => $value)
+                                                    {{$value}}
+                                                @endforeach
+                                            </td>
 
                                                 <td>
                                                    <span>
@@ -42,15 +55,10 @@
 
 
 
-                                                        <button type="button" data-toggle="modal"
-                                                                        data-target="#deleteModal{{$user->id}}" class="badge badge-danger">Delete
-                                                        </button>
-                                                        <!-- Button trigger modal -->
+
 
                                                         <!-- Modal -->
-                                                       {{--  @include('backend.user.modal.edit')
-                                                        @include('backend.user.modal.delete') --}}
-
+                                                        @include('backend.admin.modal.edit')
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -64,7 +72,8 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-
+</x-backend.app2>

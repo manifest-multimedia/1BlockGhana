@@ -28,7 +28,7 @@
                     <div class="card">
                         <div class="body">
                             <p class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >Listed Properties</p>
-                            <p class="text-muted"><strong>{{$business->properties->count()}}</strong></p>
+                            <p class="text-muted"><strong>{{$business->properties->count() ?? ''}}</strong></p>
                             <div class="progress">
                                 <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>
@@ -40,7 +40,10 @@
                     <div class="card">
                         <div class="body">
                             <p class="number count-to" data-from="0" data-to="128" data-speed="2000" data-fresh-interval="700" >Business Type</p>
-                            <p class="text-muted"><strong>{{Str::singular($business->businessType->name)}}</strong></p>
+                            @foreach ($business->user->roles as $role)
+                            <p class="text-muted"><strong>{{Str::ucfirst($role->name ?? '')}}</strong></p>
+                            @endforeach
+
                             <div class="progress">
                                 <div class="progress-bar l-blue" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>
@@ -52,7 +55,7 @@
                     <div class="card">
                         <div class="body">
                             <p class="number count-to" data-from="0" data-to="758" data-speed="2000" data-fresh-interval="700" >Suscribed Package</p>
-                            <p class="text-muted"><strong>{{$business->package->name}}</strong></p>
+                            <p class="text-muted"><strong>{{$business->package->name ?? ''}}</strong></p>
                             <div class="progress">
                                 <div class="progress-bar l-green" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
                             </div>

@@ -62,7 +62,7 @@
                                     @php
                                         $partners = App\Models\BusinessType::get();
                                     @endphp
-
+                                   {{--  @dd($partners) --}}
                                     <div class="col-md-6">
                                         <x-jet-label value="{{ __('Partner Type') }}" />
                                         <select class="form-control" name="partner_id" id="">

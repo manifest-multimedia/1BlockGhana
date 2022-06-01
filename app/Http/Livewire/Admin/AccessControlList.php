@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Livewire\Component;
 
-class Crud extends Component
+class AccessControlList extends Component
 {
     public $users, $name, $email, $mobile, $user_id;
     public $isModalOpen = 0;
@@ -13,8 +13,7 @@ class Crud extends Component
     public function render()
     {
         $this->users = User::all();
-      //  dd($this->users);
-        return view('livewire.crud');
+        return view('livewire.admin.access-control-list');
     }
 
     public function create()
@@ -79,3 +78,4 @@ class Crud extends Component
         session()->flash('message', 'User deleted.');
     }
 }
+
