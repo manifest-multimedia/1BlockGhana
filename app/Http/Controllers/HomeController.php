@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Business;
 use App\Models\Category;
+use App\Models\Currency;
+use App\Models\District;
 use App\Models\Properties;
 use App\Models\Development;
 use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\SendPartnerMail;
+use App\Models\StaticBottomAds;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -20,6 +23,44 @@ class HomeController extends Controller
         } */
         $properties = Properties::where('adStatus','>=',1)->orderBy('adStatus')->get();
         $developments = Development::where('adStatus','>=',1)->orderBy('adStatus')->get();
+        $categories = Category::get();
+        $currencies = Currency::get();
+        $statics = StaticBottomAds::get();
+        return view('frontend.homepage', compact('properties','categories','developments','currencies','statics'));
+    }
+
+    public function searchFilter(Request $request) {
+
+        $categories = Category::get();
+       // dd(Properties::where('location', 'LIKE',"%{$request->location}%")->get());
+        if(Properties::where('category_id',$request->category_id)){
+
+          //  dd($request->min_price);
+
+            $properties = Properties::where('category_id',$request->category_id);
+            $properties = $properties->where('currency_id',$request->currency_id);
+            $properties = $properties->where('price', '>=',$request->min_price);
+            $properties = $properties->where('price', '<=',$request->max_price);
+            //$properties = $properties->where('location', 'LIKE',"%{$request->location}%");
+
+            $properties->get();
+            //dd($properties->get());
+
+           $similar = Properties::where('category_id',[$request->category_id])
+                                 ->orwhere('price', '<=',$request->min_price)
+                                 ->orwhere('price', '>=',$request->max_price)->get();
+
+            return view('frontend.filter.properties', compact('properties','similar'));
+
+        }elseif(Development::where('category_id',$request->category_id)){
+
+            $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
+            return view('frontend.homepage', compact('properties','categories','developments'));
+        }
+
+
+        dd($properties);
+        $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
         $categories = Category::get();
         return view('frontend.homepage', compact('properties','categories','developments'));
     }
@@ -97,7 +138,7 @@ class HomeController extends Controller
 
     public function autocompleteLocation(Request $request){
 
-        $locations = Properties::select('name')->where('name','LIKE', '%'. $request->location. '%')->get();
+        $locations = District::select('name')->where('name','LIKE', '%'. $request->location. '%')->get();
 
         return response()->json($locations);
     }

@@ -59,6 +59,7 @@ Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
 Route::post('/send/mail/{id}', [HomeController::class, 'sendPartnerMail'])->name('send.partner.mail');
+Route::post('/search', [HomeController::class, 'searchFilter'])->name('search.filter');
 
 
 Route::get('/about-us', function () {
@@ -202,12 +203,28 @@ Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedAds'])->name('fe
 });
 
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/dev/ads/')->group( function (){
-// FEATURED ADS ROUTES
+// DEVELOPMENT ADS ROUTES
 Route::get('/view', [AdsController::class, 'viewDevelopmentAds'])->name('developmentads.view');
 Route::get('/add', [AdsController::class, 'addDevelopmentAds'])->name('developmentads.add');
 Route::post('/store/{id}', [AdsController::class, 'storeDevelopmentAds'])->name('developmentads.store');
 Route::patch('/update/{id}', [AdsController::class, 'updateDevelopmentAds'])->name('developmentads.update');
 Route::get('remove/{id}', [AdsController::class, 'deleteDevelopmentAds'])->name('developmentads.remove');
+});
+
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/statictop/ads/')->group( function (){
+// STATIC TOP ADS ROUTES
+Route::get('/view', [AdsController::class, 'viewStaticTopAds'])->name('static.topads.view');
+Route::post('/store/{id}', [AdsController::class, 'storeStaticTopAds'])->name('static.topads.store');
+Route::get('remove/{id}', [AdsController::class, 'deleteStaticTopAds'])->name('static.topads.remove');
+});
+
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/staticbottom/ads/')->group( function (){
+// STATIC BOTTOM ADS ROUTES
+Route::get('/view', [AdsController::class, 'viewStaticBottomAds'])->name('static.bottomads.view');
+Route::get('/add', [AdsController::class, 'addStaticBottomAds'])->name('static.bottomads.add');
+Route::post('/store', [AdsController::class, 'storeStaticBottomAds'])->name('static.bottomads.store');
+Route::patch('/update/{id}', [AdsController::class, 'updateStaticBottomAds'])->name('static.bottomads.update');
+Route::get('remove/{id}', [AdsController::class, 'deleteStaticBottomAds'])->name('static.bottomads.remove');
 });
 
 

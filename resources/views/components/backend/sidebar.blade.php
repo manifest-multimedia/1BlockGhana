@@ -29,6 +29,8 @@
                         <li><a href="{{ route('topads.view') }}">Top Ads</a></li>
                         <li><a href="{{ route('featuredads.view') }}">Featured Ads</a></li>
                         <li><a href="{{ route('developmentads.view') }}">Development Ads</a></li>
+                        <li><a href="{{ route('static.topads.view') }}">Static Top Ads</a></li>
+                        <li><a href="{{ route('static.bottomads.view') }}">Static Bottom Ads</a></li>
                     </ul>
                 </li>
             @endcan

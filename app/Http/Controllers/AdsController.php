@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\TopAds;
 use App\Models\Properties;
 use App\Models\Development;
+use App\Models\StaticTopAds;
 use Illuminate\Http\Request;
 use App\Models\TemporaryFile;
+use App\Models\StaticBottomAds;
 use Illuminate\Support\Facades\Auth;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -145,6 +147,96 @@ class AdsController extends Controller
     }
 
     public function deleteDevelopmentAds(Development $id){
+        $id->update([
+            'adStatus' => 0,
+        ]);
+
+        return redirect()->route('developmentads.view')->with('success','Priority has been removed');
+    }
+
+
+    public function viewStaticTopAds(){
+        $staticAd1 = StaticTopAds::find(1);
+        $staticAd2 = StaticTopAds::find(2);
+        return view('backend.ads.static_top_ads.list',compact('staticAd1','staticAd2'));
+    }
+
+    public function storeStaticTopAds(Request $request, $id){
+
+        if($id == 1){
+
+            $static = StaticTopAds::updateOrCreate(
+                ['id' => 1,],
+                ['name'=>'banner', 'website' => '1blockghana.com','priority' => '1']
+            );
+
+            if($request->banner){
+                if ($request->hasFile('banner')) {
+                    $file = $request->file('banner');
+                  //  $development->clearMediaCollection('banner');
+                    $static->addMedia($file)->toMediaCollection('static_top');
+                }
+            }
+        }elseif($id == 2){
+            $static = StaticTopAds::updateOrCreate(
+                ['id' => 2,],
+                ['name'=>'banner2', 'website' => '1blockghana.com','priority' => '1']
+            );
+            if($request->banner2){
+                if ($request->hasFile('banner2')) {
+                    $file = $request->file('banner2');
+                  //  $development->clearMediaCollection('banner');
+                    $static->addMedia($file)->toMediaCollection('static_top');
+                }
+            }
+        }
+
+
+        return redirect()->back()->with('success','Saved.');
+    }
+
+    public function deleteStaticTopAds(Development $id){
+        $id->update([
+            'adStatus' => 0,
+        ]);
+
+        return redirect()->route('developmentads.view')->with('success','Priority has been removed');
+    }
+
+    public function viewStaticBottomAds(){
+        $staticAds = StaticBottomAds::get();
+        return view('backend.ads.static_bottom_ads.list',compact('staticAds'));
+    }
+
+    public function addStaticBottomAds(){
+        return view('backend.ads.static_bottom_ads.add');
+    }
+
+    public function storeStaticBottomAds(Request $request){
+
+        $static = StaticBottomAds::create([
+            'name'=> $request->name,
+            'website'=> $request->website,
+            'priority'=> $request->priority
+        ]);
+
+        if($request->banner){
+            if ($request->hasFile('banner')) {
+                $file = $request->file('banner');
+              //  $development->clearMediaCollection('banner');
+                $static->addMedia($file)->toMediaCollection('static_bottom');
+            }
+        }
+
+
+        return redirect()->route('static.bottomads.view')->with('success','Saved.');
+    }
+
+    public function updateStaticBottomAds(){
+
+    }
+
+    public function deleteStaticBottomAds(Development $id){
         $id->update([
             'adStatus' => 0,
         ]);
