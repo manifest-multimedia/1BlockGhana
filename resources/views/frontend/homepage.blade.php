@@ -2,10 +2,12 @@
 
     <x-frontend.header />
 
-<x-frontend.static-top />
-     <!-- CAROUSEL -->
+<!-- CAROUSEL -->
  <x-frontend.slider />
  <!-- END CAROUSEL -->
+
+ <x-frontend.static-top />
+ <!-- CAROUSEL -->
 
  <div class="clearfix"></div>
 
