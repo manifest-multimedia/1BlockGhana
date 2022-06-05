@@ -6,12 +6,13 @@
  <x-frontend.slider />
  <!-- END CAROUSEL -->
 
- <x-frontend.static-top />
  <!-- CAROUSEL -->
 
  <div class="clearfix"></div>
 
  <x-frontend.search :categories="$categories" :currencies="$currencies"/>
+
+ <x-frontend.static-top />
 
  <x-frontend.explore-section :properties="$properties"/>
 
@@ -21,7 +22,5 @@
  <!-- CALL TO ACTION -->
 <x-frontend.cta />
  <!-- END CALL TO ACTION -->
-
-
 
 </x-frontend.layout>
