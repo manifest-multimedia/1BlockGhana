@@ -1,20 +1,30 @@
+@section('reg-style')
+<style>
+    @media screen and (max-width: 767){
+        .content-center {
+            align-content: center;
+            margin-top: 10px !important;
+        }
+    }
+</style>
+@endsection
+
 <x-layout.head>
-    <div class="page-header">
-        <x-auth.bg-image />
+    <div class="page-header1">
         <div class="container">
-            <div class="col-md-12 login-center">
+            <div class="content-center col-md-12 mt-4">
                 <div class="card">
-                    <div class="card-login">
+                    <div class="card-plain1">
+
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            <div class="header">
-                                <div class="logo-container">
-                                    <img class="form-logo" src="assets/images/logo.PNG" alt="">
-                                   {{--  <h5>Sign Up</h5> --}}
-                                </div>
-
-                              {{--   <span>Register a new membership</span> --}}
+                            <div class="logo-container">
+                                <img class="form-logo" src="{{asset('assets/images/logo.PNG')}}" alt="">
                             </div>
+                            <div class="header mb-0 mt-2">
+                                <h6 class="text-center">Login</h6>
+                            </div>
+
                             <x-form.error />
                             <div class="content">
                                 <x-form.label for="email" value="{{ __('Email Address') }}" />
@@ -41,11 +51,10 @@
                             <h6 class="text-gray-600 m-t-20"><a class="link" href="{{ route('register')}}">NEW AGENT?&nbsp;&nbsp; <u>SignUp Here</u></a></h6>
                             </div>
                         </form>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
         <x-auth.footer />
     </div>
 </x-layout.head>
-
