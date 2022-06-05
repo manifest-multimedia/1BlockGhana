@@ -1,36 +1,62 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+<x-layout.head>
+    <div class="page-header">
+        <x-auth.bg-image />
+        <div class="container">
+            <div class="col-md-12 login-center">
+                <div class="card">
+                    <div class="card-login">
 
-        <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('password.update') }}">
-            @csrf
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form method="POST" action="{{ route('password.update') }}">
+                            @csrf
+                            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                            <div class="header">
+                                <div class="logo-container">
+                                    <img class="form-logo" src="assets/images/logo1.svg" alt="">
+                                   {{--  <h5>Sign Up</h5> --}}
+                                </div>
 
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                              {{--   <span>Register a new membership</span> --}}
+                            </div>
+                            <x-form.error />
+                            <div class="content">
+                                <x-form.label for="email" value="{{ __('Email Address') }}" />
+                                <x-form.input name="email" placeholder="Email Address" :value="old('email', $request->email)"/>
 
-            <div class="block">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
+                                <x-form.label for="password" value="{{ __('New Password') }}" />
+                                <x-form.input name="password"  type="password" placeholder="New Password" />
+
+                                <x-form.label for="password" value="{{ __('Confirm Password') }}" />
+                                <x-form.input name="password_confirmation"  type="password" placeholder="New Password" />
+
+                            </div>
+
+                            <div class="text-center footer">
+                                <button type="submit" class="btn l-cyan btn-square btn-lg btn-block waves-effect waves-light">UPDATE PASSWORD</button>
+                                <h6 class="text-gray-600 m-t-20">
+                                    @if (Route::has('password.request'))
+                                    <a class="text-sm text-gray-600 underline hover:text-gray-900" href="{{ route('password.request') }}">
+                                        {{ __('Forgot your password?') }}
+                                    </a>
+                                    @endif
+                            </h6>
+                            <h6 class="text-gray-600 m-t-20"><a class="link" href="{{ route('register')}}">NEW USER?</a></h6>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
+        </div>
+        <x-auth.footer />
+    </div>
+</x-layout.head>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <x-jet-button>
-                    {{ __('Reset Password') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>

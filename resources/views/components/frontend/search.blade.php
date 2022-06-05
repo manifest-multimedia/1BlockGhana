@@ -1,6 +1,6 @@
 @props(['categories', 'currencies'])
 
-<div class="bg__overlay bg-light-gray p-4">
+<div class="bg__overlay bg-light-gray pt-3">
     <div class="search__property">
         <div class="position-relative">
 

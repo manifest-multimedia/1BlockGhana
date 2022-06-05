@@ -4,7 +4,7 @@
 
 <!-- CAROUSEL -->
  <x-frontend.slider />
- <!-- END CAROUSEL -->
+<!-- END CAROUSEL -->
 
  <!-- CAROUSEL -->
 
@@ -17,7 +17,6 @@
  <x-frontend.explore-section :properties="$properties"/>
 
  <x-frontend.popular-cities  :developments="$developments" :statics="$statics"/>
-
 
  <!-- CALL TO ACTION -->
 <x-frontend.cta />

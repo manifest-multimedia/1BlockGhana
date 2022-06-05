@@ -12,7 +12,7 @@
                         @foreach ($developments as $key => $development)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                 <img class="d-block mx-auto" width="100%" style="max-height: 300px;"
-                                    src="{{ $development->getFirstMediaUrl('development_banner') }}"
+                                    src="{{ $development->getFirstMediaUrl('development_banner') ? $development->getFirstMediaUrl('development_banner') : '' }}"
                                     alt="{{ $development->name }}">
                             </div>
                         @endforeach
@@ -51,7 +51,7 @@
                         @if ($loop->odd)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                 <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') }}"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
                                     alt="{{ $static->name }}">
                             </div>
                             @endif
@@ -68,7 +68,7 @@
                         @if ($loop->even)
                             <div class="carousel-item {{ $key == 1 ? 'active' : '' }}">
                                 <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') }}"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
                                     alt="{{ $static->name }}">
                             </div>
                         @endif

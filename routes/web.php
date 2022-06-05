@@ -7,6 +7,7 @@ use App\Http\Controllers\AdsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
+
 use App\Http\Controllers\_RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
@@ -233,6 +234,7 @@ Route::get('forget-password', [UserOTPController::class, 'showForgetPasswordForm
 Route::post('send-user-otp', [UserOTPController::class, 'submitAgentForm'])->name('send.user.otp');
 Route::get('reset-password/{token}/{email}', [UserOTPController::class, 'showAgentResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [UserOTPController::class, 'submitAgentResetPasswordForm'])->name('reset.password.post');
+Route::post('reset-user', [UserOTPController::class, 'userResetPassword'])->name('password.update');
 
 Route::post('save-image', [PropertyController::class, 'saveImage'])->name('save.property.images');
 

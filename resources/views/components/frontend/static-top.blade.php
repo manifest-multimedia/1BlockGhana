@@ -3,7 +3,7 @@
 @endphp
 
 @if (!$staticAds->isEmpty())
-<section class="blog__home bg-light py-2">
+<section class="blog__home bg-white py-0">
     <div class="container">
         <div class="row">
 
@@ -14,7 +14,7 @@
                 <a href="#">
                     <div class="">
                         <div class="card__image-hover-style-v3-thumb h-230">
-                            <img src="{{$staticAd->getFirstMediaUrl('static_top')}}" alt="" class="img-fluid w-100">
+                            <img src="{{$staticAd->getFirstMediaUrl('static_top') ? $staticAd->getFirstMediaUrl('static_top') : '' }}" alt="" class="img-fluid w-100">
                         </div>
                     </div>
                 </a>

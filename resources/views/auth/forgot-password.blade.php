@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+           {{--  <x-jet-authentication-card-logo /> --}}
+           <div class="logo-container">
+            <img class="form-logo" src="assets/images/logo.PNG" alt="">
+           {{--  <h5>Sign Up</h5> --}}
+        </div>
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
