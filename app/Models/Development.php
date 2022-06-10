@@ -46,12 +46,12 @@ class Development extends Model implements HasMedia
               ->height(100);
     }
 
-    public function registerMediaCollections(): void
+    /* public function registerMediaCollections(): void
     {
         $this
             ->addMediaCollection('developments')
             ->singleFile();
-    }
+    } */
 
     public function last()
     {

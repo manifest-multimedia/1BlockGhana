@@ -57,7 +57,8 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="card">
+
+                    <div class="card">
                         <div class="header">
                             <h2><strong>General</strong> Amenities</h2>
 
@@ -69,7 +70,7 @@
                                     <ul class="list-unstyled proprerty-features">
                                         @foreach ($development->amenities as $amenity)
                                             <li class="list-group-item"><i
-                                                    class="zmdi zmdi-check-circle text-success m-r-5"></i>{{ $amenity->name ?? '' }}
+                                                    class="zmdi zmdi-check-circle text-success m-r-5"></i>{{ $amenity->name ?? ''}}
                                             </li>
                                         @endforeach
 
@@ -78,8 +79,7 @@
 
                             </div>
                         </div>
-                    </div> --}}
-
+                    </div>
                 </div>
 
             </div>

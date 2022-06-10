@@ -53,12 +53,7 @@
                                             class="zmdi zmdi-pin m-r-5"></i>{{ $property->location ?? '--'}}</p>
                                     <p class="text-muted m-b-0">{{ $property->description ?? ''}}</p>
                                 </div>
-                                {{-- <div class="property-action m-t-15">
-															<a href="#" title="Square Feet">Square Feet<span>{{$property->size}}sqt</span></a>
-															<a href="#" title="Bedroom"><i class="zmdi zmdi-hotel"></i><span>{{$property->bedroom}}</span></a>
-															<a href="#" title="Kitichen "><i class="zmdi zmdi-home"></i><span>{{$property->kitchen}}</span></a>
-															<a href="#" title="Bathroom"><i class="zmdi zmdi-home"></i><span>{{$property->bathroom}}</span></a>
-													</div> --}}
+                                
                             </div>
                         </div>
                     </div>
@@ -84,16 +79,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="card">
-                        <div class="header">
-                            <h2><strong>Location</strong>  </h2>
-                        </div>
-                        <div class="body">
-                            <script type="text/javascript" charset="utf-8" async
-                                                        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=svdezAlqZP2WIeKGiLW4EUnoJvnxVP7i&amp;width=100%&amp;height=400&amp;lang=tr_TR&amp;sourceType=constructor&amp;scroll=true">
-                            </script>
-                        </div>
-                    </div> --}}
+                    
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="card">

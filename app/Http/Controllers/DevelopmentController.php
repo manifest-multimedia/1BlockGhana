@@ -38,46 +38,40 @@ class DevelopmentController extends Controller
 
     public function store(Request $request, $id){
         $business = User::find($id)->business;
-      //  dd($request);
+
         $development =  Development::create([
             'business_id'=> $business->id,
             'category_id'=> $request->category_id,
             'name'=> $request->name,
             'description'=> $request->description,
             'location'=> $request->location,
-            //'status'=> 1
         ]);
-
-
 
         foreach ($request->amenities as $amenity) {
             DB::insert('insert into amenities_development (development_id, amenities_id) values (?,?)', [$development->id,$amenity]);
         }
 
-
         if($request->banner){
             if ($request->hasFile('banner')) {
                 $file = $request->file('banner');
-              //  $development->clearMediaCollection('banner');
                 $development->addMedia($file)->toMediaCollection('development_banner');
             }
         }
 
         if($request->developments){
-
             foreach($request->developments as $file){
-                //dd($file);
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
+                               
                 $tempPath = 'app/public/developments/tmp/';
                 if($temporaryFile){
+
                     $development->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('developments');
 
-                   /*  rmdir(storage_path($tempPath . $file));
-                    $temporaryFile->delete(); */
+                    rmdir(storage_path($tempPath . $file));
+                    $temporaryFile->delete();
                 }
             }
         }
-
 
         return redirect()->route('development.view');
     }
