@@ -67,7 +67,7 @@
                 </div>
 
                 {{-- SECOND LAYOUT --}}
-                <div class="recent__property-carousel owl-carousel owl-theme mt-2">
+                <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme mt-2">
                     @foreach ($properties as $property)
                     @if ($loop->even)
                     <div class="item">
