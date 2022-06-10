@@ -7,13 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Development extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
+    use Sluggable;
 
     protected $table = 'development';
     protected $guarded = [];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function business(){
         return $this->belongsTo(Business::class, 'business_id');

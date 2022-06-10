@@ -219,7 +219,7 @@
 
                             </div>
                             <x-notification.message />
-                            <form class="form" method="POST" action="{{ route('send.partner.mail',$property->id) }}">
+                            <form class="form" method="POST" action="{{ route('send.partner.mail',$property->slug) }}">
                                 @csrf
                                 <div class="profile__agent__body">
                                     <div class="form-group">
@@ -241,7 +241,7 @@
                                         <button class="btn btn-primary text-capitalize btn-block"> send message <i
                                                 class="fa fa-paper-plane ml-1"></i>
                                         </button>
-    
+
                                     </div>
                                 </div>
                             </form>
@@ -269,7 +269,7 @@
                             <div class="card__image">
                                 <div class="card__image-header h-250">
                                     {{-- <div class="ribbon text-capitalize">featured</div> --}}
-                                    <a href="{{route('listing.details', $prop->id)}}">
+                                    <a href="{{route('listing.details', $prop->slug)}}">
                                         <img src="{{$prop->getFirstMediaUrl('properties')}}" alt="" class="img-fluid w100 img-transition">
                                     </a>
                                     <div class="info"> {{$prop->purpose}}</div>
@@ -277,7 +277,7 @@
                                 <div class="card__image-body">
                                     <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name ?? ''}}</span>
                                     <h6 class="text-capitalize">
-                                        <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
+                                        <a href="{{route('listing.details', $prop->slug)}}">{{$prop->name}}</a>
                                     </h6>
 
                                     <p class="text-capitalize">
@@ -313,7 +313,7 @@
                                     </figure>
                                     <ul class="list-inline my-auto">
                                         <li class="list-inline-item">
-                                            <a href="{{ route('partner.listing', $property->business->id)}}">
+                                            <a href="{{ route('partner.single.listing', $property->business->slug)}}">
                                                 {{$property->business->user->firstname}} {{$property->business->user->lastname}} <br>
                                             </a>
 

@@ -66,7 +66,7 @@
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Categories </a>
                     <ul class="dropdown-menu animate fade-up">
                         @foreach ($categories as $category)
-                            <li><a class="dropdown-item" href="{{ route('category.listing', $category->id) }}">{{ $category->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route('category.listing', $category->slug) }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
                 </li>

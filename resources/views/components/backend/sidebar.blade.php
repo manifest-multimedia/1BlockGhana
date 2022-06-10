@@ -43,9 +43,10 @@
                 </ul>
             </li>
 
-            @can('update all')
 
 
+
+            @can('update development')
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-city"></i><span>Developments</span> </a>
                     <ul class="ml-menu">
@@ -53,9 +54,10 @@
                         <li><a href="{{ route('development.add') }}">Add Development</a></li>
                     </ul>
                 </li>
+            @endcan
 
 
-
+            @can('update all')
 
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-balance-wallet"></i><span>Packages</span> </a>

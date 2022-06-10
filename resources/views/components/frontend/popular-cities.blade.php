@@ -21,27 +21,7 @@
 
             </div>
             <div class="row mt-5">
-               {{--  <div class="col-md-2">
-                    <!-- CARD IMAGE -->
-                    <a href="#">
-                        <div class="card__image-hover-style-v3">
-                            <div class="card__image-hover-style-v3-thumb h-230">
-                                <img src="frontend/images/city.jpg" alt="" class="img-fluid w-100">
-                            </div>
-                            <div class="overlay">
-                                <div class="desc1 pt-3">
 
-                                    <h6 class="text-capitalize"><a href="javascript:void(0)" style="color:#fff;">Popular
-                                            Location</a></h6>
-                                    <hr>
-                                    <p style="color:#fff;"><strong>Coming soon</strong></p>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div> --}}
                 <div class="col-md-6 ">
                     <!-- CARD IMAGE -->
                     <div id="carouselExampleFade" class="carousel carousel-static-banner slide carousel-fade"
@@ -96,13 +76,14 @@
             <div class="clearfix"></div>
         </div>
         <div class="recent__property-carousel owl-carousel owl-theme">
+            @foreach ($statics as $static)
             <div class="item">
                 <div class="col-md-6 col-lg-4">
                     <!-- CARD IMAGE -->
                     <a href="#">
                         <div class="card__image-hover-style-v3">
                             <div class="card__image-hover-style-v3-thumb h-230">
-                                <img src="frontend/images/city.jpg" alt="" class="img-fluid w-100">
+                                <img src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}" alt="" class="img-fluid w-100">
                             </div>
                             <div class="overlay">
                                 <div class="desc">
@@ -114,7 +95,9 @@
                     </a>
                 </div>
             </div>
-            <div class="item">
+            @endforeach
+
+            {{-- <div class="item">
                 <div class="col-md-6 col-lg-4">
                     <!-- CARD IMAGE -->
                     <a href="#">
@@ -149,16 +132,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
-
-
-    @section('development_banner_scripts')
-        <script>
-            $('.carousel-dev-banner').owlCarousel({
-                //autoplayTimeout:3500,
-                interval: 1000
-            });
-        </script>
     </section>

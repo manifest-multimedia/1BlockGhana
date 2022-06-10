@@ -139,13 +139,14 @@
                                                         </div>
                                                         <div class="card__image-footer">
                                                             <figure>
-                                                                <img src="{{ $property->business->user->getFirstMediaUrl('logos', 'thumb-100') ?? '/frontend/images/80x80.jpg' }}"
+                                                                <img src="{{ $property->business->user->getFirstMediaUrl('logos', 'thumb-100') ? $property->business->user->getFirstMediaUrl('logos', 'thumb-100') : '/frontend/images/80x80.jpg' }}"
                                                                     alt="" class="img-fluid rounded-circle">
                                                             </figure>
                                                             <ul class="list-inline my-auto">
                                                                 <li class="list-inline-item">
+
                                                                     <a
-                                                                        href="{{ route('partner.listing', $property->business->id) }}">
+                                                                        href="{{ route('partner.single.listing', $property->business->id) }}">
                                                                         {{ $property->business->user->firstname ?? '' }}
                                                                         {{ $property->business->user->lastname ?? '' }}
                                                                     </a>

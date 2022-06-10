@@ -31,12 +31,8 @@
                                     <label>All Cities</label>
                                     <select class="select_option wide">
                                         <option data-display="All City">All Cities</option>
-                                        <option>Atlanta</option>
-                                        <option>Florida</option>
-                                        <option>Los Angeles</option>
-                                        <option>Miami</option>
-                                        <option>New York</option>
-                                        <option>Orlando</option>
+                                        <option>Accra</option>
+
                                     </select>
 
                                 </div>
@@ -61,9 +57,9 @@
                             <div class="cards mt-4">
                                 <div class="profile__agents-header">
                                     <a href="#" class="profile__agents-avatar">
-                                       
+
                                         <img src="{{$user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos') : url('assets/images/avatar.jpg')}}" alt="" class="img-fluid">
-                                       
+
 
                                         <div class="total__property-agent">{{$user->business->properties->count()}} listing</div>
                                     </a>
@@ -71,14 +67,14 @@
                                 <div class="profile__agents-body">
                                     <div class="profile__agents-info">
                                         <h5 class="text-capitalize">
-                                            <a href="{{ route('partner.listing', $user->business->id)}}">{{$user->business->name}}</a>
+                                            <a href="{{ route('partner.single.listing', $user->business->slug)}}">{{$user->business->name}}</a>
                                         </h5>
                                         @foreach ($user->roles as $role)
                                         <p class="text-capitalize mb-1">
-                                          {{Str::ucfirst($role->name ?? '')}}                                        
+                                          {{Str::ucfirst($role->name ?? '')}}
                                         </p>
                                         @endforeach
-                                        
+
                                         <ul class="list-unstyled mt-2">
                                             <li><a href="tel:{{$user->business->mobile}}" class="text-capitalize"><span><i class="fa fa-phone"></i>
                                                         Mobile :</span> {{$user->business->mobile}}</a>

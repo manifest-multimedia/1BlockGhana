@@ -8,12 +8,23 @@ use Illuminate\Http\Request;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Properties extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
+    use Sluggable;
 
     protected $guarded = [];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function business(){
         return $this->belongsTo(Business::class, 'business_id');

@@ -12,6 +12,7 @@ use App\Models\BusinessType;
 use Illuminate\Http\Request;
 use App\Mail\SendPartnerMail;
 use App\Models\StaticBottomAds;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -31,7 +32,65 @@ class HomeController extends Controller
 
     public function searchFilter(Request $request) {
 
-        $categories = Category::get();
+        if($request->category_id && $request->location && $request->currency_id && $request->min_price && $request->max_price ){
+            if(Properties::where('category_id',$request->category_id)){
+
+                //  dd($request->min_price);
+
+                  $properties = Properties::where('category_id',$request->category_id);
+                  $properties = $properties->where('currency_id',$request->currency_id);
+                  $properties = $properties->where('price', '>=',$request->min_price);
+                  $properties = $properties->where('price', '<=',$request->max_price);
+                  //$properties = $properties->where('location', 'LIKE',"%{$request->location}%");
+
+                  $properties->get();
+                  //dd($properties->get());
+
+                 $similar = Properties::where('category_id',[$request->category_id])
+                                       ->orwhere('price', '<=',$request->min_price)
+                                       ->orwhere('price', '>=',$request->max_price)->get();
+
+                  return view('frontend.filter.properties', compact('properties','similar'));
+
+              }elseif(Development::where('category_id',$request->category_id)){
+
+                  $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
+                  return view('frontend.homepage', compact('properties','categories','developments'));
+              }
+        }elseif($request->category_id && $request->location && $request->currency_id && $request->min_price){
+
+        }elseif($request->category_id && $request->location && $request->currency_id && $request->max_price){
+
+        }elseif($request->category_id && $request->location && $request->currency_id){
+
+        }elseif($request->category_id && $request->currency_id && $request->min_price && $request->max_price){
+
+        }elseif($request->category_id && $request->currency_id && $request->min_price){
+
+        }elseif($request->category_id && $request->currency_id && $request->max_price){
+
+        }elseif($request->location){
+
+            if(Properties::where('location', 'LIKE', '%'.$request->location.'%')){
+
+                //  dd($request->min_price);
+
+                  $properties = Properties::where('location', 'LIKE', '%'.$request->location.'%')->get();
+
+                 $similar = Properties::where('location', '!=', $request->location)
+                                      ->get();
+
+
+                  return view('frontend.filter.properties', compact('properties','similar'));
+
+              }elseif(Development::where('location', 'LIKE', '%'.$request->location.'%')){
+
+                  $developments = Development::where('location', 'LIKE', '%'.$request->location.'%')->orderBy('created_at')->get();
+                  return view('frontend.homepage', compact('properties','categories','developments'));
+              }
+        }
+
+       // $categories = Category::get();
        // dd(Properties::where('location', 'LIKE',"%{$request->location}%")->get());
         if(Properties::where('category_id',$request->category_id)){
 
@@ -80,43 +139,59 @@ class HomeController extends Controller
         return view('frontend.listing', compact('properties'));
     }
 
-    public function listingById($id) {
+    public function listingBySlug($slug) {
 
-        $property = Properties::find($id);
-        //SIMILAR PROPERTIES
-        $similar = Properties::whereNotIn('id', [$id])->get();
-       // dd($similar);
-        return view('frontend.property-details', compact('property','similar'));
+        if (Properties::where('slug',$slug)->first()) {
+            $property = Properties::where('slug',$slug)->first();
+
+            //SIMILAR PROPERTIES
+            $similar = Properties::whereNotIn('slug', [$slug])->get();
+           // dd($similar);
+            return view('frontend.property-details', compact('property','similar'));
+        }elseif(Development::where('slug',$slug)->first()){
+            $development = Development::where('slug',$slug)->first();
+
+            //SIMILAR PROPERTIES
+            $similar = Development::whereNotIn('slug', [$slug])->get();
+           // dd($similar);
+           return view('frontend.development-details', compact('development','similar'));
+        }
+
     }
 
-    public function developmentById($id) {
+    public function developmentBySlug($slug) {
 
-        $development = Development::find($id);
+        $development = Development::where('slug',$slug)->first();
         //SIMILAR PROPERTIES
-        $similar = Development::whereNotIn('id', [$id])->get();
+        $similar = Development::whereNotIn('slug', [$slug])->get();
        // dd($similar);
         return view('frontend.development-details', compact('development','similar'));
     }
 
     public function userListing($type) {
         $users = User::role($type)->get();
-
+      //  Business::all()->each->save();
         return view('frontend.partner-listing', compact('users','type'));
     }
 
-    public function categoryListing($id) {
-        $category = Category::find($id);
+    public function userSingleListing($slug) {
+        $business = Business::where('slug',$slug)->first();
+        return view('frontend.partner-single-listing', compact('business'));
+    }
+
+    public function categoryListing($slug) {
+        $category = Category::where('slug',$slug)->first();
         $category_name = $category->name;
         if($category->type == "property"){
-            $properties = Properties::where('category_id',$id)->latest()->get();
+            $properties = Properties::where('category_id',$category->id)->latest()->get();
             //SIMILAR PROPERTIES
-            $similar = Properties::whereNotIn('category_id', [$id])->get();
+            $similar = Properties::whereNotIn('category_id', [$category->id])->get();
         // dd($similar);
             return view('frontend.category.properties', compact('properties','similar','category_name'));
         }elseif($category->type == "development"){
-            $developments = Development::where('category_id',$id)->get();
+            $developments = Development::where('category_id',$category->id)->get();
             //SIMILAR PROPERTIES
-            $similar = Development::whereNotIn('category_id', [$id])->get();
+            $similar = Development::whereNotIn('category_id', [$category->id])->get();
         // dd($similar);
             return view('frontend.category.developments', compact('developments','similar','category_name'));
         }

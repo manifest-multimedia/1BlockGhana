@@ -5,9 +5,9 @@ use App\Http\Livewire\Crud;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdsController;
 use App\Http\Controllers\HomeController;
+
+
 use App\Http\Controllers\UserController;
-
-
 use App\Http\Controllers\_RoleController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
@@ -52,10 +52,11 @@ Route::get('/request-status', function () {
 
 Route::get('/listing', [HomeController::class, 'listingByHouses'])->name('listing');
 
-Route::get('/property-details/{id}', [HomeController::class, 'listingById'])->name('listing.details');
-Route::get('/development-details/{id}', [HomeController::class, 'developmentById'])->name('development.listing.details');
+Route::get('/property-details/{slug}', [HomeController::class, 'listingBySlug'])->name('listing.details');
+Route::get('/development-details/{slug}', [HomeController::class, 'developmentBySlug'])->name('development.listing.details');
 Route::get('/partners/{type}', [HomeController::class, 'userListing'])->name('partner.listing');
-Route::get('/category/{name}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/partners/listing/{slug}', [HomeController::class, 'userSingleListing'])->name('partner.single.listing');
+Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name('category.listing');
 Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('user.listing');
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
