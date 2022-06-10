@@ -11,9 +11,11 @@
                     <div class="carousel-inner">
                         @foreach ($developments as $key => $development)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                <img class="d-block mx-auto" width="100%" style="max-height: 300px;"
+                                <a href="{{route('development.listing.details', $development->slug)}}">
+                                    <img class="d-block mx-auto" width="100%" style="max-height: 300px;"
                                     src="{{ $development->getFirstMediaUrl('development_banner') ? $development->getFirstMediaUrl('development_banner') : '' }}"
                                     alt="{{ $development->name }}">
+                                </a>
                             </div>
                         @endforeach
                     </div>

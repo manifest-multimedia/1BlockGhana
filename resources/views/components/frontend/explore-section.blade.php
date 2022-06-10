@@ -15,7 +15,7 @@
             <div class="item">
                 <!-- CARD IMAGE -->
 
-                <a href="{{route('listing.details', $property->id)}}">
+                <a href="{{route('listing.details', $property->slug)}}">
                     <div class="card__image-hover h-250">
                         <div class="card__image-hover-overlay">
                             <div class="listing-badges">
@@ -72,7 +72,7 @@
             <div class="item">
                 <!-- CARD IMAGE -->
 
-                <a href="{{route('listing.details', $property->id)}}">
+                <a href="{{route('listing.details', $property->slug)}}">
                     <div class="card__image-hover h-250">
                         <div class="card__image-hover-overlay">
                             <div class="listing-badges">
