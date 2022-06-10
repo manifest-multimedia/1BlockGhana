@@ -1,449 +1,170 @@
-<section>
-    <div class="container">
+@props(['properties'])
+
+<section class="recent__property py-0">
+    <div class="container px-0">
         <div class="row">
-            <div class="mx-auto col-md-8 col-lg-6">
-                <div class="title__head">
-                    <h2 class="text-center text-capitalize">
-                        featured properties
-                    </h2>
-                    <p class="text-center text-capitalize">handpicked exclusive properties by our team.</p>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="title__head-v2 mb-3">
+                            <h2 class="text-capitalize">Featured Properties</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme">
+                    @foreach ($properties as $property)
+                    @if ($loop->odd)
+                    <div class="item">
+                        <!-- CARD IMAGE -->
+
+                        <a href="{{route('listing.details', $property->slug)}}">
+                            <div class="card__image-hover h-250">
+                                <div class="card__image-hover-overlay">
+                                    <div class="listing-badges">
+                                        <span class="featured">
+                                            Featured
+                                        </span>
+                                        <span>
+                                            {{$property->purpose}}
+                                        </span>
+                                    </div>
+                                    <div class="card__image-content">
+                                        <div class="card__image-content-desc">
+                                            <h6> {{$property->name}}</h6>
+                                            <p class="mb-0">{{ $property->currency->code }}{{$property->price}}</p>
+                                        </div>
+                                        <ul class="list-inline card__hidden-content">
+                                            <li class="list-inline-item">
+                                                Baths
+                                                <span>
+                                                    <i class="fa fa-bath"></i> {{$property->bathroom}}
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                Beds
+                                                <span>
+                                                    <i class="fa fa-bed"></i> {{$property->bedroom}}
+                                                </span>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                Area
+                                                <span>
+                                                    <i class="fa fa-map"></i> {{$property->size}} sq ft
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-30 ">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endif
+
+                    @endforeach
+                </div>
+
+                {{-- SECOND LAYOUT --}}
+                <div class="recent__property-carousel owl-carousel owl-theme mt-2">
+                    @foreach ($properties as $property)
+                    @if ($loop->even)
+                    <div class="item">
+                        <!-- CARD IMAGE -->
+
+                        <a href="{{route('listing.details', $property->slug)}}">
+                            <div class="card__image-hover h-250">
+                                <div class="card__image-hover-overlay">
+                                    <div class="listing-badges">
+                                        <span class="featured">
+                                            Featured
+                                        </span>
+                                        <span>
+                                            {{$property->purpose}}
+                                        </span>
+                                    </div>
+                                    <div class="card__image-content">
+                                        <div class="card__image-content-desc">
+                                            <h6> {{$property->name}}</h6>
+                                            <p class="mb-0">{{ $property->currency->code }}{{$property->price}}</p>
+                                        </div>
+                                        <ul class="list-inline card__hidden-content">
+                                            <li class="list-inline-item">
+                                                Baths
+                                                <span>
+                                                    <i class="fa fa-bath"></i> {{$property->bathroom}}
+                                                </span>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                Beds
+                                                <span>
+                                                    <i class="fa fa-bed"></i> {{$property->bedroom}}
+                                                </span>
+                                            </li>
+
+                                            <li class="list-inline-item">
+                                                Area
+                                                <span>
+                                                    <i class="fa fa-map"></i> {{$property->size}} sq ft
+                                                </span>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-30 ">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endif
+
+                    @endforeach
 
                 </div>
             </div>
-        </div>
 
-        <!--=========================================
-=            Section Gallery two            =
-==========================================-->
-        <div class="card__image-filter">
-            <div class="filterizr-control">
-                <ul class="list-inline filterizr-filter">
-                    <li class="list-inline-item filtr-active btn-filter" data-filter="all">All Property</li>
-                    <li class="list-inline-item btn-filter" data-filter="1">Apartment</li>
-                    <li class="list-inline-item btn-filter" data-filter="2">House</li>
-                    <li class="list-inline-item btn-filter" data-filter="4">Office</li>
-                </ul>
-            </div>
-            <div class="row">
-                <div class="filtr-container">
-
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="2, 4" data-title="">
-
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/slider/jum1.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    vila in coral gables
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/slider/jum3.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item ">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
+            <div class="col-md-4">
+                <div class="row1">
+                        <div class="title__head-v2 mb-3">
+                            <h2 class="text-capitalize">Popular locations</h2>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="4" data-title="">
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/500x400.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    Ample Apartment At Last Floor
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="1" data-title="">
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/500x400.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    Contemporary Apartment
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="2, 4" data-title="">
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/500x400.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    Family Home For Sale
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="1" data-title="">
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/500x400.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    Luxury Villa With Pool
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-4 filtr-item" data-category="1" data-title="">
-                        <div class="card__image card__box-v1">
-                            <div class="card__image-header h-250">
-                                <div class="ribbon text-capitalize">featured</div>
-                                <img src="frontend/images/500x400.jpg" alt="" class="img-fluid w100 img-transition">
-                                <div class="info"> for sale</div>
-                            </div>
-                            <div class="card__image-body">
-                                <span class="mb-2 badge badge-primary text-capitalize">house</span>
-                                <h6 class="text-capitalize">
-                                    184 Lexington Avenue
-                                </h6>
-
-                                <p class="text-capitalize">
-                                    <i class="fa fa-map-marker"></i>
-                                    west flaminggo road, las vegas
-                                </p>
-                                <ul class="list-inline card__content">
-                                    <li class="list-inline-item">
-
-                                        <span>
-                                            baths <br>
-                                            <i class="fa fa-bath"></i> 2
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            beds <br>
-                                            <i class="fa fa-bed"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            rooms <br>
-                                            <i class="fa fa-inbox"></i> 3
-                                        </span>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <span>
-                                            area <br>
-                                            <i class="fa fa-map"></i> 4300 sq ft
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card__image-footer">
-                                <figure>
-                                    <img src="frontend/images/80x80.jpg" alt="" class="img-fluid rounded-circle">
-                                </figure>
-                                <ul class="my-auto list-inline">
-                                    <li class="list-inline-item">
-                                        <a href="#">
-                                            1Block Ghana
-                                        </a>
-
-                                    </li>
-
-                                </ul>
-                                <ul class="my-auto ml-auto list-inline">
-                                    <li class="list-inline-item">
-
-                                        <h6>$350.000</h6>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+                    <ul class="list-group">
+                        <li class="list-group-item active">Accra</li>
+                        <li class="list-group-item">Aburi</li>
+                        <li class="list-group-item">Tema</li>
+                        <li class="list-group-item">East Legon</li>
+                        <li class="list-group-item">Nima</li>
+                    </ul>
             </div>
         </div>
-        <div class="clearfix"></div>
     </div>
 </section>
+
+@section('bottom-property-scripts')
+    <script>
+        $('.owl-carousel-bottom').owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots:false,
+            autoplay:true,
+           // autoWidth:false,
+            height: 100,
+            autoplayTimeout:3000,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:2
+                }
+            }
+        })
+    </script>
+@endsection

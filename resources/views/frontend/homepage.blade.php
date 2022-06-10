@@ -16,7 +16,11 @@
 
  <x-frontend.explore-section :properties="$properties"/>
 
- <x-frontend.popular-cities  :developments="$developments" :statics="$statics"/>
+ <x-frontend.development-banner  :developments="$developments"/>
+
+ <x-frontend.featured-properties :properties="$properties"/>
+
+ <x-frontend.static-bottom  :statics="$statics"/>
 
  <!-- CALL TO ACTION -->
 <x-frontend.cta />

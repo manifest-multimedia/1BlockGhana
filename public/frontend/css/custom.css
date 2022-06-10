@@ -295,7 +295,7 @@ section.home__message {
     margin: 0;
 }
 
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary.nice-select.open:not(:disabled):not(.disabled), .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle,.download__item:hover {
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary.nice-select.open:not(:disabled):not(.disabled), .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle,.download__item:hover,.list-group-item.active {
     color: #fff;
     background-color: #dfaa15;
     border-color: #dfaa15;
@@ -349,7 +349,7 @@ a.play-video-12 {
     max-height: 55vh;
 }
 
-.homepage__property-carousel.owl-carousel .owl-nav button, .search__property .position-relative .nav-tabs-02 .nav-item .nav-link.active{
+.homepage__property-carousel.owl-carousel .owl-nav button, .search__property .position-relative .nav-tabs-02 .nav-item .nav-link.active, .list-group-item.active{
     background: #b78746;
 }
 

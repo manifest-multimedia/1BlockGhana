@@ -3,8 +3,8 @@
 @endphp
 
 @if (!$staticAds->isEmpty())
-<section class="blog__home bg-white py-0">
-    <div class="container">
+<section class="blog__home bg-white pt-4 pb-0">
+    <div class="container py-0">
         <div class="row">
 
 

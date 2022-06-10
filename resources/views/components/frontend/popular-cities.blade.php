@@ -23,7 +23,6 @@
 
             </div>
             <div class="row mt-5">
-
                 <div class="col-md-6 ">
                     <!-- CARD IMAGE -->
                     <div id="carouselExampleFade" class="carousel carousel-static-banner slide carousel-fade"
