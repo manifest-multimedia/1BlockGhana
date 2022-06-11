@@ -14,6 +14,8 @@
         </div>
         @endforeach
     </div>
+
+    
 </div>
 
 <div class="clearfix"></div>
@@ -25,6 +27,7 @@
             loop:true,
             margin:10,
             nav:true,
+           // navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
             dots:false,
             autoplay:true,
            // autoWidth:false,

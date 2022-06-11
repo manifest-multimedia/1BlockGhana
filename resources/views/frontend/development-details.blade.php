@@ -137,14 +137,14 @@
                                     </figure>
 
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="{{ route('partner.listing', $development->business->name)}}">
+                                        <li><a href="{{ route('partner.single.listing', $development->business->slug)}}">
                                             <h5 class="text-capitalize">{{$development->business->user->firstname}} {{$development->business->user->lastname}}</h5>
                                         </a>
 
                                         </li>
-                                        <li><a href="tel:123456"><i
+                                        <li><a href="tel:{{$development->business->user->mobile}}"><i
                                                     class="fa fa-phone-square mr-1"></i>{{$development->business->user->mobile}}</a></li>
-                                        <li><a href="tel:123456"><i
+                                        <li><a href="mailto:{{$development->business->user->email}}"><i
                                                     class="fa fa-envelope mr-1"></i>{{$development->business->user->email}}</a></li>
                                         <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
                                             {{$development->business->name}}</a>
@@ -206,7 +206,7 @@
                             <div class="card__image">
                                 <div class="card__image-header h-250">
                                     {{-- <div class="ribbon text-capitalize">featured</div> --}}
-                                    <a href="{{route('listing.details', $prop->id)}}">
+                                    <a href="{{route('listing.details', $prop->slug)}}">
                                         <img src="{{$prop->getFirstMediaUrl('developments')}}" alt="" class="img-fluid w100 img-transition">
                                     </a>
 
@@ -214,7 +214,7 @@
                                 <div class="card__image-body">
                                     <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name ?? ''}}</span>
                                     <h6 class="text-capitalize">
-                                        <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
+                                        <a href="{{route('listing.details', $prop->slug)}}">{{$prop->name}}</a>
                                     </h6>
 
                                     <p class="text-capitalize">
@@ -229,14 +229,14 @@
                                     </figure>
                                     <ul class="list-inline my-auto">
                                         <li class="list-inline-item">
-                                            <a href="{{ route('partner.listing', $development->business->id)}}">
+                                            <a href="{{ route('partner.single.listing', $development->business->slug)}}">
                                                 {{$development->business->user->firstname}} {{$development->business->user->lastname}} <br>
                                             </a>
 
                                         </li>
 
                                     </ul>
-                                   
+
                                 </div>
                             </div>
                         </div>

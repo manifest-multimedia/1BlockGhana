@@ -2,7 +2,7 @@
 
     <x-frontend.header />
 
-    <x-frontend.breadcrumb-list title="{{$category_name}}"/>
+    <x-frontend.breadcrumb-list title="Filter"/>
 
     <div class="clearfix"></div>
 

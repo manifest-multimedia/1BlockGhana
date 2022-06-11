@@ -13,14 +13,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    {{-- <x-frontend.filter-v /> --}}
                 </div>
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="tabs__custom-v2">
-                                <!-- FILTER VERTICAL -->
-                                <ul class="nav nav-pills myTab" role="tablist">
+
+                                {{-- <ul class="nav nav-pills myTab" role="tablist">
                                     <li class="list-inline-item mr-auto">
                                         <span class="title-text">Sort by</span>
                                         <div class="btn-group">
@@ -62,19 +61,14 @@
                                         </div>
 
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link pills-tab-one" data-toggle="pill" href="#pills-tab-one"
-                                            role="tab" aria-controls="pills-tab-one" aria-selected="true">
-                                            <span class="fa fa-th-list"></span>
-                                        </a>
-                                    </li> --}}
+
                                     <li class="nav-item">
                                         <a class="nav-link active pills-tab-two" data-toggle="pill"
                                             href="#pills-tab-two" role="tab" aria-controls="pills-tab-two"
                                             aria-selected="false">
                                             <span class="fa fa-th-large"></span></a>
                                     </li>
-                                </ul>
+                                </ul> --}}
 
 
 
@@ -90,9 +84,9 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="card__image card__box-v1">
                                                         <div class="card__image-header h-250 img-space">
-                                                            {{-- <div class="ribbon text-capitalize">sold out</div> --}}
 
-                                                            <a href="{{ route('listing.details', $property->id) }}">
+
+                                                            <a href="{{ route('listing.details', $property->slug) }}">
                                                                 <img src="{{ $property->getFirstMediaUrl('properties') }}"
                                                                     alt="" class="img-fluid w100 img-transition">
                                                             </a>
@@ -104,7 +98,7 @@
                                                                 class="badge badge-primary text-capitalize mb-2">{{ $property->category->name ?? 'Uncategorised' }}</span>
                                                             <h6 class="text-capitalize">
                                                                 <a
-                                                                    href="{{ route('listing.details', $property->id) }}">{{ $property->name ?? 'Not Stated' }}</a>
+                                                                    href="{{ route('listing.details', $property->slug) }}">{{ $property->name ?? 'Not Stated' }}</a>
                                                             </h6>
 
                                                             <p class="text-capitalize">
@@ -146,7 +140,7 @@
                                                                 <li class="list-inline-item">
 
                                                                     <a
-                                                                        href="{{ route('partner.single.listing', $property->business->id) }}">
+                                                                        href="{{ route('partner.single.listing', $property->business->slug) }}">
                                                                         {{ $property->business->user->firstname ?? '' }}
                                                                         {{ $property->business->user->lastname ?? '' }}
                                                                     </a>
@@ -203,8 +197,7 @@
                             <!-- ONE -->
                             <div class="card__image">
                                 <div class="card__image-header h-250">
-                                    {{-- <div class="ribbon text-capitalize">featured</div> --}}
-                                    <a href="{{route('listing.details', $prop->id)}}">
+                                    <a href="{{route('listing.details', $prop->slug)}}">
                                         <img src="{{$prop->getFirstMediaUrl('properties')}}" alt="" class="img-fluid w100 img-transition">
                                     </a>
                                     <div class="info"> {{$prop->purpose}}</div>
@@ -212,7 +205,7 @@
                                 <div class="card__image-body">
                                     <span class="badge badge-primary text-capitalize mb-2">{{$prop->category->name ?? ''}}</span>
                                     <h6 class="text-capitalize">
-                                        <a href="{{route('listing.details', $prop->id)}}">{{$prop->name}}</a>
+                                        <a href="{{route('listing.details', $prop->slug)}}">{{$prop->name}}</a>
                                     </h6>
 
                                     <p class="text-capitalize">
@@ -248,7 +241,7 @@
                                     </figure>
                                     <ul class="list-inline my-auto">
                                         <li class="list-inline-item">
-                                            <a href="{{ route('partner.listing', $prop->business->id)}}">
+                                            <a href="{{ route('partner.listing', $prop->business->slug)}}">
                                                 {{$prop->business->user->firstname}} {{$prop->business->user->lastname}} <br>
                                             </a>
 
@@ -258,7 +251,7 @@
                                     <ul class="list-inline my-auto ml-auto">
                                         <li class="list-inline-item">
 
-                                            <h6 class="">{{$prop->price}}</h6>
+                                            <h6 class="">{{ $property->currency->code }}{{$prop->price}}</h6>
                                         </li>
 
                                     </ul>
@@ -293,7 +286,7 @@
 
                 </div>
                 <div class="col-lg-3">
-                    <a href="#" class="btn btn-light text-uppercase ">Contact Us
+                    <a href="{{ route('contact')}}" class="btn btn-light text-uppercase ">Contact Us
                         <i class="ml-3 fa fa-angle-right arrow-btn "></i></a>
                 </div>
             </div>

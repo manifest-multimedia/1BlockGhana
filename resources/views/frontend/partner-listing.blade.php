@@ -27,7 +27,7 @@
 
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>All Cities</label>
                                     <select class="select_option wide">
                                         <option data-display="All City">All Cities</option>
@@ -35,7 +35,7 @@
 
                                     </select>
 
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="products__filter__footer">
                                 <div class="form-group mb-0">
