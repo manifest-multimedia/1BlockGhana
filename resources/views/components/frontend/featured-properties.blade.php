@@ -13,131 +13,152 @@
                 </div>
                 <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme">
                     @foreach ($properties as $property)
-                    @if ($loop->odd)
-                    <div class="item">
-                        <!-- CARD IMAGE -->
+                        @if ($loop->odd)
+                            <div class="item">
+                                <!-- CARD IMAGE -->
 
-                        <a href="{{route('listing.details', $property->slug)}}">
-                            <div class="card__image-hover h-250">
-                                <div class="card__image-hover-overlay">
-                                    <div class="listing-badges">
-                                        <span class="featured">
-                                            Featured
-                                        </span>
-                                        <span>
-                                            {{$property->purpose}}
-                                        </span>
-                                    </div>
-                                    <div class="card__image-content">
-                                        <div class="card__image-content-desc">
-                                            <h6> {{$property->name}}</h6>
-                                            <p class="mb-0">{{ $property->currency->code }}{{$property->price}}</p>
+                                <a href="{{ route('listing.details', $property->slug) }}">
+                                    <div class="card__image-hover h-250">
+                                        <div class="card__image-hover-overlay">
+                                            <div class="listing-badges">
+                                                <span class="featured">
+                                                    Featured
+                                                </span>
+                                                <span>
+                                                    {{ $property->purpose }}
+                                                </span>
+                                            </div>
+                                            <div class="card__image-content">
+                                                <div class="card__image-content-desc">
+                                                    <h6> {{ $property->name }}</h6>
+                                                    <p class="mb-0">
+                                                        {{ $property->currency->code }}{{ $property->price }}</p>
+                                                </div>
+                                                <ul class="list-inline card__hidden-content">
+                                                    <li class="list-inline-item">
+                                                        Baths
+                                                        <span>
+                                                            <i class="fa fa-bath"></i> {{ $property->bathroom }}
+                                                        </span>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        Beds
+                                                        <span>
+                                                            <i class="fa fa-bed"></i> {{ $property->bedroom }}
+                                                        </span>
+                                                    </li>
+
+                                                    <li class="list-inline-item">
+                                                        Area
+                                                        <span>
+                                                            <i class="fa fa-map"></i> {{ $property->size }} sq ft
+                                                        </span>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <img alt="" src="{{ $property->getFirstMediaUrl('properties') }}"
+                                                class="img-fluid h-30 ">
                                         </div>
-                                        <ul class="list-inline card__hidden-content">
-                                            <li class="list-inline-item">
-                                                Baths
-                                                <span>
-                                                    <i class="fa fa-bath"></i> {{$property->bathroom}}
-                                                </span>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                Beds
-                                                <span>
-                                                    <i class="fa fa-bed"></i> {{$property->bedroom}}
-                                                </span>
-                                            </li>
-
-                                            <li class="list-inline-item">
-                                                Area
-                                                <span>
-                                                    <i class="fa fa-map"></i> {{$property->size}} sq ft
-                                                </span>
-                                            </li>
-
-                                        </ul>
                                     </div>
-                                    <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-30 ">
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    @endif
-
+                        @endif
                     @endforeach
                 </div>
 
                 {{-- SECOND LAYOUT --}}
                 <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme mt-2">
                     @foreach ($properties as $property)
-                    @if ($loop->even)
-                    <div class="item">
-                        <!-- CARD IMAGE -->
+                        @if ($loop->even)
+                            <div class="item">
+                                <!-- CARD IMAGE -->
 
-                        <a href="{{route('listing.details', $property->slug)}}">
-                            <div class="card__image-hover h-250">
-                                <div class="card__image-hover-overlay">
-                                    <div class="listing-badges">
-                                        <span class="featured">
-                                            Featured
-                                        </span>
-                                        <span>
-                                            {{$property->purpose}}
-                                        </span>
-                                    </div>
-                                    <div class="card__image-content">
-                                        <div class="card__image-content-desc">
-                                            <h6> {{$property->name}}</h6>
-                                            <p class="mb-0">{{ $property->currency->code }}{{$property->price}}</p>
+                                <a href="{{ route('listing.details', $property->slug) }}">
+                                    <div class="card__image-hover h-250">
+                                        <div class="card__image-hover-overlay">
+                                            <div class="listing-badges">
+                                                <span class="featured">
+                                                    Featured
+                                                </span>
+                                                <span>
+                                                    {{ $property->purpose }}
+                                                </span>
+                                            </div>
+                                            <div class="card__image-content">
+                                                <div class="card__image-content-desc">
+                                                    <h6> {{ $property->name }}</h6>
+                                                    <p class="mb-0">
+                                                        {{ $property->currency->code }}{{ $property->price }}</p>
+                                                </div>
+                                                <ul class="list-inline card__hidden-content">
+                                                    <li class="list-inline-item">
+                                                        Baths
+                                                        <span>
+                                                            <i class="fa fa-bath"></i> {{ $property->bathroom }}
+                                                        </span>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        Beds
+                                                        <span>
+                                                            <i class="fa fa-bed"></i> {{ $property->bedroom }}
+                                                        </span>
+                                                    </li>
+
+                                                    <li class="list-inline-item">
+                                                        Area
+                                                        <span>
+                                                            <i class="fa fa-map"></i> {{ $property->size }} sq ft
+                                                        </span>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <img alt="" src="{{ $property->getFirstMediaUrl('properties') }}"
+                                                class="img-fluid h-30 ">
+
                                         </div>
-                                        <ul class="list-inline card__hidden-content">
-                                            <li class="list-inline-item">
-                                                Baths
-                                                <span>
-                                                    <i class="fa fa-bath"></i> {{$property->bathroom}}
-                                                </span>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                Beds
-                                                <span>
-                                                    <i class="fa fa-bed"></i> {{$property->bedroom}}
-                                                </span>
-                                            </li>
-
-                                            <li class="list-inline-item">
-                                                Area
-                                                <span>
-                                                    <i class="fa fa-map"></i> {{$property->size}} sq ft
-                                                </span>
-                                            </li>
-
-                                        </ul>
                                     </div>
-                                    <img alt="" src="{{$property->getFirstMediaUrl('properties')}}" class="img-fluid h-30 ">
-
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-                    @endif
-
+                        @endif
                     @endforeach
 
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="row1">
+            <div class="col-md-4" id="hide_on_mobile_only">
+                <div class="row">
+                    <div class="col-12">
                         <div class="title__head-v2 mb-3">
                             <h2 class="text-capitalize">Popular locations</h2>
                         </div>
+
+                        <ul class="list-group">
+                            <li class="list-group-item active">East Legon</li>
+                            <li class="list-group-item">Cantoment</li>
+                            <li class="list-group-item">Tema</li>
+                            <li class="list-group-item">Aburi</li>
+                            <li class="list-group-item">Oyibi</li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <section class="home__video1  my-2 bg-theme-v6">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="mx-auto col-lg-8">
+                                        <div class="text-center home__video-area">
+                                            <a href="/property-news#videos" class="play-video ">
+                                                <i class="text-white icon fa fa-play"></i>
+                                            </a>
+                                            <p class="text-white">The #1 Place For Commercial Property</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-                    <ul class="list-group">
-                        <li class="list-group-item active">Accra</li>
-                        <li class="list-group-item">Aburi</li>
-                        <li class="list-group-item">Tema</li>
-                        <li class="list-group-item">East Legon</li>
-                        <li class="list-group-item">Nima</li>
-                    </ul>
             </div>
         </div>
     </div>
@@ -146,23 +167,23 @@
 @section('bottom-property-scripts')
     <script>
         $('.owl-carousel-bottom').owlCarousel({
-            loop:true,
-            margin:10,
-            nav:true,
-            dots:false,
-            autoplay:true,
-           // autoWidth:false,
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            // autoWidth:false,
             height: 100,
-            autoplayTimeout:3000,
-            responsive:{
-                0:{
-                    items:1
+            autoplayTimeout: 3000,
+            responsive: {
+                0: {
+                    items: 1
                 },
-                600:{
-                    items:2
+                600: {
+                    items: 2
                 },
-                1000:{
-                    items:2
+                1000: {
+                    items: 2
                 }
             }
         })

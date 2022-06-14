@@ -14,6 +14,7 @@
  <x-frontend.blog_old />
  <!-- END BLOG -->
 
+ <div class="clearfix" id="videos"></div>
  <!-- VIDEO -->
  <section class="home__video bg-theme-v6">
     <div class="container">

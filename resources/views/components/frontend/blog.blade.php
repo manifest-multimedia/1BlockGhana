@@ -6,7 +6,7 @@
                     <h2 class="text-center text-capitalize">
                         lastest property news
                     </h2>
-                    
+
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -131,7 +131,6 @@
                                 </a>
 
                             </li>
-
                         </ul>
                         <ul class="my-auto ml-auto list-inline">
                             <li class="list-inline-item">

@@ -60,7 +60,7 @@ Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name
 Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('user.listing');
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
-Route::post('/send/mail/{id}', [HomeController::class, 'sendPartnerMail'])->name('send.partner.mail');
+Route::post('/send/mail/{slug}', [HomeController::class, 'sendPartnerMail'])->name('send.partner.mail');
 Route::post('/search', [HomeController::class, 'searchFilter'])->name('search.filter');
 
 

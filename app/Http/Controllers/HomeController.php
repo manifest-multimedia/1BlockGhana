@@ -346,8 +346,8 @@ class HomeController extends Controller
         }
     }
 
-    public function sendPartnerMail(Request $request, $id){
-        $property = Properties::find($id)->first();
+    public function sendPartnerMail(Request $request, $slug){
+        $property = Properties::where('slug',$slug)->first();
       //  dd($property->business->user->firstname);
 
         $data = array(

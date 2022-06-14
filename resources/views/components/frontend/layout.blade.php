@@ -60,6 +60,10 @@
         height: auto;
     }
 
+    section.single__Detail {
+    background-color: #f6f6f6;
+}
+
 </style>
 <body>
 

@@ -24,56 +24,59 @@
                                 <div class="row">
 
 
-                                    @forelse ($business->developments as $development)
-                                        @if ($development->business->business_status >= 1)
-                                            <div class="col-md-6">
-                                                <div class="card__image card__box-v1 mt-2">
-                                                    <div class="card__image-header h-250 img-space">
-                                                        {{-- <div class="ribbon text-capitalize">sold out</div> --}}
 
-                                                        <a href="{{ route('listing.details', $development->slug) }}">
-                                                            <img src="{{ $development->getFirstMediaUrl('properties') ?? ""}}"
-                                                                alt="" class="img-fluid w100 img-transition">
-                                                        </a>
-                                                        @if ($development->purpose)
-                                                        <div class="info">
-                                                            {{ $development->purpose ?? null }}
-                                                        </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="card__image-body">
-                                                        <span
-                                                            class="badge badge-primary text-capitalize mb-2">{{ $development->category->name ?? 'Uncategorised' }}</span>
-                                                        <h6 class="text-capitalize">
+                                        @forelse ($business->developments as $development)
+                                            @if ($development->business->business_status >= 1)
+                                                <div class="col-md-6">
+                                                    <div class="card__image card__box-v1 mt-2">
+                                                        <div class="card__image-header h-250 img-space">
+                                                            {{-- <div class="ribbon text-capitalize">sold out</div> --}}
+
                                                             <a
-                                                                href="{{ route('listing.details', $development->slug) }}">{{ $development->name ?? 'Not Stated' }}</a>
-                                                        </h6>
+                                                                href="{{ route('listing.details', $development->slug) }}">
+                                                                <img src="{{ $development->getFirstMediaUrl('properties') ?? '' }}"
+                                                                    alt="" class="img-fluid w100 img-transition">
+                                                            </a>
+                                                            @if ($development->purpose)
+                                                                <div class="info">
+                                                                    {{ $development->purpose ?? null }}
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="card__image-body">
+                                                            <span
+                                                                class="badge badge-primary text-capitalize mb-2">{{ $development->category->name ?? 'Uncategorised' }}</span>
+                                                            <h6 class="text-capitalize">
+                                                                <a
+                                                                    href="{{ route('listing.details', $development->slug) }}">{{ $development->name ?? 'Not Stated' }}</a>
+                                                            </h6>
 
-                                                        <p class="text-capitalize">
-                                                            <i class="fa fa-map-marker"></i>
-                                                            {{ $development->location ?? '--' }}
-                                                        </p>
-                                                        <ul class="list-inline card__content">
+                                                            <p class="text-capitalize">
+                                                                <i class="fa fa-map-marker"></i>
+                                                                {{ $development->location ?? '--' }}
+                                                            </p>
+                                                            <ul class="list-inline card__content">
 
 
-                                                            <li class="list-inline-item">
-                                                                <span>
-                                                                    area <br>
-                                                                    <i class="fa fa-map"></i>
-                                                                    {{ $development->size ?? '' }} sq ft
-                                                                </span>
-                                                            </li>
-                                                        </ul>
+                                                                <li class="list-inline-item">
+                                                                    <span>
+                                                                        area <br>
+                                                                        <i class="fa fa-map"></i>
+                                                                        {{ $development->size ?? '' }} sq ft
+                                                                    </span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
                                                     </div>
-                                                    
                                                 </div>
+                                            @endif
+                                        @empty
+                                            <div class="m-auto">
+                                                <h5 class="mt-4">No Development</h5>
                                             </div>
-                                        @endif
-                                    @empty
-                                        <div class="m-auto">
-                                            <h5 class="mt-4">No Development</h5>
-                                        </div>
-                                    @endforelse
+                                        @endforelse
+
 
                                 </div>
 
@@ -143,7 +146,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                                                                    </div>
+                                                </div>
                                             </div>
                                         @endif
                                     @empty
@@ -160,9 +163,9 @@
                         @endif
 
                         @if ($business->properties->isEmpty() && $business->developments->isEmpty())
-                        <div class="m-auto">
-                            <h5 class="mt-4">No listing found</h5>
-                        </div>
+                            <div class="m-auto">
+                                <h5 class="mt-4">No listing found</h5>
+                            </div>
                         @endif
 
 
@@ -189,16 +192,17 @@
                                                 </a>
 
                                             </li>
-                                            <li><a href="tel:123456"><i
+                                            <li><a href="tel:{{ $business->user->mobile }}"><i
                                                         class="fa fa-phone-square mr-1"></i>{{ $business->user->mobile }}</a>
                                             </li>
-                                            <li><a href="tel:123456"><i
+                                            <li><a href="mailto:{{ $business->user->email }}"><i
                                                         class="fa fa-envelope mr-1"></i>{{ $business->user->email }}</a>
                                             </li>
                                             <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
                                                     {{ $business->name }}</a>
                                             </li>
-                                            <li><a href="javascript:void(0)"><i class=" fa fa-globe mr-1"></i>
+                                            <li><a href="http://{{ $business->website ?? '--' }}" target="_blank"><i
+                                                        class=" fa fa-globe mr-1"></i>
                                                     {{ $business->website ?? '--' }}</a>
                                             </li>
                                             {{-- <li> <a href="javascript:void(0)" class="">View My Listing</a>
