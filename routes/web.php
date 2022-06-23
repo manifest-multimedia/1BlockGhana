@@ -2,11 +2,12 @@
 
 use App\Models\Properties;
 use App\Http\Livewire\Crud;
+use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdsController;
+
+
 use App\Http\Controllers\HomeController;
-
-
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\_RoleController;
 use App\Http\Controllers\AdminController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Livewire\Admin\AccessControlList;
 use App\Http\Controllers\_PermissionController;
 use App\Http\Controllers\DevelopmentController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\_AccessControlController;
 
 
@@ -121,6 +123,13 @@ Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/categ
     Route::post('/update/{id}', [CategoryController::class,'update'])->name('category.update');
     Route::delete('/delete/{id}', [CategoryController::class,'delete'])->name('category.delete');
 });
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/subcategory')->group( function (){
+    Route::get('/list', [SubCategoryController::class,'view'])->name('sub.category.list');
+    Route::post('/store', [SubCategoryController::class,'store'])->name('sub.category.store');
+    Route::get('/edit/{id}', [SubCategoryController::class,'edit'])->name('sub.category.edit');
+    Route::post('/update/{id}', [SubCategoryController::class,'update'])->name('sub.category.update');
+    Route::delete('/delete/{id}', [SubCategoryController::class,'delete'])->name('sub.category.delete');
+});
 
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/amenities')->group( function (){
     Route::get('/list', [AdminController::class,'viewAmenities'])->name('amenity.list');
@@ -195,13 +204,22 @@ Route::post('/store/{id}', [AdsController::class, 'storeTopAds'])->name('topads.
 Route::post('upload', [UploadController::class, 'storeAdImage']);
 });
 
-Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/featured/')->group( function (){
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/featured/properties/')->group( function (){
 // FEATURED ADS ROUTES
 Route::get('/view', [AdsController::class, 'viewFeaturedAds'])->name('featuredads.view');
 Route::get('/add', [AdsController::class, 'addFeaturedAds'])->name('featuredads.add');
 Route::post('/store/{id}', [AdsController::class, 'storeFeaturedAds'])->name('featuredads.store');
 Route::patch('/update/{id}', [AdsController::class, 'updateFeaturedAds'])->name('featuredads.update');
 Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedAds'])->name('featuredads.remove');
+});
+
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/featured/developments/')->group( function (){
+// FEATURED ADS ROUTES
+Route::get('/view', [AdsController::class, 'viewFeaturedDevelopments'])->name('featured.development.view');
+Route::get('/add', [AdsController::class, 'addFeaturedDevelopment'])->name('featured.development.add');
+Route::post('/store/{id}', [AdsController::class, 'storeFeaturedDevelopment'])->name('featured.development.store');
+Route::patch('/update/{id}', [AdsController::class, 'updateFeaturedDevelopment'])->name('featured.development.update');
+Route::get('remove/{id}', [AdsController::class, 'deleteFeaturedDevelopment'])->name('featured.development.remove');
 });
 
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/dev/ads/')->group( function (){

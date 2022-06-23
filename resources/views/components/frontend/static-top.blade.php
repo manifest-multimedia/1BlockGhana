@@ -7,14 +7,14 @@
     <div class="container py-0">
         <div class="row">
 
-
+            <x-notification.message />
             @foreach ($staticAds as $staticAd)
             <div class="col-md-6">
                 <!-- CARD IMAGE -->
                 <a href="#">
                     <div class="">
-                        <div class="card__image-hover-style-v3-thumb h-230">
-                            <img src="{{$staticAd->getFirstMediaUrl('static_top') ? $staticAd->getFirstMediaUrl('static_top') : '' }}" alt="" class="img-fluid w-100">
+                        <div class="card__image-hover-style-v3-thumb">
+                            <img src="{{$staticAd->getFirstMediaUrl('static_top') ? $staticAd->getFirstMedia('static_top')->getUrl('static_fit')  : '' }}" alt="" class="img-fluid w-100">
                         </div>
                     </div>
                 </a>

@@ -20,6 +20,7 @@ class AdsController extends Controller
         $this->middleware('auth');
     }
 
+    // SLIDER TOP ADS
     public function viewTopAds(){
         $topads = TopAds::orderBy('priority')->get();
         return view('backend.ads.top_ads.list',compact('topads'));
@@ -84,6 +85,7 @@ class AdsController extends Controller
     }
 
 
+    // FEATURED PROPERTIES ADS
     public function viewFeaturedAds(){
         $featureds = Properties::select('id','name','adStatus')->where('adStatus', '>=' ,1)->get();
        // dd($featureds);
@@ -102,6 +104,7 @@ class AdsController extends Controller
 
         return redirect()->route('featuredads.view')->with('success','FeaturedAd Priority  has been added');
     }
+
     public function updateFeaturedAds(Request $request, Properties $id){
         $id->update([
             'adStatus' => $request->priority,
@@ -118,7 +121,44 @@ class AdsController extends Controller
         return redirect()->route('featuredads.view')->with('success','Priority has been removed');
     }
 
+    // FEATURED DEVELOPMENT ADS
+    public function viewFeaturedDevelopments(){
+        $featureds = Development::select('id','name','adStatus')->where('adStatus', '>=' ,1)->orderBy('adStatus')->get();
+       // dd($featureds);
+        return view('backend.ads.featured_development.list',compact('featureds'));
+    }
 
+    public function addFeaturedDevelopment(){
+        $developments = Development::select('id','name')->where('adStatus','<','1')->orWhere('adStatus', NULL)->get();
+        return view('backend.ads.featured_development.developments', compact('developments'));
+    }
+
+    public function storeFeaturedDevelopment(Request $request, Development $id){
+        $id->update([
+            'adStatus' => $request->priority,
+        ]);
+
+        return redirect()->route('featured.development.view')->with('success','Featured Priority  has been added');
+    }
+
+    public function updateFeaturedDevelopment(Request $request, Development $id){
+        $id->update([
+            'adStatus' => $request->priority,
+        ]);
+
+        return redirect()->route('featured.development.view')->with('success','Featured Priority  has been updated');
+    }
+
+    public function deleteFeaturedDevelopment(Development $id){
+        $id->update([
+            'adStatus' => 0,
+        ]);
+
+        return redirect()->route('featured.development.view')->with('success','Priority has been removed');
+    }
+
+
+    // DEVELOPMENT BANNER ADS
     public function viewDevelopmentAds(){
         $developmentads = Development::select('id','name','adStatus')->where('adStatus', '>=' ,1)->get();
        // dd($featureds);
@@ -155,6 +195,7 @@ class AdsController extends Controller
     }
 
 
+    // STATIC TOP ADS
     public function viewStaticTopAds(){
         $staticAd1 = StaticTopAds::find(1);
         $staticAd2 = StaticTopAds::find(2);
@@ -173,7 +214,7 @@ class AdsController extends Controller
             if($request->banner){
                 if ($request->hasFile('banner')) {
                     $file = $request->file('banner');
-                  //  $development->clearMediaCollection('banner');
+                    $static->clearMediaCollection('static_top');
                     $static->addMedia($file)->toMediaCollection('static_top');
                 }
             }
@@ -185,7 +226,7 @@ class AdsController extends Controller
             if($request->banner2){
                 if ($request->hasFile('banner2')) {
                     $file = $request->file('banner2');
-                  //  $development->clearMediaCollection('banner');
+                    $static->clearMediaCollection('static_top');
                     $static->addMedia($file)->toMediaCollection('static_top');
                 }
             }
@@ -203,6 +244,7 @@ class AdsController extends Controller
         return redirect()->route('developmentads.view')->with('success','Priority has been removed');
     }
 
+    // STATIC BOTTOM ADS
     public function viewStaticBottomAds(){
         $staticAds = StaticBottomAds::get();
         return view('backend.ads.static_bottom_ads.list',compact('staticAds'));
@@ -223,7 +265,7 @@ class AdsController extends Controller
         if($request->banner){
             if ($request->hasFile('banner')) {
                 $file = $request->file('banner');
-              //  $development->clearMediaCollection('banner');
+                $static->clearMediaCollection('static_bottom');
                 $static->addMedia($file)->toMediaCollection('static_bottom');
             }
         }

@@ -17,7 +17,7 @@
             </div>
 
             <form
-                action="{{ route('category.update', $category->id) }} "
+                action="{{ route('sub.category.update', $category->id) }} "
                 method="POST">
                 @csrf
                 <div class="modal-body">
@@ -31,16 +31,18 @@
 
                         <x-form.label value="{{ __('Category Type') }}" />
 
-                        <select class="form-control" name="type" id="">
-                            <option {{$category->type == "property" ? 'selected' : ''}} value="property">Property</option>
-                            <option {{$category->type == "development" ? 'development' : ''}} value="development">Development</option>
+                        <select class="form-control" name="category_id" id="">
+                            @foreach ($categories as $cat)
+                            @if ($category->category)
+                            <option {{$category->category->id == $cat->category_id ? 'selected' : ''}} value="{{$cat->id}}">{{$cat->name}}</option>
+                            @else
+                            <option {{$category->category_id == $cat->id ? 'selected' : ''}} value="{{$cat->id}}">{{$cat->name}}</option>
+                            @endif
+                            @endforeach
+
+
                         </select>
 
-                        <x-form.label
-                            value="{{ __('Position Number') }}" />
-                        <x-form.input name="position"
-                            placeholder="Position Number"
-                            value="{{ $category->position }}" />
                     </div>
 
 

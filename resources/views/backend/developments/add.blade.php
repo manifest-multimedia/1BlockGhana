@@ -27,9 +27,9 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <x-form.label value="{{ __('Development Type') }}" />
-                                            <select class="form-control" name="category_id" id="">
-                                                @foreach ($categories as $categories)
-                                                    <option value="{{ $categories->id }}">{{ $categories->name }}
+                                            <select class="form-control" name="sub_category_id" id="">
+                                                @foreach ($subcategories as $subcategories)
+                                                    <option value="{{ $subcategories->id }}">{{ $subcategories->name }}
                                                     </option>
                                                 @endforeach
 
@@ -47,9 +47,9 @@
 
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <x-form.label value="{{ __('Property Description') }}" />
+                                            <x-form.label value="{{ __('Development Description') }}" />
                                             <x-form.textarea name="description" type="email"
-                                                placeholder="Description about the property" />
+                                                placeholder="Description about the development" />
                                         </div>
                                     </div>
 

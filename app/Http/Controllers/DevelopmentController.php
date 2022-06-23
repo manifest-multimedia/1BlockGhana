@@ -8,10 +8,12 @@ use App\Models\Business;
 use App\Models\Category;
 use App\Models\Amenities;
 use App\Models\Development;
-use App\Models\TemporaryFile;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 class DevelopmentController extends Controller
 {
     public function __construct()
@@ -25,7 +27,7 @@ class DevelopmentController extends Controller
     }
 
     public function add(){
-        $categories = Category::where('type','development')->get();
+        $subcategories = SubCategory::get();
         $amenities = Amenities::all();
         $id = Auth::user()->id;
         $business = Business::where('user_id', $id)->get('package_id');
@@ -33,15 +35,20 @@ class DevelopmentController extends Controller
             $package = Package::find($bus->package_id);
             $bus_id = $bus->id;
         }
-        return view('backend.developments.add',compact('categories','amenities','id','package'));
+        return view('backend.developments.add',compact('subcategories','amenities','id','package'));
     }
 
     public function store(Request $request, $id){
         $business = User::find($id)->business;
 
+        $subcategory = SubCategory::find($request->sub_category_id);
+
+
         $development =  Development::create([
             'business_id'=> $business->id,
-            'category_id'=> $request->category_id,
+            'category_id'=> $subcategory->category_id,
+            'sub_category_id'=> $request->sub_category_id,
+            'category_id'=> $request->sub_category_id,
             'name'=> $request->name,
             'description'=> $request->description,
             'location'=> $request->location,
@@ -61,7 +68,7 @@ class DevelopmentController extends Controller
         if($request->developments){
             foreach($request->developments as $file){
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
-                               
+
                 $tempPath = 'app/public/developments/tmp/';
                 if($temporaryFile){
 
@@ -82,7 +89,7 @@ class DevelopmentController extends Controller
     }
 
     public function edit($id){
-        $categories = Category::where('type','development')->get();
+        $subcategories = SubCategory::get();
         $amenities = Amenities::all();
         $development = Development::find($id);
         $business = Business::where('user_id', $development->business->user_id)->get('package_id');
@@ -96,7 +103,7 @@ class DevelopmentController extends Controller
             $development_amenities[] = $amens->id;
         }
       //  dd($development_amenities);
-        return view('backend.developments.edit',compact('development','categories','amenities','development_amenities','package'));
+        return view('backend.developments.edit',compact('development','subcategories','amenities','development_amenities','package'));
     }
 
     public function update(Request $request, $id){
@@ -104,8 +111,11 @@ class DevelopmentController extends Controller
             abort(403);
         } */
 
+        $subcategory = SubCategory::find($request->category_id);
+
         $development =  Development::find($id);
-          $development->category_id= $request->category_id;
+          $development->category_id= $subcategory->category_id;
+          $development->sub_category_id= $request->category_id;
           $development->name= $request->name;
           $development->description= $request->description;
           $development->location= $request->location;

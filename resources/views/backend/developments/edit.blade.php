@@ -27,8 +27,8 @@
 										<div class="form-group">
 											<x-form.label value="{{ __('Development Type') }}" />
 											<select class="form-control" name="category_id" id="">
-												@foreach ($categories as $category)
-												<option  {{ ($category->id) == $development->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}
+												@foreach ($subcategories as $category)
+												<option  {{ ($category->id) == $development->sub_category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}
 												</option>
 												@endforeach
 

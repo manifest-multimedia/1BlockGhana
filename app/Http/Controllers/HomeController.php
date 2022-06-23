@@ -31,6 +31,7 @@ class HomeController extends Controller
     }
 
     public function searchFilter(Request $request) {
+        // category | location | currency | min price | max price
         if($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('min_price') && $request->filled('max_price') ){
 
             if(Properties::where('category_id',$request->category_id)){
@@ -54,7 +55,10 @@ class HomeController extends Controller
                 $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
-        }elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('min_price')){
+        }
+
+        // category | location | currency | min price
+        elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('min_price')){
 
             if(Properties::where('category_id',$request->category_id)){
 
@@ -76,7 +80,10 @@ class HomeController extends Controller
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
 
-        }elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('max_price')){
+        }
+
+        // category | location | currency | max price
+        elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('max_price')){
 
             if(Properties::where('category_id',$request->category_id)){
 
@@ -98,27 +105,10 @@ class HomeController extends Controller
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
 
-        }elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id')){
+        }
 
-            if(Properties::where('category_id',$request->category_id)){
-
-                $properties = Properties::where('category_id',$request->category_id);
-                $properties = $properties->where('currency_id',$request->currency_id);
-                $properties = $properties->where('location', 'LIKE',"%{$request->location}%");
-
-                $properties->get();
-
-                $similar = Properties::where('category_id',[$request->category_id])->get();
-
-                  return view('frontend.filter.properties', compact('properties','similar'));
-
-            }elseif(Development::where('category_id',$request->category_id)){
-
-                $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
-                return view('frontend.filter.developments', compact('categories','developments'));
-            }
-
-        }elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('min_price') && $request->filled('max_price')){
+        // category | currency | min price | max price
+        elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('min_price') && $request->filled('max_price')){
 
             if(Properties::where('category_id',$request->category_id)){
 
@@ -141,7 +131,33 @@ class HomeController extends Controller
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
 
-        }elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('min_price')){
+        }
+
+        // category | location | currency
+        elseif($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id')){
+
+            if(Properties::where('category_id',$request->category_id)){
+
+                $properties = Properties::where('category_id',$request->category_id);
+                $properties = $properties->where('currency_id',$request->currency_id);
+                $properties = $properties->where('location', 'LIKE',"%{$request->location}%");
+
+                $properties->get();
+
+                $similar = Properties::where('category_id',[$request->category_id])->get();
+
+                  return view('frontend.filter.properties', compact('properties','similar'));
+
+            }elseif(Development::where('category_id',$request->category_id)){
+
+                $developments = Development::where('category_id',$request->category_id)->orderBy('created_at')->get();
+                return view('frontend.filter.developments', compact('categories','developments'));
+            }
+
+        }
+
+        // category | currency | min price
+        elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('min_price')){
 
             if(Properties::where('category_id',$request->category_id)){
 
@@ -163,7 +179,10 @@ class HomeController extends Controller
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
 
-        }elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('max_price')){
+        }
+
+        // category | currency | max price
+        elseif($request->filled('category_id') && $request->filled('currency_id') && $request->filled('max_price')){
 
             if(Properties::where('category_id',$request->category_id)){
 
@@ -184,7 +203,10 @@ class HomeController extends Controller
                 return view('frontend.filter.developments', compact('categories','developments'));
             }
 
-        }elseif($request->filled('category_id')){
+        }
+
+        // category
+        elseif($request->filled('category_id')){
 
             if(Properties::where('category_id',$request->category_id)){
                   $properties = Properties::where('category_id',$request->category_id)->get();
@@ -200,7 +222,10 @@ class HomeController extends Controller
                   $developments = Development::where('location', 'LIKE', '%'.$request->location.'%')->orderBy('created_at')->get();
                   return view('frontend.filter.developments', compact('categories','developments'));
               }
-        }elseif($request->filled('location')){
+        }
+
+        // location
+        elseif($request->filled('location')){
 
                 $properties = Properties::where('location', 'LIKE',"%{$request->location}%")->get();
 
@@ -208,7 +233,10 @@ class HomeController extends Controller
                                       ->get();
                   return view('frontend.filter.properties', compact('properties','similar'));
 
-        }elseif($request->filled('min_price') && $request->currency_id){
+        }
+
+        // min price
+        elseif($request->filled('min_price') && $request->currency_id){
 
             $properties = Properties::where('price', '>=',"$request->min_price")
                                     ->where('currency_id', $request->currency_id)->get();
@@ -218,7 +246,10 @@ class HomeController extends Controller
 
             return view('frontend.filter.properties', compact('properties','similar'));
 
-        }elseif($request->filled('max_price') && $request->currency_id){
+        }
+
+        // max price
+        elseif($request->filled('max_price') && $request->currency_id){
 
             $properties = Properties::where('price', '<=',"$request->max_price")
                                     ->where('currency_id', $request->currency_id)->get();
@@ -227,9 +258,12 @@ class HomeController extends Controller
                                     ->where('currency_id', $request->currency_id)->get();
 
             return view('frontend.filter.properties', compact('properties','similar'));
-        }elseif($request->filled('bed')){
+        }
 
-            $properties = Properties::where('bedroom', '>=',"$request->bed")->get();
+        // bed
+        elseif($request->filled('bed')){
+
+            $properties = Properties::where('bedroom', '==',"$request->bed")->get();
 
              $similar = Properties::where('bedroom', '!=',"$request->min_price")->get();
 
@@ -304,15 +338,14 @@ class HomeController extends Controller
         // dd($similar);
             return view('frontend.category.properties', compact('properties','similar','category_name'));
         }elseif($category->type == "development"){
+
             $developments = Development::where('category_id',$category->id)->get();
+           // dd($developments, $category);
             //SIMILAR PROPERTIES
             $similar = Development::whereNotIn('category_id', [$category->id])->get();
         // dd($similar);
             return view('frontend.category.developments', compact('developments','similar','category_name'));
         }
-
-
-
 
     }
 

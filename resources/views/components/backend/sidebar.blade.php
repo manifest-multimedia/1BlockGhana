@@ -27,7 +27,8 @@
                     </a>
                     <ul class="ml-menu">
                         <li><a href="{{ route('topads.view') }}">Top Ads</a></li>
-                        <li><a href="{{ route('featuredads.view') }}">Featured Ads</a></li>
+                        <li><a href="{{ route('featuredads.view') }}">Featured Properties</a></li>
+                        <li><a href="{{ route('featured.development.view') }}">Featured Developments</a></li>
                         <li><a href="{{ route('developmentads.view') }}">Development Ads</a></li>
                         <li><a href="{{ route('static.topads.view') }}">Static Top Ads</a></li>
                         <li><a href="{{ route('static.bottomads.view') }}">Static Bottom Ads</a></li>
@@ -71,8 +72,13 @@
                             class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
                 </li>
 
-                <li class=""><a href="{{ route('category.list') }}"><i
-                            class="zmdi zmdi-city"></i><span>Categories</span></a></li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i
+                            class="zmdi zmdi-city"></i><span>Categories</span> </a>
+                    <ul class="ml-menu">
+                        <li><a href="{{ route('category.list') }}"> All Categories</a></li>
+                        <li><a href="{{ route('sub.category.list') }}">Sub Categories</a></li>
+                    </ul>
+                </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-accounts-outline"></i><span>Partners</span> </a>
                     <ul class="ml-menu">

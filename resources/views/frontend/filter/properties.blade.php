@@ -151,7 +151,7 @@
                                                             <ul class="list-inline my-auto ml-auto">
                                                                 <li class="list-inline-item">
 
-                                                                    <h6>{{ $property->currency->code }}{{ $property->price ?? '' }}
+                                                                    <h6>{{ $property->currency->code ?? ''}}{{ $property->price ?? '' }}
                                                                     </h6>
                                                                 </li>
 
