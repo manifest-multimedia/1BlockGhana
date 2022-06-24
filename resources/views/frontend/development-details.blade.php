@@ -260,15 +260,15 @@
                                             </div>
                                             <div class="card__image-footer">
                                                 <figure>
-                                                    <img src="{{ $development->business->user->getFirstMediaUrl('logos', 'thumb-100') }}"
+                                                    <img src="{{ $prop->business->user->getFirstMediaUrl('logos', 'thumb-100') }}"
                                                         alt="" class="img-fluid rounded-circle">
                                                 </figure>
                                                 <ul class="list-inline my-auto">
                                                     <li class="list-inline-item">
                                                         <a
-                                                            href="{{ route('partner.single.listing', $development->business->slug) }}">
-                                                            {{ $development->business->user->firstname }}
-                                                            {{ $development->business->user->lastname }} <br>
+                                                            href="{{ route('partner.single.listing', $prop->business->slug) }}">
+                                                            {{ $prop->business->user->firstname }}
+                                                            {{ $prop->business->user->lastname }} <br>
                                                         </a>
 
                                                     </li>
