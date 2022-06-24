@@ -36,12 +36,9 @@
                                                 <div class="card__image-content-desc">
                                                     <h6> {{ $development->name }}</h6>
                                                     <p class="mb-0">
-                                                       </p>
+                                                    </p>
                                                 </div>
                                                 <ul class="list-inline card__hidden-content">
-
-
-
 
                                                 </ul>
                                             </div>

@@ -14,7 +14,7 @@ class AddSubcategoryColumnToDevelopmentTable extends Migration
     public function up()
     {
         Schema::table('development', function (Blueprint $table) {
-            $table->unsignedBigInteger('sub_category_id')->unsigned()->nullable();
+            $table->foreignId('sub_category_id')->constrained()->onDelete('cascade');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
         });
     }

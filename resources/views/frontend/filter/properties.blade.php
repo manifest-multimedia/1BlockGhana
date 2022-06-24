@@ -241,7 +241,7 @@
                                     </figure>
                                     <ul class="list-inline my-auto">
                                         <li class="list-inline-item">
-                                            <a href="{{ route('partner.listing', $prop->business->slug)}}">
+                                            <a href="{{ route('partner.single.listing', $prop->business->slug)}}">
                                                 {{$prop->business->user->firstname}} {{$prop->business->user->lastname}} <br>
                                             </a>
 
@@ -251,7 +251,7 @@
                                     <ul class="list-inline my-auto ml-auto">
                                         <li class="list-inline-item">
 
-                                            <h6 class="">{{ $property->currency->code }}{{$prop->price}}</h6>
+                                            <h6 class="">{{ $prop->currency->code ?? '' }}{{$prop->price ?? ''}}</h6>
                                         </li>
 
                                     </ul>
