@@ -132,7 +132,6 @@ class DevelopmentController extends Controller
         if($request->banner){
             if ($request->hasFile('banner')) {
                 $file = $request->file('banner');
-               // $development->clearMediaCollection('banner');
                 $development->clearMediaCollection('development_banner');
                 $development->addMedia($file)->toMediaCollection('development_banner');
             }
@@ -140,14 +139,11 @@ class DevelopmentController extends Controller
 
       //  dd($development);
         if($request->developments){
-
+            $development->clearMediaCollection('developments');
             foreach($request->developments as $file){
-
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
-
                     $tempPath = 'app/public/developments/tmp/';
                     if($temporaryFile){
-                        $development->clearMediaCollection('developments');
                         $development->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('developments');
 
                         rmdir(storage_path($tempPath . $file));
