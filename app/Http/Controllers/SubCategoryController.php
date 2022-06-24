@@ -25,7 +25,7 @@ class SubCategoryController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
             'name' => 'required|unique:categories|max:255',
-            'type' => 'required',
+            'category_id' => 'required',
         ],
         $messages = [
             'required' => 'The :attribute field is required.',
