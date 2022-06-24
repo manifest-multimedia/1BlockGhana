@@ -7,7 +7,22 @@
 
 
                 <div class="clearfix row">
+                    
+                    <select name="condition" class="form-control" onchange="showType(0)" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
 
+                    <input  id="showTypeLabel0" style="display: none;" type="text"  class="form-control input-text"
+                             placeholder="Type" name="type"  value="{{old('type')}}"
+                    >
+                     <input  id="showType0" style="display: none;"
+                              type="text"
+                              class="form-control input-text"
+                              placeholder="function"
+                              name="function"
+                              value="{{old('function')}}"
+                    >
                     <div class="col-md-6">
                         <form action="{{ route('static.topads.store',1) }}" method="post" enctype="multipart/form-data">
                             @csrf
