@@ -23,7 +23,7 @@
                                     <div class="col-sm-12">
 
                                         <div>
-                                            <input id="banner" class="form-control" name="banner" type="file"/>
+                                            <input id="banner" class="form-control" name="banner" type="file" />
                                         </div>
 
                                     </div>
@@ -32,10 +32,26 @@
                                     </div>
                                 </div>
 
-                                <div class="clearfix row">
-                                    <div class="col-sm-6">
-                                        <x-form.label value="{{ __('Priority') }}" />
-                                        <x-form.input type="number" name="priority" required/>
+                                <div class="col-sm-12 mt-4">
+                                    <x-form.label value="{{ __('Priority') }}" />
+                                    <x-form.input type="number" name="priority" required />
+                                    <x-form.label value="{{ __('Select Link Option') }}" />
+                                    <select name="link_type" class="form-control" id="select-condition" required>
+                                        <option selected value="website">--select--</option>
+                                        <option value="website">Link to website</option>
+                                        <option value="listed_property">Link to Listed Property ID</option>
+                                    </select>
+
+                                    <div class="form-group hide pt-2 py-2 pb-2" id="label1">
+                                        <x-form.label value="{{ __('Website') }}" />
+                                        <x-form.input name="website" placeholder="www.1blockghana.com" />
+
+                                        <x-form.label value="{{ __('Property ID') }}" />
+                                        <x-form.input name="property_id" placeholder="P00000" />
+                                    </div>
+
+                                    <div class="form-group hide py-2 pt-0" id="label2">
+
                                     </div>
                                 </div>
                             </div>
@@ -61,25 +77,23 @@
     </section>
     @section('scripts')
         <script type="text/javascript">
+            $(document).ready(function(e) {
 
-            $(document).ready(function (e) {
 
+                $('#banner').change(function() {
 
-               $('#banner').change(function(){
+                    let reader = new FileReader();
 
-                let reader = new FileReader();
+                    reader.onload = (e) => {
 
-                reader.onload = (e) => {
+                        $('#previewbanner').attr('src', e.target.result);
+                    }
 
-                  $('#previewbanner').attr('src', e.target.result);
-                }
+                    reader.readAsDataURL(this.files[0]);
 
-                reader.readAsDataURL(this.files[0]);
-
-               });
+                });
 
             });
-
         </script>
     @endsection
 </x-backend.app>

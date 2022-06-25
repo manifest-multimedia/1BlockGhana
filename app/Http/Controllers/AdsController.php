@@ -208,7 +208,13 @@ class AdsController extends Controller
 
             $static = StaticTopAds::updateOrCreate(
                 ['id' => 1,],
-                ['name'=>'banner', 'website' => '1blockghana.com','priority' => '1']
+                [
+                    'name'=>'banner',
+                    'website' => $request->website,
+                    'property_id' => $request->property_id,
+                    'link_type' => $request->link_type,
+                    'priority' => '1'
+                ]
             );
 
             if($request->banner){
@@ -221,8 +227,15 @@ class AdsController extends Controller
         }elseif($id == 2){
             $static = StaticTopAds::updateOrCreate(
                 ['id' => 2,],
-                ['name'=>'banner2', 'website' => '1blockghana.com','priority' => '1']
+                [
+                    'name'=>'banner2',
+                    'website' => $request->website,
+                    'property_id' => $request->property_id,
+                    'link_type' => $request->link_type,
+                    'priority' => '1'
+                ]
             );
+
             if($request->banner2){
                 if ($request->hasFile('banner2')) {
                     $file = $request->file('banner2');
@@ -257,8 +270,10 @@ class AdsController extends Controller
     public function storeStaticBottomAds(Request $request){
 
         $static = StaticBottomAds::create([
-            'name'=> $request->name,
+            'name'=> 'static ad',
             'website'=> $request->website,
+            'property_id' => $request->property_id,
+            'link_type' => $request->link_type,
             'priority'=> $request->priority
         ]);
 
@@ -274,8 +289,33 @@ class AdsController extends Controller
         return redirect()->route('static.bottomads.view')->with('success','Saved.');
     }
 
-    public function updateStaticBottomAds(){
+    public function editStaticBottomAds($id){
+        $staticAd = StaticBottomAds::find($id);
+        return view('backend.ads.static_bottom_ads.edit', compact('staticAd'));
+    }
 
+    public function updateStaticBottomAds(StaticBottomAds $id, Request $request){
+        $id->update([
+            'name'=> 'static ad',
+            'website'=> $request->website,
+            'property_id' => $request->property_id,
+            'link_type' => $request->link_type,
+            'priority'=> $request->priority
+        ]);
+
+        return redirect()->back()->with('success','Saved.');
+    }
+
+    public function uploadStaticBottomAds(StaticBottomAds $id, Request $request){
+        if($request->banner){
+            if ($request->hasFile('banner')) {
+                $file = $request->file('banner');
+                $id->clearMediaCollection('static_bottom');
+                $id->addMedia($file)->toMediaCollection('static_bottom');
+            }
+        }
+
+        return redirect()->back()->with('success','Saved.');
     }
 
     public function deleteStaticBottomAds(Development $id){
@@ -284,7 +324,6 @@ class AdsController extends Controller
         ]);
 
         return redirect()->route('developmentads.view')->with('success','Priority has been removed');
+
     }
-
-
 }

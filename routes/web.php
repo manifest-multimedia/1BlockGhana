@@ -243,7 +243,9 @@ Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/stati
 Route::get('/view', [AdsController::class, 'viewStaticBottomAds'])->name('static.bottomads.view');
 Route::get('/add', [AdsController::class, 'addStaticBottomAds'])->name('static.bottomads.add');
 Route::post('/store', [AdsController::class, 'storeStaticBottomAds'])->name('static.bottomads.store');
+Route::get('/edit/{id}', [AdsController::class, 'editStaticBottomAds'])->name('static.bottomads.edit');
 Route::patch('/update/{id}', [AdsController::class, 'updateStaticBottomAds'])->name('static.bottomads.update');
+Route::patch('/upload/{id}', [AdsController::class, 'uploadStaticBottomAds'])->name('static.bottomads.upload');
 Route::get('remove/{id}', [AdsController::class, 'deleteStaticBottomAds'])->name('static.bottomads.remove');
 });
 

@@ -9,8 +9,8 @@
                 <div class="card">
                     <div class="header">
                         <h2><strong>Listed Developments</strong> </h2>
-
                     </div>
+                    
                     <x-notification.message />
 
                     <div class="body">

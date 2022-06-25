@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="StaticAds" name="Add Static Bottom Ads" menu="Static Bottom Ads" link="{{route('static.bottomads.add')}}" />
+        <x-backend.breadcrumb page="StaticAds" name="View Static Bottom Ads" menu="Static Bottom Ads" link="{{route('static.bottomads.view')}}" />
         <div class="container-fluid">
 
             <div class="row clearfix">
@@ -43,21 +43,14 @@
 
                                                     <td>
                                                         <span>
-                                                         <button type="button" data-toggle="modal"
-                                                         data-target="#editModal{{$staticAd->id}}" class="badge badge-success">Edit</button>
+                                                         <a href="{{route('static.bottomads.edit', $staticAd->id)}}">
+                                                            <button type="button" class="badge badge-success">Edit</button>
+                                                        </a>
                                                         </span>
-
-
 
                                                              <button type="button" data-toggle="modal"
                                                                              data-target="#removeModal{{$staticAd->id}}" class="badge badge-danger">Remove
                                                              </button>
-                                                             <!-- Button trigger modal -->
-
-                                                             <!-- Modal -->
-                                                            {{--  @include('backend.ads.static_bottom_ads.modal.add') --}}
-                                                            {{--  @include('backend.ads.staticAd_ads.modal.remove') --}}
-
                                                      </td>
                                                 </tr>
                                             @endforeach

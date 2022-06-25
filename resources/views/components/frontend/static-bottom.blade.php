@@ -11,11 +11,30 @@
                     data-ride="carousel" data-interval="10000">
                     <div class="carousel-inner">
                         @foreach ($statics as $key => $static)
+                            @php
+                                $prop = App\Models\Development::select('slug')->where('development_id',$static->property_id)->first();
+                            @endphp
                         @if ($loop->odd)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                <img class="d-block mx-auto" width="100%"
+                                @if ($static->link_type ==  'website')
+                                <a href="https://{{$static->website}}" target="_blank">
+                                    <img class="d-block mx-auto" width="100%"
                                     src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
                                     alt="{{ $static->name }}">
+                                </a>
+
+                            @elseif ($prop)
+                                <a href="{{route('listing.details',$prop->slug)}}">
+                                    <img class="d-block mx-auto" width="100%"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                    alt="{{ $static->name ?? ''}}">
+                                </a>
+                            @else
+                                    <img class="d-block mx-auto" width="100%"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                    alt="{{ $static->name ?? ''}}">
+                            @endif
+
                             </div>
                             @endif
                         @endforeach
@@ -30,9 +49,23 @@
                         @foreach ($statics as $key => $static)
                         @if ($loop->even)
                             <div class="carousel-item {{ $key == 1 ? 'active' : '' }}">
-                                <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
-                                    alt="{{ $static->name }}">
+                                @php
+                                    $prop = App\Models\Development::select('slug')->where('development_id',$static->property_id)->first();
+                                @endphp
+
+                                @if ($prop)
+                                    <a href="{{route('listing.details',$prop->slug)}}">
+                                        <img class="d-block mx-auto" width="100%"
+                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                        alt="{{ $static->name ?? ''}}">
+                                    </a>
+
+                                @else
+                                        <img class="d-block mx-auto" width="100%"
+                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                        alt="{{ $static->name ?? ''}}">
+                                @endif
+
                             </div>
                         @endif
                         @endforeach
