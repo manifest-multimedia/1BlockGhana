@@ -13,7 +13,6 @@
                 </div>
                 <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme">
                     @foreach ($developments as $development)
-
                         @if ($loop->odd)
                             <div class="item">
                                 <!-- CARD IMAGE -->
@@ -24,12 +23,12 @@
                                             <div class="listing-badges">
                                                 <span class="featured">
                                                     @if ($development->category)
-                                                    {{ $development->category->subCategory->first()->name ?? 'Featured'}}
+                                                        {{ $development->category->subCategory->first()->name ?? 'Featured' }}
                                                     @endif
 
                                                 </span>
                                                 <span>
-                                                    {{ $development->purpose ?? ''}}
+                                                    {{ $development->purpose ?? '' }}
                                                 </span>
                                             </div>
                                             <div class="card__image-content">
@@ -42,7 +41,8 @@
 
                                                 </ul>
                                             </div>
-                                            <img alt="" src="{{ $development->getFirstMediaUrl('developments') }}"
+                                            <img alt=""
+                                                src="{{ $development->getFirstMediaUrl('developments') }}"
                                                 class="img-fluid h-30 ">
                                         </div>
                                     </div>
@@ -67,23 +67,24 @@
                                                     Featured
                                                 </span>
                                                 <span>
-                                                    {{ $development->purpose ?? ''}}
+                                                    {{ $development->purpose ?? '' }}
                                                 </span>
                                             </div>
                                             <div class="card__image-content">
                                                 <div class="card__image-content-desc">
                                                     <h6> {{ $development->name }}</h6>
                                                     <p class="mb-0">
-                                                        {{ $development->currency->code ?? ''}}{{ $development->price ?? ''}}</p>
+                                                        {{ $development->currency->code ?? '' }}{{ $development->price ?? '' }}
+                                                    </p>
                                                 </div>
                                                 <ul class="list-inline card__hidden-content">
 
 
                                                 </ul>
                                             </div>
-                                            <img alt="" src="{{ $development->getFirstMediaUrl('developments') }}"
+                                            <img alt=""
+                                                src="{{ $development->getFirstMediaUrl('developments') }}"
                                                 class="img-fluid h-30 ">
-
                                         </div>
                                     </div>
                                 </a>
@@ -101,12 +102,23 @@
                             <h2 class="text-capitalize">Popular locations</h2>
                         </div>
 
+                        @php
+
+                            $locations = App\Models\Location::select('name', 'slug', 'position')
+                                ->orderBy('position', 'ASC')
+                                ->get();
+
+                        @endphp
+
                         <ul class="list-group">
-                            <li class="list-group-item active">East Legon</li>
-                            <li class="list-group-item">Cantoment</li>
-                            <li class="list-group-item">Tema</li>
-                            <li class="list-group-item">Aburi</li>
-                            <li class="list-group-item">Oyibi</li>
+                            @foreach ($locations as $key => $location)
+                                <li class="list-group-item {{ $key == 0 ? 'active' : '' }}">
+                                    <a href="{{ route('popular.location.listing', $location->slug) }}"
+                                        style="color: {{ $key == 0 ? '#fff' : '#000' }}">
+                                        {{ $location->name }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-12">

@@ -72,6 +72,11 @@
                             class="zmdi zmdi-balance-wallet"></i><span>Amenities</span></a>
                 </li>
 
+                <li class="{{ request()->routeIs('location.list') ? 'active' : '' }} open"><a
+                    href="{{ route('location.list') }}"><i
+                        class="zmdi zmdi-balance-wallet"></i><span>Popular Locations</span></a>
+                </li>
+
                 <li><a href="javascript:void(0);" class="menu-toggle"><i
                             class="zmdi zmdi-city"></i><span>Categories</span> </a>
                     <ul class="ml-menu">
@@ -87,6 +92,8 @@
                         <li><a href="{{ route('user.profile') }}">Partner Profile</a></li>
                     </ul>
                 </li>
+
+
             @else
                 <li class="">
                     <a href="{{ route('user.profile') }}">

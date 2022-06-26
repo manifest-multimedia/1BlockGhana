@@ -30,6 +30,14 @@ class HomeController extends Controller
         return view('frontend.homepage', compact('properties','categories','developments','currencies','statics'));
     }
 
+    public function popularLocationListing($slug){
+        $properties = Properties::where('location', 'LIKE',"%{$slug}%")->get();
+
+        $similar = Properties::where('location', 'NOT LIKE',"%{$slug}%")
+                             ->get();
+         return view('frontend.filter.properties', compact('properties','similar'));
+    }
+
     public function searchFilter(Request $request) {
         // category | location | currency | min price | max price
         if($request->filled('category_id') && $request->filled('location') && $request->filled('currency_id') && $request->filled('min_price') && $request->filled('max_price') ){

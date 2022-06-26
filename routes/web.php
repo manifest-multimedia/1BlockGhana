@@ -15,6 +15,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserOTPController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Livewire\Admin\AccessControlList;
@@ -59,6 +60,8 @@ Route::get('/development-details/{slug}', [HomeController::class, 'developmentBy
 Route::get('/partners/{type}', [HomeController::class, 'userListing'])->name('partner.listing');
 Route::get('/partners/listing/{slug}', [HomeController::class, 'userSingleListing'])->name('partner.single.listing');
 Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name('category.listing');
+Route::get('/popular-location/{slug}', [HomeController::class, 'popularLocationListing'])->name('popular.location.listing');
 Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('user.listing');
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
 Route::get('/typeahead/action', [HomeController::class, 'autocompleteLocation'])->name('autocomplete.location');
@@ -137,6 +140,14 @@ Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/ameni
     Route::post('/store', [AdminController::class,'storeAmenity'])->name('amenity.store');
     Route::patch('/update/{id}', [AdminController::class,'updateAmenity'])->name('amenity.update');
     Route::delete('/delete/{id}', [AdminController::class,'deleteAmenity'])->name('amenity.delete');
+});
+
+Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/locations')->group( function (){
+    Route::get('/list', [LocationController::class,'view'])->name('location.list');
+    Route::get('/add', [LocationController::class,'create'])->name('location.add');
+    Route::post('/store', [LocationController::class,'store'])->name('location.store');
+    Route::patch('/update/{id}', [LocationController::class,'update'])->name('location.update');
+    Route::delete('/delete/{id}', [LocationController::class,'delete'])->name('location.delete');
 });
 Route::middleware(['auth:sanctum',  'business_status'])->prefix('dashboard/business-type')->group( function (){
     Route::get('/list', [AdminController::class,'viewBusinessTypes'])->name('business.type.list');

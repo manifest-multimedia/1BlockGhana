@@ -64,6 +64,18 @@
     background-color: #f6f6f6;
 }
 
+.recent__property-carousel .owl-nav .owl-next {
+    right: 0;
+    left: auto;
+    top: 40%;
+}
+
+.recent__property-carousel .owl-nav .owl-prev {
+    left: 0;
+    right: auto;
+    top: 40%;
+}
+
 </style>
 <body>
 
