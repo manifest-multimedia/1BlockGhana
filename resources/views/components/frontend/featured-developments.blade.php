@@ -127,7 +127,7 @@
                                 <div class="row justify-content-center">
                                     <div class="mx-auto col-lg-8">
                                         <div class="text-center home__video-area">
-                                            <a href="/development-news#videos" class="play-video ">
+                                            <a href="/property-news#videos" class="play-video ">
                                                 <i class="text-white icon fa fa-play"></i>
                                             </a>
                                             <p class="text-white">The #1 Place For Commercial Property</p>

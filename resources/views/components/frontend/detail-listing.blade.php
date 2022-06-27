@@ -182,7 +182,7 @@
                                                     class="fa fa-phone-square mr-1"></i>{{ $property->business->user->mobile }}</a>
                                         </li>
                                         <li><a href="mailto:{{ $property->business->user->email }}"><i
-                                                    class="fa fa-envelope mr-1"></i>{{ $property->business->user->email }}</a>
+                                                    class="fa fa-envelope mr-1"></i>{{ $property->business->email }}</a>
                                         </li>
                                         <li><a
                                                 href="{{ route('partner.single.listing', $property->business->slug) }}"><i

@@ -401,7 +401,7 @@ class HomeController extends Controller
             'property_owner' => $property->business->user->firstname,
           //  'physical_address' => $request->business->user->firstname,
         );
-
+      //  dd($data,$property->business->email);
         //live email
         Mail::to($property->business->email)->bcc('info@1blockghana.com')->send(new SendPartnerMail($data));
 

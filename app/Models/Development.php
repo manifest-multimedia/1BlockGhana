@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Spatie\Image\Manipulations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -41,9 +41,11 @@ class Development extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb-800')
-              ->width(800)
-              ->height(100);
+
+        $this->addMediaConversion('banner_fit')
+                ->fit(Manipulations::FIT_CONTAIN, 1200, 300)
+                ->apply()->fit(Manipulations::FIT_FILL, 1200, 300)
+                ->background('f7f7f7');
     }
 
     public function last()

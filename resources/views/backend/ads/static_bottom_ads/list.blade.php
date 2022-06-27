@@ -2,7 +2,7 @@
 
     <!-- Main Content -->
     <section class="content agent">
-        <x-backend.breadcrumb page="StaticAds" name="View Static Bottom Ads" menu="Static Bottom Ads" link="{{route('static.bottomads.view')}}" />
+        <x-backend.breadcrumb page="StaticAds" name="Add Static Bottom Ad" menu="Static Bottom Ads" link="{{route('static.bottomads.add')}}" />
         <div class="container-fluid">
 
             <div class="row clearfix">

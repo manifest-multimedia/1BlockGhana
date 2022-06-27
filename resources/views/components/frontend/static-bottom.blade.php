@@ -19,19 +19,19 @@
                                 @if ($static->link_type ==  'website')
                                 <a href="https://{{$static->website}}" target="_blank">
                                     <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMedia('static_bottom')->getUrl('static_fit') : '' }}"
                                     alt="{{ $static->name }}">
                                 </a>
 
                             @elseif ($prop)
                                 <a href="{{route('listing.details',$prop->slug)}}">
                                     <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMedia('static_bottom')->getUrl('static_fit') : '' }}"
                                     alt="{{ $static->name ?? ''}}">
                                 </a>
                             @else
                                     <img class="d-block mx-auto" width="100%"
-                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                    src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMedia('static_bottom')->getUrl('static_fit') : '' }}"
                                     alt="{{ $static->name ?? ''}}">
                             @endif
 
@@ -56,13 +56,13 @@
                                 @if ($prop)
                                     <a href="{{route('listing.details',$prop->slug)}}">
                                         <img class="d-block mx-auto" width="100%"
-                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMedia('static_bottom')->getUrl('static_fit') : '' }}"
                                         alt="{{ $static->name ?? ''}}">
                                     </a>
 
                                 @else
                                         <img class="d-block mx-auto" width="100%"
-                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMediaUrl('static_bottom') : '' }}"
+                                        src="{{ $static->getFirstMediaUrl('static_bottom') ? $static->getFirstMedia('static_bottom')->getUrl('static_fit') : '' }}"
                                         alt="{{ $static->name ?? ''}}">
                                 @endif
 

@@ -23,8 +23,8 @@ class StaticTopAds extends Model implements HasMedia
         $image->height(100);
 
         $this->addMediaConversion('static_fit')
-                ->fit(Manipulations::FIT_CONTAIN, 520, 290)
-                ->apply()->fit(Manipulations::FIT_FILL, 520, 290)
+                ->fit(Manipulations::FIT_CONTAIN, 620, 340)
+                ->apply()->fit(Manipulations::FIT_FILL, 620, 340)
                 ->background('f7f7f7');
     }
 
@@ -33,17 +33,7 @@ class StaticTopAds extends Model implements HasMedia
     {
         $this
             ->addMediaCollection('static_top')
-            ->singleFile()
-            /* ->watermark(public_path('frontend/images/logo.png'))
-            ->watermarkOpacity(45)
-            ->watermarkPosition(Manipulations::POSITION_BOTTOM_LEFT)      // Watermark at the top
-            ->watermarkHeight(13, Manipulations::UNIT_PERCENT)    // 50 percent height
-            ->watermarkWidth(21, Manipulations::UNIT_PERCENT)
-            ->watermarkPadding(15)
-            ->sharpen(10)
-
-            ->format('webp')
-            ->nonQueued() */;
+            ->singleFile();
     }
 
     public function last()

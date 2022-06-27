@@ -43,15 +43,14 @@ class DevelopmentController extends Controller
 
         $subcategory = SubCategory::find($request->sub_category_id);
 
-
         $development =  Development::create([
             'business_id'=> $business->id,
             'category_id'=> $subcategory->category_id,
             'sub_category_id'=> $request->sub_category_id,
-            'category_id'=> $request->sub_category_id,
             'name'=> $request->name,
             'description'=> $request->description,
             'location'=> $request->location,
+            'adStatus' => 0,
         ]);
 
         foreach ($request->amenities as $amenity) {
@@ -119,7 +118,7 @@ class DevelopmentController extends Controller
           $development->name= $request->name;
           $development->description= $request->description;
           $development->location= $request->location;
-            //'status'=> 1
+
           $development->save();
 
           //Delete old amenities
@@ -137,19 +136,18 @@ class DevelopmentController extends Controller
             }
         }
 
-      //  dd($development);
+
         if($request->developments){
             $development->clearMediaCollection('developments');
             foreach($request->developments as $file){
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
-                    $tempPath = 'app/public/developments/tmp/';
-                    if($temporaryFile){
-                        $development->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('developments');
+                $tempPath = 'app/public/developments/tmp/';
+                if($temporaryFile){
+                    $development->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('developments');
 
-                        rmdir(storage_path($tempPath . $file));
-                        $temporaryFile->delete();
-                    }
-
+                    rmdir(storage_path($tempPath . $file));
+                    $temporaryFile->delete();
+                }
             }
         }
 

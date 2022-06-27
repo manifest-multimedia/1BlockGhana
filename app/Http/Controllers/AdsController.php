@@ -259,7 +259,7 @@ class AdsController extends Controller
 
     // STATIC BOTTOM ADS
     public function viewStaticBottomAds(){
-        $staticAds = StaticBottomAds::get();
+        $staticAds = StaticBottomAds::orderBy('priority','ASC')->get();
         return view('backend.ads.static_bottom_ads.list',compact('staticAds'));
     }
 

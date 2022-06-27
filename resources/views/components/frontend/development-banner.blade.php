@@ -13,7 +13,7 @@
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                                 <a href="{{route('development.listing.details', $development->slug)}}">
                                     <img class="d-block mx-auto" width="100%" style="max-height: 300px;"
-                                    src="{{ $development->getFirstMediaUrl('development_banner') ? $development->getFirstMediaUrl('development_banner') : '' }}"
+                                    src="{{ $development->getFirstMediaUrl('development_banner') ? $development->getFirstMedia('development_banner')->getUrl('banner_fit') : '' }}"
                                     alt="{{ $development->name }}">
                                 </a>
                             </div>

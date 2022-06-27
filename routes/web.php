@@ -60,7 +60,6 @@ Route::get('/development-details/{slug}', [HomeController::class, 'developmentBy
 Route::get('/partners/{type}', [HomeController::class, 'userListing'])->name('partner.listing');
 Route::get('/partners/listing/{slug}', [HomeController::class, 'userSingleListing'])->name('partner.single.listing');
 Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name('category.listing');
-Route::get('/category/{slug}', [HomeController::class, 'categoryListing'])->name('category.listing');
 Route::get('/popular-location/{slug}', [HomeController::class, 'popularLocationListing'])->name('popular.location.listing');
 Route::get('/user-listing/{id}', [HomeController::class, 'userListing'])->name('user.listing');
 Route::get('/account-suspened', [HomeController::class, 'accountSuspended'])->name('account.suspended');
