@@ -181,7 +181,7 @@
                                         <li><a href="tel:{{ $property->business->user->mobile }}"><i
                                                     class="fa fa-phone-square mr-1"></i>{{ $property->business->user->mobile }}</a>
                                         </li>
-                                        <li><a href="mailto:{{ $property->business->user->email }}"><i
+                                        <li><a href="mailto:{{ $property->business->email }}"><i
                                                     class="fa fa-envelope mr-1"></i>{{ $property->business->email }}</a>
                                         </li>
                                         <li><a

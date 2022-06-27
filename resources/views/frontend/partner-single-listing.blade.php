@@ -195,8 +195,8 @@
                                             <li><a href="tel:{{ $business->user->mobile }}"><i
                                                         class="fa fa-phone-square mr-1"></i>{{ $business->user->mobile }}</a>
                                             </li>
-                                            <li><a href="mailto:{{ $business->user->email }}"><i
-                                                        class="fa fa-envelope mr-1"></i>{{ $business->user->email }}</a>
+                                            <li><a href="mailto:{{ $business->email }}"><i
+                                                        class="fa fa-envelope mr-1"></i>{{ $business->email }}</a>
                                             </li>
                                             <li><a href="javascript:void(0)"><i class=" fa fa-building mr-1"></i>
                                                     {{ $business->name }}</a>

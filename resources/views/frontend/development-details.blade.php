@@ -168,8 +168,8 @@
                                             <li><a href="tel:{{ $development->business->user->mobile }}"><i
                                                         class="fa fa-phone-square mr-1"></i>{{ $development->business->user->mobile }}</a>
                                             </li>
-                                            <li><a href="mailto:{{ $development->business->user->email }}"><i
-                                                        class="fa fa-envelope mr-1"></i>{{ $development->business->user->email }}</a>
+                                            <li><a href="mailto:{{ $development->business->email }}"><i
+                                                        class="fa fa-envelope mr-1"></i>{{ $development->business->email }}</a>
                                             </li>
                                             <li><a href="{{ route('partner.single.listing',$development->business->slug) }}"><i class=" fa fa-building mr-1"></i>
                                                     {{ $development->business->name }}</a>

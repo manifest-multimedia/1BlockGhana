@@ -17,6 +17,8 @@
                                     alt="{{ $development->name }}">
                                 </a>
                             </div>
+
+                            
                         @endforeach
                     </div>
                 </div>

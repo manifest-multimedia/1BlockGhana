@@ -48,9 +48,11 @@
                                                         </a>
                                                         </span>
 
-                                                             <button type="button" data-toggle="modal"
-                                                                             data-target="#removeModal{{$staticAd->id}}" class="badge badge-danger">Remove
-                                                             </button>
+                                                            <button type="button" data-toggle="modal"
+                                                                            data-target="#removeModal{{$staticAd->id}}" class="badge badge-danger">Remove
+                                                            </button>
+
+                                                            @include('backend.ads.static_bottom_ads.modal.remove')
                                                      </td>
                                                 </tr>
                                             @endforeach

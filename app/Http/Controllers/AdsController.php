@@ -318,12 +318,10 @@ class AdsController extends Controller
         return redirect()->back()->with('success','Saved.');
     }
 
-    public function deleteStaticBottomAds(Development $id){
-        $id->update([
-            'adStatus' => 0,
-        ]);
+    public function deleteStaticBottomAds(StaticBottomAds $id){
+        $id->delete();
 
-        return redirect()->route('developmentads.view')->with('success','Priority has been removed');
+        return redirect()->route('static.bottomads.view')->with('success','Ad has been removed');
 
     }
 }
