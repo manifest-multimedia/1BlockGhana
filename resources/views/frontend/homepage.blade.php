@@ -18,7 +18,7 @@
 
  <x-frontend.development-banner  :developments="$developments"/>
 
- <x-frontend.featured-developments :developments="$developments"/>
+ <x-frontend.featured-developments :featureddev="$featureddev"/>
 
  <x-frontend.static-bottom  :statics="$statics"/>
 

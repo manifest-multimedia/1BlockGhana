@@ -24,10 +24,11 @@ class HomeController extends Controller
         } */
         $properties = Properties::where('adStatus','>=',1)->orderBy('adStatus')->get();
         $developments = Development::where('adStatus','>=',1)->orderBy('adStatus')->get();
+        $featureddev = Development::where('featuredStatus','>=',1)->orderBy('featuredStatus')->get();
         $categories = Category::get();
         $currencies = Currency::get();
         $statics = StaticBottomAds::get();
-        return view('frontend.homepage', compact('properties','categories','developments','currencies','statics'));
+        return view('frontend.homepage', compact('properties','categories','developments','featureddev','currencies','statics'));
     }
 
     public function popularLocationListing($slug){

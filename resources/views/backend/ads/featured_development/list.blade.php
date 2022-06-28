@@ -42,7 +42,7 @@
                                                     <td><span class="list-name">{{ $featured->name }}</span>
                                                     </td>
 
-                                                    <td><span class="list-name">{{ $featured->adStatus }}</span>
+                                                    <td><span class="list-name">{{ $featured->featuredStatus }}</span>
                                                     </td>
 
                                                     <td>

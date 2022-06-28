@@ -123,19 +123,19 @@ class AdsController extends Controller
 
     // FEATURED DEVELOPMENT ADS
     public function viewFeaturedDevelopments(){
-        $featureds = Development::select('id','name','adStatus')->where('adStatus', '>=' ,1)->orderBy('adStatus')->get();
+        $featureds = Development::select('id','name','featuredStatus')->where('featuredStatus', '>=' ,1)->orderBy('featuredStatus')->get();
        // dd($featureds);
         return view('backend.ads.featured_development.list',compact('featureds'));
     }
 
     public function addFeaturedDevelopment(){
-        $developments = Development::select('id','name')->where('adStatus','<','1')->orWhere('adStatus', NULL)->get();
+        $developments = Development::select('id','name')->where('featuredStatus','<','1')->get();
         return view('backend.ads.featured_development.developments', compact('developments'));
     }
 
     public function storeFeaturedDevelopment(Request $request, Development $id){
         $id->update([
-            'adStatus' => $request->priority,
+            'featuredStatus' => $request->priority,
         ]);
 
         return redirect()->route('featured.development.view')->with('success','Featured Priority  has been added');
@@ -143,7 +143,7 @@ class AdsController extends Controller
 
     public function updateFeaturedDevelopment(Request $request, Development $id){
         $id->update([
-            'adStatus' => $request->priority,
+            'featuredStatus' => $request->priority,
         ]);
 
         return redirect()->route('featured.development.view')->with('success','Featured Priority  has been updated');
@@ -151,7 +151,7 @@ class AdsController extends Controller
 
     public function deleteFeaturedDevelopment(Development $id){
         $id->update([
-            'adStatus' => 0,
+            'featuredStatus' => 0,
         ]);
 
         return redirect()->route('featured.development.view')->with('success','Priority has been removed');

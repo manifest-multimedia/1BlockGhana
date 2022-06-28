@@ -51,6 +51,7 @@ class DevelopmentController extends Controller
             'description'=> $request->description,
             'location'=> $request->location,
             'adStatus' => 0,
+            'featuredStatus' => 0,
         ]);
 
         foreach ($request->amenities as $amenity) {

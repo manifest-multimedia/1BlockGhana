@@ -76,6 +76,28 @@
     top: 40%;
 }
 
+.development_banner .ribbon {
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 20%);
+    transform: translate3d(0, 0, 1px) rotate(-45deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-color: #b78746;
+    color: #fff;
+    font-size: 14px;
+    font-family: "Open Sans",sans-serif;
+    padding: 6px;
+    position: absolute;
+    z-index: 3;
+    left: -30px;
+    top: 15px;
+    width: 120px;
+    text-align: center;
+    margin: auto;
+    height: 30px;
+    bottom: inherit;
+    right: inherit;
+}
+
 </style>
 <body>
 

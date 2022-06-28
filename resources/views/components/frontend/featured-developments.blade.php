@@ -1,4 +1,4 @@
-@props(['developments'])
+@props(['featureddev'])
 
 <section class="recent__property py-0">
     <div class="container px-0">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme">
-                    @foreach ($developments as $development)
+                    @foreach ($featureddev as $development)
                         @if ($loop->odd)
                             <div class="item">
                                 <!-- CARD IMAGE -->
@@ -54,7 +54,7 @@
 
                 {{-- SECOND LAYOUT --}}
                 <div class="recent__property-carousel owl-carousel owl-carousel-bottom owl-theme mt-2">
-                    @foreach ($developments as $development)
+                    @foreach ($featureddev as $development)
                         @if ($loop->even)
                             <div class="item">
                                 <!-- CARD IMAGE -->

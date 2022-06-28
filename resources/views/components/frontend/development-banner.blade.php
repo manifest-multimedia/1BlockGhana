@@ -8,18 +8,18 @@
             <div class="mx-auto mt-4 px-0 col-md-12">
                 <div id="carouselExampleFade" class="carousel carousel-dev-banner slide carousel-fade"
                     data-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach ($developments as $key => $development)
+                    <div class="carousel-inner development_banner">
+                        @foreach ($developments as $key => $banner)
                             <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                                <a href="{{route('development.listing.details', $development->slug)}}">
+                                <div class="ribbon text-capitalize" style="display: block">promoted</div>
+                                <a href="{{route('development.listing.details', $banner->slug)}}">
                                     <img class="d-block mx-auto" width="100%" style="max-height: 300px;"
-                                    src="{{ $development->getFirstMediaUrl('development_banner') ? $development->getFirstMedia('development_banner')->getUrl('banner_fit') : '' }}"
-                                    alt="{{ $development->name }}">
+                                    src="{{ $banner->getFirstMediaUrl('development_banner') ? $banner->getFirstMedia('development_banner')->getUrl('banner_fit') : '' }}"
+                                    alt="{{ $banner->name }}">
                                 </a>
                             </div>
-
-                            
                         @endforeach
+
                     </div>
                 </div>
 
