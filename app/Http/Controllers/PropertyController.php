@@ -30,8 +30,8 @@ class PropertyController extends Controller
         }else{
             $properties = Auth::user()->properties;
         }
-       
-        
+
+
         return view('backend.properties.list',compact('properties'));
        // return view('backend.properties.grid',compact('properties'));
     }
@@ -130,20 +130,16 @@ class PropertyController extends Controller
 
       //  dd($property);
         if($request->properties){
-
+            $property->clearMediaCollection('properties');
             foreach($request->properties as $file){
-
                 $temporaryFile = TemporaryFile::where('folder', $file)->first();
-
                     $tempPath = 'app/public/properties/tmp/';
                     if($temporaryFile){
-                        $property->clearMediaCollection('properties');
                         $property->addMedia(storage_path($tempPath. $file . '/' . $temporaryFile->filename))->toMediaCollection('properties');
 
                         rmdir(storage_path($tempPath . $file));
                         $temporaryFile->delete();
                     }
-
             }
         }
 

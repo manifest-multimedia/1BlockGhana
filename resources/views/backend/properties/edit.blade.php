@@ -146,7 +146,7 @@
 
 						<div class="card">
 							<div class="header">
-								<h2><strong>Upload</strong> Images/Video </h2>
+								<h2><strong>Upload</strong> Images </h2>
 
 							</div>
 							<div class="body">
@@ -231,7 +231,7 @@
         });
         FilePond.setOptions({
             server: {
-                url: '/dashboard/developments/upload',
+                url: '/dashboard/properties/upload',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 }

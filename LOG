@@ -1,0 +1,645 @@
+[52.194.214.107] > if [ ! -L /var/www/1blockghana.com/current ] && [ -d /var/www/1blockghana.com/current ]; then echo 'true'; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d .dep ]; then mkdir .dep; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d releases ]; then mkdir releases; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ ! -d shared ]; then mkdir shared; fi
+[52.194.214.107] > if [ -f /var/www/1blockghana.com/.dep/deploy.lock ]; then echo 'true'; fi
+[52.194.214.107] > touch /var/www/1blockghana.com/.dep/deploy.lock
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -h release ]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (rm -rf "$(readlink release)")
+[52.194.214.107] > cd /var/www/1blockghana.com && (rm release)
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -d releases ] && [ "$(ls -A releases)" ]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (cd releases && ls -t -1 -d */)
+[52.194.214.107] < 47/
+[52.194.214.107] < 46/
+[52.194.214.107] < 45/
+[52.194.214.107] < 44/
+[52.194.214.107] < 43/
+[52.194.214.107] < 3/
+[52.194.214.107] < 2/
+[52.194.214.107] < 8/
+[52.194.214.107] < 1.1/
+[52.194.214.107] < 7/
+[52.194.214.107] < 6/
+[52.194.214.107] < 5/
+[52.194.214.107] < 4/
+[52.194.214.107] < 1/
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -f .dep/releases ]; then echo 'true'; fi)
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -d /var/www/1blockghana.com/releases/1 ]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -d /var/www/1blockghana.com/releases/1.1 ]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -d /var/www/1blockghana.com/releases/1.1.2 ]; then echo 'true'; fi)
+[52.194.214.107] > cd /var/www/1blockghana.com && (date +"%Y%m%d%H%M%S")
+[52.194.214.107] < 20220629054428
+[52.194.214.107] > cd /var/www/1blockghana.com && (echo '20220629054428,1.1.2' >> .dep/releases)
+[52.194.214.107] > cd /var/www/1blockghana.com && (mkdir /var/www/1blockghana.com/releases/1.1.2)
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [[ $(man ln 2>&1 || ln -h 2>&1 || ln --help 2>&1) =~ '--relative' ]]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (ln -nfs --relative /var/www/1blockghana.com/releases/1.1.2 /var/www/1blockghana.com/release)
+[52.194.214.107] > command -v "git" || which "git" || type -p "git"
+[52.194.214.107] < /usr/bin/git
+[52.194.214.107] > /usr/bin/git version
+[52.194.214.107] < git version 2.25.1
+[52.194.214.107] > cd /var/www/1blockghana.com && (if [ -h /var/www/1blockghana.com/release ]; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com && (readlink /var/www/1blockghana.com/release)
+[52.194.214.107] < releases/1.1.2
+[52.194.214.107] > cd /var/www/1blockghana.com && (/usr/bin/git clone -b "master"  --recursive  https://github.com/manifest-multimedia/1BlockGhana.git /var/www/1blockghana.com/releases/1.1.2 2>&1)
+[52.194.214.107] < Cloning into '/var/www/1blockghana.com/releases/1.1.2'...
+[52.194.214.107] > if [ -d /var/www/1blockghana.com/shared/storage ]; then echo 'true'; fi
+[52.194.214.107] < true
+[52.194.214.107] > rm -rf /var/www/1blockghana.com/releases/1.1.2/storage
+[52.194.214.107] > mkdir -p `dirname /var/www/1blockghana.com/releases/1.1.2/storage`
+[52.194.214.107] > ln -nfs --relative /var/www/1blockghana.com/shared/storage /var/www/1blockghana.com/releases/1.1.2/storage
+[52.194.214.107] > if [ -d /var/www/1blockghana.com/shared/. ]; then echo 'true'; fi
+[52.194.214.107] < true
+[52.194.214.107] > if [ -f /var/www/1blockghana.com/shared/.env ]; then echo 'true'; fi
+[52.194.214.107] < true
+[52.194.214.107] > if [ -f $(echo /var/www/1blockghana.com/releases/1.1.2/.env) ]; then rm -rf /var/www/1blockghana.com/releases/1.1.2/.env; fi
+[52.194.214.107] > if [ ! -d $(echo /var/www/1blockghana.com/releases/1.1.2/.) ]; then mkdir -p /var/www/1blockghana.com/releases/1.1.2/.;fi
+[52.194.214.107] > touch /var/www/1blockghana.com/shared/.env
+[52.194.214.107] > ln -nfs --relative /var/www/1blockghana.com/shared/.env /var/www/1blockghana.com/releases/1.1.2/.env
+[52.194.214.107] > if hash unzip 2>/dev/null; then echo 'true'; fi
+[52.194.214.107] > if hash composer 2>/dev/null; then echo 'true'; fi
+[52.194.214.107] > command -v "php" || which "php" || type -p "php"
+[52.194.214.107] < /usr/bin/php
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && curl -sS https://getcomposer.org/installer | /usr/bin/php
+[52.194.214.107] < All settings correct for using Composer
+[52.194.214.107] < Downloading...
+[52.194.214.107] < Composer (version 2.3.7) successfully installed to: /var/www/1blockghana.com/releases/1.1.2/composer.phar
+[52.194.214.107] < Use it: php composer.phar
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/composer.phar install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-suggest
+[52.194.214.107] < [error] You are using the deprecated option "--no-suggest". It has no effect and will break in Composer 3.
+[52.194.214.107] < [error] Installing dependencies from lock file
+[52.194.214.107] < [error] Verifying lock file contents can be installed on current platform.
+[52.194.214.107] < [error] Dependency resolution completed in 0.000 seconds
+[52.194.214.107] < [error] Package operations: 98 installs, 0 updates, 0 removals
+[52.194.214.107] < [error] Installs: symfony/polyfill-iconv:v1.26.0, dasprid/enum:1.0.3, bacon/bacon-qr-code:2.0.7, voku/portable-ascii:1.6.1, symfony/polyfill-php80:v1.26.0, symfony/polyfill-mbstring:v1.26.0, symfony/polyfill-ctype:v1.26.0, phpoption/phpoption:1.8.1, graham-campbell/result-type:v1.0.4, vlucas/phpdotenv:v5.4.1, symfony/css-selector:v5.4.3, tijsverkoyen/css-to-inline-styles:2.2.4, symfony/var-dumper:v5.4.9, symfony/deprecation-contracts:v2.5.1, symfony/routing:v5.4.8, symfony/process:v5.4.8, symfony/polyfill-php72:v1.26.0, symfony/polyfill-intl-normalizer:v1.26.0, symfony/polyfill-intl-idn:v1.26.0, symfony/mime:v5.4.9, symfony/polyfill-php73:v1.26.0, symfony/http-foundation:v5.4.9, psr/event-dispatcher:1.0.0, symfony/event-dispatcher-contracts:v2.5.1, symfony/event-dispatcher:v5.4.9, psr/log:1.1.4, symfony/error-handler:v5.4.9, symfony/http-kernel:v5.4.9, symfony/finder:v5.4.8, symfony/polyfill-intl-grapheme:v1.26.0, symfony/string:v5.4.9, psr/container:1.1.2, symfony/service-contracts:v2.5.1, symfony/console:v5.4.9, doctrine/lexer:1.2.3, egulias/email-validator:2.1.25, swiftmailer/swiftmailer:v6.3.0, symfony/polyfill-php81:v1.26.0, ramsey/collection:1.2.2, brick/math:0.9.3, ramsey/uuid:4.2.3, psr/simple-cache:1.0.1, opis/closure:3.6.3, symfony/translation-contracts:v2.5.1, symfony/translation:v5.4.9, nesbot/carbon:2.58.0, monolog/monolog:2.7.0, league/mime-type-detection:1.11.0, league/flysystem:1.1.9, nette/utils:v3.2.7, nette/schema:v1.2.2, dflydev/dot-access-data:v3.0.1, league/config:v1.1.1, league/commonmark:2.3.3, laravel/serializable-closure:v1.2.0, webmozart/assert:1.11.0, dragonmantank/cron-expression:v3.3.1, doctrine/inflector:2.0.4, laravel/framework:v8.83.16, cocur/slugify:v4.1.0, cviebrock/eloquent-sluggable:8.0.0, psr/cache:1.0.1, doctrine/event-manager:1.1.1, doctrine/deprecations:v1.0.0, doctrine/cache:2.2.0, doctrine/dbal:3.3.6, asm89/stack-cors:v2.1.1, fruitcake/laravel-cors:v2.2.0, psr/http-message:1.0.1, psr/http-client:1.0.1, ralouphie/getallheaders:3.0.3, psr/http-factory:1.0.1, guzzlehttp/psr7:2.3.0, guzzlehttp/promises:1.5.1, guzzlehttp/guzzle:7.4.4, jaybizzle/crawler-detect:v1.2.111, paragonie/constant_time_encoding:v2.5.0, pragmarx/google2fa:8.0.0, laravel/fortify:v1.13.0, mobiledetect/mobiledetectlib:2.8.39, jenssegers/agent:v2.6.4, laravel/jetstream:v2.8.4, laravel/sanctum:v2.15.1, nikic/php-parser:v4.14.0, psy/psysh:v0.11.5, laravel/tinker:v2.7.2, livewire/livewire:v2.10.5, mckenziearts/laravel-notify:v2.3, myclabs/php-enum:1.8.3, realrashid/sweet-alert:v5.1.0, spatie/image-optimizer:1.6.2, spatie/temporary-directory:1.3.0, intervention/image:2.7.2, league/glide:1.7.1, spatie/image:1.10.6, maennchen/zipstream-php:2.2.1, spatie/laravel-medialibrary:9.12.3, spatie/laravel-permission:5.5.4
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-iconv from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-iconv (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download dasprid/enum from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing dasprid/enum (1.0.3) into cache
+[52.194.214.107] < [error]     Failed to download bacon/bacon-qr-code from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing bacon/bacon-qr-code (2.0.7) into cache
+[52.194.214.107] < [error]     Failed to download voku/portable-ascii from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing voku/portable-ascii (1.6.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-php80 from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-php80 (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-mbstring from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-mbstring (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-ctype from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-ctype (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download phpoption/phpoption from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing phpoption/phpoption (1.8.1) into cache
+[52.194.214.107] < [error]     Failed to download graham-campbell/result-type from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing graham-campbell/result-type (v1.0.4) into cache
+[52.194.214.107] < [error]     Failed to download vlucas/phpdotenv from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing vlucas/phpdotenv (v5.4.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/css-selector from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/css-selector (v5.4.3) into cache
+[52.194.214.107] < [error]     Failed to download tijsverkoyen/css-to-inline-styles from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing tijsverkoyen/css-to-inline-styles (2.2.4) into cache
+[52.194.214.107] < [error]     Failed to download symfony/var-dumper from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/var-dumper (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download symfony/deprecation-contracts from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/deprecation-contracts (v2.5.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/routing from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/routing (v5.4.8) into cache
+[52.194.214.107] < [error]     Failed to download symfony/process from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/process (v5.4.8) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-php72 from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-php72 (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-intl-normalizer from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-intl-normalizer (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-intl-idn from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-intl-idn (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/mime from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/mime (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-php73 from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-php73 (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/http-foundation from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/http-foundation (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download psr/event-dispatcher from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/event-dispatcher (1.0.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/event-dispatcher-contracts from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/event-dispatcher-contracts (v2.5.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/event-dispatcher from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/event-dispatcher (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download psr/log from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/log (1.1.4) into cache
+[52.194.214.107] < [error]     Failed to download symfony/error-handler from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/error-handler (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download symfony/http-kernel from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/http-kernel (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download symfony/finder from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/finder (v5.4.8) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-intl-grapheme from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-intl-grapheme (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/string from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/string (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download psr/container from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/container (1.1.2) into cache
+[52.194.214.107] < [error]     Failed to download symfony/service-contracts from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/service-contracts (v2.5.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/console from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/console (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/lexer from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/lexer (1.2.3) into cache
+[52.194.214.107] < [error]     Failed to download egulias/email-validator from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing egulias/email-validator (2.1.25) into cache
+[52.194.214.107] < [error]     Failed to download swiftmailer/swiftmailer from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing swiftmailer/swiftmailer (v6.3.0) into cache
+[52.194.214.107] < [error]     Failed to download symfony/polyfill-php81 from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/polyfill-php81 (v1.26.0) into cache
+[52.194.214.107] < [error]     Failed to download ramsey/collection from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing ramsey/collection (1.2.2) into cache
+[52.194.214.107] < [error]     Failed to download brick/math from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing brick/math (0.9.3) into cache
+[52.194.214.107] < [error]     Failed to download ramsey/uuid from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing ramsey/uuid (4.2.3) into cache
+[52.194.214.107] < [error]     Failed to download psr/simple-cache from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/simple-cache (1.0.1) into cache
+[52.194.214.107] < [error]     Failed to download opis/closure from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing opis/closure (3.6.3) into cache
+[52.194.214.107] < [error]     Failed to download symfony/translation-contracts from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/translation-contracts (v2.5.1) into cache
+[52.194.214.107] < [error]     Failed to download symfony/translation from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing symfony/translation (v5.4.9) into cache
+[52.194.214.107] < [error]     Failed to download nesbot/carbon from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing nesbot/carbon (2.58.0) into cache
+[52.194.214.107] < [error]     Failed to download monolog/monolog from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing monolog/monolog (2.7.0) into cache
+[52.194.214.107] < [error]     Failed to download league/mime-type-detection from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing league/mime-type-detection (1.11.0) into cache
+[52.194.214.107] < [error]     Failed to download league/flysystem from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing league/flysystem (1.1.9) into cache
+[52.194.214.107] < [error]     Failed to download nette/utils from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing nette/utils (v3.2.7) into cache
+[52.194.214.107] < [error]     Failed to download nette/schema from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing nette/schema (v1.2.2) into cache
+[52.194.214.107] < [error]     Failed to download dflydev/dot-access-data from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing dflydev/dot-access-data (v3.0.1) into cache
+[52.194.214.107] < [error]     Failed to download league/config from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing league/config (v1.1.1) into cache
+[52.194.214.107] < [error]     Failed to download league/commonmark from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing league/commonmark (2.3.3) into cache
+[52.194.214.107] < [error]     Failed to download laravel/serializable-closure from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/serializable-closure (v1.2.0) into cache
+[52.194.214.107] < [error]     Failed to download webmozart/assert from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing webmozart/assert (1.11.0) into cache
+[52.194.214.107] < [error]     Failed to download dragonmantank/cron-expression from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing dragonmantank/cron-expression (v3.3.1) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/inflector from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/inflector (2.0.4) into cache
+[52.194.214.107] < [error]     Failed to download laravel/framework from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/framework (v8.83.16) into cache
+[52.194.214.107] < [error]     Failed to download cocur/slugify from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing cocur/slugify (v4.1.0) into cache
+[52.194.214.107] < [error]     Failed to download cviebrock/eloquent-sluggable from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing cviebrock/eloquent-sluggable (8.0.0) into cache
+[52.194.214.107] < [error]     Failed to download psr/cache from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/cache (1.0.1) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/event-manager from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/event-manager (1.1.1) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/deprecations from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/deprecations (v1.0.0) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/cache from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/cache (2.2.0) into cache
+[52.194.214.107] < [error]     Failed to download doctrine/dbal from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing doctrine/dbal (3.3.6) into cache
+[52.194.214.107] < [error]     Failed to download asm89/stack-cors from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing asm89/stack-cors (v2.1.1) into cache
+[52.194.214.107] < [error]     Failed to download fruitcake/laravel-cors from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing fruitcake/laravel-cors (v2.2.0) into cache
+[52.194.214.107] < [error]     Failed to download psr/http-message from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/http-message (1.0.1) into cache
+[52.194.214.107] < [error]     Failed to download psr/http-client from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/http-client (1.0.1) into cache
+[52.194.214.107] < [error]     Failed to download ralouphie/getallheaders from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing ralouphie/getallheaders (3.0.3) into cache
+[52.194.214.107] < [error]     Failed to download psr/http-factory from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psr/http-factory (1.0.1) into cache
+[52.194.214.107] < [error]     Failed to download guzzlehttp/psr7 from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing guzzlehttp/psr7 (2.3.0) into cache
+[52.194.214.107] < [error]     Failed to download guzzlehttp/promises from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing guzzlehttp/promises (1.5.1) into cache
+[52.194.214.107] < [error]     Failed to download guzzlehttp/guzzle from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing guzzlehttp/guzzle (7.4.4) into cache
+[52.194.214.107] < [error]     Failed to download jaybizzle/crawler-detect from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing jaybizzle/crawler-detect (v1.2.111) into cache
+[52.194.214.107] < [error]     Failed to download paragonie/constant_time_encoding from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing paragonie/constant_time_encoding (v2.5.0) into cache
+[52.194.214.107] < [error]     Failed to download pragmarx/google2fa from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing pragmarx/google2fa (8.0.0) into cache
+[52.194.214.107] < [error]     Failed to download laravel/fortify from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/fortify (v1.13.0) into cache
+[52.194.214.107] < [error]     Failed to download mobiledetect/mobiledetectlib from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing mobiledetect/mobiledetectlib (2.8.39) into cache
+[52.194.214.107] < [error]     Failed to download jenssegers/agent from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing jenssegers/agent (v2.6.4) into cache
+[52.194.214.107] < [error]     Failed to download laravel/jetstream from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/jetstream (v2.8.4) into cache
+[52.194.214.107] < [error]     Failed to download laravel/sanctum from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/sanctum (v2.15.1) into cache
+[52.194.214.107] < [error]     Failed to download nikic/php-parser from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing nikic/php-parser (v4.14.0) into cache
+[52.194.214.107] < [error]     Failed to download psy/psysh from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing psy/psysh (v0.11.5) into cache
+[52.194.214.107] < [error]     Failed to download laravel/tinker from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing laravel/tinker (v2.7.2) into cache
+[52.194.214.107] < [error]     Failed to download livewire/livewire from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing livewire/livewire (v2.10.5) into cache
+[52.194.214.107] < [error]     Failed to download mckenziearts/laravel-notify from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing mckenziearts/laravel-notify (v2.3) into cache
+[52.194.214.107] < [error]     Failed to download myclabs/php-enum from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing myclabs/php-enum (1.8.3) into cache
+[52.194.214.107] < [error]     Failed to download realrashid/sweet-alert from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing realrashid/sweet-alert (v5.1.0) into cache
+[52.194.214.107] < [error]     Failed to download spatie/image-optimizer from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing spatie/image-optimizer (1.6.2) into cache
+[52.194.214.107] < [error]     Failed to download spatie/temporary-directory from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing spatie/temporary-directory (1.3.0) into cache
+[52.194.214.107] < [error]     Failed to download intervention/image from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing intervention/image (2.7.2) into cache
+[52.194.214.107] < [error]     Failed to download league/glide from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing league/glide (1.7.1) into cache
+[52.194.214.107] < [error]     Failed to download spatie/image from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing spatie/image (1.10.6) into cache
+[52.194.214.107] < [error]     Failed to download maennchen/zipstream-php from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing maennchen/zipstream-php (2.2.1) into cache
+[52.194.214.107] < [error]     Failed to download spatie/laravel-medialibrary from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing spatie/laravel-medialibrary (9.12.3) into cache
+[52.194.214.107] < [error]     Failed to download spatie/laravel-permission from dist: The zip extension and unzip/7z commands are both missing, skipping.
+[52.194.214.107] < [error] Your command-line PHP is using multiple ini files. Run `php --ini` to show them.
+[52.194.214.107] < [error]     Now trying to download from source
+[52.194.214.107] < [error]   - Syncing spatie/laravel-permission (5.5.4) into cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-iconv (v1.26.0): Cloning 143f1881e655bebca1312722af8068de235ae5dc from cache
+[52.194.214.107] < [error]   - Installing dasprid/enum (1.0.3): Cloning 5abf82f213618696dda8e3bf6f64dd042d8542b2 from cache
+[52.194.214.107] < [error]   - Installing bacon/bacon-qr-code (2.0.7): Cloning d70c840f68657ce49094b8d91f9ee0cc07fbf66c from cache
+[52.194.214.107] < [error]   - Installing voku/portable-ascii (1.6.1): Cloning 87337c91b9dfacee02452244ee14ab3c43bc485a from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-php80 (v1.26.0): Cloning cfa0ae98841b9e461207c13ab093d76b0fa7bace from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-mbstring (v1.26.0): Cloning 9344f9cb97f3b19424af1a21a3b0e75b0a7d8d7e from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-ctype (v1.26.0): Cloning 6fd1b9a79f6e3cf65f9e679b23af304cd9e010d4 from cache
+[52.194.214.107] < [error]   - Installing phpoption/phpoption (1.8.1): Cloning eab7a0df01fe2344d172bff4cd6dbd3f8b84ad15 from cache
+[52.194.214.107] < [error]   - Installing graham-campbell/result-type (v1.0.4): Cloning 0690bde05318336c7221785f2a932467f98b64ca from cache
+[52.194.214.107] < [error]   - Installing vlucas/phpdotenv (v5.4.1): Cloning 264dce589e7ce37a7ba99cb901eed8249fbec92f from cache
+[52.194.214.107] < [error]   - Installing symfony/css-selector (v5.4.3): Cloning b0a190285cd95cb019237851205b8140ef6e368e from cache
+[52.194.214.107] < [error]   - Installing tijsverkoyen/css-to-inline-styles (2.2.4): Cloning da444caae6aca7a19c0c140f68c6182e337d5b1c from cache
+[52.194.214.107] < [error]   - Installing symfony/var-dumper (v5.4.9): Cloning af52239a330fafd192c773795520dc2dd62b5657 from cache
+[52.194.214.107] < [error]   - Installing symfony/deprecation-contracts (v2.5.1): Cloning e8b495ea28c1d97b5e0c121748d6f9b53d075c66 from cache
+[52.194.214.107] < [error]   - Installing symfony/routing (v5.4.8): Cloning e07817bb6244ea33ef5ad31abc4a9288bef3f2f7 from cache
+[52.194.214.107] < [error]   - Installing symfony/process (v5.4.8): Cloning 597f3fff8e3e91836bb0bd38f5718b56ddbde2f3 from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-php72 (v1.26.0): Cloning bf44a9fd41feaac72b074de600314a93e2ae78e2 from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-intl-normalizer (v1.26.0): Cloning 219aa369ceff116e673852dce47c3a41794c14bd from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-intl-idn (v1.26.0): Cloning 59a8d271f00dd0e4c2e518104cc7963f655a1aa8 from cache
+[52.194.214.107] < [error]   - Installing symfony/mime (v5.4.9): Cloning 2b3802a24e48d0cfccf885173d2aac91e73df92e from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-php73 (v1.26.0): Cloning e440d35fa0286f77fb45b79a03fedbeda9307e85 from cache
+[52.194.214.107] < [error]   - Installing symfony/http-foundation (v5.4.9): Cloning 6b0d0e4aca38d57605dcd11e2416994b38774522 from cache
+[52.194.214.107] < [error]   - Installing psr/event-dispatcher (1.0.0): Cloning dbefd12671e8a14ec7f180cab83036ed26714bb0 from cache
+[52.194.214.107] < [error]   - Installing symfony/event-dispatcher-contracts (v2.5.1): Cloning f98b54df6ad059855739db6fcbc2d36995283fe1 from cache
+[52.194.214.107] < [error]   - Installing symfony/event-dispatcher (v5.4.9): Cloning 8e6ce1cc0279e3ff3c8ff0f43813bc88d21ca1bc from cache
+[52.194.214.107] < [error]   - Installing psr/log (1.1.4): Cloning d49695b909c3b7628b6289db5479a1c204601f11 from cache
+[52.194.214.107] < [error]   - Installing symfony/error-handler (v5.4.9): Cloning c116cda1f51c678782768dce89a45f13c949455d from cache
+[52.194.214.107] < [error]   - Installing symfony/http-kernel (v5.4.9): Cloning 34b121ad3dc761f35fe1346d2f15618f8cbf77f8 from cache
+[52.194.214.107] < [error]   - Installing symfony/finder (v5.4.8): Cloning 9b630f3427f3ebe7cd346c277a1408b00249dad9 from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-intl-grapheme (v1.26.0): Cloning 433d05519ce6990bf3530fba6957499d327395c2 from cache
+[52.194.214.107] < [error]   - Installing symfony/string (v5.4.9): Cloning 985e6a9703ef5ce32ba617c9c7d97873bb7b2a99 from cache
+[52.194.214.107] < [error]   - Installing psr/container (1.1.2): Cloning 513e0666f7216c7459170d56df27dfcefe1689ea from cache
+[52.194.214.107] < [error]   - Installing symfony/service-contracts (v2.5.1): Cloning 24d9dc654b83e91aa59f9d167b131bc3b5bea24c from cache
+[52.194.214.107] < [error]   - Installing symfony/console (v5.4.9): Cloning 829d5d1bf60b2efeb0887b7436873becc71a45eb from cache
+[52.194.214.107] < [error]   - Installing doctrine/lexer (1.2.3): Cloning c268e882d4dbdd85e36e4ad69e02dc284f89d229 from cache
+[52.194.214.107] < [error]   - Installing egulias/email-validator (2.1.25): Cloning 0dbf5d78455d4d6a41d186da50adc1122ec066f4 from cache
+[52.194.214.107] < [error]   - Installing swiftmailer/swiftmailer (v6.3.0): Cloning 8a5d5072dca8f48460fce2f4131fcc495eec654c from cache
+[52.194.214.107] < [error]   - Installing symfony/polyfill-php81 (v1.26.0): Cloning 13f6d1271c663dc5ae9fb843a8f16521db7687a1 from cache
+[52.194.214.107] < [error]   - Installing ramsey/collection (1.2.2): Cloning cccc74ee5e328031b15640b51056ee8d3bb66c0a from cache
+[52.194.214.107] < [error]   - Installing brick/math (0.9.3): Cloning ca57d18f028f84f777b2168cd1911b0dee2343ae from cache
+[52.194.214.107] < [error]   - Installing ramsey/uuid (4.2.3): Cloning fc9bb7fb5388691fd7373cd44dcb4d63bbcf24df from cache
+[52.194.214.107] < [error]   - Installing psr/simple-cache (1.0.1): Cloning 408d5eafb83c57f6365a3ca330ff23aa4a5fa39b from cache
+[52.194.214.107] < [error]   - Installing opis/closure (3.6.3): Cloning 3d81e4309d2a927abbe66df935f4bb60082805ad from cache
+[52.194.214.107] < [error]   - Installing symfony/translation-contracts (v2.5.1): Cloning 1211df0afa701e45a04253110e959d4af4ef0f07 from cache
+[52.194.214.107] < [error]   - Installing symfony/translation (v5.4.9): Cloning 1639abc1177d26bcd4320e535e664cef067ab0ca from cache
+[52.194.214.107] < [error]   - Installing nesbot/carbon (2.58.0): Cloning 97a34af22bde8d0ac20ab34b29d7bfe360902055 from cache
+[52.194.214.107] < [error]   - Installing monolog/monolog (2.7.0): Cloning 5579edf28aee1190a798bfa5be8bc16c563bd524 from cache
+[52.194.214.107] < [error]   - Installing league/mime-type-detection (1.11.0): Cloning ff6248ea87a9f116e78edd6002e39e5128a0d4dd from cache
+[52.194.214.107] < [error]   - Installing league/flysystem (1.1.9): Cloning 094defdb4a7001845300334e7c1ee2335925ef99 from cache
+[52.194.214.107] < [error]   - Installing nette/utils (v3.2.7): Cloning 0af4e3de4df9f1543534beab255ccf459e7a2c99 from cache
+[52.194.214.107] < [error]   - Installing nette/schema (v1.2.2): Cloning 9a39cef03a5b34c7de64f551538cbba05c2be5df from cache
+[52.194.214.107] < [error]   - Installing dflydev/dot-access-data (v3.0.1): Cloning 0992cc19268b259a39e86f296da5f0677841f42c from cache
+[52.194.214.107] < [error]   - Installing league/config (v1.1.1): Cloning a9d39eeeb6cc49d10a6e6c36f22c4c1f4a767f3e from cache
+[52.194.214.107] < [error]   - Installing league/commonmark (2.3.3): Cloning 0da1dca5781dd3cfddbe328224d9a7a62571addc from cache
+[52.194.214.107] < [error]   - Installing laravel/serializable-closure (v1.2.0): Cloning 09f0e9fb61829f628205b7c94906c28740ff9540 from cache
+[52.194.214.107] < [error]   - Installing webmozart/assert (1.11.0): Cloning 11cb2199493b2f8a3b53e7f19068fc6aac760991 from cache
+[52.194.214.107] < [error]   - Installing dragonmantank/cron-expression (v3.3.1): Cloning be85b3f05b46c39bbc0d95f6c071ddff669510fa from cache
+[52.194.214.107] < [error]   - Installing doctrine/inflector (2.0.4): Cloning 8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89 from cache
+[52.194.214.107] < [error]   - Installing laravel/framework (v8.83.16): Cloning 6be5abd144faf517879af7298e9d79f06f250f75 from cache
+[52.194.214.107] < [error]   - Installing cocur/slugify (v4.1.0): Cloning 2611e6081dbbb05837a16ed339c0451923d4046e from cache
+[52.194.214.107] < [error]   - Installing cviebrock/eloquent-sluggable (8.0.0): Cloning becedfe5634740ee2bc3a3ee5ea01435547ee653 from cache
+[52.194.214.107] < [error]   - Installing psr/cache (1.0.1): Cloning d11b50ad223250cf17b86e38383413f5a6764bf8 from cache
+[52.194.214.107] < [error]   - Installing doctrine/event-manager (1.1.1): Cloning 41370af6a30faa9dc0368c4a6814d596e81aba7f from cache
+[52.194.214.107] < [error]   - Installing doctrine/deprecations (v1.0.0): Cloning 0e2a4f1f8cdfc7a92ec3b01c9334898c806b30de from cache
+[52.194.214.107] < [error]   - Installing doctrine/cache (2.2.0): Cloning 1ca8f21980e770095a31456042471a57bc4c68fb from cache
+[52.194.214.107] < [error]   - Installing doctrine/dbal (3.3.6): Cloning 9e7f76dd1cde81c62574fdffa5a9c655c847ad21 from cache
+[52.194.214.107] < [error]   - Installing asm89/stack-cors (v2.1.1): Cloning 73e5b88775c64ccc0b84fb60836b30dc9d92ac4a from cache
+[52.194.214.107] < [error]   - Installing fruitcake/laravel-cors (v2.2.0): Cloning 783a74f5e3431d7b9805be8afb60fd0a8f743534 from cache
+[52.194.214.107] < [error]   - Installing psr/http-message (1.0.1): Cloning f6561bf28d520154e4b0ec72be95418abe6d9363 from cache
+[52.194.214.107] < [error]   - Installing psr/http-client (1.0.1): Cloning 2dfb5f6c5eff0e91e20e913f8c5452ed95b86621 from cache
+[52.194.214.107] < [error]   - Installing ralouphie/getallheaders (3.0.3): Cloning 120b605dfeb996808c31b6477290a714d356e822 from cache
+[52.194.214.107] < [error]   - Installing psr/http-factory (1.0.1): Cloning 12ac7fcd07e5b077433f5f2bee95b3a771bf61be from cache
+[52.194.214.107] < [error]   - Installing guzzlehttp/psr7 (2.3.0): Cloning 83260bb50b8fc753c72d14dc1621a2dac31877ee from cache
+[52.194.214.107] < [error]   - Installing guzzlehttp/promises (1.5.1): Cloning fe752aedc9fd8fcca3fe7ad05d419d32998a06da from cache
+[52.194.214.107] < [error]   - Installing guzzlehttp/guzzle (7.4.4): Cloning e3ff079b22820c2029d4c2a87796b6a0b8716ad8 from cache
+[52.194.214.107] < [error]   - Installing jaybizzle/crawler-detect (v1.2.111): Cloning d572ed4a65a70a2d2871dc5137c9c5b7e69745ab from cache
+[52.194.214.107] < [error]   - Installing paragonie/constant_time_encoding (v2.5.0): Cloning 9229e15f2e6ba772f0c55dd6986c563b937170a8 from cache
+[52.194.214.107] < [error]   - Installing pragmarx/google2fa (8.0.0): Cloning 26c4c5cf30a2844ba121760fd7301f8ad240100b from cache
+[52.194.214.107] < [error]   - Installing laravel/fortify (v1.13.0): Cloning 0b8e7a860f0aa4868846555f5d095d7b546ffb9c from cache
+[52.194.214.107] < [error]   - Installing mobiledetect/mobiledetectlib (2.8.39): Cloning 0fd6753003fc870f6e229bae869cc1337c99bc45 from cache
+[52.194.214.107] < [error]   - Installing jenssegers/agent (v2.6.4): Cloning daa11c43729510b3700bc34d414664966b03bffe from cache
+[52.194.214.107] < [error]   - Installing laravel/jetstream (v2.8.4): Cloning fae6651963e92cbf532ead945b632420cb9bd861 from cache
+[52.194.214.107] < [error]   - Installing laravel/sanctum (v2.15.1): Cloning 31fbe6f85aee080c4dc2f9b03dc6dd5d0ee72473 from cache
+[52.194.214.107] < [error]   - Installing nikic/php-parser (v4.14.0): Cloning 34bea19b6e03d8153165d8f30bba4c3be86184c1 from cache
+[52.194.214.107] < [error]   - Installing psy/psysh (v0.11.5): Cloning c23686f9c48ca202710dbb967df8385a952a2daf from cache
+[52.194.214.107] < [error]   - Installing laravel/tinker (v2.7.2): Cloning dff39b661e827dae6e092412f976658df82dbac5 from cache
+[52.194.214.107] < [error]   - Installing livewire/livewire (v2.10.5): Cloning 9ea6237760f627b3b6a05d15137880780ac843b5 from cache
+[52.194.214.107] < [error]   - Installing mckenziearts/laravel-notify (v2.3): Cloning a75449fcc1a3e50ac8d1d41a026142461017b4ca from cache
+[52.194.214.107] < [error]   - Installing myclabs/php-enum (1.8.3): Cloning b942d263c641ddb5190929ff840c68f78713e937 from cache
+[52.194.214.107] < [error]   - Installing realrashid/sweet-alert (v5.1.0): Cloning fb837beaa52568fb3106d311ff3c7a7b8e543608 from cache
+[52.194.214.107] < [error]   - Installing spatie/image-optimizer (1.6.2): Cloning 6db75529cbf8fa84117046a9d513f277aead90a0 from cache
+[52.194.214.107] < [error]   - Installing spatie/temporary-directory (1.3.0): Cloning f517729b3793bca58f847c5fd383ec16f03ffec6 from cache
+[52.194.214.107] < [error]   - Installing intervention/image (2.7.2): Cloning 04be355f8d6734c826045d02a1079ad658322dad from cache
+[52.194.214.107] < [error]   - Installing league/glide (1.7.1): Cloning 257e0c3612ef3dc57eb7f90cb741198151a45a5f from cache
+[52.194.214.107] < [error]   - Installing spatie/image (1.10.6): Cloning 897e819848096ea8eee8ed4a3531c6166f9a99e0 from cache
+[52.194.214.107] < [error]   - Installing maennchen/zipstream-php (2.2.1): Cloning 211e9ba1530ea5260b45d90c9ea252f56ec52729 from cache
+[52.194.214.107] < [error]   - Installing spatie/laravel-medialibrary (9.12.3): Cloning a20456679f29a725b37947980408fc15c3477b08 from cache
+[52.194.214.107] < [error]   - Installing spatie/laravel-permission (5.5.4): Cloning cb86fd87b43fcfc493c3f2b1de6fad100c078146 from cache
+[52.194.214.107] < [error] Package swiftmailer/swiftmailer is abandoned, you should avoid using it. Use symfony/mailer instead.
+[52.194.214.107] < [error] Package deployer/phar-update is abandoned, you should avoid using it. No replacement was suggested.
+[52.194.214.107] < [error] Generating optimized autoload files
+[52.194.214.107] < [error] Class App\Mail\MailtrapAdmin located in ./app/Mail/MailTrapAdmin.php does not comply with psr-4 autoloading standard. Skipping.
+[52.194.214.107] < [error] > post-autoload-dump: Illuminate\Foundation\ComposerScripts::postAutoloadDump
+[52.194.214.107] < [error] > post-autoload-dump: @php artisan package:discover --ansi
+[52.194.214.107] < Discovered Package: [32mcviebrock/eloquent-sluggable[39m
+[52.194.214.107] < Discovered Package: [32mfruitcake/laravel-cors[39m
+[52.194.214.107] < Discovered Package: [32mintervention/image[39m
+[52.194.214.107] < Discovered Package: [32mjenssegers/agent[39m
+[52.194.214.107] < Discovered Package: [32mlaravel/fortify[39m
+[52.194.214.107] < Discovered Package: [32mlaravel/jetstream[39m
+[52.194.214.107] < Discovered Package: [32mlaravel/sanctum[39m
+[52.194.214.107] < Discovered Package: [32mlaravel/tinker[39m
+[52.194.214.107] < Discovered Package: [32mlivewire/livewire[39m
+[52.194.214.107] < Discovered Package: [32mmckenziearts/laravel-notify[39m
+[52.194.214.107] < Discovered Package: [32mnesbot/carbon[39m
+[52.194.214.107] < Discovered Package: [32mrealrashid/sweet-alert[39m
+[52.194.214.107] < Discovered Package: [32mspatie/laravel-medialibrary[39m
+[52.194.214.107] < Discovered Package: [32mspatie/laravel-permission[39m
+[52.194.214.107] < [32mPackage manifest generated successfully.[39m
+[52.194.214.107] < [error] 62 packages you are using are looking for funding.
+[52.194.214.107] < [error] Use the `composer fund` command to find out more!
+[52.194.214.107] > ps axo comm,user | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | sort | awk '{print $NF}' | uniq
+[52.194.214.107] < www-data
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (mkdir -p bootstrap/cache storage storage/app storage/app/public storage/framework storage/framework/cache storage/framework/sessions storage/framework/views storage/logs)
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (chmod 2>&1; true)
+[52.194.214.107] < chmod: missing operand
+[52.194.214.107] < Try 'chmod --help' for more information.
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (if hash setfacl 2>/dev/null; then echo 'true'; fi)
+[52.194.214.107] < true
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p bootstrap/cache | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (setfacl -L -R -m u:"www-data":rwX -m u:`whoami`:rwX bootstrap/cache)
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (setfacl -dL -R -m u:"www-data":rwX -m u:`whoami`:rwX bootstrap/cache)
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/app | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/app/public | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/framework | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/framework/cache | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/framework/sessions | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/framework/views | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && (getfacl -p storage/logs | grep "^user:www-data:.*w" | wc -l)
+[52.194.214.107] < 1
+[52.194.214.107] > cd /var/www/1blockghana.com/releases/1.1.2 && /usr/bin/php artisan --version
+[52.194.214.107] < Laravel Framework 8.83.16
+[52.194.214.107] > /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/artisan storage:link
+[52.194.214.107] < The [/var/www/1blockghana.com/releases/1.1.2/public/storage] link has been connected to [/var/www/1blockghana.com/releases/1.1.2/storage/app/public].
+[52.194.214.107] < The links have been created.
+[52.194.214.107] > /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/artisan view:cache
+[52.194.214.107] < Compiled views cleared!
+[52.194.214.107] < Blade templates cached successfully!
+[52.194.214.107] > /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/artisan config:cache
+[52.194.214.107] < Configuration cache cleared!
+[52.194.214.107] < Configuration cached successfully!
+[52.194.214.107] > /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/artisan optimize
+[52.194.214.107] < Configuration cache cleared!
+[52.194.214.107] < Configuration cached successfully!
+[52.194.214.107] < Route cache cleared!
+[52.194.214.107] < Routes cached successfully!
+[52.194.214.107] < Files cached successfully!
+[52.194.214.107] > /usr/bin/php /var/www/1blockghana.com/releases/1.1.2/artisan migrate --force
+[52.194.214.107] < Migrating: 2022_06_28_180923_add_column_to_develoopment_table
+[52.194.214.107] < Migrated:  2022_06_28_180923_add_column_to_develoopment_table (88.55ms)
+[52.194.214.107] > if [[ $(man mv 2>&1 || mv -h 2>&1 || mv --help 2>&1) =~ '--no-target-directory' ]]; then echo 'true'; fi
+[52.194.214.107] < true
+[52.194.214.107] > mv -T /var/www/1blockghana.com/release /var/www/1blockghana.com/current
+[52.194.214.107] > rm -f /var/www/1blockghana.com/.dep/deploy.lock
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ -e release ]; then  rm release; fi
+[52.194.214.107] > cd /var/www/1blockghana.com && if [ -h release ]; then  rm release; fi

@@ -113,7 +113,7 @@ class AgentController extends Controller
     }
 
     public function userBusinessUpdate(Request $request, $id){
-       $response = $this->authorize('update business','update all'); //SAME AS -> Gate::inspect('update business');
+      // $response = $this->authorize('update business','update all'); //SAME AS -> Gate::inspect('update business');
 
 
         $validated = $request->validate([

@@ -37,13 +37,15 @@
                                                 <select class="form-control" name="role_name" id="">
 
                                                     @foreach ($roles as $role)
-                                                        <option {{$user->getRoleNames()[0] == $role->name ? 'selected' : ''}} value="{{ $role->name }}">{{ Str::ucfirst($role->name) }}
+                                                        <option
+                                                            {{ $user->getRoleNames()[0] == $role->name ? 'selected' : '' }}
+                                                            value="{{ $role->name }}">{{ Str::ucfirst($role->name) }}
                                                         </option>
                                                     @endforeach
 
                                                 </select>
                                             </div>
-                                         {{--    @dd($user->getRoleNames()) --}}
+                                            {{-- @dd($user->getRoleNames()) --}}
                                         </div>
                                     </div>
                                 @else
@@ -73,23 +75,23 @@
                                                 value="{{ $user->mobile }}" />
                                         </div>
                                     </div>
-                                @role('admin')
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Email Address') }}" />
-                                            <x-form.input name="email" type="email" placeholder="Email Address"
-                                                value="{{ $user->email }}"/>
+                                    @role('admin')
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Email Address') }}" />
+                                                <x-form.input name="email" type="email" placeholder="Email Address"
+                                                    value="{{ $user->email }}" />
+                                            </div>
                                         </div>
-                                    </div>
-                                @else
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <x-form.label value="{{ __('Email Address') }}" />
-                                        <x-form.input name="email" type="email" placeholder="Email Address"
-                                            value="{{ $user->email }}" disabled/>
-                                    </div>
-                                </div>
-                                @endrole
+                                    @else
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Email Address') }}" />
+                                                <x-form.input name="email" type="email" placeholder="Email Address"
+                                                    value="{{ $user->email }}" disabled />
+                                            </div>
+                                        </div>
+                                    @endrole
                                     <div class="col-sm-12">
                                         <button type="submit" class="btn btn-primary btn-round">Update</button>
 
@@ -113,46 +115,48 @@
                                 <div class="row clearfix">
 
                                     @role('admin|super admin')
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Business Name') }}" />
-                                            <x-form.input name="business_name"  placeholder="Business Name"
-                                                value="{{ $user->business->name ?? '' }}" />
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Business Name') }}" />
+                                                <x-form.input name="business_name" placeholder="Business Name"
+                                                    value="{{ $user->business->name ?? '' }}" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Package') }}" />
-                                            @if ($user->business)
-                                            <select class="form-control" name="package_id" id="">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Package') }}" />
+                                                @if ($user->business)
+                                                    <select class="form-control" name="package_id" id="">
 
-                                                @foreach ($packages as $package)
-                                                    <option {{$user->business->package_id  == $package->id ? 'selected' : ''}} value="{{ $package->id }}">{{ $package->name }}
-                                                    </option>
-                                                @endforeach
+                                                        @foreach ($packages as $package)
+                                                            <option
+                                                                {{ $user->business->package_id == $package->id ? 'selected' : '' }}
+                                                                value="{{ $package->id }}">{{ $package->name }}
+                                                            </option>
+                                                        @endforeach
 
-                                            </select>
-                                            @else
-                                            <select class="form-control" name="package_id" id="">
+                                                    </select>
+                                                @else
+                                                    <select class="form-control" name="package_id" id="">
 
-                                                @foreach ($packages as $package)
-                                                    <option value="{{ $package->id }}">{{ $package->name }}
-                                                    </option>
-                                                @endforeach
+                                                        @foreach ($packages as $package)
+                                                            <option value="{{ $package->id }}">{{ $package->name }}
+                                                            </option>
+                                                        @endforeach
 
-                                            </select>
-                                            @endif
+                                                    </select>
+                                                @endif
 
+                                            </div>
                                         </div>
-                                    </div>
                                     @else
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <x-form.label value="{{ __('Business Name') }}" />
-                                            <x-form.input disabled name="business_name"  placeholder="Business Name"
-                                                value="{{ $user->business->name ?? '' }}" />
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <x-form.label value="{{ __('Business Name') }}" />
+                                                <x-form.input disabled name="business_name" placeholder="Business Name"
+                                                    value="{{ $user->business->name ?? '' }}" />
+                                            </div>
                                         </div>
-                                    </div>
                                     @endrole
 
                                     <div class="col-sm-6">
@@ -192,7 +196,8 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-primary btn-round">Update Business</button>
+                                        <button type="submit" class="btn btn-primary btn-round">Update
+                                            Business</button>
 
                                     </div>
                                 </div>
@@ -216,10 +221,11 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="file" name="logo" placeholder="Choose image" id="logo"
-                                                        class="filepond">
+                                                    <input type="file" name="logo" placeholder="Choose image"
+                                                        id="logo" class="filepond">
                                                     @error('image')
-                                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}
+                                                        </div>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -228,7 +234,7 @@
                                     <div class="col-sm-6">
                                         <div class="col-md-12 mb-2">
 
-                                            <img src="{{ $user->getFirstMediaUrl('logos')? $user->getFirstMediaUrl('logos'): url('assets/images/avatar.jpg') }}"
+                                            <img src="{{ $user->getFirstMediaUrl('logos') ? $user->getFirstMediaUrl('logos') : url('assets/images/avatar.jpg') }}"
                                                 alt="preview image" style="width: 200px;">
                                         </div>
                                     </div>
